@@ -5,8 +5,6 @@ export const boardService = {
     getById,
     remove,
     save,
-    avgPricesByTypes,
-    avgTypesByStock
 }
 
 const BASE_URL = `board/`

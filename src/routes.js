@@ -1,5 +1,6 @@
 import { Home } from './pages/home.jsx'
 import { BoardApp } from './pages/board-app.jsx'
+import { BoardDesc } from './cmps/board-desc.jsx'
 import { ItemEdit } from './pages/item-edit.jsx'
 import { LoginSignup } from './pages/login-signup.jsx'
 
@@ -15,6 +16,10 @@ const routes = [
         path: 'board/:id',
         component: <BoardApp/>,
     },
+    // {
+    //     path: 'board/:id/description',
+    //     component: <BoardDesc/>,
+    // },
     {
         path: 'board/:id/edit/:id',
         component: <ItemEdit/>,
