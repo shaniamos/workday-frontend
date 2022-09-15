@@ -5,26 +5,23 @@ import { BoardHeader } from '../cmps/board/board-header.jsx'
 import { GroupList } from '../cmps/group-list.jsx'
 import { useParams } from 'react-router-dom'
 import { MainSidebar } from '../cmps/main-sidebar.jsx'
+import {BoardDetails}  from './board-details'
 
 export const BoardApp = () => {
     const boards = useSelector(state => state.boardModule.boards)
     const dispatch = useDispatch()
-    const params = useParams()
 
     useEffect(() => {
-        // dispatch(loadBoard(params.id))
-        // console.log(boards)
         dispatch(loadBoards())
-    }, [params.id])
+    }, [])
 
     console.log(boards)
+    if (!boards) return <h1>Loading...</h1>
     return (
-        <section className="board-app">
+        <section className="board-app flex ">
             <MainSidebar />
-            <h1>Hello BoardApp</h1>
-            {/* <BoardHeader /> */}
-            <div className='board-content'></div>
-            {boards && < GroupList groups={boards[0].groups} />}
+            {/* nav */}
+            <BoardDetails />
         </section>
     )
 }
