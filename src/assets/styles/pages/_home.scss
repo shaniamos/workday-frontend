@@ -1,9 +1,10 @@
 .home-page {
     min-height: 100vh;
+    font-family: sofia;
+    font-size: 16px;
+    overflow: hidden;
     width: 100vw;
-    background-color: lightblue;
-    // background-image: url('../../imgs/stars-home-view.jpg');
-
+    background-image: url('../../../imgs/home-bg.jpg');
 
     & .img-container {
         height: 300px;
@@ -14,18 +15,118 @@
         cursor: pointer;
         color: inherit;
         font-size: 16px;
-        // height: 40px;
-        padding-right: 14px;
-        border-radius: 40px;
+        height: rem(40px);
+        min-width: rem(160px);
+        padding-right: rem(14px);
+        border-radius: rem(40px);
+        margin-left: rem(26px);
         color: #fff;
         background-color: #6C6CFF;
-        transition: .2s;
+        transition: background-color .2s;
         border: 1px solid #fff;
     }
 
+    .get-started-btn span {
+        margin-left: 3px;
+        transition: margin-left .2s;
+    }
+
+    .get-started-btn:hover span {
+        margin-left: rem(8px);
+    }
+
     .get-started-btn:hover {
+        background-color: #454592;
+    }
+
+    .text-container {
+        transform: translateY(120px);
+    }
+
+    h2 {
+        color: #fff;
+        align-items: center;
+        font-size: 6rem;
+    }
+
+    p {
+        font-size: rem(24px);
+        line-height: rem(40px);
+        font-weight: 300;
+        padding-left: rem(50px);
+        padding-right: rem(50px);
+        color: #fff;
+        font-size: 1.6rem;
+    }
+
+    .get-started-btn-home {
+        cursor: pointer;
+        color: inherit;
+        font-size: rem(18px);
+        overflow: hidden;
+        height: rem(60px);
+        min-width: rem(200px);
+        border-radius: rem(40px);
+        margin-top: rem(40px);
+        margin-left: rem(26px);
+        margin-bottom: rem(8px);
+        color: #fff;
+        box-shadow: 0 3px 6px 1px rgb(0 0 0 / 15%);
+        background-image: linear-gradient(90deg, #5034FF 25.69%, #B4B4FF 100%);
+        transition: background-image .2s;
+        justify-items: center;
+        font-weight: 400;
+        border: none;
+        text-align: center;
 
     }
 
-   
+    .get-started-btn-home span {
+        margin-left: rem(2px);
+        transition: margin-left .2s;
+    }
+
+    .get-started-btn-home:hover span {
+        margin-left: rem(8px);
+    }
+
+    .get-started-btn-home:hover {
+        background-image: linear-gradient(90deg, #432cd5 25.69%, #9797d5 100%);
+    }
+
+    .home-header {
+        height: rem(70px);
+        padding-left: rem(32px);
+        padding-right: rem(32px);;
+        align-items: center;
+        background-color: #ffffff;
+
+        .header-nav .nav-a {
+            font-family: sofia-thin;
+            border-radius: rem(8px);
+            padding: rem(8px) rem(10px);;
+            transition: background-color .2s;
+        }
+
+        .header-nav .nav-a:hover {
+            background-color: rgb(216, 234, 243)
+        }
+
+        .logo {
+            width:rem(167px);
+            height: rem(42px);
+            padding-top: rem(9px);
+        }
+    }
+
+    .small-text {
+        font-family: sofia-thin;
+        font-size: rem(14px);
+    }
+
+    .main-text {
+        font-weight: 400;
+        line-height: rem(85px);
+    }
+
 }

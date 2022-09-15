@@ -3,12 +3,10 @@ import { TaskList } from "./task-list.jsx"
 export const GroupPreview = ({ group }) => {
     return (
         <section className="group-preview">
-            <table>
-                <thead>{group.title}</thead>
-                <tbody>
-                    <TaskList tasks={group.tasks} />
-                </tbody>
-            </table>
+            <h1>{group.title}</h1>
+            <div>
+                <TaskList tasks={group.tasks} groupId={group.id} />
+            </div>
         </section>
     )
 }

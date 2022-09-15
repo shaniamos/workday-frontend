@@ -19,11 +19,14 @@ function query(entityType, delay = 0) {
     })
 }
 
-function get(entityType, entityId) {
-    return query(entityType)
-        .then(entities => entities.find(entity => entity._id === entityId))
+async function get(entityType, entityId) {
+    try {
+        const entities = await query(entityType)
+        return entities.find(entity => entity._id === entityId)
+    } catch (err) {
+        console.error (err)
+    }
 }
-
 
 function postMany(entityType, entities) {
     _save(entityType, entities)
