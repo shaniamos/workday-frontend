@@ -1,4 +1,5 @@
 import { storageService } from './async-storage.service.js'
+import { board } from '../data/data.js'
 
 export const boardService = {
     query,
@@ -8,7 +9,7 @@ export const boardService = {
 }
 
 const STORAGE_KEY = 'board'
-const defultBoards = []
+const defultBoards = [board]
 
 function query(filterBy) {
     return storageService.query(STORAGE_KEY).then(boards => {

@@ -1,6 +1,6 @@
-import { boardService } from "../../services/board.service.js"
+import { boardService } from "../../services/board.service.local.js"
 
-export function loadToys() {
+export function loadBoards() {
     return async (dispatch, getState) => {
         const { filterBy } = getState().boardModule
         try {
