@@ -4,13 +4,13 @@
 @import 'setup/functions';
 
 // BASICS
-@import 'basics/helpers';
+@import './basics/helpers';
 @import 'basics/base';
 @import 'basics/layout';
 
 // COMPONENTS
-
-
+@import 'cmps/home-header.scss';
 
 // PAGES
+@import 'pages/home'
 

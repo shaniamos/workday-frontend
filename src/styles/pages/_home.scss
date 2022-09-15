@@ -1,9 +1,31 @@
-.home {
-    padding: 30px;
-    min-height: 85vh;
+.home-page {
+    min-height: 100vh;
+    width: 100vw;
+    background-color: lightblue;
+    // background-image: url('../../imgs/stars-home-view.jpg');
+
 
     & .img-container {
         height: 300px;
         width: 300px;
     }
+
+    .get-started-btn {
+        cursor: pointer;
+        color: inherit;
+        font-size: 16px;
+        // height: 40px;
+        padding-right: 14px;
+        border-radius: 40px;
+        color: #fff;
+        background-color: #6C6CFF;
+        transition: .2s;
+        border: 1px solid #fff;
+    }
+
+    .get-started-btn:hover {
+
+    }
+
+   
 }
