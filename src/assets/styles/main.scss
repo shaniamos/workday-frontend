@@ -2,6 +2,7 @@
 @import 'setup/vars';
 @import 'setup/mixins';
 @import 'setup/functions';
+@import 'setup/typograghy.scss';
 
 // BASICS
 @import './basics/helpers';
@@ -9,7 +10,7 @@
 @import 'basics/layout';
 
 // COMPONENTS
-@import 'cmps/home-header.scss';
+
 
 // PAGES
 @import 'pages/home'
