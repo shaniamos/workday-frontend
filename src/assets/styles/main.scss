@@ -9,7 +9,9 @@
 @import 'basics/layout';
 
 // COMPONENTS
-@import 'cmps/home-header.scss';
+@import 'cmps/home-header';
+@import 'cmps/board-header';
+@import 'cmps/person-circle';
 
 // PAGES
 @import 'pages/home'

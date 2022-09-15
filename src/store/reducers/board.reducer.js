@@ -1,9 +1,9 @@
 const INITIAL_STATE = {
     boards: null,
+    selectedBoard: {},
     filterBy: null,
-    sortBy: 'name',
+    sortBy: 'status',
     isLoading: false,
-    board: {}
 }
 
 export function boardReducer(state = INITIAL_STATE, action) {
