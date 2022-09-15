@@ -1,0 +1,9 @@
+.home {
+    padding: 30px;
+    min-height: 85vh;
+
+    & .img-container {
+        height: 300px;
+        width: 300px;
+    }
+}
