@@ -1,5 +1,4 @@
 import '../src/assets/styles/main.scss';
-
 import { Routes, Route } from 'react-router-dom'
 import routes from './routes'
 

@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
-import { BoardHeader } from '../cmps/board-header.jsx'
+import { BoardHeader } from '../cmps/board/board-header.jsx'
 import { GroupList } from '../cmps/group-list.jsx'
 import { loadSelectedBoard } from '../store/actions/board.action.js'
 

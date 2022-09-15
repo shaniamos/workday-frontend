@@ -9,14 +9,18 @@ export function Home() {
 
         <section className='home-page'>
             <HomeHeader />
-            <div>
-                <h1>A platform built for a new way of working</h1>
-            </div>
-            <div>
-                <p>What would you like to manage with Workday.com Work OS?</p>
-            </div>
+            <div className='text-container flex column justify-center align-center'>
+                <h2 className='main-text'>
+                    A platform built for a <br />
+                    new way of working
+                </h2>
 
-            <Link to={`/board/b101`} ><button>Get Started</button></Link>
+                <p>What would you like to manage with Workday.com Work OS?</p>
+
+                <Link to={`/board/b101`} ><button className='get-started-btn-home'>Get Started <span> &#8594;	</span></button> </Link>
+                <p className='small-text'>No credit card needed   ✦   Unlimited time on Free plan</p>
+                
+            </div>
 
 
         </section>

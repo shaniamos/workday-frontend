@@ -3,7 +3,8 @@ const INITIAL_STATE = {
     selectedBoard: null,
     filterBy: null,
     sortBy: 'name',
-    isLoading: false
+    isLoading: false,
+    board: {}
 }
 
 export function boardReducer(state = INITIAL_STATE, action) {
