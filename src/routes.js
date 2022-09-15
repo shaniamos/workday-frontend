@@ -3,6 +3,7 @@ import { BoardApp } from './pages/board-app.jsx'
 import { ItemEdit } from './pages/item-edit.jsx'
 import { LoginSignup } from './pages/login-signup.jsx'
 
+
 // Routes accesible from the main navigation (in AppHeader)
 const routes = [
     {
