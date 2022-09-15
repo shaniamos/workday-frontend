@@ -1,28 +1,22 @@
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { loadBoards } from '../store/actions/board.action.js'
-import { BoardHeader } from '../cmps/board-header.jsx'
-import { GroupList } from '../cmps/group-list.jsx'
-import { useParams } from 'react-router-dom'
+import { BoardDetails } from './board-details.jsx'
 
 export const BoardApp = () => {
     const boards = useSelector(state => state.boardModule.boards)
     const dispatch = useDispatch()
-    const params = useParams()
 
     useEffect(() => {
-        // dispatch(loadBoard(params.id))
-        // console.log(boards)
         dispatch(loadBoards())
-    }, [params.id])
+    }, [])
 
     console.log(boards)
+    if (!boards) return <h1>Loading...</h1>
     return (
         <section className="board-app">
-            <h1>Hello BoardApp</h1>
-            {/* <BoardHeader /> */}
-            <div className='board-content'></div>
-            {boards && < GroupList groups={boards[0].groups} />}
+            {/* nav */}
+            <BoardDetails />
         </section>
     )
 }

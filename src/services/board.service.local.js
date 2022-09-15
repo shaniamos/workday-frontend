@@ -3,16 +3,23 @@ import { board } from '../data/data.js'
 
 export const boardService = {
     query,
-    save,
-    remove,
-    getById,
+    saveBoard,
+    removeBoard,
+    getByBoardId,
+    saveTask,
+    removeTask,
+    getByTaskId,
 }
 
 const STORAGE_KEY = 'board'
 const defultBoards = [board]
 
-function query(filterBy) {
-    return storageService.query(STORAGE_KEY).then(boards => {
+// CRUDL Board
+
+async function query(filterBy) {
+
+    try {
+        let boards = await storageService.query(STORAGE_KEY)
 
         if (!boards || !boards.length) {
             storageService.postMany(STORAGE_KEY, defultBoards)
@@ -31,24 +38,56 @@ function query(filterBy) {
         }
 
         return boards
-    })
+    } catch (err) {
+        console.error(err)
+    }
 }
 
-function getById(boardId) {
+function getByBoardId(boardId) {
     return storageService.get(STORAGE_KEY, boardId)
 }
 
-function remove(boardId) {
+function removeBoard(boardId) {
     return storageService.remove(STORAGE_KEY, boardId)
 }
 
-function save(board) {
+function saveBoard(board) {
     if (board._id) {
         return storageService.put(STORAGE_KEY, board)
     } else {
-        board.createdAt = Date.now()
-        board.inStock = true
-        board.labels = ["Doll", "Battery Powered", "Baby"]
+        board.groups = []
         return storageService.post(STORAGE_KEY, board)
+    }
+}
+
+
+// CRUDL Groups
+
+
+
+
+// CRDUL Task
+
+function getByTaskId(taskId) {
+    return storageService.get(STORAGE_KEY, taskId)
+}
+
+async function removeTask(boardId, groupId, taskId) {
+    console.log(boardId)
+    const board = await getByBoardId(boardId)
+    const group = board.groups.find(group => group.id === groupId) // getbygroupid
+    const newTasks = group.tasks.filter(task => task.id !== taskId)
+    board.groups.forEach((group, idx) => {
+        if (group.id === groupId)
+            board.groups[idx].tasks = newTasks
+    })
+    return storageService.put(STORAGE_KEY, board)
+}
+
+function saveTask(task) {
+    if (task._id) {
+        return storageService.put(STORAGE_KEY, task)
+    } else {
+        return storageService.post(STORAGE_KEY, task)
     }
 }

@@ -1,10 +1,9 @@
 import { boardService } from "../../services/board.service.local.js"
 
 export function loadBoards() {
-    return async (dispatch, getState) => {
-        const { filterBy } = getState().boardModule
+    return async (dispatch) => {
         try {
-            const boards = await boardService.query(filterBy)
+            const boards = await boardService.query()
             dispatch({ type: 'SET_BOARDS', boards })
         } catch (err) {
             console.error('err:', err)
@@ -12,55 +11,63 @@ export function loadBoards() {
     }
 }
 
-export function removeToy(boardId) {
+export function loadSelectedBoard(boardId) {
     return async (dispatch) => {
         try {
-            await boardService.remove(boardId)
-            dispatch({ type: 'REMOVE_BOARD', boardId })
+            const board = await boardService.getByBoardId(boardId)
+            dispatch({ type: 'SET_SELECTED_BOARD', board })
         } catch (err) {
             console.error('err:', err)
         }
     }
 }
 
-export function addToy(board) {
+// task
+export function removeTask(boardId, groupId, taskId) {
     return async (dispatch) => {
         try {
-            const savedToy = await boardService.save(board)
-            dispatch({ type: 'ADD_BOARD', board: savedToy })
+            const board = await boardService.removeTask(boardId, groupId, taskId)
+            dispatch({ type: 'UPDATE_BOARD', board })
+        } catch (err) {
+            console.error('err:', err)
+        }
+    }
+}
+
+export function addTask(task) {
+    return async (dispatch) => {
+        try {
+            const savedBoard = await boardService.save(task)
+            dispatch({ type: 'ADD_BOARD', board: savedBoard })
         } catch (err) {
             console.error('Oops:', err)
         }
     }
 }
 
-export function updateToy(board) {
-    return (dispatch) => {
-        return boardService.save(board)
-            .then((savedToy) => {
-                dispatch({ type: 'UPDATE_BOARD', board: savedToy })
-            })
-            .catch((err) => {
-                console.log('err:', err)
-            })
-    }
-}
 
-export function setFilterBy(filterBy) {
-    return (dispatch) => {
-        dispatch({ type: 'SET_FILTER_BY', filterBy })
-    }
-}
 
-export function sortByToys(sortBy) {
-    return (dispatch, getState) => {
-        dispatch({ type: 'SET_SORT_BY', sortBy })
-        let { boards } = getState().boardModule
 
-        if (sortBy.sortBy === 'name') boards = boards.sort((t1, t2) => t1.name.localeCompare(t2.name))
-        if (sortBy.sortBy === 'price') {
-            boards = boards.sort((t1, t2) => t1.price - t2.price)
+
+
+export function addBoard(board) {
+    return async (dispatch) => {
+        try {
+            const savedBoard = await boardService.save(board)
+            dispatch({ type: 'ADD_BOARD', board: savedBoard })
+        } catch (err) {
+            console.error('Oops:', err)
         }
-        dispatch({ type: 'SET_BOARDS', boards })
+    }
+}
+
+export function updateBoard(board) {
+    return async (dispatch) => {
+        try {
+            const savedBoard = await boardService.save(board)
+            dispatch({ type: 'UPDATE_BOARD', board: savedBoard })
+        } catch (err) {
+            console.log('err:', err)
+        }
     }
 }

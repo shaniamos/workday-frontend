@@ -4,7 +4,7 @@ export const GroupList = ({ groups }) => {
     return (
         <section className="group-list">
             {groups.map(group => {
-                return <GroupPreview key={group._id} group={group} />
+                return <GroupPreview key={group.id} group={group} />
             })}
         </section>
     )
