@@ -4,7 +4,7 @@ export const boardService = {
     query,
     getById,
     remove,
-    save,
+    save
 }
 
 const BASE_URL = `board/`

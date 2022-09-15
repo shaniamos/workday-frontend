@@ -1,4 +1,4 @@
-import { boardService } from "../../services/board.service.js"
+import { boardService } from "../../services/board.service.local.js"
 
 export function loadBoards() {
     return async (dispatch, getState) => {
