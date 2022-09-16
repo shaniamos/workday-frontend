@@ -15,10 +15,9 @@ export const BoardApp = () => {
         dispatch(loadBoards())
     }, [])
 
-    console.log(boards)
     if (!boards) return <h1>Loading...</h1>
     return (
-        <section className="board-app flex ">
+        <section className="board-app flex">
             <BoardHeader />
             <MainSidebar />
             {/* nav */}

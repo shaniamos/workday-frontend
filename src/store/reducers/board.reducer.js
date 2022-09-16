@@ -1,10 +1,6 @@
 const INITIAL_STATE = {
     boards: null,
-<<<<<<< HEAD
-    selectedBoard: {},
-=======
     selectedBoard: null,
->>>>>>> 41a28069fdd971ab9334525569f2d59888e17b17
     filterBy: null,
     sortBy: 'status',
     isLoading: false,
@@ -25,7 +21,7 @@ export function boardReducer(state = INITIAL_STATE, action) {
             return {
                 ...state, boards: state.boards.map(board =>
                     board._id === action.board._id ? action.board : board),
-                    selectedBoard: action.board
+                selectedBoard: action.board
             }
         case 'SET_FILTER_BY':
             return { ...state, filterBy: { ...action.filterBy } }
