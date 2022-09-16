@@ -22,8 +22,7 @@ import { ToolbarBoardHeader } from './board-header/toolbar-board-header.jsx'
 //IoIosCheckmarkCircleOutline -checklist 
 
 
-export function BoardHeader() {
-    const selectedBoard = useSelector((storeState) => storeState.boardModule.selectedBoard)
+export function BoardHeader({board}) {
     // const [title , setTitle] = useState(selectedBoard.title)
 
     // useEffect(() => {
@@ -32,8 +31,8 @@ export function BoardHeader() {
 
     return (
         <header className="board-header-container">
-            <MainBoardHeader/>
-            <ToolbarBoardHeader/>
+            <MainBoardHeader board={board} />
+            <ToolbarBoardHeader />
 
             {/* 
             <div className="board-header-view-nav">

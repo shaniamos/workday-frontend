@@ -1,6 +1,8 @@
 import { boardService } from "../../services/board.service.local.js"
 
 // CRUDL BOARD
+
+//get list of boards
 export function loadBoards() {
     return async (dispatch) => {
         try {
@@ -12,6 +14,7 @@ export function loadBoards() {
     }
 }
 
+//get board by id
 export function loadSelectedBoard(boardId, filterBy = {}) {
     return async (dispatch) => {
         try {
@@ -30,6 +33,31 @@ export function removeBoard(boardId) {
             const board = await boardService.removeBoard(boardId)
             dispatch({ type: 'REMOVE_BOARD', boardId })
             dispatch({ type: 'RESET_SELECTED_BOARD' })
+        } catch (err) {
+            console.error('err:', err)
+        }
+    }
+}
+
+//add board 
+export function addBoard(board) {
+    return async (dispatch) => {
+        try {
+            const savedBoard = await boardService.saveBoard(board)
+            dispatch({ type: 'ADD_BOARD', board: savedBoard })
+            return savedBoard
+        } catch (err) {
+            console.error('err:', err)
+        }
+    }
+}
+
+// update board
+export function updateBoard(board) {
+    return async (dispatch) => {
+        try {
+            const savedBoard = await boardService.saveBoard(board)
+            dispatch({ type: 'UPDATE_BOARD', board: savedBoard })
         } catch (err) {
             console.error('err:', err)
         }

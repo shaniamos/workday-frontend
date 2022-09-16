@@ -2,22 +2,31 @@ import { PersonCircle } from "../person-circle.jsx"
 import { RiErrorWarningLine, RiUserAddLine } from 'react-icons/ri'
 import { AiOutlineStar } from 'react-icons/ai'
 import { FaStumbleuponCircle } from 'react-icons/fa'
-import { useForm } from '../../../hooks/useForm.js'
+import { useDispatch } from "react-redux"
+import { useFormRegister } from "../../../hooks/useFormRegister.js"
+import { updateBoard } from "../../../store/actions/board.action.js"
 
-export function MainBoardHeader() {
-    const [title, handleChange, setTitle] = useForm()
+export function MainBoardHeader({board}) {
+    const dispatch = useDispatch()
+    const [register, setNewBoard, newBoard] = useFormRegister({
+        title: board.title
+    })
+
+    const onSaveBoard = (event) => {
+        event.preventDefault()
+        board.title = newBoard.title
+        dispatch(updateBoard(board))
+    }
 
     return (
         <div className="board-header-title flex space-between ">
             <div className="board-header-left flex">
-                <input
-                    className="input-title"
-                    type="text"
-                    name="title"
-                    value='Developers board'
-                    //value={selectedBoard.title} 
-                    onChange={handleChange}
-                />
+                <form onSubmit={onSaveBoard}>
+                    <input
+                        className="input-title"
+                        {...register('title', 'text')}
+                    />
+                </form>
                 <button className="btn-board-description"><RiErrorWarningLine /></button>
                 <button className="btn-board-starred">
                     <AiOutlineStar />

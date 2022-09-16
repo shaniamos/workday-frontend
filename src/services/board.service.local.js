@@ -62,7 +62,7 @@ function saveBoard(board) {
     if (board._id) {
         return storageService.put(STORAGE_KEY, board)
     } else {
-        board.groups = []
+        board = _createBoard(board)
         return storageService.post(STORAGE_KEY, board)
     }
 }
@@ -166,6 +166,29 @@ async function saveTask(boardId, groupId, task) {
     } catch (err) {
         throw err
     }
+}
+
+function _createBoard(board) {
+    board._createdAt = Date.now()
+    board.groups = [
+        {
+            id: utilService.makeId(),
+            style: {},
+            tasks: []
+        },
+        {
+            id: utilService.makeId(),
+            style: {},
+            tasks: []
+        },
+    ]
+    for (let i = 0; i < 5; i++) {
+        if (i < 3)
+            board.groups[0].tasks.push(_createTask({ title: `Item ${i + 1}` }))
+        else
+            board.groups[1].tasks.push(_createTask({ title: `Item ${i + 1}` }))
+    }
+    return board
 }
 
 function _createTask(task) {
