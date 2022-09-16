@@ -1,6 +1,5 @@
 .sidebar-container {
     background-color: #292f4c;
-    // flex-direction: row;
     height: 100vh;
     width: 66px;
 
@@ -12,17 +11,22 @@
         color: white;
         border-radius: 8px;
         cursor: pointer;
-        transition: background-color .2s;    
+        transition: background-color .2s;
     }
 
     .sidebar-icon:hover {
         background-color: #0c0d18;
     }
 
+    .all-nav-bar {
+        height: 91vh;
+    }
+
     .home-btn {
         margin: auto;
     }
-    .sidebar-logo {  
+
+    .sidebar-logo {
         margin-top: rem(12px);
         height: rem(43px);
         width: rem(43px);
@@ -30,6 +34,7 @@
 
     .plans-modal {
         cursor: pointer;
+
         margin-top: 10px;
         margin-bottom: 10px;
         height: 110px;
@@ -42,41 +47,49 @@
         justify-content: center;
         align-items: center;
         transition: width .2s;
+
         .stars {
-            font-size: rem(20px);  
+            font-size: rem(20px);
         }
     }
+
     .plans-modal:hover {
-        width: rem(49px);
-        background-color:#007038; ;
+        width: rem(43px);
+        background-color: #007038;
+        ;
     }
-    span{
+
+    span {
         transform: rotate(270deg);
-        font-size: rem(18px);
+        font-size: rem(15px);
         text-align: center;
         white-space: nowrap;
     }
-    
+
     .nav-top-down {
-        gap:4px;
+        gap: 5px;
     }
 
     .icons-bottom {
         margin: auto;
-        width: 70%;
+        width: 90%;
         border-bottom: 1px solid rgb(133, 129, 129);
     }
-    
+
     .navigations-icons {
         padding-top: 10px;
-        margin: auto;
+        // margin: auto;
+        margin-left: 8px;
+        // margin-right: 5px;
         width: 70%;
         border-top: 1px solid rgb(133, 129, 129);
-    }    
-     .down {
+    }
+
+    .down {
         width: 38px;
         height: 38px;
     }
+
     .menu {
         color: rgb(143, 143, 255);
     }
