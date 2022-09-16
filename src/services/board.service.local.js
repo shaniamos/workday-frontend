@@ -9,6 +9,7 @@ export const boardService = {
     getByBoardId,
     saveGroup,
     removeGroup,
+    getByGroupId,
     saveTask,
     removeTask,
     getByTaskId,
@@ -46,14 +47,17 @@ async function query(filterBy) {
     }
 }
 
+// get board by id
 function getByBoardId(boardId) {
     return storageService.get(STORAGE_KEY, boardId)
 }
 
+//remove board
 function removeBoard(boardId) {
     return storageService.remove(STORAGE_KEY, boardId)
 }
 
+// add + update board
 function saveBoard(board) {
     if (board._id) {
         return storageService.put(STORAGE_KEY, board)
@@ -64,6 +68,17 @@ function saveBoard(board) {
 }
 
 // CRUDL Groups
+
+// get group by id
+async function getByGroupId(boardId, groupId) {
+    try {
+        const board = await getByBoardId(boardId)
+        const group = board.groups.find(group => group.id === groupId)
+        return group
+    } catch (err) {
+        throw err
+    }
+}
 
 // remove group
 async function removeGroup(boardId, groupId) {
@@ -84,34 +99,25 @@ async function saveGroup(boardId, group) {
         if (group.id) {
             const updatedGroups = board.groups.map(currGroup => (currGroup.id === group.id) ? group : currGroup)
             board.groups = updatedGroups
-        } 
-        // else {
-        //     task.id = utilService.makeId()
-        //     task.status = ''
-        //     task.priority = ''
-        //     task.persons = ''
-        //     task.deadLine = ''
-        //     task.lastUpdate = Date.now()
-        //     group.tasks.push(task)
-        //     board.groups.forEach((group, idx) => {
-        //         if (group.id === groupId)
-        //             board.groups[idx] = group
-        //     })
-        // }
+        }
+        else {
+            group.id = utilService.makeId()
+            group.style = {}
+            group.tasks = []
+            board.groups.push(group)
+        }
         return storageService.put(STORAGE_KEY, board)
     } catch (err) {
         throw err
     }
 }
 
-
 // CRDUL Task
 
 // get task by id
 async function getByTaskId(boardId, groupId, taskId) {
     try {
-        const board = await getByBoardId(boardId)
-        const group = board.groups.find(group => group.id === groupId) // getbygroupid
+        const group = await getByGroupId(boardId, groupId)
         const task = group.find(task => task.id === taskId)
         return task
     } catch (err) {
@@ -123,7 +129,7 @@ async function getByTaskId(boardId, groupId, taskId) {
 async function removeTask(boardId, groupId, taskId) {
     try {
         const board = await getByBoardId(boardId)
-        const group = board.groups.find(group => group.id === groupId) // getbygroupid
+        const group = await getByGroupId(boardId, groupId)
         const newTasks = group.tasks.filter(task => task.id !== taskId)
         board.groups.forEach((group, idx) => {
             if (group.id === groupId)
@@ -140,20 +146,16 @@ async function removeTask(boardId, groupId, taskId) {
 async function saveTask(boardId, groupId, task) {
     try {
         const board = await getByBoardId(boardId)
-        const group = board.groups.find(group => group.id === groupId) // getbygroupid
+        const group = await getByGroupId(boardId, groupId)
         if (task.id) {
+            task.lastUpdate = Date.now()
             const updatedTasks = group.tasks.map(currTask => (currTask.id === task.id) ? task : currTask)
             board.groups.forEach((group, idx) => {
                 if (group.id === groupId)
                     board.groups[idx].tasks = updatedTasks
             })
         } else {
-            task.id = utilService.makeId()
-            task.status = ''
-            task.priority = ''
-            task.persons = ''
-            task.deadLine = ''
-            task.lastUpdate = Date.now()
+            task = _createTask(task)
             group.tasks.push(task)
             board.groups.forEach((group, idx) => {
                 if (group.id === groupId)
@@ -164,4 +166,14 @@ async function saveTask(boardId, groupId, task) {
     } catch (err) {
         throw err
     }
+}
+
+function _createTask(task) {
+    task.id = utilService.makeId()
+    task.status = ''
+    task.priority = ''
+    task.persons = ''
+    task.deadLine = ''
+    task.lastUpdate = Date.now()
+    return task
 }
