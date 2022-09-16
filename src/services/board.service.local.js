@@ -1,4 +1,5 @@
 import { storageService } from './async-storage.service.js'
+import { utilService } from './util.service.js'
 import { board } from '../data/data.js'
 
 export const boardService = {
@@ -73,7 +74,6 @@ function getByTaskId(taskId) {
 }
 
 async function removeTask(boardId, groupId, taskId) {
-    console.log(boardId)
     const board = await getByBoardId(boardId)
     const group = board.groups.find(group => group.id === groupId) // getbygroupid
     const newTasks = group.tasks.filter(task => task.id !== taskId)
@@ -84,10 +84,23 @@ async function removeTask(boardId, groupId, taskId) {
     return storageService.put(STORAGE_KEY, board)
 }
 
-function saveTask(task) {
-    if (task._id) {
+async function saveTask(boardId, groupId, task) {
+    if (task.id) {
         return storageService.put(STORAGE_KEY, task)
     } else {
-        return storageService.post(STORAGE_KEY, task)
+        const board = await getByBoardId(boardId)
+        const group = board.groups.find(group => group.id === groupId) // getbygroupid
+        task.id = utilService.makeId()
+        task.status = ''
+        task.priority = ''
+        task.persons = ''
+        task.deadLine = ''
+        task.lastUpdate = Date.now()
+        group.tasks.push(task)
+        board.groups.forEach((group, idx) => {
+            if (group.id === groupId)
+                board.groups[idx] = group
+        })
+        return storageService.put(STORAGE_KEY, board)
     }
 }

@@ -14,7 +14,6 @@ export const BoardDetails = () => {
         dispatch(loadSelectedBoard(params.id))
     }, [])
 
-    console.log(board)
     return (
         <section className="board-details">
             <h1>Hello BoardApp</h1>

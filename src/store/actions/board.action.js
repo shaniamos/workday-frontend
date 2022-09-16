@@ -33,3 +33,15 @@ export function removeTask(boardId, groupId, taskId) {
         }
     }
 }
+
+export function addTask(boardId, groupId, task) {
+    return async (dispatch) => {
+        try {
+            const savedBoard = await boardService.saveTask(boardId, groupId, task)
+            console.log(savedBoard)
+            dispatch({ type: 'UPDATE_BOARD', board: savedBoard })
+        } catch (err) {
+            console.error('err:', err)
+        }
+    }
+}
