@@ -1,3 +1,7 @@
+@mixin tool-btn {
+    
+}
+
 @mixin btn($bgColor: rgba(0, 0, 0, 0), $color: var(--primary-text-color), $hoverBgColor: var(--primary-background-hover-color)) {
     display: inline-block;
     background-color: $bgColor;
@@ -15,6 +19,7 @@
     -ms-user-select: none;
     user-select: none;
     min-width: var(--element-width);
+    padding: 4px 8px;
 
     // padding: 8px 24px 8px 12px ;
     &:hover {

@@ -4,7 +4,7 @@ import { loadBoards } from '../store/actions/board.action.js'
 import { BoardHeader } from '../cmps/board/board-header.jsx'
 import { GroupList } from '../cmps/group-list.jsx'
 import { useParams } from 'react-router-dom'
-import { MainSidebar } from '../cmps/main-sidebar.jsx'
+// import { MainSidebar } from '../cmps/main-sidebar.jsx'
 import {BoardDetails}  from './board-details'
 
 export const BoardApp = () => {
@@ -18,8 +18,7 @@ export const BoardApp = () => {
     if (!boards) return <h1>Loading...</h1>
     return (
         <section className="board-app flex">
-            <BoardHeader />
-            <MainSidebar />
+            {/* <MainSidebar /> */}
             {/* nav */}
             <BoardDetails />
         </section>

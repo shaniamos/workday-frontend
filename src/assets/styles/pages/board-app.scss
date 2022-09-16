@@ -1,0 +1,11 @@
+.board-app {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 66px;
+    display: flex;
+    bottom: 0;
+    overflow: hidden;
+    z-index: 1;
+    transition: left 150ms cubic-bezier(0, 0, 0.35, 1);
+}

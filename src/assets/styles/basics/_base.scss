@@ -4,7 +4,9 @@ html {
 
 body {
     margin: 0;
-    font-family: roboto;
+    font-family: var(--font-family);
+    font-weight: var(--font-weight-light);
+    line-height: 1.5;
 }
 
 h1,

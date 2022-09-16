@@ -7,6 +7,7 @@ import { BoardDesc } from "../board-desc"
 import { PersonCircle } from "./person-circle.jsx"
 import { MainBoardHeader } from './board-header/main-board-header.jsx'
 import { ToolbarBoardHeader } from './board-header/toolbar-board-header.jsx'
+import { ViewbarBoardHeader } from './board-header/viewbar-board-header.jsx'
 
 //IoHomeOutline - Main Table
 //RiErrorWarningLine - description
@@ -35,22 +36,11 @@ export function BoardHeader() {
 
     return (
         <header className="board-header-container">
-            <MainBoardHeader/>
-            <ToolbarBoardHeader/>
-
-            {/* 
-            <div className="board-header-view-nav">
-                <NavLink>
-                        <button className="view-nav-btn">
-                            <IoHomeOutline />
-                            Main Table
-                        </button>
-                </NavLink>
-            </div> */}
-
-            <section>
-                {/* <Route path="board/:id/description" component={BoardDesc}/> */}
-            </section>
+            <div className="board-header-content">
+                <MainBoardHeader />
+                <ToolbarBoardHeader />
+                <ViewbarBoardHeader />
+            </div>
         </header>
     )
 }
