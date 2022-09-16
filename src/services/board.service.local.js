@@ -74,33 +74,46 @@ function getByTaskId(taskId) {
 }
 
 async function removeTask(boardId, groupId, taskId) {
-    const board = await getByBoardId(boardId)
-    const group = board.groups.find(group => group.id === groupId) // getbygroupid
-    const newTasks = group.tasks.filter(task => task.id !== taskId)
-    board.groups.forEach((group, idx) => {
-        if (group.id === groupId)
-            board.groups[idx].tasks = newTasks
-    })
-    return storageService.put(STORAGE_KEY, board)
+    try {
+        const board = await getByBoardId(boardId)
+        const group = board.groups.find(group => group.id === groupId) // getbygroupid
+        const newTasks = group.tasks.filter(task => task.id !== taskId)
+        board.groups.forEach((group, idx) => {
+            if (group.id === groupId)
+                board.groups[idx].tasks = newTasks
+        })
+        return storageService.put(STORAGE_KEY, board)
+    } catch (err) {
+        throw err
+    }
+
 }
 
 async function saveTask(boardId, groupId, task) {
-    if (task.id) {
-        return storageService.put(STORAGE_KEY, task)
-    } else {
+    try {
         const board = await getByBoardId(boardId)
         const group = board.groups.find(group => group.id === groupId) // getbygroupid
-        task.id = utilService.makeId()
-        task.status = ''
-        task.priority = ''
-        task.persons = ''
-        task.deadLine = ''
-        task.lastUpdate = Date.now()
-        group.tasks.push(task)
-        board.groups.forEach((group, idx) => {
-            if (group.id === groupId)
-                board.groups[idx] = group
-        })
+        if (task.id) {
+            const updatedTasks = group.tasks.map(currTask => (currTask.id === task.id) ? task : currTask)
+            board.groups.forEach((group, idx) => {
+                if (group.id === groupId)
+                    board.groups[idx].tasks = updatedTasks
+            })
+        } else {
+            task.id = utilService.makeId()
+            task.status = ''
+            task.priority = ''
+            task.persons = ''
+            task.deadLine = ''
+            task.lastUpdate = Date.now()
+            group.tasks.push(task)
+            board.groups.forEach((group, idx) => {
+                if (group.id === groupId)
+                    board.groups[idx] = group
+            })
+        }
         return storageService.put(STORAGE_KEY, board)
+    } catch (err) {
+        throw err
     }
 }

@@ -7,19 +7,18 @@ import { addTask } from '../store/actions/board.action.js'
 
 export const TaskList = ({ tasks, groupId }) => {
 
-    const inputRef = useRef()
     const dispatch = useDispatch()
     const params = useParams()
+    const inputRef = useRef()
     const [register, setTask, task] = useFormRegister({
         title: ''
     })
 
     const onSaveTask = (event) => {
         event.preventDefault()
-        console.log(task)
         const boardId = params.id
-        // inputRef.current = ''
         dispatch(addTask(boardId, groupId, task))
+        setTask({ title: '' })
     }
 
     return (
@@ -28,7 +27,7 @@ export const TaskList = ({ tasks, groupId }) => {
                 return <TaskPreview key={task.id} task={task} groupId={groupId} />
             })}
             <form onSubmit={onSaveTask}>
-                <input ref={inputRef} {...register('title', 'text')} placeholder="+ Add Item" />
+                <input {...register('title', 'text')} placeholder="+ Add Item" />
             </form>
         </section>
     )
