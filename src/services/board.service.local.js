@@ -7,6 +7,7 @@ export const boardService = {
     saveBoard,
     removeBoard,
     getByBoardId,
+    saveGroup,
     removeGroup,
     saveTask,
     removeTask,
@@ -74,7 +75,33 @@ async function removeGroup(boardId, groupId) {
     } catch (err) {
         throw err
     }
+}
 
+// add + update group
+async function saveGroup(boardId, group) {
+    try {
+        const board = await getByBoardId(boardId)
+        if (group.id) {
+            const updatedGroups = board.groups.map(currGroup => (currGroup.id === group.id) ? group : currGroup)
+            board.groups = updatedGroups
+        } 
+        // else {
+        //     task.id = utilService.makeId()
+        //     task.status = ''
+        //     task.priority = ''
+        //     task.persons = ''
+        //     task.deadLine = ''
+        //     task.lastUpdate = Date.now()
+        //     group.tasks.push(task)
+        //     board.groups.forEach((group, idx) => {
+        //         if (group.id === groupId)
+        //             board.groups[idx] = group
+        //     })
+        // }
+        return storageService.put(STORAGE_KEY, board)
+    } catch (err) {
+        throw err
+    }
 }
 
 

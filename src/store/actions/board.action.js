@@ -36,6 +36,18 @@ export function removeGroup(boardId, groupId) {
         }
     }
 }
+
+export function updateGroup(boardId, group) {
+    return async (dispatch) => {
+        try {
+            const savedBoard = await boardService.saveGroup(boardId, group)
+            dispatch({ type: 'UPDATE_BOARD', board: savedBoard })
+        } catch (err) {
+            console.error('err:', err)
+        }
+    }
+}
+
 // CRUDL TASK
 
 //remove task

@@ -1,4 +1,3 @@
-import React from "react"
 import { useDispatch } from "react-redux"
 import { useParams } from "react-router-dom"
 import { useFormRegister } from "../hooks/useFormRegister.js"
@@ -25,11 +24,11 @@ export const TaskPreview = ({ task, groupId }) => {
         dispatch(updateTask(boardId, groupId, task))
     }
 
-    const { title, persons, status, priority, deadLine, lastUpdate } = task
+    const { persons, status, priority, deadLine, lastUpdate } = task
     return (
         <section className="task-preview flex">
             <form onSubmit={onSaveTask}>
-                <input {...register('title', 'text')} />
+                <input className="clean-input" {...register('title', 'text')} />
             </form>
             {/* <p>{persons}</p> */}
             <p>{status}</p>

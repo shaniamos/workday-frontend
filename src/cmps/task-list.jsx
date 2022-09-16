@@ -1,4 +1,3 @@
-import React, { useRef } from "react"
 import { useDispatch } from "react-redux"
 import { useParams } from "react-router-dom"
 import { TaskPreview } from "./task-preview.jsx"
@@ -9,7 +8,6 @@ export const TaskList = ({ tasks, groupId }) => {
 
     const dispatch = useDispatch()
     const params = useParams()
-    const inputRef = useRef()
     const [register, setTask, task] = useFormRegister({
         title: ''
     })
@@ -27,7 +25,7 @@ export const TaskList = ({ tasks, groupId }) => {
                 return <TaskPreview key={task.id} task={task} groupId={groupId} />
             })}
             <form onSubmit={onSaveTask}>
-                <input {...register('title', 'text')} placeholder="+ Add Item" />
+                <input className="clean-input" {...register('title', 'text')} placeholder="+ Add Item" />
             </form>
         </section>
     )
