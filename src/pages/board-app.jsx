@@ -11,15 +11,15 @@ import { SubSidebar } from '../cmps/sub-sidebar.jsx'
 export const BoardApp = () => {
     const boards = useSelector(state => state.boardModule.boards)
     const dispatch = useDispatch()
+    const params = useParams()
 
     useEffect(() => {
         dispatch(loadBoards())
-    }, [])
+    }, [params.id])
 
-    console.log(boards)
     if (!boards) return <h1>Loading...</h1>
     return (
-        <section className="board-app flex ">
+        <section className="board-app flex">
             <MainSidebar />
             <SubSidebar  />
             <BoardDetails />

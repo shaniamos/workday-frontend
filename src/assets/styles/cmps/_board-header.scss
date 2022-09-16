@@ -1,0 +1,103 @@
+.board-header-container button{
+    @include btn;
+}
+
+.board-header-container {
+    border: solid;
+    height: 220px;
+    top: 0;
+    padding: 30px 30px 0px 50px;
+    align-items: center;
+    left: 400px;
+    position: absolute;
+    width: 73%;
+}
+
+.board-header-title {
+    display: flex;
+    flex: 1 0;
+    gap: 10px;
+    min-width: 100px;
+    margin-right: 8px;
+    margin-left: -5px;
+}
+
+.board-header-left, .board-header-right{
+    display: flex;
+    gap: 10px
+}
+
+.board-header-right{
+    display: flex;
+    gap: 40px
+}
+
+.btn-board-description {
+    @include icon-cmp;
+    font-size: 24px;
+    padding-left: 4px;
+    padding-right: 4px;
+    margin-top: 0;
+    height: 28px;
+}
+
+.btn-board-starred {
+    @include icon-cmp;
+    font-size: 24px;
+    padding-left: 4px;
+    padding-right: 4px;
+    margin-top: 0;
+    height: 28px;
+}
+
+.btn-board-activity {
+    @include icon-cmp;
+}
+
+.btn-last-seen {
+    @include icon-cmp;
+    @include btn;
+    padding: 4px 8px;
+    
+}
+
+.btn-invite-subscribers{
+    @include icon-cmp;
+    @include btn;
+}
+
+.input-title {
+    @include heading;
+    @include input-title;
+
+    line-height: 40px;
+    border: none;
+}
+
+.input-title :hover{
+    cursor: text;
+    border: 1px solid;
+}
+.input-title :focus-visible{
+    cursor: text;
+    border: none;
+}
+
+
+.board-header-tool-bar {
+    margin-top: 8px;
+    padding: 8px 24px 8px 12px;
+    width: 100%;
+    border-bottom: .5px solid gray;
+}
+.board-header-tool-bar a {
+    padding: 8px 24px 8px 12px ;
+    min-width: var(--element-width);
+    max-width: 180px;
+}
+
+
+.board-header-tool-bar .active {
+    border-bottom: 2px solid black;
+}
+

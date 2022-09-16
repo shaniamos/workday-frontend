@@ -1,3 +1,65 @@
+@mixin btn($bgColor: rgba(0,0,0,0) , $color: var(--primary-text-color), $hoverBgColor: var(--primary-background-hover-color) ){
+    display: inline-block;
+    background-color: $bgColor;
+    color: $color;
+    outline: none;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: var(--motion-productive-short) transform,var(--motion-productive-medium) var(--motion-timing-transition) min-width;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    min-width: var(--element-width);
+    // padding: 8px 24px 8px 12px ;
+
+
+    &:hover {
+        background-color: $hoverBgColor ;
+    }
+}
+
+@mixin icon-cmp {
+    cursor: pointer;
+    overflow: hidden;
+    font-size: 24px;
+
+}
+
+@mixin heading {
+    border: 1px solid rgba(0,0,0,0);
+    border-radius: 4px;
+    min-width: 0;
+    padding: 0 4px;
+
+    font-size: 32px;
+    line-height: 52px;
+    font-weight: var(--font-weight-bold);
+    font-family: var(--font-family);
+    letter-spacing: -1px;
+    -webkit-font-smoothing: var(--font-smoothing-webkit);
+    -moz-osx-font-smoothing: var(--font-smoothing-moz);
+
+
+
+
+    &:focus-visible {
+        outline: .5px solid var(--primary-background-hover-color);
+    }
+}
+
+@mixin input-title {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    
+}
+
+
 /* Media queries Breakpoint mixins */
 
 @mixin for-mobile-layout {

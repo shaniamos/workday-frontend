@@ -1,5 +1,8 @@
 import { boardService } from "../../services/board.service.local.js"
 
+// CRUDL BOARD
+
+//get list of boards
 export function loadBoards() {
     return async (dispatch) => {
         try {
@@ -11,6 +14,7 @@ export function loadBoards() {
     }
 }
 
+//get board by id
 export function loadSelectedBoard(boardId, filterBy = {}) {
     return async (dispatch) => {
         try {
@@ -22,12 +26,114 @@ export function loadSelectedBoard(boardId, filterBy = {}) {
     }
 }
 
-// task
+//remove board 
+export function removeBoard(boardId) {
+    return async (dispatch) => {
+        try {
+            const board = await boardService.removeBoard(boardId)
+            dispatch({ type: 'REMOVE_BOARD', boardId })
+            dispatch({ type: 'RESET_SELECTED_BOARD' })
+        } catch (err) {
+            console.error('err:', err)
+        }
+    }
+}
+
+//add board 
+export function addBoard(board) {
+    return async (dispatch) => {
+        try {
+            const savedBoard = await boardService.saveBoard(board)
+            dispatch({ type: 'ADD_BOARD', board: savedBoard })
+            return savedBoard
+        } catch (err) {
+            console.error('err:', err)
+        }
+    }
+}
+
+// update board
+export function updateBoard(board) {
+    return async (dispatch) => {
+        try {
+            const savedBoard = await boardService.saveBoard(board)
+            dispatch({ type: 'UPDATE_BOARD', board: savedBoard })
+        } catch (err) {
+            console.error('err:', err)
+        }
+    }
+}
+
+// CRUDL GROUP
+
+// remove group
+export function removeGroup(boardId, groupId) {
+    return async (dispatch) => {
+        try {
+            const board = await boardService.removeGroup(boardId, groupId)
+            dispatch({ type: 'UPDATE_BOARD', board })
+        } catch (err) {
+            console.error('err:', err)
+        }
+    }
+}
+
+//add group
+export function addGroup(boardId, group) {
+    return async (dispatch) => {
+        try {
+            const savedBoard = await boardService.saveGroup(boardId, group)
+            dispatch({ type: 'UPDATE_BOARD', board: savedBoard })
+        } catch (err) {
+            console.error('err:', err)
+        }
+    }
+}
+
+//update group
+export function updateGroup(boardId, group) {
+    return async (dispatch) => {
+        try {
+            const savedBoard = await boardService.saveGroup(boardId, group)
+            dispatch({ type: 'UPDATE_BOARD', board: savedBoard })
+        } catch (err) {
+            console.error('err:', err)
+        }
+    }
+}
+
+// CRUDL TASK
+
+//remove task
 export function removeTask(boardId, groupId, taskId) {
     return async (dispatch) => {
         try {
             const board = await boardService.removeTask(boardId, groupId, taskId)
             dispatch({ type: 'UPDATE_BOARD', board })
+        } catch (err) {
+            console.error('err:', err)
+        }
+    }
+}
+
+//add task
+export function addTask(boardId, groupId, task) {
+    return async (dispatch) => {
+        try {
+            const savedBoard = await boardService.saveTask(boardId, groupId, task)
+            dispatch({ type: 'UPDATE_BOARD', board: savedBoard })
+        } catch (err) {
+            console.error('err:', err)
+        }
+    }
+}
+
+//update task
+export function updateTask(boardId, groupId, task) {
+    return async (dispatch) => {
+        try {
+            const savedBoard = await boardService.saveTask(boardId, groupId, task)
+            dispatch({ type: 'UPDATE_BOARD', board: savedBoard })
         } catch (err) {
             console.error('err:', err)
         }
