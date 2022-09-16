@@ -1,11 +1,13 @@
 import { PersonCircle } from "../person-circle.jsx"
 
+import { useForm } from '../../../hooks/useForm.js'
 
 import { RiErrorWarningLine, RiUserAddLine } from 'react-icons/ri'
 import { AiOutlineStar } from 'react-icons/ai'
 import { FaStumbleuponCircle } from 'react-icons/fa'
 
 export function MainBoardHeader() {
+    const [title, handleChange, setTitle] = useForm()
 
     return (
             <div className="board-header-title flex space-between ">
@@ -16,7 +18,7 @@ export function MainBoardHeader() {
                         name="title"
                         value='Developers board'
                         //value={selectedBoard.title} 
-                        // onChange={handleChange} 
+                        onChange={handleChange} 
                         />
                     <button className="btn-board-description"><RiErrorWarningLine /></button>
                     <button className="btn-board-starred">

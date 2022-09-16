@@ -6,9 +6,9 @@
     border: solid;
     height: 220px;
     top: 0;
-    padding: 30px 30px 0px 50px;
+    padding: 13px 30px 0px 40px;
     align-items: center;
-    left: 400px;
+    left: 320px;
     position: absolute;
     width: 73%;
 }
@@ -34,7 +34,7 @@
 
 .btn-board-description {
     @include icon-cmp;
-    font-size: 24px;
+    // font-size: 24px;
     padding-left: 4px;
     padding-right: 4px;
     margin-top: 0;
@@ -43,7 +43,7 @@
 
 .btn-board-starred {
     @include icon-cmp;
-    font-size: 24px;
+    // font-size: 24px;
     padding-left: 4px;
     padding-right: 4px;
     margin-top: 0;
@@ -57,6 +57,7 @@
 .btn-last-seen {
     @include icon-cmp;
     @include btn;
+    @include heading;
     padding: 4px 8px;
     
 }
@@ -64,13 +65,16 @@
 .btn-invite-subscribers{
     @include icon-cmp;
     @include btn;
+    @include heading;
+
 }
 
 .input-title {
-    @include heading;
     @include input-title;
+    @include heading;
 
     line-height: 40px;
+    font-size: 32px;
     border: none;
 }
 

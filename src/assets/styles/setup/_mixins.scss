@@ -1,4 +1,4 @@
-@mixin btn($bgColor: rgba(0,0,0,0) , $color: var(--primary-text-color), $hoverBgColor: var(--primary-background-hover-color) ){
+@mixin btn($bgColor: rgba(0, 0, 0, 0), $color: var(--primary-text-color), $hoverBgColor: var(--primary-background-hover-color)) {
     display: inline-block;
     background-color: $bgColor;
     color: $color;
@@ -7,7 +7,7 @@
     border-radius: 4px;
     cursor: pointer;
     white-space: nowrap;
-    transition: var(--motion-productive-short) transform,var(--motion-productive-medium) var(--motion-timing-transition) min-width;
+    transition: var(--motion-productive-short) transform, var(--motion-productive-medium) var(--motion-timing-transition) min-width;
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -15,9 +15,8 @@
     -ms-user-select: none;
     user-select: none;
     min-width: var(--element-width);
+
     // padding: 8px 24px 8px 12px ;
-
-
     &:hover {
         background-color: $hoverBgColor ;
     }
@@ -26,27 +25,27 @@
 @mixin icon-cmp {
     cursor: pointer;
     overflow: hidden;
-    font-size: 24px;
-
+    font-size: 20px;
 }
 
 @mixin heading {
-    border: 1px solid rgba(0,0,0,0);
+    border: 1px solid rgba(0, 0, 0, 0);
     border-radius: 4px;
     min-width: 0;
     padding: 0 4px;
+    color: inherit;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 22px;
+    letter-spacing: initial;
 
-    font-size: 32px;
-    line-height: 52px;
-    font-weight: var(--font-weight-bold);
-    font-family: var(--font-family);
-    letter-spacing: -1px;
-    -webkit-font-smoothing: var(--font-smoothing-webkit);
-    -moz-osx-font-smoothing: var(--font-smoothing-moz);
-
-
-
-
+    // font-size: 32px;
+    // line-height: 52px;
+    // font-weight: var(--font-weight-bold);
+    // font-family: var(--font-family);
+    // letter-spacing: -1px;
+    // -webkit-font-smoothing: var(--font-smoothing-webkit);
+    // -moz-osx-font-smoothing: var(--font-smoothing-moz);
     &:focus-visible {
         outline: .5px solid var(--primary-background-hover-color);
     }
@@ -56,7 +55,7 @@
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-    
+
 }
 
 
@@ -97,21 +96,24 @@
 @mixin aspect-ratio($width: 1, $height: 1) {
     position: relative;
     overflow: hidden;
+
     &:before {
-      content: "";
-      display: block;
-      width: 100%;
-      padding-top: ($height / $width) * 100%;
+        content: "";
+        display: block;
+        width: 100%;
+        padding-top: ($height / $width) * 100%;
     }
-    > * {
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
+
+    >* {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
     }
-    > img {
-      height: 100%;
-      object-fit: cover;
+
+    >img {
+        height: 100%;
+        object-fit: cover;
     }
-  }
+}

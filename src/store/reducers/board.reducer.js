@@ -1,10 +1,7 @@
 const INITIAL_STATE = {
     boards: null,
-<<<<<<< HEAD
     selectedBoard: {},
-=======
     selectedBoard: null,
->>>>>>> 41a28069fdd971ab9334525569f2d59888e17b17
     filterBy: null,
     sortBy: 'status',
     isLoading: false,
