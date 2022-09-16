@@ -10,11 +10,11 @@
 @import 'basics/layout';
 
 // COMPONENTS
+@import './cmps/main-sidebar.scss';
+@import './cmps/sub-sidebar.scss';
 @import './cmps/main-sidebar';
 @import 'cmps/board-header';
 @import 'cmps/person-circle';
-@import 'cmps/task-list';
-
 
 // PAGES
 @import 'pages/home';

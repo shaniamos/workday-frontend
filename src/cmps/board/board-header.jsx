@@ -2,7 +2,6 @@
 import { useEffect, useState } from "react"
 import { connect, useSelector, useDispatch } from "react-redux"
 import { Link, NavLink, Route, Routes } from "react-router-dom"
-import { useForm } from '../../hooks/useForm'
 import { BoardDesc } from "../board-desc"
 import { PersonCircle } from "./person-circle.jsx"
 import { MainBoardHeader } from './board-header/main-board-header.jsx'
@@ -24,11 +23,8 @@ import { ViewbarBoardHeader } from './board-header/viewbar-board-header.jsx'
 //IoIosCheckmarkCircleOutline -checklist 
 
 
-export function BoardHeader() {
-    const selectedBoard = useSelector((storeState) => storeState.boardModule.selectedBoard)
+export function BoardHeader({board}) {
     // const [title , setTitle] = useState(selectedBoard.title)
-
-    // const [title, handleChange, setTitle] = useForm()
 
     // useEffect(() => {
     //     setTitle(selectedBoard.title)
@@ -37,7 +33,7 @@ export function BoardHeader() {
     return (
         <header className="board-header-container">
             <div className="board-header-content">
-                <MainBoardHeader />
+                <MainBoardHeader board={board} />
                 <ToolbarBoardHeader />
                 <ViewbarBoardHeader />
             </div>

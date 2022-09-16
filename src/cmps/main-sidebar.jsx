@@ -17,11 +17,11 @@ export function MainSidebar() {
 
     return (
         <section className='sidebar-container flex column  '>
-            <div className='nav-top-down flex column space-between '>
-                <div className='flex column'>
-                    <nav className='home-btn '>
-                        <Link to='/'><img className="sidebar-logo" src={logo} alt="" /></Link>
-                    </nav>
+            <div className='nav-top-down flex column  '>
+                <nav className='home-btn '>
+                    <Link to='/'><img className="sidebar-logo" src={logo} alt="" /></Link>
+                </nav>
+                <div className='all-nav-bar flex column space-between'>
                     <div className="navigations-icons flex column align-center  ">
                         <SiGoogletagmanager className='sidebar-icon' />
                         <IoMdNotificationsOutline className='sidebar-icon' />
@@ -29,18 +29,20 @@ export function MainSidebar() {
                         <FaRegCalendarCheck className='sidebar-icon' />
                         <AiOutlineStar className='sidebar-icon' />
                     </div>
-                </div>
-                <div className="plans-modal"> <span> <BsStars className='stars' />See plans </span> </div>
-                <div className='flex column'>
 
-                    <div className='icons-bottom flex column align-center'>
-                        <BsPersonPlus className='sidebar-icon' />
-                        <FiSearch className='sidebar-icon' />
-                        <BiQuestionMark className='sidebar-icon bottom' />
-                    </div>
-                    <div className='down-icons flex column align-center'>
-                        <CgMenuGridO className='sidebar-icon down menu' />
-                        <FaUserCircle className='sidebar-icon down' />
+                    <div className="plans-modal"> <span> <BsStars className='stars' />See plans </span> </div>
+
+                    <div>
+                        <div className='icons-bottom flex column align-center'>
+                            <BsPersonPlus className='sidebar-icon' />
+                            <FiSearch className='sidebar-icon' />
+                            <BiQuestionMark className='sidebar-icon bottom' />
+                        </div>
+
+                        <div className='down-icons flex column align-center'>
+                            <CgMenuGridO className='sidebar-icon down menu' />
+                            <FaUserCircle className='sidebar-icon down' />
+                        </div>
                     </div>
                 </div>
             </div>

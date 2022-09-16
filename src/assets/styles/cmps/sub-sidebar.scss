@@ -1,0 +1,13 @@
+.sub-sidebar-container {
+    background-color: #f5f6f8;
+    height: 100vh;
+    width: 30px;
+    border-right: 1px solid #5c6575;
+    // padding: 18px 10px 10px 10px;
+    // left: 66px;
+    &.is-open {
+        min-width: 255px;
+        // left: 65px;
+
+    }
+}

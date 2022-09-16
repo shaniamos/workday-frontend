@@ -6,7 +6,6 @@ export function ToolbarBoardHeader() {
     return (
         <div className="board-header-tool-bar">
             <NavLink><button className="view-nav-btn"><IoHomeOutline className="tool-bar-icon"/><span>Main Table</span></button></NavLink>|
-
             <button className="view-nav-btn"><span>Calender</span></button>|
             <button className="view-nav-btn"><span>Files</span></button>|
             <button className="view-nav-btn"><span>Timeline</span></button>|

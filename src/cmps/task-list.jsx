@@ -1,4 +1,3 @@
-import React, { useRef } from "react"
 import { useDispatch } from "react-redux"
 import { useParams } from "react-router-dom"
 import { TaskPreview } from "./task-preview.jsx"
@@ -7,7 +6,6 @@ import { addTask } from '../store/actions/board.action.js'
 
 export const TaskList = ({ tasks, groupId }) => {
 
-    const inputRef = useRef()
     const dispatch = useDispatch()
     const params = useParams()
     const [register, setTask, task] = useFormRegister({
@@ -16,10 +14,9 @@ export const TaskList = ({ tasks, groupId }) => {
 
     const onSaveTask = (event) => {
         event.preventDefault()
-        console.log(task)
         const boardId = params.id
-        // inputRef.current = ''
         dispatch(addTask(boardId, groupId, task))
+        setTask({ title: '' })
     }
 
     return (
@@ -28,7 +25,7 @@ export const TaskList = ({ tasks, groupId }) => {
                 return <TaskPreview key={task.id} task={task} groupId={groupId} />
             })}
             <form onSubmit={onSaveTask}>
-                <input ref={inputRef} {...register('title', 'text')} placeholder="+ Add Item" />
+                <input className="clean-input" {...register('title', 'text')} placeholder="+ Add Item" />
             </form>
         </section>
     )
