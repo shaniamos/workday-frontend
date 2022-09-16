@@ -7,6 +7,7 @@ export const boardService = {
     saveBoard,
     removeBoard,
     getByBoardId,
+    removeGroup,
     saveTask,
     removeTask,
     getByTaskId,
@@ -61,18 +62,37 @@ function saveBoard(board) {
     }
 }
 
-
 // CRUDL Groups
 
+// remove group
+async function removeGroup(boardId, groupId) {
+    try {
+        const board = await getByBoardId(boardId)
+        const newGroups = board.groups.filter(group => group.id !== groupId)
+        board.groups = newGroups
+        return storageService.put(STORAGE_KEY, board)
+    } catch (err) {
+        throw err
+    }
 
+}
 
 
 // CRDUL Task
 
-function getByTaskId(taskId) {
-    return storageService.get(STORAGE_KEY, taskId)
+// get task by id
+async function getByTaskId(boardId, groupId, taskId) {
+    try {
+        const board = await getByBoardId(boardId)
+        const group = board.groups.find(group => group.id === groupId) // getbygroupid
+        const task = group.find(task => task.id === taskId)
+        return task
+    } catch (err) {
+        throw err
+    }
 }
 
+// remove task
 async function removeTask(boardId, groupId, taskId) {
     try {
         const board = await getByBoardId(boardId)
@@ -89,6 +109,7 @@ async function removeTask(boardId, groupId, taskId) {
 
 }
 
+// add + update task
 async function saveTask(boardId, groupId, task) {
     try {
         const board = await getByBoardId(boardId)

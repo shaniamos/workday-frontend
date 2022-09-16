@@ -2,7 +2,6 @@
 import { useEffect, useState } from "react"
 import { connect, useSelector, useDispatch } from "react-redux"
 import { Link, NavLink, Route, Routes } from "react-router-dom"
-import { useForm } from '../../hooks/useForm'
 import { BoardDesc } from "../board-desc"
 import { PersonCircle } from "./person-circle.jsx"
 import { MainBoardHeader } from './board-header/main-board-header.jsx'
@@ -26,8 +25,6 @@ import { ToolbarBoardHeader } from './board-header/toolbar-board-header.jsx'
 export function BoardHeader() {
     const selectedBoard = useSelector((storeState) => storeState.boardModule.selectedBoard)
     // const [title , setTitle] = useState(selectedBoard.title)
-
-    // const [title, handleChange, setTitle] = useForm()
 
     // useEffect(() => {
     //     setTitle(selectedBoard.title)

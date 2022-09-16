@@ -23,7 +23,22 @@ export function loadSelectedBoard(boardId, filterBy = {}) {
     }
 }
 
+// CRUDL GROUP
+
+// remove group
+export function removeGroup(boardId, groupId) {
+    return async (dispatch) => {
+        try {
+            const board = await boardService.removeGroup(boardId, groupId)
+            dispatch({ type: 'UPDATE_BOARD', board })
+        } catch (err) {
+            console.error('err:', err)
+        }
+    }
+}
 // CRUDL TASK
+
+//remove task
 export function removeTask(boardId, groupId, taskId) {
     return async (dispatch) => {
         try {
@@ -35,6 +50,7 @@ export function removeTask(boardId, groupId, taskId) {
     }
 }
 
+//add task
 export function addTask(boardId, groupId, task) {
     return async (dispatch) => {
         try {
@@ -46,6 +62,7 @@ export function addTask(boardId, groupId, task) {
     }
 }
 
+//update task
 export function updateTask(boardId, groupId, task) {
     return async (dispatch) => {
         try {

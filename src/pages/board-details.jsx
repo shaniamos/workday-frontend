@@ -16,7 +16,6 @@ export const BoardDetails = () => {
 
     return (
         <section className="board-details">
-            <h1>Hello BoardApp</h1>
             <BoardHeader />
             <div className='board-content'></div>
             {board && < GroupList groups={board.groups} />}

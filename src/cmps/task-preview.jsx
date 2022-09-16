@@ -2,7 +2,7 @@ import React from "react"
 import { useDispatch } from "react-redux"
 import { useParams } from "react-router-dom"
 import { useFormRegister } from "../hooks/useFormRegister.js"
-import { removeTask } from "../store/actions/board.action"
+import { removeTask } from "../store/actions/board.action.js"
 import { updateTask } from "../store/actions/board.action.js"
 
 export const TaskPreview = ({ task, groupId }) => {
