@@ -41,16 +41,16 @@ export const TaskPreview = ({ task, groupId, groupColor }) => {
         <React.Fragment>
 
             <div className="board-preview flex">
+
                 <div className="dropdown">
                     <div ><HiOutlineDotsHorizontal className="dot" /></div>
                     <div className="dropdown-content">
-                        <a onClick={onRemoveTask}>< MdDeleteOutline /> Delete</a>
+                        <a onClick={onRemoveTask}>< MdDeleteOutline /> Delete Item</a>
                         <a href="#"><HiOutlineDocumentDuplicate /> Duplicate</a>
                     </div>
                 </div>
+
                 <section className="preview-cell task-preview flex">
-
-
                     {/* Item area (color, checkbox, name) */}
                     <div className="task-name-area preview-cell flex">
                         <div className="task-group-color" style={{ backgroundColor: `var(${groupColor})` }}></div>

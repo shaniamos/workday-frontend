@@ -7,6 +7,7 @@ import { addBoard, loadSelectedBoard, removeBoard } from '../store/actions/board
 
 export const BoardDetails = () => {
     const board = useSelector(state => state.boardModule.selectedBoard)
+    const isLoading = useSelector(state => state.boardModule.isLoading)
     const dispatch = useDispatch()
     const navigate = useNavigate()
     const params = useParams()
@@ -29,14 +30,19 @@ export const BoardDetails = () => {
             console.error(err)
         }
     }
+    if (!board) return (
+        <section className='monday-loader-page'>
+            <img className='monday-loader-animation' src="https://cdn.monday.com/images/loader/loader.gif" alt="" />
+        </section>
+    )
 
     return (
         <section className="board-details">
-            {board && <BoardHeader board={board}  onSaveBoard={onSaveBoard} />}
+            {board && <BoardHeader board={board} onSaveBoard={onSaveBoard} />}
             {/* <button onClick={onRemoveBoard}>Remove Board</button> */}
             {/* <button onClick={onSaveBoard}>+ Add New Board</button> */}
             <div className='board-content'>
-                {board && < GroupList groups={board.groups}/>}
+                {board && < GroupList groups={board.groups} />}
             </div>
         </section>
     )

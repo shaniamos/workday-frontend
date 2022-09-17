@@ -17,7 +17,7 @@ export const GroupList = ({ groups }) => {
     return (
         <section className="group-list">
             {groups.map(group => <GroupPreview key={group.id} group={group} />)}
-            {/* <button onClick={onSaveGroup}> + Add New Group</button> */}
+            <button onClick={onSaveGroup}> + Add New Group</button>
         </section>
     )
 }

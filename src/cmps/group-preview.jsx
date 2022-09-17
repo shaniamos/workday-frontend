@@ -44,7 +44,7 @@ export const GroupPreview = ({ group }) => {
             </div>
 
             {/* Board identifier (color, checkbox, task name, persons, status, priority....) */}
-            <GroupHeader groupColor={group.colorId} />
+            <GroupHeader groupColor={group.colorId} onRemoveGroup={onRemoveGroup} />
 
             {/* Task lines  */}
             <TaskList tasks={group.tasks} groupId={group.id} groupColor={group.colorId} />
