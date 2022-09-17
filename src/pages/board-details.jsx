@@ -1,30 +1,24 @@
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { useNavigate, useParams } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import { BoardHeader } from '../cmps/board/board-header.jsx'
 import { GroupList } from '../cmps/group-list.jsx'
-import { addBoard, loadSelectedBoard, removeBoard } from '../store/actions/board.action.js'
+import { addGroup, loadSelectedBoard } from '../store/actions/board.action.js'
 
 export const BoardDetails = () => {
     const board = useSelector(state => state.boardModule.selectedBoard)
     const isLoading = useSelector(state => state.boardModule.isLoading)
     const dispatch = useDispatch()
-    const navigate = useNavigate()
     const params = useParams()
 
     useEffect(() => {
         dispatch(loadSelectedBoard(params.id))
     }, [params.id])
 
-    const onSaveBoard = async () => {
-        try {
-            const title = prompt("Please enter a board name")
-            let newBoard = { title }
-            newBoard = await dispatch(addBoard(newBoard))
-            navigate(`/board/${newBoard._id}`)
-        } catch (err) {
-            console.error(err)
-        }
+    const onSaveGroup = () => {
+        const boardId = board._id
+        const group = { title: 'New Group' }
+        dispatch(addGroup(boardId, group))
     }
 
     // if (isLoading) {
@@ -35,11 +29,12 @@ export const BoardDetails = () => {
     //         </section>
     //     )
     // }
+    
     return (
         <section className="board-details">
-            {board && <BoardHeader board={board} onSaveBoard={onSaveBoard} />}
+            {board && <BoardHeader board={board} onSaveGroup={onSaveGroup} />}
             <div className='board-content'>
-                {board && < GroupList groups={board.groups} />}
+                {board && < GroupList groups={board.groups} onSaveGroup={onSaveGroup} />}
             </div>
         </section>
     )

@@ -29,7 +29,6 @@ export function loadSelectedBoard(boardId, filterBy = {}) {
 
 //remove board 
 export function removeBoard(boardId) {
-    console.log('boardId', boardId);
     return async (dispatch) => {
         try {
             const board = await boardService.removeBoard(boardId)

@@ -1,7 +1,7 @@
 import { Home } from './pages/home.jsx'
 import { BoardApp } from './pages/board-app.jsx'
 import { BoardDesc } from './cmps/board-desc.jsx'
-import { ItemEdit } from './pages/item-edit.jsx'
+import { TaskEdit } from './pages/task-edit.jsx'
 import { LoginSignup } from './pages/login-signup.jsx'
 
 
@@ -22,7 +22,7 @@ const routes = [
     // },
     {
         path: 'board/:id/edit/:id',
-        component: <ItemEdit/>,
+        component: <TaskEdit/>,
     },
     {
         path: 'auth/:status',

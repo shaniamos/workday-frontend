@@ -20,20 +20,13 @@ import { ViewbarBoardHeader } from './board-header/viewbar-board-header.jsx'
 //IoIosCheckmarkCircleOutline -checklist 
 
 
-export function BoardHeader({ board }) {
+export function BoardHeader({ board, onSaveGroup }) {
     // const [title , setTitle] = useState(selectedBoard.title)
 
     // useEffect(() => {
     //     setTitle(selectedBoard.title)
     // }, [])
     const dispatch = useDispatch()
-
-    const onSaveGroup = () => {
-        const boardId = board._id
-        const group = { title: 'New Group' }
-        console.log(boardId, group)
-        dispatch(addGroup(boardId, group))
-    }
 
     return (
         <header className="board-header-container">

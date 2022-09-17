@@ -14,12 +14,14 @@ import { RiPencilLine } from 'react-icons/ri'
 import { HiOutlineArchive } from 'react-icons/hi'
 import { useDispatch } from "react-redux"
 import { Link } from "react-router-dom"
-import { addBoard, removeBoard } from '../store/actions/board.action.js'
-import { useNavigate, useParams } from 'react-router-dom'
+import { removeBoard } from '../store/actions/board.action.js'
+import { useNavigate } from 'react-router-dom'
+import { NewBoardMoadl } from "./new-board-modal.jsx"
 
 
 export function SubSidebar({ boards, isOpen }) {
     const [isNavOpen, setNavOpen] = useState(isOpen)
+    const [isNewBoardModalOpen, setNewBoardModalOpen] = useState(false)
     const [isDropDownOpen, setDropDownOpen] = useState(false)
     const dispatch = useDispatch()
     const navigate = useNavigate()
@@ -28,16 +30,14 @@ export function SubSidebar({ boards, isOpen }) {
         setNavOpen(!isNavOpen)
     }
 
-    const onSaveBoard = async () => {
-        try {
-            const title = prompt("Please enter a board name")
-            let newBoard = { title }
-            newBoard = await dispatch(addBoard(newBoard))
-            navigate(`/board/${newBoard._id}`)
-        } catch (err) {
-            console.error(err)
-        }
+    const toggleNewBoardModal = () => {
+        setNewBoardModalOpen(!isNewBoardModalOpen)
     }
+
+    const toggleDropdown = () => {
+        setDropDownOpen(!isDropDownOpen)
+    }
+
     const onRemoveBoard = async (boardId) => {
         try {
             await dispatch(removeBoard(boardId))
@@ -48,80 +48,78 @@ export function SubSidebar({ boards, isOpen }) {
         }
     }
 
-    const onToggleDropdown = () => {
-        setDropDownOpen(!isDropDownOpen)
-    }
-    console.log('isNavOpen', isNavOpen);
-
-    if (!boards ) return <div>loading.....</div>
+    if (!boards) return <div>loading.....</div>
     return (
 
         <section className={isNavOpen ? "sub-sidebar-container is-open" : "sub-sidebar-container"}>
-            <div>
-                {isNavOpen && <IoIosArrowBack className='btn-left open-btn' onClick={toggleSubSidebar} />}
-                {!isNavOpen && <IoIosArrowForward className='btn-right open-btn' onClick={toggleSubSidebar} />}
+            {isNewBoardModalOpen && <NewBoardMoadl toggleNewBoardModal={toggleNewBoardModal} />}
+<div>
+    {isNavOpen && <IoIosArrowBack className='btn-left open-btn' onClick={toggleSubSidebar} />}
+    {!isNavOpen && <IoIosArrowForward className='btn-right open-btn' onClick={toggleSubSidebar} />}
+</div>
+{
+    isNavOpen && (
+        <div>
+            <div className="workspace-sidebar flex space-between">
+                <span>Workspace</span>
+                <HiDotsHorizontal className="dot" />
             </div>
-            {isNavOpen && (
-                <div>
-                    <div className="workspace-sidebar flex space-between">
-                        <span>Workspace</span>
-                        <HiDotsHorizontal className="dot" />
+            <div className="workspace-board flex space-between align-center">
+                <div className="workspace-board-name flex align-center">
+                    <div className="workspace-icon flex align-center" >
+                        <BsFillLightningFill />
                     </div>
-                    <div className="workspace-board flex space-between align-center">
-                        <div className="workspace-board-name flex align-center">
-                            <div className="workspace-icon flex align-center" >
-                                <BsFillLightningFill />
-                            </div>
-                            <h2> Workday Project</h2>
-                        </div>
-                        <IoIosArrowDown />
+                    <h2> Workday Project</h2>
+                </div>
+                <IoIosArrowDown />
+            </div>
+
+            <div>
+                <div className="workspace-options flex column">
+                    <div className="action-btn ">
+                        <a onClick={toggleNewBoardModal} className="flex  option"> <GrAdd /><span>Add</span></a>
+                        <a className="flex  option"> <GrFilter /><span>Filter</span></a>
+                        <a className="flex  option last-one"> <FiSearch /><span>Search</span></a>
                     </div>
+                    <div className="boards-options">
+                        {boards.map(board =>
+                            <div className="boards-list flex space-between" key={board._id}>
 
-                    <div>
-                        <div className="workspace-options flex column">
-                            <div className="action-btn ">
-                                <a onClick={onSaveBoard} className="flex  option"> <GrAdd /><span>Add</span></a>
-                                <a className="flex  option"> <GrFilter /><span>Filter</span></a>
-                                <a className="flex  option last-one"> <FiSearch /><span>Search</span></a>
-                            </div>
-                            <div className="boards-options">
-                                {boards.map(board =>
-                                    <div className="boards-list flex space-between" key={board._id}>
+                                <Link className="flex inline-flex  option" to={`/board/${board._id}`}>
+                                    <HiOutlineClipboard className="table-chart flex column align-center" />
+                                    <span>{board.title}</span>
+                                    <i className="dropdown-dot">
+                                        <div className="dropdown" onClick={(ev) => {
+                                            ev.preventDefault()
+                                            toggleDropdown()
+                                        }} ><HiDotsHorizontal />
 
-                                        <Link className="flex inline-flex  option" to={`/board/${board._id}`}>
-                                            <HiOutlineClipboard className="table-chart flex column align-center" />
-                                            <span>{board.title}</span>
-                                            <i className="dropdown-dot">
-                                                <div className="dropdown" onClick={(ev) => {
+                                            {isDropDownOpen && <div className="dropdown-content ">
+                                                <i><HiOutlineDocumentDuplicate className="icon-dropdown" /> Duplicate Board</i>
+                                                <i><RiPencilLine className="icon-dropdown" /> Rename</i><hr />
+                                                <i><HiOutlineArchive className="icon-dropdown" /> Archive</i>
+                                                <i onClick={(ev) => {
                                                     ev.preventDefault()
-                                                    onToggleDropdown()
-                                                }} ><HiDotsHorizontal />
+                                                    ev.stopPropagation()
+                                                    onRemoveBoard(board._id)
+                                                }}><MdDeleteOutline className="icon-dropdown" /> Delete</i>
 
-                                                    {isDropDownOpen && <div className="dropdown-content ">
-                                                        <i><HiOutlineDocumentDuplicate className="icon-dropdown" /> Duplicate Board</i>
-                                                        <i><RiPencilLine className="icon-dropdown" /> Rename</i><hr />
-                                                        <i><HiOutlineArchive className="icon-dropdown" /> Archive</i>
-                                                        <i onClick={(ev) => {
-                                                            ev.preventDefault()
-                                                            ev.stopPropagation()
-                                                            onRemoveBoard(board._id)
-                                                        }}><MdDeleteOutline className="icon-dropdown" /> Delete</i>
-
-                                                    </div>}
-                                                </div>
-                                            </i>
-                                        </Link>
-
-                                    </div>
-
-                                )}
+                                            </div>}
+                                        </div>
+                                    </i>
+                                </Link>
 
                             </div>
-                        </div>
+
+                        )}
+
                     </div>
                 </div>
-            )}
-        </section>
+            </div>
+        </div>
+    )
+}
+        </section >
 
     )
 

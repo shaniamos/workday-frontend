@@ -1,5 +1,5 @@
 import { useDispatch } from "react-redux"
-import { useParams } from "react-router-dom"
+import { Link, useParams } from "react-router-dom"
 import { useFormRegister } from "../hooks/useFormRegister.js"
 import { removeTask } from "../store/actions/board.action.js"
 import { updateTask } from "../store/actions/board.action.js"
@@ -39,7 +39,7 @@ export const TaskPreview = ({ task, groupId, groupColor }) => {
     let date = new Date(Date.now())
     return (
         <React.Fragment>
-            
+
             <div className="board-preview flex">
 
                 <div className="dropdown">
@@ -58,9 +58,11 @@ export const TaskPreview = ({ task, groupId, groupColor }) => {
                         <form className="" onSubmit={onSaveTask}>
                             {/* <RiArrowRightSLine /> */}
                             <input className="task-name clean-input" {...register('title', 'text')} />
-                            <div className="flex"><TbArrowsDiagonal /> Open</div>
                         </form>
-                        <div className="preview-update"><BiMessageRoundedAdd /></div>
+                        <Link to={`/board/${params.id}/edit/${task.id}`}>
+                            <div className="flex"><TbArrowsDiagonal /> Open</div>
+                            <div className="preview-update"><BiMessageRoundedAdd /></div>
+                        </Link>
                     </div>
 
                     {/* Persons / Responsbility */}
