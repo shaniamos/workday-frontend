@@ -20,7 +20,7 @@ import { HiOutlineInbox } from 'react-icons/hi' //box
 //IoIosCheckmarkCircleOutline -checklist 
 
 
-export function ViewbarBoardHeader() {
+export function ViewbarBoardHeader({onSaveGroup}) {
 
     return (
         <div className="board-header-view-bar flex ">
@@ -29,8 +29,8 @@ export function ViewbarBoardHeader() {
                 <section className="dropdown">
                     <button className="view-nav-btn-arrow">< IoIosArrowDown className="arrow-down" /></button>
                     <div className="dropdown-content flex column ">
-                        <i> <AiOutlinePlusCircle className="dropdown-icon" /> <span> Add new Item </span></i>
-                        <i> <HiOutlineInbox className="dropdown-icon" /><span>  New gruop of Items </span></i>
+                        <i> <AiOutlinePlusCircle className="dropdown-icon" /> <span> + Add new Item </span></i>
+                        <i onClick={onSaveGroup}> <HiOutlineInbox className="dropdown-icon" /><span> + New group of Items </span></i>
 
                     </div>
                 </section>

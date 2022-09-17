@@ -80,7 +80,7 @@ export const TaskPreview = ({ task, groupId, groupColor }) => {
                         {date.getDate() + "/" + (date.getMonth() + 1) + "/" + date.getFullYear()}
                     </div>
 
-                    <div onClick={onRemoveTask}> Delete</div>
+                    {/* <div onClick={onRemoveTask}> Delete</div> */}
 
 
                 </section>

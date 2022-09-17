@@ -26,6 +26,7 @@
 
         .task-name {
             @include editable-heading;
+            font-size: 14px
         }
 
         .name-cell {

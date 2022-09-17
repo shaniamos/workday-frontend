@@ -222,7 +222,7 @@ export const board = {
                 },
                 {
                     "id": "i102",
-                    "title": "Login page",
+                    "title": "Create React app + PWA",
                     "persons": [
                         {
                             "_id": "m104",
@@ -239,7 +239,7 @@ export const board = {
                 },
                 {
                     "id": "i103",
-                    "title": "Media queries",
+                    "title": "Open Repo + Set team collaboration",
                     "persons": [
                         {
                             "_id": "m102",

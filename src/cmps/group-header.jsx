@@ -12,12 +12,12 @@ export const GroupHeader = ({ groupColor }) => {
 
     return (
 
-        <div className='preview-gruop-header flex'>
+        <div className='preview-group-header flex'>
 
             <div className="dropdown">
                 <div ><HiOutlineDotsHorizontal className="dot" /></div>
                 <div className="dropdown-content">
-                    <a>< MdDeleteOutline /> Delete Gruop</a>
+                    <a>< MdDeleteOutline /> Delete Group</a>
                     <a><HiOutlineDocumentDuplicate /> Duplicate</a>
                 </div>
             </div>
@@ -45,9 +45,6 @@ export const GroupHeader = ({ groupColor }) => {
                 </div>
                 <div className="group-column-due-date">
                     <span>Due Date</span>
-                </div>
-                <div className="group-column-due-date">
-                    <span>Delete column</span>
                 </div>
             </div>
 

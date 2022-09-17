@@ -1,13 +1,18 @@
+.preview-group-header {
+    position: sticky;
+    top: 213px;
+    background-color: white;
+    // border-bottom: 1px solid;
+    box-shadow: 4px 6px 15px -8px var(--ui-border-color);
 
-.preview-gruop-header {
     .dot {
         transform: translateY(8px);
         cursor: pointer;
-
+        
     }
 
-     /* The container <div> - needed to position the dropdown content */
-     .dropdown {
+    /* The container <div> - needed to position the dropdown content */
+    .dropdown {
         // position: relative;
         display: inline-block;
     }
@@ -50,17 +55,25 @@
     }
 
 }
+
 .preview-cell {
     display: flex;
     width: 100%;
 
-    &>* {
+    >* {
         @include cell;
         border-top: .5px solid gray;
         border-inline-start: .5px solid gray;
         width: 100%;
         display: flex;
         align-items: center;
+        font-size: 14px;
+
+        &.task-name {
+            font-size: 14px;
+
+        }
+
     }
 }
 
@@ -72,7 +85,7 @@
     margin-left: 4px;
     cursor: grab;
     position: sticky;
-    top: 125px;
+    top: 173px;
     background-color: white;
 
     & span {
@@ -137,13 +150,14 @@
 
 }
 
+
 .group-header-identifier {
     @include cell;
-    position: sticky;
-    top: 159px;
-    background-color: white;
+    // position: sticky;
+    // top: 173px;
+    // background-color: white;
     // border-bottom: 1px solid;
-    box-shadow: 4px 6px 15px -8px var(--ui-border-color);
+    // box-shadow: 4px 6px 15px -8px var(--ui-border-color);
     // background-color: var(--primary-background-color);
     // border-bottom-color: var(--layout-border-color);
 }

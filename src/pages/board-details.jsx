@@ -32,11 +32,11 @@ export const BoardDetails = () => {
 
     return (
         <section className="board-details">
-            {board && <BoardHeader board={board} />}
-            <button onClick={onRemoveBoard}>Remove Board</button>
-            <button onClick={onSaveBoard}>+ Add New Board</button>
+            {board && <BoardHeader board={board}  onSaveBoard={onSaveBoard} />}
+            {/* <button onClick={onRemoveBoard}>Remove Board</button> */}
+            {/* <button onClick={onSaveBoard}>+ Add New Board</button> */}
             <div className='board-content'>
-                {board && < GroupList groups={board.groups} />}
+                {board && < GroupList groups={board.groups}/>}
             </div>
         </section>
     )

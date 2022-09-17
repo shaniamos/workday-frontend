@@ -32,7 +32,7 @@ export const GroupPreview = ({ group }) => {
     }
     return (
         <section className="group-preview">
-            <button onClick={onRemoveGroup}>Delete Group</button>
+            {/* <button onClick={onRemoveGroup}>Delete Group</button> */}
 
             {/* Board Name  */}
             <div className="group-header-name flex">

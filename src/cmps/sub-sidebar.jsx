@@ -47,13 +47,13 @@ export function SubSidebar() {
     }
     const onRemoveBoard = (boardId) => {
         dispatch(removeBoard(boardId))
+        navigate(`/board/b101`)
         setDropDownOpen(!isDropDownOpen)
     }
 
     const onToggleDropdown = () => {
         setDropDownOpen(!isDropDownOpen)
         console.log('isDropDownOpen', isDropDownOpen);
-        // console.log('eev', ev);
     }
 
     return (
