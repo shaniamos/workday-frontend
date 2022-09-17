@@ -17,9 +17,11 @@
     align-items: center;
     height: 40px;
     font-size: 18px;
-    // z-index: 1;
     margin-left: 4px;
     cursor: grab;
+    position: sticky;
+    top: 125px;
+    background-color: white;
 
     & span {
         display: inline-block;
@@ -49,9 +51,9 @@
 
 .task-name-area {
     &.group-task-name-area {
-         & span{
-             justify-content: center
-         }
+        & span {
+            justify-content: center
+        }
     }
 
     & .task-group-color {
@@ -63,7 +65,8 @@
     }
 
 
-    & .preview-checkbox, .preview-update {
+    & .preview-checkbox,
+    .preview-update {
         width: 40px;
         justify-content: center;
     }
@@ -84,5 +87,11 @@
 
 .group-header-identifier {
     @include cell;
-
+    position: sticky;
+    top: 159px;
+    background-color: white;
+    // border-bottom: 1px solid;
+    box-shadow: 4px 6px 15px -8px var(--ui-border-color);
+    // background-color: var(--primary-background-color);
+    // border-bottom-color: var(--layout-border-color);
 }
