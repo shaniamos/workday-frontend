@@ -1,12 +1,11 @@
 import { useDispatch } from "react-redux"
 import { Link, useParams } from "react-router-dom"
 import { useFormRegister } from "../hooks/useFormRegister.js"
-import { removeTask } from "../store/actions/board.action.js"
+import { addTask, removeTask } from "../store/actions/board.action.js"
 import { updateTask } from "../store/actions/board.action.js"
 import { PersonCircle } from "./person-circle.jsx"
 import { StatusTypeDisplay } from "./board/status-display.jsx"
 import { LastUpdated } from "./last-updated.jsx"
-
 import { RiArrowRightSLine } from 'react-icons/ri' //subitem
 import { TbArrowsDiagonal } from 'react-icons/tb' //open item
 import { BiMessageRoundedAdd, BiMessageRounded } from 'react-icons/bi' //empty updates, with updates
@@ -18,24 +17,30 @@ import React from "react"
 export const TaskPreview = ({ task, groupId, groupColor }) => {
     const dispatch = useDispatch()
     const params = useParams()
+    const boardId = params.id
 
     const [register, setNewTask, newTask] = useFormRegister({
         title: task.title
     })
 
     const onRemoveTask = () => {
-        const boardId = params.id
         dispatch(removeTask(boardId, groupId, task.id))
     }
 
     const onSaveTask = (event) => {
         event.preventDefault()
         task.title = newTask.title
-        const boardId = params.id
         dispatch(updateTask(boardId, groupId, task))
     }
 
-    const { persons, status, priority, deadline, lastUpdated } = task
+    const onDuplicateTask = () => {
+        const duplicateTask = { ...task }
+        delete duplicateTask.id
+        delete duplicateTask.lastUpdated
+        dispatch(addTask(boardId, groupId, duplicateTask))
+    }
+
+    const { persons, status, priority, lastUpdated } = task
     let date = new Date(Date.now())
     return (
         <React.Fragment>
@@ -46,7 +51,7 @@ export const TaskPreview = ({ task, groupId, groupColor }) => {
                     <div ><HiOutlineDotsHorizontal className="dot" /></div>
                     <div className="dropdown-content">
                         <a onClick={onRemoveTask}>< MdDeleteOutline /> Delete Item</a>
-                        <a href="#"><HiOutlineDocumentDuplicate /> Duplicate</a>
+                        <a onClick={onDuplicateTask}><HiOutlineDocumentDuplicate /> Duplicate</a>
                     </div>
                 </div>
 

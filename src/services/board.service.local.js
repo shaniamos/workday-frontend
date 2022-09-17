@@ -161,7 +161,12 @@ async function saveTask(boardId, groupId, task) {
                     board.groups[idx].tasks = updatedTasks
             })
         } else {
-            task = _createTask(task)
+            if (!task.persons)
+                task = _createTask(task)
+            else {
+                task.id = utilService.makeId()
+                task.lastUpdate = Date.now()
+            }
             board.groups.forEach((group, idx) => {
                 if (group.id === groupId) {
                     if (task.title === 'New Item')
