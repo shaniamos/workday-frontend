@@ -3,8 +3,15 @@ import { useParams } from "react-router-dom"
 import { useFormRegister } from "../hooks/useFormRegister.js"
 import { removeTask } from "../store/actions/board.action.js"
 import { updateTask } from "../store/actions/board.action.js"
+import { PersonCircle } from "./person-circle.jsx"
+import { StatusTypeDisplay } from "./board/status-display.jsx"
+import { LastUpdated } from "./last-updated.jsx"
 
-export const TaskPreview = ({ task, groupId }) => {
+import { RiArrowRightSLine } from 'react-icons/ri' //subitem
+import { TbArrowsDiagonal } from 'react-icons/tb' //open item
+import { BiMessageRoundedAdd, BiMessageRounded } from 'react-icons/bi' //empty updates, with updates
+
+export const TaskPreview = ({ task, groupId, groupColor }) => {
     const dispatch = useDispatch()
     const params = useParams()
 
@@ -24,17 +31,40 @@ export const TaskPreview = ({ task, groupId }) => {
         dispatch(updateTask(boardId, groupId, task))
     }
 
-    const { persons, status, priority, deadLine, lastUpdate } = task
+    const { persons, status, priority, deadline, lastUpdated } = task
+    let date = new Date(1607110465663)
     return (
-        <section className="task-preview flex">
-            <form onSubmit={onSaveTask}>
-                <input className="clean-input" {...register('title', 'text')} />
-            </form>
-            {/* <p>{persons}</p> */}
-            <p>{status}</p>
-            <p>{priority}</p>
-            <p>{deadLine}</p>
-            <p>{lastUpdate}</p>
+        <section className="preview-cell task-preview flex">
+
+            {/* Item area (color, checkbox, name) */}
+            <div className="task-name-area preview-cell flex">
+                <div className="task-group-color" style={{ backgroundColor: `var(${groupColor})` }}></div>
+                <div className="preview-checkbox"><input className="input-checkbox" type="checkbox" name="" id="" /></div>
+                <form className="" onSubmit={onSaveTask}>
+                    {/* <RiArrowRightSLine /> */}
+                    <input className="task-name clean-input" {...register('title', 'text')} />
+                    <div className="flex"><TbArrowsDiagonal /> Open</div>
+                </form>
+                <div className="preview-update"><BiMessageRoundedAdd /></div>
+            </div>
+
+            {/* Persons / Responsbility */}
+            <div> {typeof persons === 'object' && <PersonCircle persons={persons} />}</div>
+
+            {/* Status */}
+            <StatusTypeDisplay label='status' value={`${status}`} />
+
+            {/* Priority */}
+            <StatusTypeDisplay label='priority' value={`${priority}`} />
+
+            {/* DeadLine */}
+            <LastUpdated lastUpdated={lastUpdated}/>
+
+            {/* Due Date */}
+            <div>
+                {date.getDate() + "/" + (date.getMonth() + 1) + "/" + date.getFullYear()}
+            </div>
+        
             <div onClick={onRemoveTask}>Delete Item</div>
         </section>
     )

@@ -22,8 +22,8 @@ export function ViewbarBoardHeader() {
 
     return (
         <div className="board-header-view-bar">
-            <button className="view-nav-btn">New Item <IoIosArrowDown /> </button>
-            <button className="view-nav-btn"><BsSearch /> Search  </button>
+            <button className="view-nav-btn arrow">New Item <IoIosArrowDown /> </button>
+            <button className="view-nav-btn arrow"><BsSearch /> Search  </button>
             <button className="view-nav-btn"><FaRegUserCircle /> Person  </button>
             <button className="view-nav-btn"><BiFilterAlt /> Filter <IoIosArrowDown /> </button>
             <button className="view-nav-btn"><CgArrowsScrollV /> Sort  </button>

@@ -3,8 +3,9 @@ import { useParams } from "react-router-dom"
 import { TaskPreview } from "./task-preview.jsx"
 import { useFormRegister } from '../hooks/useFormRegister.js'
 import { addTask } from '../store/actions/board.action.js'
+import React from "react"
 
-export const TaskList = ({ tasks, groupId }) => {
+export const TaskList = ({ tasks, groupId, groupColor }) => {
 
     const dispatch = useDispatch()
     const params = useParams()
@@ -13,6 +14,7 @@ export const TaskList = ({ tasks, groupId }) => {
     })
 
     const onSaveTask = (event) => {
+        console.log('hi task')
         event.preventDefault()
         const boardId = params.id
         dispatch(addTask(boardId, groupId, task))
@@ -20,13 +22,18 @@ export const TaskList = ({ tasks, groupId }) => {
     }
 
     return (
-        <section className="task-list">
-            {tasks.map(task => {
-                return <TaskPreview key={task.id} task={task} groupId={groupId} />
-            })}
-            <form onSubmit={onSaveTask}>
-                <input className="clean-input" {...register('title', 'text')} placeholder="+ Add Item" />
-            </form>
-        </section>
+        <React.Fragment>
+            {tasks.map(task => <TaskPreview key={task.id} task={task} groupId={groupId} groupColor={groupColor} />)}
+
+            <div className="task-name-area flex ">
+                <div className="task-group-color" style={{ backgroundColor: `var(${groupColor})` }}></div>
+                <div className="preview-checkbox"><input className="input-checkbox" type="checkbox" name="" id="" /></div>
+
+                <form onSubmit={onSaveTask}>
+                    <input {...register('title', 'text')} className="clean-input" placeholder="+ Add Item" />
+                </form>
+            </div>
+        </React.Fragment>
+
     )
 }

@@ -4,6 +4,10 @@ import { removeGroup } from "../store/actions/board.action.js"
 import { TaskList } from "./task-list.jsx"
 import { useFormRegister } from "../hooks/useFormRegister.js"
 import { updateGroup } from "../store/actions/board.action.js"
+import { GroupHeader } from "./group-header.jsx"
+
+import { BsChevronDown } from 'react-icons/bs'
+
 
 export const GroupPreview = ({ group }) => {
     const params = useParams()
@@ -19,21 +23,31 @@ export const GroupPreview = ({ group }) => {
     }
 
     const onSaveTask = (event) => {
+        console.log('hi')
         event.preventDefault()
         group.title = newGroup.title
         const boardId = params.id
         dispatch(updateGroup(boardId, group))
     }
-
     return (
         <section className="group-preview">
             <button onClick={onRemoveGroup}>Delete Group</button>
-            <form onSubmit={onSaveTask}>
-                <input className="clean-input" {...register('title', 'text')} />
-            </form>
-            <div>
-                <TaskList tasks={group.tasks} groupId={group.id} />
+
+            {/* Board Name  */}
+            <div className="group-header-name flex">
+                <span className="collapse-group-button"><BsChevronDown /></span>
+                <form onSubmit={onSaveTask}>
+                    <input {...register('title', 'text')} className="group-name-input clean-input"/>
+                </form>
+                <span className="group-task-count">{`${group.tasks.length} items`}</span>
             </div>
+
+            {/* Board identifier (color, checkbox, task name, persons, status, priority....) */}
+            <GroupHeader groupColor={group.colorId} />
+
+            {/* Task lines  */}
+            <TaskList tasks={group.tasks} groupId={group.id} groupColor={group.colorId} />
+
         </section>
     )
 }

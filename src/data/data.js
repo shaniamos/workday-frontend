@@ -50,6 +50,28 @@
 //     // return task
 // }
 
+// export const colors = [
+//     { name: 'Grass Green', var: '--color-grass-green' , color: '#037f4c' },
+//     { name: 'Bright Green', var: '--color-bright-green' , color: '#9cd326' },
+//     { name: 'Saladish', var: '--color-saladish' , color: '#cab641' },
+//     { name: 'Egg Yolk', var: '--color-egg_yolk' , color: '#037f4c' },
+//     { name: 'Peach', var: '--color-peach' , color: '#ffadad' },
+//     { name: 'Sunset', var: '--color-sunset' , color: '#ff7575' },
+//     { name: 'Dark Red', var: '--color-dark-red' , color: '#bb3354' },
+//     { name: 'Sofia Pink', var: '--color-sofia_pink' , color: '#ff158a' },
+// ]
+
+export const colors = {
+    'Grass Green': { var: '--color-grass-green', color: '#037f4c' },
+    'Bright Green': { var: '--color-bright-green', color: '#9cd326' },
+    'Saladish': { var: '--color-saladish', color: '#cab641' },
+    'Egg Yolk': { var: '--color-egg_yolk', color: '#037f4c' },
+    'Peach': {var: '--color-peach' , color: '#ffadad'},
+    'Sunset': {var: '--color-sunset' , color: '#ff7575'},
+    'Dark Red': {var: '--color-dark-red' , color: '#bb3354'},
+    'Sofia Pink': {var: '--color-sofia_pink' , color: '#ff158a'},
+}
+
 export const board = {
     "_id": "b101",
     "title": "Management Team",
@@ -68,63 +90,152 @@ export const board = {
         {
             "status-picker": [
                 {
-                    "id": "ls101",
+                    "id": "--color-done-green",
                     "title": "Done",
-                    "color": "#00C875"
+                    "color": "#00c875"
                 },
                 {
-                    "id": "ls102",
+                    "id": "--color-orange",
                     "title": "Working on it",
-                    "color": "#61BD33"
-                    //rgb(241 163 59)
-                }]
-        },
-        {
+                    "color": "#fdab3d"
+                },
+                {
+                    "id": "--color-lipstick",
+                    "title": "On Hold",
+                    "color": "#ff5ac4"
+                },
+                {
+                    "id": "--color-stuck-red",
+                    "title": "Stuck",
+                    "color": "#e2445c"
+                },
+            ],
             "priority-picker": [
                 {
-                    "id": "lp101",
+                    "id": "--color-error",
                     "title": "Critical",
-                    "color": "#00C875"
+                    "color": "#d83a52"
                 },
                 {
-                    "id": "lp102",
+                    "id": "--color-orange",
                     "title": "High",
-                    "color": "#61BD33"
-                    //rgb(241 163 59)
-                }]
-        },
+                    "color": "#fdab3d"
+                },
+                {
+                    "id": "--color-bright-blue",
+                    "title": "Medium",
+                    "color": "#579bfc"
+                },
+                {
+                    "id": "--color-done-green",
+                    "title": "Low",
+                    "color": "#00c875"
+                },
+            ]
+        }
     ],
     "members": [
         {
             "_id": "m101",
             "fullname": "Tal Elmaliach",
-            "imgUrl": "https://www.google.com"
+            "imgUrl": "https://files.monday.com/use1/photos/34311144/thumb_small/34311144-user_photo_2022_09_14_12_46_08.png?1663159568",
+            'title': 'Fullstack Developer',
         },
         {
             "_id": "m102",
             "fullname": "Bar Mendel",
-            "imgUrl": "https://www.google.com"
+            "imgUrl": "https://files.monday.com/use1/photos/34311145/thumb_small/34311145-user_photo_2022_09_14_12_43_14.png?1663159394",
+            'title': 'Fullstack Developer',
+
         },
         {
             "_id": "m103",
             "fullname": "Shani Amos",
-            "imgUrl": "https://www.google.com"
+            "imgUrl": "https://files.monday.com/use1/photos/34310999/thumb_small/34310999-user_photo_2022_09_14_12_35_32.png?1663158932",
+            'title': 'Fullstack Developer',
+        },
+        {
+            "_id": "m104",
+            "fullname": "Ori Ben Amram",
+            "imgUrl": "https://files.monday.com/use1/photos/34311143/thumb_small/34311143-user_photo_2022_09_14_13_55_42.png?1663163742",
+            'title': 'Team Leader',
         },
     ],
     "groups": [
         {
             "id": "g101",
-            "title": "Design",
-            // "archivedAt": 1589983468418,
+            "title": "Frontend Design",
+            "archivedAt": 1589983468418,
             "tasks": [
                 {
                     "id": "i101",
                     "title": "Media queries",
-                    "persons": [],
-                    "status": "Done",
+                    "persons": [
+                        {
+                            "_id": "m102",
+                            "fullname": "Bar Mendel",
+                            "imgUrl": "https://files.monday.com/use1/photos/34311145/thumb_small/34311145-user_photo_2022_09_14_12_43_14.png?1663159394",
+                            'title': 'Fullstack Developer',
+
+                        },
+                        {
+                            "_id": "m103",
+                            "fullname": "Shani Amos",
+                            "imgUrl": "https://files.monday.com/use1/photos/34310999/thumb_small/34310999-user_photo_2022_09_14_12_35_32.png?1663158932",
+                            'title': 'Fullstack Developer',
+                        },
+                        {
+                            "_id": "m104",
+                            "fullname": "Ori Ben Amram",
+                            "imgUrl": "https://files.monday.com/use1/photos/34311143/thumb_small/34311143-user_photo_2022_09_14_13_55_42.png?1663163742",
+                            'title': 'Team Leader',
+                        },
+                    ],
+                    "status": "Working on it",
+                    "priority": "Medium",
+                    "deadline": "1589983468418",
+                    "lastUpdated": "1663091776159",
+                    "comments": [
+                        {
+                            "byMember": {
+                                "_id": "u101",
+                                "fullname": "Tal Tarablus",
+                                "imgUrl": "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg"
+                            },
+                            "createdAt": "1589983468418",
+                            "content": {
+                                "txt": "What's going on",
+                                "likes": [],
+                                "replys": [] //arr of comments
+                            }
+                        },
+                        {
+                            "memberId": "m102",
+                            "createdAt": "1589983468418",
+                            "content": {
+                                "txt": "What's going on",
+                                "likes": [],
+                                "replys": [] //arr of comments
+                            }
+                        },
+                    ],
+                },
+                {
+                    "id": "i102",
+                    "title": "Fonts",
+                    "persons": [
+                        {
+                            "_id": "m102",
+                            "fullname": "Bar Mendel",
+                            "imgUrl": "https://files.monday.com/use1/photos/34311145/thumb_small/34311145-user_photo_2022_09_14_12_43_14.png?1663159394",
+                            'title': 'Fullstack Developer',
+
+                        },
+                    ],
+                    "status": "Working on it",
                     "priority": "Low",
                     "deadline": "1589983468418",
-                    "lastUpdated": "1589983468418",
+                    "lastUpdated": "1663199753073",
                     "comments": [
                         {
                             "byMember": {
@@ -151,8 +262,8 @@ export const board = {
                     ],
                 },
             ],
+            "colorId": '--positive-color',
             "style": {},
-            // "color": rgb(156, 211, 38),
         },
         {
             "id": "g102",
@@ -160,23 +271,56 @@ export const board = {
             "tasks": [
                 {
                     "id": "c103",
-                    "title": "Do that",
+                    "title": "REST API",
                     "archivedAt": 1589983468418,
-                    "persons": [],
-                    "status": "Done",
-                    "priority": "Low",
+                    "persons": [
+                        {
+                            "_id": "m101",
+                            "fullname": "Tal Elmaliach",
+                            "imgUrl": "https://files.monday.com/use1/photos/34311144/thumb_small/34311144-user_photo_2022_09_14_12_46_08.png?1663159568",
+                            'title': 'Fullstack Developer',
+                        },
+                    ],
+                    "status": "On Hold",
+                    "priority": "Critical",
                     "deadline": "1589983468418",
-                    "lastUpdated": "1589983468418",
+                    "lastUpdated": "1663365269898",
                 },
                 {
                     "id": "c104",
-                    "title": "Help me",
+                    "title": "Socket Service",
                     "description": "description",
-                    "persons": [],
+                    "persons": [
+                        {
+                            "_id": "m104",
+                            "fullname": "Ori Ben Amram",
+                            "imgUrl": "https://files.monday.com/use1/photos/34311143/thumb_small/34311143-user_photo_2022_09_14_13_55_42.png?1663163742",
+                            'title': 'Team Leader',
+                        },
+                        {
+                            "_id": "m102",
+                            "fullname": "Bar Mendel",
+                            "imgUrl": "https://files.monday.com/use1/photos/34311145/thumb_small/34311145-user_photo_2022_09_14_12_43_14.png?1663159394",
+                            'title': 'Fullstack Developer',
+
+                        },
+                        {
+                            "_id": "m101",
+                            "fullname": "Tal Elmaliach",
+                            "imgUrl": "https://files.monday.com/use1/photos/34311144/thumb_small/34311144-user_photo_2022_09_14_12_46_08.png?1663159568",
+                            'title': 'Fullstack Developer',
+                        },
+                        {
+                            "_id": "m103",
+                            "fullname": "Shani Amos",
+                            "imgUrl": "https://files.monday.com/use1/photos/34310999/thumb_small/34310999-user_photo_2022_09_14_12_35_32.png?1663158932",
+                            'title': 'Fullstack Developer',
+                        },
+                    ],
                     "status": "Done",
-                    "priority": "Low",
+                    "priority": "High",
                     "deadline": "1589983468418",
-                    "lastUpdated": "1589983468418",
+                    "lastUpdated": "1663371422099",
                     "comments": [
                         {
                             "byMember": {
@@ -224,9 +368,20 @@ export const board = {
                     "style": {
                         "bgColor": "#26DE81"
                     }
-                }
+                },
+                {
+                    "id": "c105",
+                    "title": "Postman tests",
+                    "archivedAt": 1589983468418,
+                    "persons": [],
+                    "status": "Stuck",
+                    "priority": "Low",
+                    "deadline": "1589983468418",
+                    "lastUpdated": "1663199753073",
+                },
             ],
-            "style": {}
+            "colorId": '--color-peach',
+            "style": {},
         }
     ],
     "activities": [

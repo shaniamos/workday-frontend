@@ -6,7 +6,6 @@
     // position: fixed;
     top: 0;
     left: 0;
-    border: solid;
     background-color: var(--primary-background-color);
     z-index: 2;
 }
@@ -14,8 +13,6 @@
 .board-header-content {
     // padding: 30px 30px 0px 30px;
     padding: 16px 30px 0px 38px;
-
-    border: .5px solid;
     // height: 220px;
     // align-items: center;
     // position: absolute;
@@ -108,7 +105,6 @@
     border: none;
 }
 
-
 .board-header-tool-bar {
     display: flex;
     align-items: center;
@@ -117,8 +113,8 @@
     padding-bottom: 4px;
     height: 32px;
     border-bottom: .5px solid gray;
-    
-    & span{
+
+    & span {
         padding: 8px 24px 5px 12px;
         font-weight: 500;
         padding: 0 4px;
@@ -130,8 +126,10 @@
         align-items: center;
 
     }
+
     & a {
         padding: 8px 24px 5px 12px;
+
         &.active {
             border-bottom: 2px solid var(--primary-color);
 
@@ -145,3 +143,5 @@
     min-width: var(--element-width);
     max-width: 180px;
 }
+
+//VIEW-BAR HEADER

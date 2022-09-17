@@ -3,7 +3,6 @@ import { useEffect, useState } from "react"
 import { connect, useSelector, useDispatch } from "react-redux"
 import { Link, NavLink, Route, Routes } from "react-router-dom"
 import { BoardDesc } from "../board-desc"
-import { PersonCircle } from "./person-circle.jsx"
 import { MainBoardHeader } from './board-header/main-board-header.jsx'
 import { ToolbarBoardHeader } from './board-header/toolbar-board-header.jsx'
 import { ViewbarBoardHeader } from './board-header/viewbar-board-header.jsx'
@@ -17,9 +16,7 @@ import { ViewbarBoardHeader } from './board-header/viewbar-board-header.jsx'
 //FaSort - Sort on group
 //CgArrowsScrollV - Sort
 //HiFolder - new item
-//TbArrowsDiagonal - open item
-//BiMessageRoundedAdd - empty updates
-//BiMessageRounded - with updates 
+
 //IoIosCheckmarkCircleOutline -checklist 
 
 

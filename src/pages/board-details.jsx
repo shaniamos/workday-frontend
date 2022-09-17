@@ -35,8 +35,9 @@ export const BoardDetails = () => {
             {board && <BoardHeader board={board} />}
             <button onClick={onRemoveBoard}>Remove Board</button>
             <button onClick={onSaveBoard}>+ Add New Board</button>
-            <div className='board-content'></div>
-            {board && < GroupList groups={board.groups} />}
+            <div className='board-content'>
+                {board && < GroupList groups={board.groups} />}
+            </div>
         </section>
     )
 }
