@@ -21,7 +21,7 @@ const routes = [
     //     component: <BoardDesc/>,
     // },
     {
-        path: 'board/:id/edit/:id',
+        path: 'board/:boardId/edit/:taskId',
         component: <TaskEdit/>,
     },
     {

@@ -4,11 +4,10 @@ export function TaskEdit() {
 
     const params = useParams()
 
-    console.log(params)
     return (
         <section className="task-edit">
             <h1>Hello TaskEdit</h1>
-            <Link to={`/board/${params.id}`}>Back</Link>
+            <Link to={`/board/${params.boardId}`}>Back</Link>
         </section>
     )
 }
