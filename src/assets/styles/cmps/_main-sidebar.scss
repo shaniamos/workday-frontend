@@ -34,7 +34,6 @@
 
     .plans-modal {
         cursor: pointer;
-
         margin-top: 10px;
         margin-bottom: 10px;
         height: 110px;
@@ -46,7 +45,7 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        transition: width .2s;
+        transition: width .1s;
 
         .stars {
             font-size: rem(20px);
@@ -61,7 +60,7 @@
 
     span {
         transform: rotate(270deg);
-        font-size: rem(15px);
+        font-size: rem(13px);
         text-align: center;
         white-space: nowrap;
     }

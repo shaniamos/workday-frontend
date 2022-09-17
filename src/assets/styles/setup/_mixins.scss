@@ -1,6 +1,56 @@
-@mixin tool-btn {
-    
+@mixin editable-heading {
+    margin: 0;
+    width: 100%;
+    // width: fit-content;
+    border-radius: 4px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font: var(--font-h4);
+
+    &:hover {
+        cursor: text;
+        border: 1px solid;
+        border-color: var(--ui-border-color);
+    }
 }
+
+@mixin cell {
+    cursor: pointer;
+    height: 36px;
+    align-items: center;
+    justify-content: center;
+}
+
+
+@mixin heading {
+    border: 1px solid rgba(0, 0, 0, 0);
+    border-radius: 4px;
+    min-width: 0;
+    padding: 0 4px;
+    color: inherit;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 22px;
+    letter-spacing: initial;
+
+    // font-size: 32px;
+    // line-height: 52px;
+    // font-weight: var(--font-weight-bold);
+    // font-family: var(--font-family);
+    // letter-spacing: -1px;
+    // -webkit-font-smoothing: var(--font-smoothing-webkit);
+    // -moz-osx-font-smoothing: var(--font-smoothing-moz);
+    &:focus-visible {
+        outline: .5px solid var(--primary-background-hover-color);
+    }
+}
+
+@mixin arrow-btn($bgColor: rgba(0, 0, 0, 0),
+    $color: var(--primary-text-color),
+    $hoverBgColor: var(--primary-background-hover-color)) {
+        
+        background-color: var(--color-basic_blue);
+    }
 
 @mixin btn($bgColor: rgba(0, 0, 0, 0), $color: var(--primary-text-color), $hoverBgColor: var(--primary-background-hover-color)) {
     display: inline-block;
@@ -31,29 +81,6 @@
     cursor: pointer;
     overflow: hidden;
     font-size: 20px;
-}
-
-@mixin heading {
-    border: 1px solid rgba(0, 0, 0, 0);
-    border-radius: 4px;
-    min-width: 0;
-    padding: 0 4px;
-    color: inherit;
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 22px;
-    letter-spacing: initial;
-
-    // font-size: 32px;
-    // line-height: 52px;
-    // font-weight: var(--font-weight-bold);
-    // font-family: var(--font-family);
-    // letter-spacing: -1px;
-    // -webkit-font-smoothing: var(--font-smoothing-webkit);
-    // -moz-osx-font-smoothing: var(--font-smoothing-moz);
-    &:focus-visible {
-        outline: .5px solid var(--primary-background-hover-color);
-    }
 }
 
 @mixin input-title {

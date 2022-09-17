@@ -148,7 +148,7 @@ async function saveTask(boardId, groupId, task) {
         const board = await getByBoardId(boardId)
         const group = await getByGroupId(boardId, groupId)
         if (task.id) {
-            task.lastUpdate = Date.now()
+            task.lastUpdated = Date.now()
             const updatedTasks = group.tasks.map(currTask => (currTask.id === task.id) ? task : currTask)
             board.groups.forEach((group, idx) => {
                 if (group.id === groupId)

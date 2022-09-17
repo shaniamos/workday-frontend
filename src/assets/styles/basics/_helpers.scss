@@ -42,10 +42,12 @@
 
 // INPUT
 .clean-input {
-    outline: 0;
+    &:focus-visible {
+        outline: 1px solid var(--ui-border-color);
+    }
+
     border: 0;
 }
-
 
 
 // Aspect ratios
