@@ -26,6 +26,7 @@ export function MainBoardHeader({ board }) {
     }
 
     return (
+
         <div className="board-header-title flex space-between ">
             <div className="board-header-left flex">
                 <form onSubmit={onSaveBoard}>

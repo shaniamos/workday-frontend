@@ -53,6 +53,7 @@ function getByBoardId(boardId) {
 
 //remove board
 function removeBoard(boardId) {
+    console.log('boardIdboardId', boardId);
     return storageService.remove(STORAGE_KEY, boardId)
 }
 

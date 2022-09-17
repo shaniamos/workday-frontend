@@ -4,12 +4,14 @@ import { loadBoards } from '../store/actions/board.action.js'
 import { useParams } from 'react-router-dom'
 import { BoardDetails } from './board-details'
 import { SubSidebar } from '../cmps/sub-sidebar.jsx'
+import { UserMsg } from "../cmps/user-msg.jsx"
+
 
 export const BoardApp = () => {
     const boards = useSelector(state => state.boardModule.boards)
     const dispatch = useDispatch()
     const params = useParams()
-
+    // const isNavOpenn = true
     useEffect(() => {
         dispatch(loadBoards())
     }, [params.id])
@@ -19,7 +21,8 @@ export const BoardApp = () => {
     // </section>
     return (
         <section className="board-app flex">
-            <SubSidebar boards={boards} />
+            <UserMsg boards={boards} />
+            <SubSidebar boards={boards} isOpen={true}/>
             <BoardDetails />
         </section>
     )

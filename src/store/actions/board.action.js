@@ -1,4 +1,5 @@
 import { boardService } from "../../services/board.service.local.js"
+import { showErrorMsg, showSuccessMsg } from "../../services/event-bus.service.js"
 
 // CRUDL BOARD
 
@@ -28,13 +29,17 @@ export function loadSelectedBoard(boardId, filterBy = {}) {
 
 //remove board 
 export function removeBoard(boardId) {
+    console.log('boardId', boardId);
     return async (dispatch) => {
         try {
             const board = await boardService.removeBoard(boardId)
+            console.log('board',board);
             dispatch({ type: 'REMOVE_BOARD', boardId })
             dispatch({ type: 'RESET_SELECTED_BOARD' })
+            showSuccessMsg(`Board successfully deleted`)
         } catch (err) {
-            console.error('err:', err)
+            showErrorMsg('Cannot delete board')
+            console.log('Cannot delete board', err)
         }
     }
 }
@@ -72,8 +77,10 @@ export function removeGroup(boardId, groupId) {
         try {
             const board = await boardService.removeGroup(boardId, groupId)
             dispatch({ type: 'UPDATE_BOARD', board })
+            showSuccessMsg(`Group successfully deleted`)
         } catch (err) {
             console.error('err:', err)
+            showErrorMsg('Cannot delete group')
         }
     }
 }
@@ -110,8 +117,10 @@ export function removeTask(boardId, groupId, taskId) {
         try {
             const board = await boardService.removeTask(boardId, groupId, taskId)
             dispatch({ type: 'UPDATE_BOARD', board })
+            showSuccessMsg(`Item successfully deleted`)
         } catch (err) {
             console.error('err:', err)
+            showErrorMsg('Cannot delete item')
         }
     }
 }

@@ -18,8 +18,8 @@ import { addBoard, removeBoard } from '../store/actions/board.action.js'
 import { useNavigate, useParams } from 'react-router-dom'
 
 
-export function SubSidebar({ boards }) {
-    const [isNavOpen, setNavOpen] = useState()
+export function SubSidebar({ boards, isOpen }) {
+    const [isNavOpen, setNavOpen] = useState(isOpen)
     const [isDropDownOpen, setDropDownOpen] = useState(false)
     const dispatch = useDispatch()
     const navigate = useNavigate()
@@ -51,7 +51,9 @@ export function SubSidebar({ boards }) {
     const onToggleDropdown = () => {
         setDropDownOpen(!isDropDownOpen)
     }
+    console.log('isNavOpen', isNavOpen);
 
+    if (!boards ) return <div>loading.....</div>
     return (
 
         <section className={isNavOpen ? "sub-sidebar-container is-open" : "sub-sidebar-container"}>
