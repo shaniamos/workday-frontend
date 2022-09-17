@@ -20,7 +20,6 @@ export const BoardApp = () => {
     if (!boards) return <h1>Loading...</h1>
     return (
         <section className="board-app flex">
-            <MainSidebar />
             <SubSidebar  />
             <BoardDetails />
         </section>
