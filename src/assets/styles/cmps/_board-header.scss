@@ -145,3 +145,93 @@
 }
 
 //VIEW-BAR HEADER
+.board-header-view-bar {
+    margin-bottom: 16px;
+    margin-top: 16px;
+    height: 34px;
+
+    .view-nav-btn {
+        font-size: 15px;
+
+        gap: 7px;
+        text-align: center;
+    }
+
+    .new-item-btn {
+
+        // border-radius: 6px;
+        .view-nav-btn {
+            min-width: 80px;
+            color: white;
+            background-color: #0073ea;
+
+            border-radius: 4px 0px 0px 4px;
+            padding: 4px;
+        }
+
+        .view-nav-btn-arrow {
+            height: 34px;
+            font-size: 18px;
+            font-weight: bold;
+            color: white;
+            border-radius: 0 4px 4px 0;
+            background-color: #0073ea;
+
+        }
+        .arrow-down {
+            justify-content: center;
+            align-items: center;
+        }
+        /* The container <div> - needed to position the dropdown content */
+    }
+
+    .view-nav-btn-arrow:hover {
+        background-color: #0060b9
+    }
+
+    .view-nav-btn.btn:hover {
+        background-color: #0060b9
+    }
+    /* Dropdown Content (Hidden by Default) */
+    .dropdown-content {
+        display: none;
+        position: absolute;
+        font-weight: 400;
+        font-size: rem(16px);
+        background-color: white;
+        min-width: 240px;
+        box-shadow: 0px 8px 16px 0px rgba(31, 30, 30, 0.4);
+        z-index: 100;
+        border-radius: 10px;
+        padding: 10px;
+    }
+    .dropdown-icon {
+        font-size: rem(19px);
+        transform: translateY(3px);
+    }
+    span {
+        font-size: 15px;
+        margin-left: 5px;
+        
+    }
+    /* Links inside the dropdown */
+    .dropdown-content i {
+        font-style: normal;
+        color: #5b5c63;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+    }
+    /* Change color of dropdown links on hover */
+    .dropdown-content i:hover {
+        background-color: #dcdfec;
+        border-radius: 8px;
+        cursor: pointer;
+    }
+
+    /* Show the dropdown menu on hover */
+    .dropdown:hover .dropdown-content {
+        display: flex;
+        flex-direction: column;
+    }
+}

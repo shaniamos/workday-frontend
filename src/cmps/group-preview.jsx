@@ -5,6 +5,7 @@ import { TaskList } from "./task-list.jsx"
 import { useFormRegister } from "../hooks/useFormRegister.js"
 import { updateGroup } from "../store/actions/board.action.js"
 import { GroupHeader } from "./group-header.jsx"
+import { BiDotsHorizontalRounded } from "./group-header.jsx"
 
 import { BsChevronDown } from 'react-icons/bs'
 

@@ -4,6 +4,7 @@ import { TaskPreview } from "./task-preview.jsx"
 import { useFormRegister } from '../hooks/useFormRegister.js'
 import { addTask } from '../store/actions/board.action.js'
 import React from "react"
+import { HiOutlineDotsHorizontal } from 'react-icons/hi' //More
 
 export const TaskList = ({ tasks, groupId, groupColor }) => {
 
@@ -23,7 +24,8 @@ export const TaskList = ({ tasks, groupId, groupColor }) => {
 
     return (
         <React.Fragment>
-            {tasks.map(task => <TaskPreview key={task.id} task={task} groupId={groupId} groupColor={groupColor} />)}
+        
+            {tasks.map(task => <TaskPreview  key={task.id} task={task} groupId={groupId} groupColor={groupColor}  />)}
 
             <div className="task-name-area flex ">
                 <div className="task-group-color" style={{ backgroundColor: `var(${groupColor})` }}></div>

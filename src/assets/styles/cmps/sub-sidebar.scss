@@ -1,9 +1,9 @@
 .sub-sidebar-container {
-    background-color: #f5f6f8;
+    background-color: #f6f7fb;
     height: 100vh;
-    width: 30px;
+    min-width: 30px;
     border-right: 1px solid #5c6575;
-    transition: .4s ease;
+    transition: .1s ease;
 
     .workspace-icon {
         width: 26px;
@@ -14,25 +14,18 @@
         background-color: #d83a52;
         color: rgb(255, 255, 255);
         font-family: roboto-bold;
-
     }
-
-
-
-
 
     &.is-open {
         min-width: 254px;
-
         .open-btn {
             position: absolute;
-            left: 245px;
-            // transition: 0.3s ease;
+            left: 243px;
         }
     }
 
     .open-btn {
-        left: 20px;
+        left: 18px;
         position: absolute;
         height: 23px;
         width: 23px;
@@ -44,26 +37,20 @@
         top: 20px;
         z-index: 100;
         transition: background-color .2s;
-
     }
-
     .open-btn:hover {
         background-color: #529eee;
     }
-
     .workspace-board {
         position: relative;
-        // height: 30px;
         width: 80%;
         padding: 6px;
         padding: 6px;
         border: 1px solid;
         border-radius: 4px;
         border-color: #676879;
-        ;
         margin-right: 4px;
         margin: auto;
-
         .workspace-board-name {
             width: 100%;
 
@@ -83,13 +70,10 @@
             padding-bottom: 6px;
             font-size: 18px;
             transition: color .2s;
-            left: 190px;
-            transform: translateY(-13px);
+            transform: translateY(-15px);
             z-index: 10;
-            font-size: 23px;
+            font-size: 27px;
         }
-
-
 
         justify-content: space-between;
         color: #323338;
@@ -102,13 +86,12 @@
         .option {
             cursor: pointer;
             width: 90%;
-
             align-items: center;
             font-size: rem(17px);
             transition: background-color .2s;
             padding-left: 6px;
-            padding-top: 8px;
-            padding-bottom: 8px;
+            padding-top: 4px;
+            padding-bottom: 4px;
             border-radius: 4px;
             gap: 16px;
 
@@ -120,8 +103,6 @@
         .option:hover {
             background-color: #dcdfec;
         }
-
-
         .boards-options {
             padding-top: 17px;
 
@@ -130,7 +111,12 @@
             }
 
             .boards-list {
-
+                span{
+                    white-space: nowrap;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    width: 14ch;
+                }
                 .dropdown-dot:hover {
                     color: #7f8083
                 }
@@ -144,21 +130,18 @@
         /* Dropdown Content (Hidden by Default) */
         .dropdown-content {
             font-weight: 400;
-            font-size: rem(16px);
-            // display: none;
-            position: absolute;
+            font-size: rem(15px);
             background-color: white;
-            min-width: 260px;
+            min-width: 240px;
             box-shadow: 0px 8px 16px 0px rgba(31, 30, 30, 0.4);
             z-index: 100;
             border-radius: 10px;
             padding: 10px;
 
-            .garbage {
+            .icon-dropdown {
                 font-size: 21px;
+                transform: translateY(3px);
             }
-
-
         }
 
         hr {
@@ -167,26 +150,19 @@
 
         /* Links inside the dropdown */
         .dropdown-content i {
+            font-style: normal;
             color: #5b5c63;
             padding: 12px 16px;
             text-decoration: none;
             display: block;
 
         }
-
         /* Change color of dropdown links on hover */
         .dropdown-content i:hover {
             background-color: #dcdfec;
             border-radius: 8px;
         }
-
-        /* Show the dropdown menu on hover */
-        // .dropdown:hover .dropdown-content {
-        //     display: block;
-        // }
-
     }
-
     .workspace-sidebar {
         padding-bottom: 6px;
         padding-top: 6px;
@@ -197,7 +173,6 @@
             font-size: 14px;
             font-weight: 400;
             color: #676879;
-
         }
 
         .dot {
@@ -209,13 +184,6 @@
 
         .dot:hover {
             background-color: #dcdfec;
-            ;
         }
     }
-
-
-
-
-
-
 }

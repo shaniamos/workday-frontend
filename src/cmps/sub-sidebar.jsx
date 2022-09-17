@@ -74,14 +74,14 @@ export function SubSidebar() {
                             <div className="workspace-icon flex align-center" >
                                 <BsFillLightningFill />
                             </div>
-                            <h2> Shani Amos</h2>
+                            <h2> Workday Project</h2>
                         </div>
                         <IoIosArrowDown />
                     </div>
 
                     <div>
                         <div className="workspace-options flex column ">
-                            <div className="action-btn">
+                            <div className="action-btn ">
 
                                 <a onClick={onSaveBoard} className="flex  option"> <GrAdd /><span>Add</span></a>
                                 <a onClick={onAddBoard} className="flex  option"> <GrFilter /><span>Filter</span></a>
@@ -93,20 +93,22 @@ export function SubSidebar() {
 
                                         <Link className="flex inline-flex  option" to={`/board/${board._id}`}>
                                             <HiOutlineClipboard className="table-chart flex column align-center" />
-                                            {board.title}
-                                            <i className="dropdown-dot"
-                                            >
-                                                <div className="dropdown" onClick={onToggleDropdown} ><HiDotsHorizontal />
+                                            <span>{board.title}</span>
+                                            <i className="dropdown-dot">
+                                                <div className="dropdown" onClick={(ev) => {
+                                                    ev.preventDefault()
+                                                    onToggleDropdown()
+                                                }} ><HiDotsHorizontal />
 
-                                                    { isDropDownOpen && <div className="dropdown-content">
-                                                        <i href="#"><HiOutlineDocumentDuplicate className="garbage" /> Duplicate Board</i>
-                                                        <i href="#"><RiPencilLine  className="garbage"/> Rename</i><hr />
-                                                        <i href="#"><HiOutlineArchive className="garbage" /> Archive</i>
+                                                    {isDropDownOpen && <div className="dropdown-content ">
+                                                        <i><HiOutlineDocumentDuplicate className="icon-dropdown" /> Duplicate Board</i>
+                                                        <i><RiPencilLine className="icon-dropdown" /> Rename</i><hr />
+                                                        <i><HiOutlineArchive className="icon-dropdown" /> Archive</i>
                                                         <i onClick={(ev) => {
                                                             ev.preventDefault()
                                                             ev.stopPropagation()
                                                             onRemoveBoard(board._id)
-                                                        }}><MdDeleteOutline className="garbage" /> Delete</i>
+                                                        }}><MdDeleteOutline className="icon-dropdown" /> Delete</i>
 
                                                     </div>}
                                                 </div>
