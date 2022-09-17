@@ -173,13 +173,18 @@ function _createBoard(board) {
     board.groups = [
         {
             id: utilService.makeId(),
+            title: "Group 1",
             style: {},
-            tasks: []
+            tasks: [],
+            colorId: '--color-default_group_color',
+            
         },
         {
             id: utilService.makeId(),
+            title: "Group 2",
             style: {},
-            tasks: []
+            tasks: [],
+            colorId: '--shareable-color',
         },
     ]
     for (let i = 0; i < 5; i++) {

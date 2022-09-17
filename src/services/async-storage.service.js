@@ -9,7 +9,7 @@ export const storageService = {
 }
 
 
-function query(entityType, delay = 3000) {
+function query(entityType, delay = 500) {
 
     var entities = JSON.parse(localStorage.getItem(entityType))
     return new Promise((resolve, reject) => {
@@ -35,6 +35,7 @@ function postMany(entityType, entities) {
 }
 
 async function post(entityType, newEntity) {
+    console.log(newEntity)
     try {
         newEntity._id = _makeId()
         const entities = await query(entityType)

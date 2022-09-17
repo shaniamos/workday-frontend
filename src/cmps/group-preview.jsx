@@ -5,6 +5,7 @@ import { TaskList } from "./task-list.jsx"
 import { useFormRegister } from "../hooks/useFormRegister.js"
 import { updateGroup } from "../store/actions/board.action.js"
 import { GroupHeader } from "./group-header.jsx"
+// import { GroupFooter } from "./group-footer.jsx"
 import { BiDotsHorizontalRounded } from "./group-header.jsx"
 
 import { BsChevronDown } from 'react-icons/bs'
@@ -48,7 +49,7 @@ export const GroupPreview = ({ group }) => {
 
             {/* Task lines  */}
             <TaskList tasks={group.tasks} groupId={group.id} groupColor={group.colorId} />
-
+            {/* <GroupFooter/> */}
         </section>
     )
 }
