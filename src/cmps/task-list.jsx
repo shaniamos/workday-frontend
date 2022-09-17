@@ -23,8 +23,8 @@ export const TaskList = ({ tasks, groupId, groupColor }) => {
 
     return (
         <React.Fragment>
-        
-            {tasks.map(task => <TaskPreview  key={task.id} task={task} groupId={groupId} groupColor={groupColor}  />)}
+
+            {tasks.map(task => <TaskPreview key={task.id} task={task} groupId={groupId} groupColor={groupColor} />)}
 
             <div className="task-name-area flex ">
                 <div className="task-group-color" style={{ backgroundColor: `var(${groupColor})` }}></div>

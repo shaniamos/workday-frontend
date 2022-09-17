@@ -25,7 +25,6 @@ export const GroupPreview = ({ group }) => {
     }
 
     const onSaveTask = (event) => {
-        console.log('hi')
         event.preventDefault()
         group.title = newGroup.title
         const boardId = params.id

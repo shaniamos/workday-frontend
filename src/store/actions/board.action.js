@@ -117,7 +117,7 @@ export function removeTask(boardId, groupId, taskId) {
 }
 
 //add task
-export function addTask(boardId, groupId, task) {
+export function addTask(boardId = '', groupId = '', task = '') {
     return async (dispatch) => {
         try {
             const savedBoard = await boardService.saveTask(boardId, groupId, task)

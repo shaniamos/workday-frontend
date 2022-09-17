@@ -28,10 +28,6 @@ export function SubSidebar({ boards }) {
         setNavOpen(!isNavOpen)
     }
 
-    const onAddBoard = () => {
-        console.log('add function');
-    }
-
     const onSaveBoard = async () => {
         try {
             const title = prompt("Please enter a board name")
@@ -82,10 +78,9 @@ export function SubSidebar({ boards }) {
                     <div>
                         <div className="workspace-options flex column">
                             <div className="action-btn ">
-
                                 <a onClick={onSaveBoard} className="flex  option"> <GrAdd /><span>Add</span></a>
-                                <a onClick={onAddBoard} className="flex  option"> <GrFilter /><span>Filter</span></a>
-                                <a onClick={onAddBoard} className="flex  option last-one"> <FiSearch /><span>Search</span></a>
+                                <a className="flex  option"> <GrFilter /><span>Filter</span></a>
+                                <a className="flex  option last-one"> <FiSearch /><span>Search</span></a>
                             </div>
                             <div className="boards-options">
                                 {boards.map(board =>

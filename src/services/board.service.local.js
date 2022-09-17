@@ -144,6 +144,13 @@ async function removeTask(boardId, groupId, taskId) {
 // add + update task
 async function saveTask(boardId, groupId, task) {
     try {
+        if (!boardId || !groupId || !task) {
+            const boards = await query()
+            boardId = boards[0]._id
+            groupId = boards[0].groups[0].id
+            task = { title: 'New Item' }
+        }
+
         const board = await getByBoardId(boardId)
         const group = await getByGroupId(boardId, groupId)
         if (task.id) {
@@ -155,10 +162,12 @@ async function saveTask(boardId, groupId, task) {
             })
         } else {
             task = _createTask(task)
-            group.tasks.push(task)
             board.groups.forEach((group, idx) => {
-                if (group.id === groupId)
-                    board.groups[idx] = group
+                if (group.id === groupId) {
+                    if (task.title === 'New Item')
+                        board.groups[idx].tasks.unshift(task)
+                    else board.groups[idx].tasks.push(task)
+                }
             })
         }
         return storageService.put(STORAGE_KEY, board)

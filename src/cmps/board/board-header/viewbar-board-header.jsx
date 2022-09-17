@@ -8,6 +8,9 @@ import { AiOutlineEyeInvisible } from 'react-icons/ai'//Hide
 import { HiOutlineDotsHorizontal } from 'react-icons/hi' //More
 import { AiOutlinePlusCircle } from 'react-icons/ai' //Plus
 import { HiOutlineInbox } from 'react-icons/hi' //box
+import { useDispatch } from "react-redux"
+import { addTask } from "../../../store/actions/board.action.js"
+import { useRef } from "react"
 
 //IoHomeOutline - Main Table
 //RiErrorWarningLine - description
@@ -20,16 +23,22 @@ import { HiOutlineInbox } from 'react-icons/hi' //box
 //IoIosCheckmarkCircleOutline -checklist 
 
 
-export function ViewbarBoardHeader({onSaveGroup}) {
+export function ViewbarBoardHeader({ onSaveGroup }) {
+
+    const dispatch = useDispatch()
+
+    const onSaveTask = () => {
+        dispatch(addTask())
+    }
 
     return (
         <div className="board-header-view-bar flex ">
             <div className="new-item-btn flex ">
-                <button className="view-nav-btn btn">New Item   </button>
+                <button onClick={onSaveTask} className="view-nav-btn btn">New Item</button>
                 <section className="dropdown">
                     <button className="view-nav-btn-arrow">< IoIosArrowDown className="arrow-down" /></button>
                     <div className="dropdown-content flex column ">
-                        <i> <AiOutlinePlusCircle className="dropdown-icon" /> <span> + Add new Item </span></i>
+                        <i onClick={onSaveTask}> <AiOutlinePlusCircle className="dropdown-icon" /> <span> + Add new Item </span></i>
                         <i onClick={onSaveGroup}> <HiOutlineInbox className="dropdown-icon" /><span> + New group of Items </span></i>
 
                     </div>

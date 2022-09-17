@@ -35,7 +35,6 @@ export const BoardDetails = () => {
     //         </section>
     //     )
     // }
-    
     return (
         <section className="board-details">
             {board && <BoardHeader board={board} onSaveBoard={onSaveBoard} />}

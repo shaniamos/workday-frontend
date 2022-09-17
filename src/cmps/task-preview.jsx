@@ -36,10 +36,10 @@ export const TaskPreview = ({ task, groupId, groupColor }) => {
     }
 
     const { persons, status, priority, deadline, lastUpdated } = task
-    let date = new Date(1607110465663)
+    let date = new Date(Date.now())
     return (
         <React.Fragment>
-
+            
             <div className="board-preview flex">
 
                 <div className="dropdown">
