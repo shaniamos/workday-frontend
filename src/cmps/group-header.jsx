@@ -8,7 +8,9 @@ import { HiOutlineDotsHorizontal } from 'react-icons/hi' //More
 import { MdDeleteOutline } from 'react-icons/md'//Delete
 import { HiOutlineDocumentDuplicate } from 'react-icons/hi'//Duplicate
 
-export const GroupHeader = ({ groupColor }) => {
+export const GroupHeader = ({ groupColor, onRemoveGroup }) => {
+
+
 
     return (
 
@@ -17,7 +19,7 @@ export const GroupHeader = ({ groupColor }) => {
             <div className="dropdown">
                 <div ><HiOutlineDotsHorizontal className="dot" /></div>
                 <div className="dropdown-content">
-                    <a>< MdDeleteOutline /> Delete Gruop</a>
+                    <a onClick={() => onRemoveGroup()}>< MdDeleteOutline /> Delete Gruop</a>
                     <a><HiOutlineDocumentDuplicate /> Duplicate</a>
                 </div>
             </div>
@@ -26,6 +28,7 @@ export const GroupHeader = ({ groupColor }) => {
 
 
                 <div className="task-name-area group-task-name-area  preview-cell flex">
+                    
                     <div className="task-group-color task-group-color-header" style={{ backgroundColor: `var(${groupColor})` }}></div>
                     <div className="preview-checkbox"><input className="input-checkbox" type="checkbox" name="" id="" /></div>
                     <span>Item</span>

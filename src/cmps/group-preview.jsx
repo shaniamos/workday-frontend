@@ -32,7 +32,7 @@ export const GroupPreview = ({ group }) => {
     }
     return (
         <section className="group-preview">
-            <button onClick={onRemoveGroup}>Delete Group</button>
+            {/* <button onClick={onRemoveGroup}>Delete Group</button> */}
 
             {/* Board Name  */}
             <div className="group-header-name flex">
@@ -44,7 +44,7 @@ export const GroupPreview = ({ group }) => {
             </div>
 
             {/* Board identifier (color, checkbox, task name, persons, status, priority....) */}
-            <GroupHeader groupColor={group.colorId} />
+            <GroupHeader groupColor={group.colorId} onRemoveGroup={onRemoveGroup} />
 
             {/* Task lines  */}
             <TaskList tasks={group.tasks} groupId={group.id} groupColor={group.colorId} />
