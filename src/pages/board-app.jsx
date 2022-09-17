@@ -17,9 +17,9 @@ export const BoardApp = () => {
         dispatch(loadBoards())
     }, [params.id])
 
-    if (!boards) return <section className='monday-loader-page'>
-        <img className='monday-loader-animation' src="https://cdn.monday.com/images/loader/loader.gif" alt="" />
-    </section>
+    // if (!boards) return <section className='monday-loader-page'>
+    //     <img className='monday-loader-animation' src="https://cdn.monday.com/images/loader/loader.gif" alt="" />
+    // </section>
     return (
         <section className="board-app flex">
             <SubSidebar  />
