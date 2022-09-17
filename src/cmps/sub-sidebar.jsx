@@ -18,7 +18,8 @@ import { addBoard, loadSelectedBoard, removeBoard } from '../store/actions/board
 import { useNavigate, useParams } from 'react-router-dom'
 
 
-export function SubSidebar() {
+export function SubSidebar({isOpen}) {
+    // isNavOpen = true
     const boards = useSelector(state => state.boardModule.boards)
     const [isNavOpen, setNavOpen] = useState()
     const [isDropDownOpen, setDropDownOpen] = useState(false)
@@ -55,6 +56,7 @@ export function SubSidebar() {
         setDropDownOpen(!isDropDownOpen)
         console.log('isDropDownOpen', isDropDownOpen);
     }
+    console.log('isNavOpen', isNavOpen);
 
     return (
 

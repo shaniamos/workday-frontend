@@ -1,0 +1,33 @@
+.user-msg {
+    position: fixed;
+    z-index: 20;
+    padding: 8px;
+    height: 48px;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    gap: 10px;
+    border-radius: 4px;
+    background-color: #258750;
+    color: white;
+    font-size: rem(14px);
+}
+.user-msg button {
+    float:right;
+    border:0;
+    color: white;
+    // border-radius: 50%;
+    margin: 5px;
+    background-color: #258750;
+}
+
+.user-msg.success {
+    // background-color: rgb(41, 189, 73);
+}
+.user-msg.danger {
+    background-color: rgb(216, 59, 59);
+}
+
+
+
+

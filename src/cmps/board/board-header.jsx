@@ -43,6 +43,7 @@ export function BoardHeader({ board }) {
     return (
         <header className="board-header-container">
             <div className="board-header-content">
+                
                 <MainBoardHeader board={board} />
                 <ToolbarBoardHeader />
                 <ViewbarBoardHeader onSaveGroup={onSaveGroup} />

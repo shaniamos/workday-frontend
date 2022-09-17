@@ -1,4 +1,5 @@
 import { boardService } from "../../services/board.service.local.js"
+import { showErrorMsg, showSuccessMsg } from "../../services/event-bus.service.js"
 
 // CRUDL BOARD
 
@@ -28,13 +29,17 @@ export function loadSelectedBoard(boardId, filterBy = {}) {
 
 //remove board 
 export function removeBoard(boardId) {
+    console.log('boardId', boardId);
     return async (dispatch) => {
         try {
             const board = await boardService.removeBoard(boardId)
+            console.log('board',board);
             dispatch({ type: 'REMOVE_BOARD', boardId })
             dispatch({ type: 'RESET_SELECTED_BOARD' })
+            showSuccessMsg(`board successfully deleted`)
         } catch (err) {
-            console.error('err:', err)
+            showErrorMsg('Cannot delete board')
+            console.log('Cannot delete board', err)
         }
     }
 }
