@@ -12,23 +12,20 @@ import { MdDeleteOutline } from 'react-icons/md'
 import { HiOutlineDocumentDuplicate } from 'react-icons/hi'
 import { RiPencilLine } from 'react-icons/ri'
 import { HiOutlineArchive } from 'react-icons/hi'
-import { useDispatch, useSelector } from "react-redux"
+import { useDispatch } from "react-redux"
 import { Link } from "react-router-dom"
-import { addBoard, loadSelectedBoard, removeBoard } from '../store/actions/board.action.js'
+import { addBoard, removeBoard } from '../store/actions/board.action.js'
 import { useNavigate, useParams } from 'react-router-dom'
 
 
-export function SubSidebar() {
-    const boards = useSelector(state => state.boardModule.boards)
+export function SubSidebar({ boards }) {
     const [isNavOpen, setNavOpen] = useState()
     const [isDropDownOpen, setDropDownOpen] = useState(false)
     const dispatch = useDispatch()
     const navigate = useNavigate()
-    const params = useParams()
 
     const toggleSubSidebar = () => {
         setNavOpen(!isNavOpen)
-        console.log(isNavOpen);
     }
 
     const onAddBoard = () => {
@@ -45,15 +42,18 @@ export function SubSidebar() {
             console.error(err)
         }
     }
-    const onRemoveBoard = (boardId) => {
-        dispatch(removeBoard(boardId))
-        navigate(`/board/b101`)
-        setDropDownOpen(!isDropDownOpen)
+    const onRemoveBoard = async (boardId) => {
+        try {
+            await dispatch(removeBoard(boardId))
+            navigate(`/board/${boards[0]._id}`)
+            setDropDownOpen(!isDropDownOpen)
+        } catch (err) {
+            console.error(err)
+        }
     }
 
     const onToggleDropdown = () => {
         setDropDownOpen(!isDropDownOpen)
-        console.log('isDropDownOpen', isDropDownOpen);
     }
 
     return (
@@ -65,7 +65,7 @@ export function SubSidebar() {
             </div>
             {isNavOpen && (
                 <div>
-                    <div className="workspace-sidebar flex space-between ">
+                    <div className="workspace-sidebar flex space-between">
                         <span>Workspace</span>
                         <HiDotsHorizontal className="dot" />
                     </div>
@@ -80,7 +80,7 @@ export function SubSidebar() {
                     </div>
 
                     <div>
-                        <div className="workspace-options flex column ">
+                        <div className="workspace-options flex column">
                             <div className="action-btn ">
 
                                 <a onClick={onSaveBoard} className="flex  option"> <GrAdd /><span>Add</span></a>

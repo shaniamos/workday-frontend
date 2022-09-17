@@ -15,7 +15,6 @@ export const TaskList = ({ tasks, groupId, groupColor }) => {
     })
 
     const onSaveTask = (event) => {
-        console.log('hi task')
         event.preventDefault()
         const boardId = params.id
         dispatch(addTask(boardId, groupId, task))

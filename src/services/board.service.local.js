@@ -40,7 +40,6 @@ async function query(filterBy) {
                 boards = boards.filter(board => board.price >= minPrice)
             }
         }
-
         return boards
     } catch (err) {
         console.error(err)
@@ -177,7 +176,7 @@ function _createBoard(board) {
             style: {},
             tasks: [],
             colorId: '--color-default_group_color',
-            
+
         },
         {
             id: utilService.makeId(),
