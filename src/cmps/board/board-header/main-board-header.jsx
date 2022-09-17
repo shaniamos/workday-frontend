@@ -5,12 +5,19 @@ import { FaStumbleuponCircle } from 'react-icons/fa'
 import { useDispatch } from "react-redux"
 import { useFormRegister } from "../../../hooks/useFormRegister.js"
 import { updateBoard } from "../../../store/actions/board.action.js"
+import { useEffect } from "react"
+import { useParams } from "react-router-dom"
 
-export function MainBoardHeader({board}) {
+export function MainBoardHeader({ board }) {
     const dispatch = useDispatch()
+    const params = useParams()
     const [register, setNewBoard, newBoard] = useFormRegister({
         title: board.title
     })
+
+    useEffect(() => {
+        newBoard.title = board.title
+    }, [board])
 
     const onSaveBoard = (event) => {
         event.preventDefault()
@@ -39,7 +46,7 @@ export function MainBoardHeader({board}) {
                 </button>
                 <div className="btn-last-seen flex">
                     Last seen
-                    <PersonCircle persons={board.members}/>
+                    <PersonCircle persons={board.members} />
                 </div>
                 <div className="btn-invite-subscribers">
                     <RiUserAddLine /> Invite/ <span>9</span>

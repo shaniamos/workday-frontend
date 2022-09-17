@@ -1,8 +1,10 @@
 .sub-sidebar-container {
     background-color: #f6f7fb;
+    box-shadow: -1px 0px 7px 1px #605d5d;
     height: 100vh;
     min-width: 30px;
-    border-right: 1px solid #5c6575;
+    border-right: 1px solid #e3edff;
+    
     transition: .1s ease;
 
     .workspace-icon {
@@ -68,7 +70,7 @@
             position: absolute;
             display: none;
             padding-bottom: 6px;
-            font-size: 18px;
+            font-size: 13px;
             transition: color .2s;
             transform: translateY(-15px);
             z-index: 10;
@@ -87,7 +89,7 @@
             cursor: pointer;
             width: 90%;
             align-items: center;
-            font-size: rem(17px);
+            font-size: rem(16px);
             transition: background-color .2s;
             padding-left: 6px;
             padding-top: 4px;

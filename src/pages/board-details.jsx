@@ -16,10 +16,6 @@ export const BoardDetails = () => {
         dispatch(loadSelectedBoard(params.id))
     }, [params.id])
 
-    const onRemoveBoard = () => {
-        dispatch(removeBoard(board._id))
-    }
-
     const onSaveBoard = async () => {
         try {
             const title = prompt("Please enter a board name")
@@ -39,11 +35,10 @@ export const BoardDetails = () => {
     //         </section>
     //     )
     // }
+    
     return (
         <section className="board-details">
             {board && <BoardHeader board={board} onSaveBoard={onSaveBoard} />}
-            {/* <button onClick={onRemoveBoard}>Remove Board</button> */}
-            {/* <button onClick={onSaveBoard}>+ Add New Board</button> */}
             <div className='board-content'>
                 {board && < GroupList groups={board.groups} />}
             </div>

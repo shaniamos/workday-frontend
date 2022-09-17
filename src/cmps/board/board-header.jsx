@@ -1,9 +1,5 @@
 // import { NavLink, useNavigate } from "react-router-dom";
-import { useEffect, useState } from "react"
-import { connect, useSelector, useDispatch } from "react-redux"
-import { Link, NavLink, Route, Routes } from "react-router-dom"
-import { BoardDesc } from "../board-desc"
-import { useParams } from 'react-router-dom'
+import { useDispatch } from "react-redux"
 // import { addGroup } from "../store/actions/board.action.js"
 import { addGroup } from "../../store/actions/board.action.js"
 
@@ -30,11 +26,10 @@ export function BoardHeader({ board }) {
     // useEffect(() => {
     //     setTitle(selectedBoard.title)
     // }, [])
-    const params = useParams()
     const dispatch = useDispatch()
 
     const onSaveGroup = () => {
-        const boardId = params.id
+        const boardId = board._id
         const group = { title: 'New Group' }
         console.log(boardId, group)
         dispatch(addGroup(boardId, group))

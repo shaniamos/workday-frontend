@@ -1,33 +1,40 @@
 .user-msg {
     position: fixed;
-    z-index: 20;
     padding: 8px;
+    padding-right: 15px;
     height: 48px;
     top: 20px;
     left: 50%;
-    transform: translateX(-50%);
     gap: 10px;
-    border-radius: 4px;
-    background-color: #258750;
     color: white;
-    font-size: rem(14px);
-}
-.user-msg button {
-    float:right;
-    border:0;
-    color: white;
-    // border-radius: 50%;
-    margin: 5px;
     background-color: #258750;
+    border-radius: 6px;
+    font-size: rem(16px);
+    flex-direction: row-reverse;
+    transform: translateX(-50%);
+    z-index: 100;
+
+    button {
+        width: 36px;
+        height: 32px;
+        border-radius: 6px;
+        cursor: pointer;
+        border: 0;
+        color: white;
+        margin: 5px;
+        padding: 4px 8px;
+        background-color: #258750;
+    }
+    .msg-btn {
+        border: 1px solid rgb(206, 204, 204);
+    }
 }
 
-.user-msg.success {
-    // background-color: rgb(41, 189, 73);
+.user-msg button:hover {
+    background-color: #007038;
+    ;
 }
+
 .user-msg.danger {
     background-color: rgb(216, 59, 59);
 }
-
-
-
-

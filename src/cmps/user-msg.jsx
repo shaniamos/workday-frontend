@@ -1,5 +1,6 @@
 import React from 'react'
 
+import { MdOutlineDone } from 'react-icons/md'
 import { eventBusService } from '../services/event-bus.service.js'
 
 
@@ -17,7 +18,7 @@ export class UserMsg extends React.Component {
       this.setState({ msg })
       setTimeout(() => {
         this.setState({ msg: null })
-      }, 2500)
+      }, 4500)
     })
   }
 
@@ -31,10 +32,12 @@ export class UserMsg extends React.Component {
     const msgClass = msg.type || ''
     return (
       <section className={'user-msg flex align-center ' + msgClass}>
-        <button onClick={() => {
+        <button className='msg-btn'  onClick={() => {
           this.setState({ msg: null })
         }}>X</button>
-        {this.state.msg.txt}
+        {msg.txt}
+        <MdOutlineDone />
+
       </section>
     )
   }
