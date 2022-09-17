@@ -6,6 +6,7 @@
     // position: fixed;
     top: 0;
     left: 0;
+    position: sticky;
     background-color: var(--primary-background-color);
     z-index: 2;
 }
@@ -124,7 +125,6 @@
         display: flex;
         justify-content: center;
         align-items: center;
-
     }
 
     & a {
@@ -135,8 +135,6 @@
 
         }
     }
-
-    // width: 100%;
 }
 
 .board-header-tool-bar a {
