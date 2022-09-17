@@ -1,5 +1,4 @@
 .board-details {
-    margin-left: 255px;
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -8,7 +7,8 @@
     width: 100%;
     opacity: 1;
     visibility: visible;
-    border: 1px solid black;
+    // border: 1px solid black;
+    // padding-right: 16px;
     // border-color: transparent;
 
 }

@@ -1,0 +1,21 @@
+
+.label-type{
+    color: white;
+}
+.task-preview {
+    flex: 0 0 6px;
+
+    &:hover {
+        z-index: 100;
+        box-shadow: 4px 3px 6px -3px var(--ui-border-color);
+    }
+}
+
+.task-name {
+    @include editable-heading;
+}
+
+.name-cell {
+    @include cell;
+
+}
