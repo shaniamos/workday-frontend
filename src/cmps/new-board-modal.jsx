@@ -31,14 +31,14 @@ export const NewBoardMoadl = ({ toggleNewBoardModal }) => {
     }
 
     return (
-        <section className="add-modal flex column">
-            <div className="close-modal-btn" onClick={toggleNewBoardModal}>
-                <span><GoX /></span>
+        <section className="add-modal flex column justify-center align-center">
+            <div className="close-modal-btn flex align-center" onClick={toggleNewBoardModal}>
+                <span>X</span>
             </div>
             <h1 className="create-board">Create board</h1>
             <label> Board name:
                 <div className='input-container'>
-                    <input className="create-board-input" ref={inputRef} {...register('title', 'text')} />
+                    <input className="create-board-input clean-input" ref={inputRef} {...register('title', 'text')} />
                     <div className="modal-btns" >
                         <button className="cancel-modal-btn" onClick={toggleNewBoardModal}>Cancel</button>
                         <button className="create-modal-btn" onClick={onSaveBoard}>Create Board</button>
