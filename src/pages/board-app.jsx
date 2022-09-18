@@ -5,7 +5,7 @@ import { useParams } from 'react-router-dom'
 import { BoardDetails } from './board-details'
 import { SubSidebar } from '../cmps/sub-sidebar.jsx'
 import { UserMsg } from "../cmps/user-msg.jsx"
-
+import { MainSidebar } from '../cmps/main-sidebar.jsx'
 
 export const BoardApp = () => {
     const boards = useSelector(state => state.boardModule.boards)
@@ -21,8 +21,9 @@ export const BoardApp = () => {
     // </section>
     return (
         <section className="board-app flex">
+            <MainSidebar />
             <UserMsg boards={boards} />
-            <SubSidebar boards={boards} isOpen={true}/>
+            <SubSidebar boards={boards} isOpen={true} />
             <BoardDetails />
         </section>
     )

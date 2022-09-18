@@ -4,13 +4,16 @@ import { BoardDesc } from './cmps/board-desc.jsx'
 import { TaskEdit } from './pages/task-edit.jsx'
 import { LoginSignup } from './pages/login-signup.jsx'
 
-
 // Routes accesible from the main navigation (in AppHeader)
 const routes = [
     {
         path: '/',
         component: <Home/>,
         label: 'Home', //LOGO 
+    },
+    {
+        path: 'board/:id/edit/:taskId',
+        component: <TaskEdit/>,
     },
     {
         path: 'board/:id',
@@ -20,10 +23,6 @@ const routes = [
     //     path: 'board/:id/description',
     //     component: <BoardDesc/>,
     // },
-    {
-        path: 'board/:boardId/edit/:taskId',
-        component: <TaskEdit/>,
-    },
     {
         path: 'auth/:status',
         component: <LoginSignup/>,
