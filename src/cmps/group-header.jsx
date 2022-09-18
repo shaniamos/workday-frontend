@@ -16,28 +16,31 @@ export const GroupHeader = ({ groupColor, onRemoveGroup }) => {
 
         <div className='preview-group-header flex'>
             <div ><HiOutlineDotsHorizontal className="dot" /></div>
-            <div className="preview-cell group-header-identifier  flex">
-                <div className="task-name-area group-task-name-area  preview-cell flex">
-
+            <div className="group-header-identifier  flex">
+                <div className="cell task-name-area group-task-name-area cell sticky-feature flex">
                     <div className="task-group-color task-group-color-header" style={{ backgroundColor: `var(${groupColor})` }}></div>
                     <div className="preview-checkbox"><input className="input-checkbox" type="checkbox" name="" id="" /></div>
-                    <span>Item</span>
+                    <div className='header-identifier-title'>Item</div>
 
                 </div>
-                <div className="group-column-person">
+
+                <div className="cell persons-header">
                     <span>Person</span>
                 </div>
-                <div className="group-column-status">
+                <div className="cell label-type">
                     <span>Status</span>
                 </div>
-                <div className="group-column-priority">
+                <div className="cell label-type">
                     <span>Priority</span>
                 </div>
-                <div className="group-column-last-updated">
-                    <span>LastUpdated</span>
+                <div className="cell last-updated">
+                    <span>Last Updated</span>
                 </div>
-                <div className="group-column-due-date">
+                <div className="cell date-header">
                     <span>Due Date</span>
+                </div>
+                <div className="cell add-column">
+                    <span>+</span>
                 </div>
             </div>
 

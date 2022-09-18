@@ -35,21 +35,21 @@ export const GroupPreview = ({ group }) => {
         dispatch(updateGroup(boardId, group))
     }
     return (
-        <section className="group-preview">
+        <section className="group-preview ">
             {/* <button onClick={onRemoveGroup}>Delete Group</button> */}
 
             {/* Board Name  */}
-            <div className="group-header-name flex">
-            <div className="dropdown">
-                <div ><HiOutlineDotsHorizontal className="dots" /></div>
-                <div className="dropdown-content">
-                    <a onClick={() => onRemoveGroup()}>< MdDeleteOutline /> Delete Gruop</a>
-                    <a><HiOutlineDocumentDuplicate /> Duplicate</a>
+            <div className="group-header-name heading-component flex  sticky-feature">
+                <div className="dropdown">
+                    <div ><HiOutlineDotsHorizontal className="dots" /></div>
+                    <div className="dropdown-content">
+                        <a onClick={() => onRemoveGroup()}>< MdDeleteOutline /> Delete Gruop</a>
+                        <a><HiOutlineDocumentDuplicate /> Duplicate</a>
+                    </div>
                 </div>
-            </div>
                 <span className="collapse-group-button"><BsChevronDown /></span>
                 <form onSubmit={onSaveTask}>
-                    <input {...register('title', 'text')} className="group-name-input clean-input"/>
+                    <input {...register('title', 'text')} className="group-name-input clean-input" />
                 </form>
                 <span className="group-task-count">{`${group.tasks.length} items`}</span>
             </div>

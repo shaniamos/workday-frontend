@@ -23,18 +23,20 @@ export const TaskList = ({ tasks, groupId, groupColor }) => {
 
     return (
         <React.Fragment>
-
             {tasks.map(task => <TaskPreview key={task.id} task={task} groupId={groupId} groupColor={groupColor} />)}
-
-            <div className="task-name-area flex ">
-                <div className="task-group-color" style={{ backgroundColor: `var(${groupColor})` }}></div>
-                <div className="preview-checkbox"><input className="input-checkbox" type="checkbox" name="" id="" /></div>
-
-                <form onSubmit={onSaveTask}>
-                    <input {...register('title', 'text')} className="clean-input" placeholder="+ Add Item" />
-                </form>
+            {/* NEW TASK */}
+            <div className="preview-new-task sticky-feature ">
+                <div className=" cell task-name-area flex ">
+                    <div className="task-group-color" style={{ backgroundColor: `var(${groupColor})` }}></div>
+                    <div className="preview-checkbox"><input className="input-checkbox" type="checkbox" name="" id="" /></div>
+                    <div className="editable-heading task-name-heading">
+                        <form className="clean-input" onSubmit={onSaveTask}>
+                            <input {...register('title', 'text')} className="clean-input" placeholder="+ Add Item" />
+                        </form>
+                    </div>
+                </div>
             </div>
-        </React.Fragment>
+        </React.Fragment >
 
     )
 }

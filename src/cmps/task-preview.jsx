@@ -45,7 +45,7 @@ export const TaskPreview = ({ task, groupId, groupColor }) => {
     return (
         <React.Fragment>
 
-            <div className="board-preview flex">
+            <div className="preview-full-task flex">
 
                 <div className="dropdown">
                     <div ><HiOutlineDotsHorizontal className="dot" /></div>
@@ -55,26 +55,27 @@ export const TaskPreview = ({ task, groupId, groupColor }) => {
                     </div>
                 </div>
 
-                <section className="preview-cell task-preview flex">
-                    {/* Item area (color, checkbox, name) */}
-                    <div className="task-name-area preview-cell flex">
-                        <div className="task-group-color" style={{ backgroundColor: `var(${groupColor})` }}></div>
+                <section className="task-preview flex">
+                    <div className="cell task-name-area sticky-feature flex">
+                        <div className="task-group-color" style={{ backgroundColor: `var(${groupColor})`, borderBlock: `0.5px solid var(${groupColor})` }}></div>
                         <div className="preview-checkbox"><input className="input-checkbox" type="checkbox" name="" id="" /></div>
-                        <form className="" onSubmit={onSaveTask}>
-                            {/* <RiArrowRightSLine /> */}
-                            <input className="task-name clean-input" {...register('title', 'text')} />
-                        </form>
-                        <Link to={`/board/${params.id}/edit/${task.id}`}>
-                            <div className="flex"><TbArrowsDiagonal />Open</div>
-                            <div className="preview-update"><BiMessageRoundedAdd /></div>
+                        <div className="btn-subitem"><RiArrowRightSLine className="subitem-icon" /></div>
+                        <div className="task-name-heading">
+                            <form className="editable-heading" onSubmit={onSaveTask}>
+                                <input className="clean-input" {...register('title', 'text')} />
+                            </form>
+                        </div>
+                        <Link to={`/board/${params.id}/edit/${task.id}`} className="">
+                            <div className="btn-open-task flex"><TbArrowsDiagonal />Open</div>
                         </Link>
+                            <div className="btn-updates-count"><BiMessageRoundedAdd /></div>
                     </div>
 
-                    {/* Persons / Responsbility */}
-                    <div> {typeof persons === 'object' && <PersonCircle persons={persons} />}</div>
+                     {/* Persons / Responsbility */}
+                    <div className="cell persons-header"> {typeof persons === 'object' && <PersonCircle persons={persons} />}</div>
 
                     {/* Status */}
-                    <StatusTypeDisplay label='status' value={`${status}`} />
+                    <StatusTypeDisplay  label='status' value={`${status}`} />
 
                     {/* Priority */}
                     <StatusTypeDisplay label='priority' value={`${priority}`} />
@@ -83,9 +84,11 @@ export const TaskPreview = ({ task, groupId, groupColor }) => {
                     <LastUpdated lastUpdated={lastUpdated} />
 
                     {/* Due Date */}
-                    <div>
+                    <div className="cell date-header">
                         {date.getDate() + "/" + (date.getMonth() + 1) + "/" + date.getFullYear()}
-                    </div>
+                    </div> 
+                    {/* Empty column */}
+                    <div className="cell add-column"></div> 
 
                     {/* <div onClick={onRemoveTask}> Delete</div> */}
 

@@ -1,56 +1,17 @@
-.preview-group-header {
-    position: sticky;
-    top: 213px;
-    background-color: white;
-    z-index: -2;
-    box-shadow: 4px 6px 15px -8px var(--ui-border-color);
-
-    .dot {
-        cursor: pointer;
-        opacity: 0;
-        display: block;
-        height: 35px;
-        font-size: 18px;
-        transition: background-color .2s;
-        border-radius: 6px 0 0 6px;
-        &:hover {
-            background-color:#dcdfec; 
-        }
-    }
-}
-
-.preview-cell {
-    display: flex;
-    width: 100%;
-
-    >* {
-        @include cell;
-        border-top: 0.5px solid #d0d4e4;
-        border-inline-start: 0.5px solid #d0d4e4;
-        width: 100%;
-        display: flex;
-        align-items: center;
-        font-size: 14px;
-
-        &.task-name {
-            font-size: 14px;
-        }
-
-    }
-}
-
+// GROUP HEADER NAME " ^ Backend "
 .group-header-name {
+    cursor: grab;
     display: flex;
     align-items: center;
+    position: sticky;
+    top: 173px;
     height: 40px;
     font-size: 18px;
     margin-left: 4px;
-    cursor: grab;
-    position: sticky;
-    top: 173px;
+    z-index: 1;
     background-color: white;
 
-    & span {
+    span {
         display: inline-block;
         margin-right: 2px;
         margin-left: 9px;
@@ -59,11 +20,11 @@
         cursor: pointer;
     }
 
-    & .group-name-input {
+    .group-name-input {
         @include editable-heading;
     }
 
-    & .group-task-count {
+    .group-task-count {
         opacity: 0;
         font-size: 14px;
         line-height: 22px;
@@ -76,51 +37,80 @@
     }
 }
 
-.task-name-area {
-   
-    &.group-task-name-area {
-        & span {
-            justify-content: center
-        }
-    }
-
-    & .task-group-color {
-        width: 5px;
-
-        &.task-group-color-header {
-            border-top-left-radius: 10px
-        }
-    }
 
 
-    & .preview-checkbox,
-    .preview-update {
-        width: 40px;
-        justify-content: center;
-    }
+//COLUMNS NAMES LINE 
+.preview-group-header {
+    position: sticky;
+    top: 213px;
+    z-index: 1;
+    width: 100%;
+    background-color: white;
+    box-shadow: 4px 6px 15px -8px var(--ui-border-color);
 
-    & .input-checkbox {
+    .dot {
         cursor: pointer;
-        visibility: visible;
-        height: 16px;
-        width: 16px;
-        border: 1px solid;
-        border-color: #e6e9ef;
-        border-radius: 2px;
-        transition: transform var(--motion-productive-short) var(--motion-timing-enter);
+        opacity: 0;
+        display: block;
+        height: 35px;
+        font-size: 18px;
+        transition: background-color .2s;
+        border-radius: 6px 0 0 6px;
+
+        &:hover {
+            background-color: #dcdfec;
+        }
     }
 
+    
+    .group-header-identifier{
 
+        .cell{
+            @include cell;
+        }
+        .task-name-area{
+            width: 400px;
+
+            .task-group-color{
+                width: 6px;
+                height: 100%;
+                border-top-left-radius: 10px
+            }
+            .preview-checkbox {
+                @include checkbox;
+            }
+            .header-identifier-title{
+                margin: auto;
+            }
+        }
+
+        .persons-header {
+            width: 150px;
+            @include task-cell-with-content;
+        }
+        .label-type {
+            width: 150px;
+            @include task-cell-with-content;
+        }
+        .last-updated{
+            width: 200px;
+            @include task-cell-with-content;
+        }
+        .date-header{
+            width: 200px;
+            @include task-cell-with-content;
+        }
+        .add-column {
+            width: 400px;
+            padding-inline-start: 10px;
+            font-size: 20px;
+            border-inline-start: 0.5px solid #d0d4e4;
+        }
+    }
 }
 
-
-.group-header-identifier {
-    @include cell;
-    // position: sticky;
-    // top: 173px;
-    // background-color: white;
-    // border-bottom: 1px solid;
-    // box-shadow: 4px 6px 15px -8px var(--ui-border-color);
-    // background-color: var(--primary-background-color);
-    // border-bottom-color: var(--layout-border-color);
+.sticky-feature {
+    position: sticky;
+    left: 40px;
+    // box-shadow: ;
 }

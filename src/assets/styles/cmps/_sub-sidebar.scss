@@ -1,12 +1,11 @@
 .sub-sidebar-container {
     background-color: #f6f7fb;
-    box-shadow: -1px 0px 7px 1px #605d5d;
-    height: 100vh;
-    min-width: 30px;
     border-right: 1px solid #e3edff;
-    
+    min-width: 30px;
     transition: .1s ease;
-    z-index: 200;
+    // z-index: 200;
+    // color: var(--primary-text-color);
+    // height: 100vh;
 
     .workspace-icon {
         width: 26px;
@@ -16,11 +15,11 @@
         margin-right: 5px;
         background-color: #d83a52;
         color: rgb(255, 255, 255);
-        font-family: roboto-bold;
     }
 
     &.is-open {
         min-width: 254px;
+
         .open-btn {
             position: absolute;
             left: rem(305px);
@@ -41,32 +40,43 @@
         z-index: 100;
         transition: background-color .2s;
     }
+
     .open-btn:hover {
         background-color: #529eee;
     }
-    .workspace-board {
-        position: relative;
-        width: 80%;
-        padding: 6px;
-        padding: 6px;
-        border: 1px solid;
-        border-radius: 4px;
-        border-color: #676879;
-        margin-right: 4px;
-        margin: auto;
-        .workspace-board-name {
-            width: 100%;
 
-            h2 {
-                font-size: rem(16px);
-                text-overflow: ellipsis;
-                white-space: nowrap;
-                font-family: roboto-bold;
-            }
-        }
-    }
 
     .workspace-options {
+
+        color: #323338;
+
+        .spacer {
+            border-bottom: 1px solid;
+            border-color: var(--layout-border-color);
+            margin: 0 20px;
+        }
+
+        .action-btn,
+        .boards-options {
+            padding: 0 16px 16px 14px;
+            justify-content: start;
+
+            .option {
+                padding-left: 6px;
+                height: 32px;
+                border-radius: 4px;
+                width: 100%;
+
+                .menu-btn-inner-text {
+                    font-size: 14px;
+                    margin: 0 8px;
+
+                }
+
+            }
+
+        }
+
         .dropdown-dot .dropdown {
             position: absolute;
             display: none;
@@ -78,51 +88,42 @@
             font-size: 27px;
         }
 
-        justify-content: space-between;
-        color: #323338;
-        flex-grow: 1;
-        padding-left: 16px;
-        height: 50px;
-        padding-bottom: 16px;
-        margin-top: 10px;
-
         .option {
             cursor: pointer;
             width: 90%;
             align-items: center;
             font-size: rem(16px);
             transition: background-color .2s;
-            padding-left: 6px;
-            padding-top: 4px;
-            padding-bottom: 4px;
+            // padding-left: 6px;
+            // padding-top: 4px;
+            // padding-bottom: 4px;
             border-radius: 4px;
-            gap: 16px;
+            // gap: 16px;
 
-            &.last-one {
-                border-bottom: 1px solid #babbc4;
-            }
+
         }
-        
-        .option:hover {
-            background-color: #dcdfec;
+
+        .option:hover,
+        .active:hover {
+            background-color: var(--primary-background-hover-color);
         }
-        .active {
-            background-color: #dcdfec;
-        }
+
+
         .boards-options {
-            padding-top: 17px;
+            padding-top: 16px;
 
             .table-chart {
                 font-size: 18px;
             }
 
             .boards-list {
-                span{
+                span {
                     white-space: nowrap;
                     overflow: hidden;
                     text-overflow: ellipsis;
                     width: 14ch;
                 }
+
                 .dropdown-dot:hover {
                     color: #7f8083
                 }
@@ -130,6 +131,7 @@
 
             .option:hover .dropdown-dot .dropdown {
                 display: block;
+
             }
         }
 
@@ -163,15 +165,17 @@
             display: block;
 
         }
+
         /* Change color of dropdown links on hover */
         .dropdown-content i:hover {
             background-color: #dcdfec;
             border-radius: 8px;
         }
     }
+
     .workspace-sidebar {
         padding-bottom: 6px;
-        padding-top: 6px;
+   
         align-items: center;
         margin: 12px 16px 2px 16px;
 
@@ -192,4 +196,31 @@
             background-color: #dcdfec;
         }
     }
+
+    .workspace-board {
+        position: relative;
+        width: 80%;
+        padding: 6px;
+        padding: 6px;
+        border: 1px solid;
+        border-radius: 4px;
+        border-color: #676879;
+        margin-right: 4px;
+        margin: auto;
+        margin-bottom: 18px;
+
+
+        .workspace-board-name {
+            width: 100%;
+
+            h2 {
+                font-size: rem(16px);
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                font-family: roboto-bold;
+            }
+        }
+    }
+
+
 }

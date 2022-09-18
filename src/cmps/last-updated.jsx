@@ -39,6 +39,7 @@ export function LastUpdated({ lastUpdated }) {
     // console.log(timeSince(new Date(Date.now() - aDay * 2))) 
 
     return (
-    <div className="last-updated">{timeSince(lastUpdated)} </div>
+    <div className="cell last-updated">{timeSince(lastUpdated)} </div>
 )
 }
+//className="cell label-type status-header"

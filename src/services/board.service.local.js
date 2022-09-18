@@ -111,7 +111,7 @@ async function saveGroup(boardId, group) {
     }
 }
 
-// CRDUL Task
+// CRUDL Task
 
 // get task by id
 async function getByTaskId(boardId, groupId, taskId) {
@@ -180,6 +180,13 @@ async function saveTask(boardId, groupId, task) {
         throw err
     }
 }
+
+async function updateTask(boardId, groupId, taskId, taskToUpdate) {
+    // const board = await getBoardById(boardId)
+    // board.groups[groupIdx].tasks.splice(taskIdx, 1, taskToUpdate)
+    // saveBoard(board)
+}
+
 
 function _createBoard(board) {
     board._createdAt = Date.now()

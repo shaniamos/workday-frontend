@@ -43,7 +43,7 @@
 // INPUT
 .clean-input {
     &:focus-visible {
-        outline: 1px solid var(--ui-border-color);
+        outline: none;
     }
 
     border: 0;

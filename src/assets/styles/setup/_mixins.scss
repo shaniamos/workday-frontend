@@ -1,7 +1,4 @@
 @mixin editable-heading {
-    margin: 0;
-    width: 100%;
-    // width: fit-content;
     border-radius: 4px;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -14,12 +11,46 @@
     }
 }
 
+@mixin task-cell-with-content {
+    display: flex;
+    justify-content: center;
+    border-inline-start: 0.5px solid #d0d4e4;
+
+}
+
 @mixin cell {
-    cursor: pointer;
     height: 36px;
     align-items: center;
-    justify-content: center;
-    z-index: -2;
+    border-top: 0.5px solid #d0d4e4;
+    // & :not(:first-of-type) {
+    //     border-inline-start: 0.5px solid #d0d4e4;
+    // }
+}
+
+@mixin checkbox {
+    width: 32px;
+    height: 100%;
+    border-inline: 0.5px solid #d0d4e4;
+    display: flex;
+
+    .input-checkbox {
+        cursor: pointer;
+        height: 16px;
+        width: 16px;
+        margin-inline: auto;
+        margin-block: auto;
+        opacity: .4;
+        transition: transform var(--motion-productive-short) var(--motion-timing-enter);
+    }
+}
+
+@mixin collapsable-icon-btn {
+    transform-origin: center center;
+    // transform: rotate(90deg);
+    transform: rotate(0deg);
+    transition: transform .2s;
+    width: 22px;
+    height: 22px;
 }
 
 
@@ -46,16 +77,14 @@
     }
 }
 
-@mixin btn-modal {
-    
-}
+@mixin btn-modal {}
 
 @mixin btn-arrow($bgColor: rgba(0, 0, 0, 0),
     $color: var(--primary-text-color),
     $hoverBgColor: var(--primary-background-hover-color)) {
-        
-        background-color: var(--color-basic_blue);
-    }
+
+    background-color: var(--color-basic_blue);
+}
 
 @mixin btn($bgColor: rgba(0, 0, 0, 0), $color: var(--primary-text-color), $hoverBgColor: var(--primary-background-hover-color)) {
     display: inline-block;

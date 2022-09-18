@@ -77,17 +77,18 @@ export function SubSidebar({ boards, isOpen }) {
             <div>
                 <div className="workspace-options flex column">
                     <div className="action-btn ">
-                        <a onClick={toggleNewBoardModal} className="flex  option"> <GrAdd /><span>Add</span></a>
-                        <a className="flex  option"> <GrFilter /><span>Filter</span></a>
-                        <a className="flex  option last-one"> <FiSearch /><span>Search</span></a>
+                        <a onClick={toggleNewBoardModal} className="flex  option"> <GrAdd /><span className="menu-btn-inner-text">Add</span></a>
+                        <a className="flex  option"> <GrFilter /><span className="menu-btn-inner-text">Filters</span></a>
+                        <a className="flex  option"> <FiSearch /><span className="menu-btn-inner-text">Search</span></a>
                     </div>
+                    <div className="spacer"></div>
                     <div className="boards-options">
                         {boards.map(board =>
                             <div className="boards-list flex space-between" key={board._id}>
 
                                 <NavLink className="flex inline-flex option" to={`/board/${board._id}`}>
                                     <HiOutlineClipboard className="table-chart flex column align-center" />
-                                    <span>{board.title}</span>
+                                    <span className="menu-btn-inner-text" >{board.title}</span>
                                     <i className="dropdown-dot">
                                         <div className="dropdown" onClick={(ev) => {
                                             ev.preventDefault()
@@ -103,14 +104,11 @@ export function SubSidebar({ boards, isOpen }) {
                                                     ev.stopPropagation()
                                                     onRemoveBoard(board._id)
                                                 }}><MdDeleteOutline className="icon-dropdown" /> Delete</i>
-
                                             </div>}
                                         </div>
                                     </i>
                                 </NavLink>
-
                             </div>
-
                         )}
 
                     </div>

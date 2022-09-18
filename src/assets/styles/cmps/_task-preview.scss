@@ -1,4 +1,123 @@
-.board-preview {
+.preview-full-task {
+    .task-preview {
+
+        .cell {
+            @include cell;
+            font-size: 14px;
+
+        }
+
+        .task-name-area {
+            width: 400px;
+
+            .task-group-color {
+                width: 6px;
+                height: 100%;
+            }
+
+            .preview-checkbox {
+                @include checkbox;
+            }
+
+            .btn-subitem {
+                width: 30px;
+                transition: opacity .2s, transform .2s;
+                display: flex;
+                margin: 7px 4px;
+
+                .subitem-icon {
+                    margin: auto;
+                    opacity: 0;
+                    border-radius: 4px;
+                    color: var(--ui-border-color);
+                    @include collapsable-icon-btn;
+
+                    &:hover {
+                        opacity: 1;
+                        background-color: var(--layout-border-color);
+
+                    }
+                }
+            }
+
+            .btn-open-task {
+                margin-inline: 15px;
+
+            }
+
+            .btn-updates-count {
+                display: flex;
+                align-items: center;
+                height: 100%;
+                padding-inline: 16px;
+                margin-left: 8px;
+                font-size: 24px;
+                color: #c5c7d0;
+                border-left: 1px solid var(--layout-border-color);
+                transition: color 200ms ease;
+
+                // border-left-color: var(--layout-border-color);
+                &:hover {
+                    color: var(--primary-color);
+                }
+            }
+
+            .editable-heading {
+                @include editable-heading;
+            }
+        }
+
+        .persons-header {
+            width: 150px;
+            @include task-cell-with-content;
+        }
+
+        .label-type {
+            width: 150px;
+            @include task-cell-with-content;
+            color: white;
+        }
+
+        .last-updated {
+            width: 200px;
+            @include task-cell-with-content;
+        }
+        .date-header {
+            width: 200px;
+            @include task-cell-with-content;
+        }
+        .add-column {
+            width: 400px;
+            @include task-cell-with-content;
+        }
+    }
+
+    // .cell {
+
+    //     .label-type {
+    //         color: white;
+    //     }
+
+    //     .task-preview {
+    //         &:hover {
+    //             z-index: 100;
+    //             box-shadow: 4px 3px 6px -3px var(--ui-border-color);
+    //         }
+    //     }
+    //     .task-name-area:not(.group-task-name-area) {
+    //         @include editable-heading;
+    //         font-size: 14px
+    //     }
+    //     .name-cell {
+    //         @include cell;
+    //     }
+    //     &.cell:hover {
+    //         .dot {
+    //             opacity: 1;
+    //         }
+    //     }
+    // }
+
     .dot {
         height: 30px;
         font-size: 18px;
@@ -7,39 +126,14 @@
         opacity: 0;
         transition: background-color .2s;
         border-radius: 6px 0 0 6px;
+
         &:hover {
-            background-color:#dcdfec; 
+            background-color: #dcdfec;
         }
     }
+
     &:hover .dot {
         opacity: 1;
-    }
-
-    .preview-cell {
-
-        .label-type {
-            color: white;
-        }
-
-        .task-preview {
-            flex: 0 0 6px;
-            &:hover {
-                z-index: 100;
-                box-shadow: 4px 3px 6px -3px var(--ui-border-color);
-            }
-        }
-        .task-name {
-            @include editable-heading;
-            font-size: 14px
-        }
-        .name-cell {
-            @include cell;
-        }
-        &.preview-cell:hover {
-            .dot {
-                opacity: 1;
-            }
-        }
     }
 
     /* The container <div> - needed to position the dropdown content */
@@ -83,5 +177,36 @@
     .dropdown:hover .dropdown-content {
         display: flex;
         flex-direction: column;
+    }
+}
+
+.preview-new-task {
+
+    .cell {
+        @include cell;
+        position: relative;
+        left: 18px;
+    }
+
+    .task-name-area {
+        width: 400px;
+
+        .task-group-color {
+            width: 6px;
+            height: 100%;
+            opacity: .5;
+            border-bottom-left-radius: 10px;
+        }
+
+        .preview-checkbox {
+            @include checkbox;
+        }
+
+        .editable-heading {
+            margin-block: auto;
+            margin-inline-start: 36px;
+            @include editable-heading;
+        }
+
     }
 }

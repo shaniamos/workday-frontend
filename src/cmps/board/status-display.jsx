@@ -56,6 +56,6 @@ export const StatusTypeDisplay = ({ label, value }) => {
     }
 
     return (
-        <div className="label-type" style={{ backgroundColor: `var(${getColorByLabel(label, value)})` }}>{`${value}`}</div>
+        <div className="cell label-type status-header" style={{ backgroundColor: `var(${getColorByLabel(label, value)})` }}>{`${value}`}</div>
     )
 }
