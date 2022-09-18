@@ -1,24 +1,28 @@
 .task-edit {
-    position: fixed;
-    background-color: white;
-    box-shadow: 0 4px 17px 6px #0000001a;
-    width: rem(500px);
-    height: 100vh;
-    padding: rem(32px);
-    z-index: 15;
+    @include modal;
     top: 0;
     right: 0;
+    transition: transform .6s, box-shadow .6s;
+    transform: translate(0);
 
     .close-modal {
-        height: rem(20px);
-        width: rem(10px);
-        border-radius: 5px;
-        border: 1px solid rgb(216, 211, 211);
-        cursor: pointer;
-        position: absolute;
-        right: rem(16px);
+        @include btn-close-modal;
+        left: rem(16px);
         top: rem(16px);
-        padding: rem(4px) rem(8px);
-        transition: background-color .2s;
     }
+}
+
+.main-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(0 0 0 / 60%);
+    cursor: pointer;
+    opacity: 0;
+
+    pointer-events: none;
+
+    transition: opacity .6s;
 }

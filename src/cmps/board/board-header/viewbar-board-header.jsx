@@ -1,7 +1,8 @@
-import { NavLink } from "react-router-dom"
+// import { NavLink } from "react-router-dom"
 import { IoIosArrowDown } from 'react-icons/io' //New item
 import { FaRegUserCircle } from 'react-icons/fa' //Person
 import { CgArrowsScrollV } from 'react-icons/cg' //Sort
+import ClickAwayListener from '@material-ui/core/ClickAwayListener';
 import { BsSearch } from 'react-icons/bs'  //Search
 import { BiFilterAlt } from 'react-icons/bi'//Filter
 import { AiOutlineEyeInvisible } from 'react-icons/ai'//Hide
@@ -11,6 +12,10 @@ import { HiOutlineInbox } from 'react-icons/hi' //box
 import { useDispatch } from "react-redux"
 import { addTask } from "../../../store/actions/board.action.js"
 import { useRef } from "react"
+import { useState } from "react"
+import { SearchBoard } from "../../search-board.jsx"
+import { FilterBoardByType } from '../../filter-board.jsx';
+
 
 //IoHomeOutline - Main Table
 //RiErrorWarningLine - description
@@ -23,7 +28,9 @@ import { useRef } from "react"
 //IoIosCheckmarkCircleOutline -checklist 
 
 
-export function ViewbarBoardHeader({ onSaveGroup }) {
+export function ViewbarBoardHeader({ onSaveGroup, board, onChangeFilter }) {
+    const [isSearch, setSearch] = useState(false)
+    const [isFilter, setFilter] = useState(false)
 
     const dispatch = useDispatch()
 
@@ -40,13 +47,26 @@ export function ViewbarBoardHeader({ onSaveGroup }) {
                     <div className="dropdown-content flex column ">
                         <i onClick={onSaveTask}> <AiOutlinePlusCircle className="dropdown-icon" /> <span> + Add new Item </span></i>
                         <i onClick={onSaveGroup}> <HiOutlineInbox className="dropdown-icon" /><span> + New group of Items </span></i>
-
                     </div>
                 </section>
             </div>
-            <button className="view-nav-btn arrow"><BsSearch /> Search  </button>
+            <ClickAwayListener onClickAway={() => setSearch(false)}>
+                <div>
+                    {!isSearch && <button className="view-nav-btn" onClick={() => setSearch(!isSearch)}><BsSearch /> <span>Search</span>  </button>}
+                    {isSearch && <SearchBoard contentSearch={'items'} onChangeFilter={onChangeFilter} setSearch={setSearch} />}
+                </div>
+            </ClickAwayListener>
             <button className="view-nav-btn"><FaRegUserCircle /> Person  </button>
-            <button className="view-nav-btn"><BiFilterAlt /> Filter <IoIosArrowDown /> </button>
+
+            <ClickAwayListener onClickAway={() => setFilter(false)}>
+                <div>
+                    <button onClick={() => setFilter(!isFilter)} className="view-nav-btn"><BiFilterAlt /> <p>Filter</p></button>
+                    {isFilter &&
+                        <FilterBoardByType />
+                    }
+                </div>
+            </ClickAwayListener>
+            {/* <button className="view-nav-btn"><BiFilterAlt /> Filter <IoIosArrowDown /> </button> */}
             <button className="view-nav-btn"><CgArrowsScrollV /> Sort  </button>
             <button className="view-nav-btn"><AiOutlineEyeInvisible /> Hide  </button>
             <button className="view-nav-btn"><HiOutlineDotsHorizontal />  </button>
@@ -55,3 +75,9 @@ export function ViewbarBoardHeader({ onSaveGroup }) {
 
     )
 }
+{/* <ClickAwayListener onClickAway={() => setSearch(false)}>
+    <div>
+        {!isSearch && <a className="view-nav-btn arrow" onClick={() => setSearch(!isSearch)}><FiSearch /> <span>Search</span>  </a>}
+        {isSearch && <SearchBoard onChangeFilterBoards={onChangeFilterBoards} setSearch={setSearch} />}
+    </div>
+</ClickAwayListener> */}

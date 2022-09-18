@@ -3,15 +3,15 @@ import { useDispatch } from "react-redux"
 import { useNavigate } from "react-router-dom"
 import { useFormRegister } from "../hooks/useFormRegister.js"
 import { addBoard } from "../store/actions/board.action.js"
+import { GoX } from 'react-icons/go'
 
 export const NewBoardMoadl = ({ toggleNewBoardModal }) => {
 
     const inputRef = useRef()
     const dispatch = useDispatch()
     const navigate = useNavigate()
-    const [isFocusTxt, setFocusTxt] = useState(false)
     const [register, setNewBoardTitle, newBoardTitle] = useFormRegister({
-        title: 'New Board'
+        title: ''
     })
 
     useEffect(() => {
@@ -31,14 +31,14 @@ export const NewBoardMoadl = ({ toggleNewBoardModal }) => {
     }
 
     return (
-        <section className="add-modal flex column">
-            <div className="close-modal-btn" onClick={toggleNewBoardModal}>
+        <section className="add-modal flex column justify-center align-center">
+            <div className="close-modal-btn flex align-center" onClick={toggleNewBoardModal}>
                 <span>X</span>
             </div>
             <h1 className="create-board">Create board</h1>
             <label> Board name:
                 <div className='input-container'>
-                    <input className="create-board-input" ref={inputRef} {...register('title', 'text')} />
+                    <input className="create-board-input clean-input" ref={inputRef} {...register('title', 'text')} />
                     <div className="modal-btns" >
                         <button className="cancel-modal-btn" onClick={toggleNewBoardModal}>Cancel</button>
                         <button className="create-modal-btn" onClick={onSaveBoard}>Create Board</button>
