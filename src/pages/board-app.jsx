@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { loadBoards } from '../store/actions/board.action.js'
-import { useParams } from 'react-router-dom'
+import { Outlet, useParams } from 'react-router-dom'
 import { BoardDetails } from './board-details'
 import { SubSidebar } from '../cmps/sub-sidebar.jsx'
 import { UserMsg } from "../cmps/user-msg.jsx"
@@ -25,6 +25,7 @@ export const BoardApp = () => {
             <UserMsg boards={boards} />
             <SubSidebar boards={boards} isOpen={true} />
             <BoardDetails />
+            <Outlet />
         </section>
     )
 }

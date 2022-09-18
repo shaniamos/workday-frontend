@@ -7,7 +7,7 @@ import { showErrorMsg, showSuccessMsg } from "../../services/event-bus.service.j
 export function loadBoards() {
     return async (dispatch) => {
         try {
-            const boards = await boardService.query()
+            const boards = await boardService.queryBoards()
             dispatch({ type: 'SET_BOARDS', boards })
         } catch (err) {
             console.error('Cannot load boards:', err)
@@ -147,3 +147,4 @@ export function updateTask(boardId, groupId, task) {
         }
     }
 }
+

@@ -3,13 +3,15 @@ import { utilService } from './util.service.js'
 import { board } from '../data/data.js'
 
 export const boardService = {
-    query,
+    queryBoards,
     saveBoard,
     removeBoard,
     getByBoardId,
+    queryGroups,
     saveGroup,
     removeGroup,
     getByGroupId,
+    queryTasks,
     saveTask,
     removeTask,
     getByTaskId,
@@ -20,7 +22,8 @@ const defultBoards = [board]
 
 // CRUDL Board
 
-async function query(filterBy) {
+//get boards
+async function queryBoards(filterBy) {
 
     try {
         let boards = await storageService.query(STORAGE_KEY)
@@ -68,6 +71,24 @@ function saveBoard(board) {
 
 // CRUDL Groups
 
+// get groups
+async function queryGroups(boardId, filterBy = {}) {
+    try {
+        const board = await getByBoardId(boardId)
+        let groups = [...board.groups]
+
+        if (filterBy) {
+            if (filterBy.title) {
+                const regex = new RegExp(filterBy.title, 'i')
+                groups = groups.filter(group => regex.test(group.title))
+            }
+        }
+        return groups
+    } catch (err) {
+        throw err
+    }
+}
+
 // get group by id
 async function getByGroupId(boardId, groupId) {
     try {
@@ -113,6 +134,25 @@ async function saveGroup(boardId, group) {
 
 // CRDUL Task
 
+//get tasks
+async function queryTasks(boardId, groupId, filterBy = {}) {
+    try {
+        const board = await getByBoardId(boardId)
+        const group = await getByGroupId(groupId)
+        let tasks = [...group.tasks]
+
+        if (filterBy) {
+            if (filterBy.title) {
+                const regex = new RegExp(filterBy.title, 'i')
+                tasks = tasks.filter(task => regex.test(task.title))
+            }
+        }
+        return tasks
+    } catch (err) {
+        throw err
+    }
+}
+
 // get task by id
 async function getByTaskId(boardId, groupId, taskId) {
     try {
@@ -145,7 +185,7 @@ async function removeTask(boardId, groupId, taskId) {
 async function saveTask(boardId, groupId, task) {
     try {
         if (!boardId || !groupId || !task) {
-            const boards = await query()
+            const boards = await queryBoards()
             boardId = boards[0]._id
             groupId = boards[0].groups[0].id
             task = { title: 'New Item' }
