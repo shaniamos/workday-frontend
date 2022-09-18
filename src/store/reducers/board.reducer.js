@@ -6,6 +6,7 @@ const INITIAL_STATE = {
     },
     sortBy: 'status',
     isLoading: true,
+
 }
 
 export function boardReducer(state = INITIAL_STATE, action) {
@@ -33,6 +34,9 @@ export function boardReducer(state = INITIAL_STATE, action) {
             return { ...state, sortBy: { ...action.sortBy } }
         case 'SET_LOADING':
             return { ...state, isLoading: action.isLoading }
+
+        case 'UPDATE_SELECTED_BOARD_GROUPS':
+            return { ...state,  selectedBoard: action.board  }
         default:
             return state;
     }

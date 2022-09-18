@@ -1,7 +1,8 @@
-import { NavLink } from "react-router-dom"
+// import { NavLink } from "react-router-dom"
 import { IoIosArrowDown } from 'react-icons/io' //New item
 import { FaRegUserCircle } from 'react-icons/fa' //Person
 import { CgArrowsScrollV } from 'react-icons/cg' //Sort
+import ClickAwayListener from '@material-ui/core/ClickAwayListener';
 import { BsSearch } from 'react-icons/bs'  //Search
 import { BiFilterAlt } from 'react-icons/bi'//Filter
 import { AiOutlineEyeInvisible } from 'react-icons/ai'//Hide
@@ -12,6 +13,8 @@ import { useDispatch } from "react-redux"
 import { addTask } from "../../../store/actions/board.action.js"
 import { useRef } from "react"
 import { useState } from "react"
+import { SearchBoard } from "../../search-board.jsx"
+
 
 //IoHomeOutline - Main Table
 //RiErrorWarningLine - description
@@ -46,7 +49,12 @@ export function ViewbarBoardHeader({ onSaveGroup, board, onChangeFilter }) {
                     </div>
                 </section>
             </div>
-            <button className="view-nav-btn arrow"><BsSearch /> Search  </button>
+            <ClickAwayListener onClickAway={() => setSearch(false)}>
+                <div>
+                    {!isSearch && <button className="view-nav-btn" onClick={() => setSearch(!isSearch)}><BsSearch /> <span>Search</span>  </button>}
+                    {isSearch && <SearchBoard contentSearch={'items'} onChangeFilter={onChangeFilter} setSearch={setSearch} />}
+                </div>
+            </ClickAwayListener>
             <button className="view-nav-btn"><FaRegUserCircle /> Person  </button>
             <button className="view-nav-btn"><BiFilterAlt /> Filter <IoIosArrowDown /> </button>
             <button className="view-nav-btn"><CgArrowsScrollV /> Sort  </button>
@@ -57,3 +65,9 @@ export function ViewbarBoardHeader({ onSaveGroup, board, onChangeFilter }) {
 
     )
 }
+{/* <ClickAwayListener onClickAway={() => setSearch(false)}>
+    <div>
+        {!isSearch && <a className="view-nav-btn arrow" onClick={() => setSearch(!isSearch)}><FiSearch /> <span>Search</span>  </a>}
+        {isSearch && <SearchBoard onChangeFilterBoards={onChangeFilterBoards} setSearch={setSearch} />}
+    </div>
+</ClickAwayListener> */}

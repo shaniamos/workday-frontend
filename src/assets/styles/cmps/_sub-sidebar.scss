@@ -1,25 +1,23 @@
 .sub-sidebar-container {
     background-color: #f6f7fb;
-    box-shadow: -1px 0px 7px 1px #605d5d;
     height: 100vh;
-    min-width: 30px;
-    border-right: 1px solid #e3edff;
-    
+    min-width: rem(30px);
+    border-right: 1px solid #c2c9d8;
     transition: .1s ease;
 
     .workspace-icon {
-        width: 26px;
-        height: 26px;
-        border-radius: 8px;
+        width: rem(26px);
+        height: rem(26px);
+        border-radius: rem(8px);
         justify-content: center;
-        margin-right: 5px;
+        margin-right: rem(5px);
         background-color: #d83a52;
         color: rgb(255, 255, 255);
         font-family: roboto-bold;
     }
 
     &.is-open {
-        min-width: 254px;
+        min-width: rem(254px);
         .open-btn {
             position: absolute;
             left: rem(305px);

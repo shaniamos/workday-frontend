@@ -10,9 +10,8 @@ export const NewBoardMoadl = ({ toggleNewBoardModal }) => {
     const inputRef = useRef()
     const dispatch = useDispatch()
     const navigate = useNavigate()
-    const [isFocusTxt, setFocusTxt] = useState(false)
     const [register, setNewBoardTitle, newBoardTitle] = useFormRegister({
-        title: 'New Board'
+        title: ''
     })
 
     useEffect(() => {

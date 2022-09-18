@@ -8,7 +8,7 @@ export function loadBoards(filterBy) {
     // console.log('filterBy', filterBy);
     return async (dispatch) => {
         try {
-            const boards = await boardService.query(filterBy)
+            const boards = await boardService.queryBoards(filterBy)
             dispatch({ type: 'SET_BOARDS', boards })
         } catch (err) {
             console.error('Cannot load boards:', err)
@@ -155,6 +155,35 @@ export function updateTask(boardId, groupId, task) {
             console.error('err:', err)
         }
     }
+}
+
+export function onSetFilterTasks(boardId) {
+    // console.log('boardId', boardId);
+    return async (dispatch, getState) => {
+        try {
+            const { filterBy } = getState().boardModule
+            console.log('filterBy', filterBy);
+            let groups = await boardService.queryGroups(boardId)
+            let allTasks = groups.map(async (group) => {
+                const tasks = await boardService.queryTasks(boardId, group.id, filterBy)
+                group.tasks = tasks
+                return tasks
+            })
+
+            console.log('allTasks', allTasks);
+
+            //    console.log('groups', groups);
+            const board = await boardService.getByBoardId(boardId)
+            board.groups = groups
+            console.log('board', board);
+            dispatch({ type: "UPDATE_SELECTED_BOARD_GROUPS", board })
+        } catch (err) {
+            console.log(err);
+        }
+
+
+    }
+
 }
 
 

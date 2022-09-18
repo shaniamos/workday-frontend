@@ -51,6 +51,7 @@ export const GroupPreview = ({ group }) => {
                 <form onSubmit={onSaveTask}>
                     <input {...register('title', 'text')} className="group-name-input clean-input"/>
                 </form>
+
                 <span className="group-task-count">{`${group.tasks.length} items`}</span>
             </div>
 

@@ -23,7 +23,7 @@ import ClickAwayListener from '@material-ui/core/ClickAwayListener';
 
 
 export function SubSidebar({ boards, isOpen, onChangeFilter }) {
-    const [isSearch, setSearch] = useState(false)
+    const [isSearchClicked, setSearch] = useState(false)
     const [isNavOpen, setNavOpen] = useState(isOpen)
     const [isNewBoardModalOpen, setNewBoardModalOpen] = useState(false)
     const [isDropDownOpen, setDropDownOpen] = useState(false)
@@ -85,8 +85,8 @@ export function SubSidebar({ boards, isOpen, onChangeFilter }) {
                                     <a className="flex  option"> <GrFilter /><span>Filter</span></a>
                                     <ClickAwayListener onClickAway={() => setSearch(false)}> 
                                     <div>
-                                    {!isSearch && <a className="flex  option last-one" onClick={() => setSearch(!isSearch)}><FiSearch /> <span>Search</span>  </a>}
-                                    {isSearch && <SearchBoard onChangeFilter={onChangeFilter} setSearch={setSearch} />}
+                                    {!isSearchClicked && <a className="flex  option last-one" onClick={() => setSearch(!isSearchClicked)}><FiSearch /> <span>Search</span>  </a>}
+                                    {isSearchClicked && <SearchBoard contentSearch={'boards'} onChangeFilter={onChangeFilter} setSearch={setSearch} />}
                                     </div>
                                     </ClickAwayListener>
                                     

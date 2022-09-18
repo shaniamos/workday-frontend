@@ -1,12 +1,11 @@
 import { useEffect,useState } from "react"
 
 
-export const SearchBoard = (props) => {
-
+export const SearchBoard = ({onChangeFilter, contentSearch}) => {
     const [txt, setInputTxt] = useState('')
-
+    
     useEffect(() => {
-        props.onChangeFilter({ txt })
+        onChangeFilter({ txt }, contentSearch)
     }, [txt])
 
     const handleChange = async (ev) => {
