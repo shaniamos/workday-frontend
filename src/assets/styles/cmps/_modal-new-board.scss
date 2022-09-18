@@ -4,14 +4,19 @@
     box-shadow: 0 4px 17px 6px #0000001a;
     border-radius: 8px;
     width: 500px;
-    height: 310px;
+    height: 250px;
     padding: 32px;
     z-index: 15;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
-    .close-modal {
+    .close-modal-btn {
+        display: flex;
+        align-items: center;
         height: 20px;
         width: 10px;
         border-radius: 5px;
@@ -22,7 +27,6 @@
         top: 16px;
         padding: 4px 8px;
         transition: background-color .2s;
-
         &:hover {
             background-color: rgb(212, 212, 216);
         }
@@ -44,42 +48,53 @@
         outline: none;
         width: 100%;
         border-radius: 4px;
-
-
-        .create-board-input {
-            input {
-                outline: none;
-                border: none;
+        input {
+            font-size: rem(20px);
+            box-shadow: 0px 1px 5px 0 rgba(60, 64, 67, 0.6), 0 1px 3px 1px rgba(60, 64, 67, 0.249);
+            border: none;
+            margin-right: 10px;
+            border-radius: 10px;
+            padding: 7px;
+            outline: none;
+            transition: .3s;
+            background-color: rgb(220 230 236 / 64%);
+            &:focus {
+                background-color: rgb(255, 255, 255);
             }
         }
     }
 
-    .modal-btns{
-        font-size: rem(16px);
-        justify-content: flex-end;
-        margin-top: 16px;
+    .modal-btns {
+        font-family: roboto-bold;
         
+        justify-content: flex-end;
+        margin-top: 50px;
+        margin-left: 60px;
         >* {
             padding: 8px 16px;
         }
-        
+
         .cancel-modal-btn {
             cursor: pointer;
             margin-right: 8px;
             background-color: white;
+            font-size: rem(16px);
             border: none;
             border-radius: 4px;
+
             &:hover {
-                background-color:rgb(212, 212, 216);
+                background-color: rgb(212, 212, 216);
             }
         }
-        
+
         .create-modal-btn {
             background-color: #0073ea;
             border-radius: 4px;
+            font-size: rem(16px);
             cursor: pointer;
             color: white;
             border: none;
+
             &:hover {
                 background-color: #065db9;
             }

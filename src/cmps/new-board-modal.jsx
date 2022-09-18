@@ -31,13 +31,13 @@ export const NewBoardMoadl = ({ toggleNewBoardModal }) => {
     }
 
     return (
-        <section className="add-modal flex column space-evenly">
-            <div className="close-modal header-btn flex align-center" onClick={toggleNewBoardModal}>
+        <section className="add-modal flex column">
+            <div className="close-modal-btn" onClick={toggleNewBoardModal}>
                 <span>X</span>
             </div>
             <h1 className="create-board">Create board</h1>
             <label> Board name:
-                <div className={`input-container ${isFocusTxt ? 'focused-form' : ''}`}>
+                <div className='input-container'>
                     <input className="create-board-input" ref={inputRef} {...register('title', 'text')} />
                     <div className="modal-btns" >
                         <button className="cancel-modal-btn" onClick={toggleNewBoardModal}>Cancel</button>
@@ -49,15 +49,3 @@ export const NewBoardMoadl = ({ toggleNewBoardModal }) => {
     )
 
 }
-
-{/* <input
-                ref={(inputEl) => (this.searchInput = inputEl)}
-                name="title"
-                id="title"
-                type="text"
-                placeholder="New Board"
-                value={title}
-                onChange={this.handleChange}
-                onBlur={() => this.setState({ ...this.state, isFocus: false })}
-                onFocus={() => this.setState({ ...this.state, isFocus: true })}
-              /> */}
