@@ -162,21 +162,10 @@ export function onSetFilterTasks(boardId) {
     return async (dispatch, getState) => {
         try {
             const { filterBy } = getState().boardModule
-            console.log('filterBy', filterBy);
-            let groups = await boardService.queryGroups(boardId)
-            let allTasks = groups.map(async (group) => {
-                const tasks = await boardService.queryTasks(boardId, group.id, filterBy)
-                group.tasks = tasks
-                return tasks
-            })
+            // console.log('filterBy', filterBy);
+            const board = await boardService.filterGroupAndTasks(boardId, filterBy)
 
-            console.log('allTasks', allTasks);
-
-            //    console.log('groups', groups);
-            const board = await boardService.getByBoardId(boardId)
-            board.groups = groups
-            console.log('board', board);
-            dispatch({ type: "UPDATE_SELECTED_BOARD_GROUPS", board })
+            dispatch({ type: "SET_SELECTED_BOARD", board })
         } catch (err) {
             console.log(err);
         }

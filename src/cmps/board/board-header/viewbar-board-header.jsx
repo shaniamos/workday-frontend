@@ -14,6 +14,7 @@ import { addTask } from "../../../store/actions/board.action.js"
 import { useRef } from "react"
 import { useState } from "react"
 import { SearchBoard } from "../../search-board.jsx"
+import { FilterBoardByType } from '../../filter-board.jsx';
 
 
 //IoHomeOutline - Main Table
@@ -29,6 +30,7 @@ import { SearchBoard } from "../../search-board.jsx"
 
 export function ViewbarBoardHeader({ onSaveGroup, board, onChangeFilter }) {
     const [isSearch, setSearch] = useState(false)
+    const [isFilter, setFilter] = useState(false)
 
     const dispatch = useDispatch()
 
@@ -45,7 +47,6 @@ export function ViewbarBoardHeader({ onSaveGroup, board, onChangeFilter }) {
                     <div className="dropdown-content flex column ">
                         <i onClick={onSaveTask}> <AiOutlinePlusCircle className="dropdown-icon" /> <span> + Add new Item </span></i>
                         <i onClick={onSaveGroup}> <HiOutlineInbox className="dropdown-icon" /><span> + New group of Items </span></i>
-
                     </div>
                 </section>
             </div>
@@ -56,7 +57,16 @@ export function ViewbarBoardHeader({ onSaveGroup, board, onChangeFilter }) {
                 </div>
             </ClickAwayListener>
             <button className="view-nav-btn"><FaRegUserCircle /> Person  </button>
-            <button className="view-nav-btn"><BiFilterAlt /> Filter <IoIosArrowDown /> </button>
+
+            <ClickAwayListener onClickAway={() => setFilter(false)}>
+                <div>
+                    <button onClick={() => setFilter(!isFilter)} className="view-nav-btn"><BiFilterAlt /> <p>Filter</p></button>
+                    {isFilter &&
+                        <FilterBoardByType />
+                    }
+                </div>
+            </ClickAwayListener>
+            {/* <button className="view-nav-btn"><BiFilterAlt /> Filter <IoIosArrowDown /> </button> */}
             <button className="view-nav-btn"><CgArrowsScrollV /> Sort  </button>
             <button className="view-nav-btn"><AiOutlineEyeInvisible /> Hide  </button>
             <button className="view-nav-btn"><HiOutlineDotsHorizontal />  </button>

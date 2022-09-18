@@ -15,6 +15,7 @@ export const boardService = {
     saveTask,
     removeTask,
     getByTaskId,
+    filterGroupAndTasks
 }
 
 const STORAGE_KEY = 'board'
@@ -67,13 +68,52 @@ function saveBoard(board) {
 
 // CRUDL Groups
 
+
+
+async function filterGroupAndTasks(boardId, filterBy = {}) {
+    try {
+        const regex = new RegExp(filterBy.txt, 'i')
+        const board = await getByBoardId(boardId)
+        let groups = [...board.groups]
+
+         board.groups = await groups.filter(async (group) => {
+
+            if (regex.test(group.title)) {
+                // console.log('group from regex', group);
+                return group
+            }
+            else {
+
+                const tasks = await queryTasks(boardId, group.id, filterBy)
+                console.log('tasks from service', tasks);
+                if (tasks.length) {
+                    group.tasks = tasks
+                    // console.log('group from service', group);
+                    console.log('group from task length', group);
+                    return group
+                }
+            }
+        })
+        // console.log('filteredGroups', filteredGroups);
+        console.log('board', board);
+        return board
+    }
+
+    catch (err) {
+        console.error(err);
+        throw err
+    }
+}
+
+
 // get groups
+
 async function queryGroups(boardId, filterBy = {}) {
     try {
-        console.log('boardId', boardId);
+        // console.log('boardId', boardId);
         const board = await getByBoardId(boardId)
-        console.log('board', board);
-        let groups = [...board.groups]
+        // console.log('board', board);
+        var groups = [...board.groups]
 
         if (filterBy) {
             if (filterBy.txt) {
@@ -135,21 +175,16 @@ async function saveGroup(boardId, group) {
 //get tasks
 async function queryTasks(boardId, groupId, filterBy) {
     try {
-        // console.log('boardId', boardId);
-        // console.log('groupId', groupId);
-        // console.log('filterBy', filterBy);
         const group = await getByGroupId(boardId, groupId)
-        // console.log('group', group);
+        // console.log('group from service', group);
         let tasks = [...group.tasks]
-        
-        
+
         if (filterBy) {
             if (filterBy.txt) {
-                const regex = new RegExp(filterBy.title, 'i')
+                const regex = new RegExp(filterBy.txt, 'i')
                 tasks = tasks.filter(task => regex.test(task.title))
             }
         }
-        // console.log('tasks',tasks);
         return tasks
     } catch (err) {
         throw err
