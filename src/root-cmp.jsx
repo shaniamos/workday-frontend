@@ -1,16 +1,13 @@
 import '../src/assets/styles/main.scss';
 import { Routes, Route } from 'react-router-dom'
-import { MainSidebar } from './cmps/main-sidebar'
-
 import routes from './routes'
 
 
 function App() {
   return (
     <section className='app main-layout'>
-      <MainSidebar />
       <Routes>
-        {routes.map(route => <Route key={route.path} exact={true} element={route.component} path={route.path} />)}
+        {routes.map(route => <Route key={route.path} element={route.component} path={route.path} />)}
       </Routes>
     </section>
   );

@@ -23,12 +23,12 @@
         min-width: 254px;
         .open-btn {
             position: absolute;
-            left: 243px;
+            left: rem(305px);
         }
     }
 
     .open-btn {
-        left: 18px;
+        left: rem(78px);
         position: absolute;
         height: 23px;
         width: 23px;
@@ -102,8 +102,11 @@
                 border-bottom: 1px solid #babbc4;
             }
         }
-
+        
         .option:hover {
+            background-color: #dcdfec;
+        }
+        .active {
             background-color: #dcdfec;
         }
         .boards-options {

@@ -17,6 +17,7 @@
 @import 'cmps/person-circle';
 @import 'cmps/user-msg';
 @import 'cmps/modal-new-board';
+@import 'cmps/group-preview';
 
 //BOARD-HEADER
 @import 'cmps/board-header';
@@ -29,11 +30,12 @@
 @import 'cmps/task-preview';
 
 
-
 // PAGES
 @import 'pages/home';
 @import 'pages/app';
 @import 'pages/board-app';
 @import 'pages/board-details';
 @import 'pages/loader';
+@import 'pages/task-edit';
+
 
