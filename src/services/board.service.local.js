@@ -6,15 +6,15 @@ export const boardService = {
     queryBoards,
     saveBoard,
     removeBoard,
-    getByBoardId,
+    getBoardById,
     queryGroups,
     saveGroup,
     removeGroup,
-    getByGroupId,
+    getGroupById,
     queryTasks,
     saveTask,
     removeTask,
-    getByTaskId,
+    getTaskById,
     filterGroupAndTasks
 }
 
@@ -47,7 +47,7 @@ async function queryBoards(filterBy) {
 }
 
 // get board by id
-function getByBoardId(boardId) {
+function getBoardById(boardId) {
     return storageService.get(STORAGE_KEY, boardId)
 }
 
@@ -68,18 +68,16 @@ function saveBoard(board) {
 
 // CRUDL Groups
 
-
-
+// filter
 async function filterGroupAndTasks(boardId, filterBy = {}) {
     try {
         const regex = new RegExp(filterBy.txt, 'i')
-        const board = await getByBoardId(boardId)
+        const board = await getBoardById(boardId)
         let groups = [...board.groups]
 
          board.groups = await groups.filter(async (group) => {
 
             if (regex.test(group.title)) {
-                // console.log('group from regex', group);
                 return group
             }
             else {
@@ -88,14 +86,10 @@ async function filterGroupAndTasks(boardId, filterBy = {}) {
                 console.log('tasks from service', tasks);
                 if (tasks.length) {
                     group.tasks = tasks
-                    // console.log('group from service', group);
-                    console.log('group from task length', group);
                     return group
                 }
             }
         })
-        // console.log('filteredGroups', filteredGroups);
-        console.log('board', board);
         return board
     }
 
@@ -107,12 +101,9 @@ async function filterGroupAndTasks(boardId, filterBy = {}) {
 
 
 // get groups
-
 async function queryGroups(boardId, filterBy = {}) {
     try {
-        // console.log('boardId', boardId);
-        const board = await getByBoardId(boardId)
-        // console.log('board', board);
+        const board = await getBoardById(boardId)
         var groups = [...board.groups]
 
         if (filterBy) {
@@ -128,9 +119,9 @@ async function queryGroups(boardId, filterBy = {}) {
 }
 
 // get group by id
-async function getByGroupId(boardId, groupId) {
+async function getGroupById(boardId, groupId) {
     try {
-        const board = await getByBoardId(boardId)
+        const board = await getBoardById(boardId)
         const group = board.groups.find(group => group.id === groupId)
         return group
     } catch (err) {
@@ -141,7 +132,7 @@ async function getByGroupId(boardId, groupId) {
 // remove group
 async function removeGroup(boardId, groupId) {
     try {
-        const board = await getByBoardId(boardId)
+        const board = await getBoardById(boardId)
         const newGroups = board.groups.filter(group => group.id !== groupId)
         board.groups = newGroups
         return storageService.put(STORAGE_KEY, board)
@@ -153,7 +144,7 @@ async function removeGroup(boardId, groupId) {
 // add + update group
 async function saveGroup(boardId, group) {
     try {
-        const board = await getByBoardId(boardId)
+        const board = await getBoardById(boardId)
         if (group.id) {
             const updatedGroups = board.groups.map(currGroup => (currGroup.id === group.id) ? group : currGroup)
             board.groups = updatedGroups
@@ -175,7 +166,7 @@ async function saveGroup(boardId, group) {
 //get tasks
 async function queryTasks(boardId, groupId, filterBy) {
     try {
-        const group = await getByGroupId(boardId, groupId)
+        const group = await getGroupById(boardId, groupId)
         // console.log('group from service', group);
         let tasks = [...group.tasks]
 
@@ -192,9 +183,9 @@ async function queryTasks(boardId, groupId, filterBy) {
 }
 
 // get task by id
-async function getByTaskId(boardId, groupId, taskId) {
+async function getTaskById(boardId, groupId, taskId) {
     try {
-        const group = await getByGroupId(boardId, groupId)
+        const group = await getGroupById(boardId, groupId)
         const task = group.find(task => task.id === taskId)
         return task
     } catch (err) {
@@ -205,8 +196,8 @@ async function getByTaskId(boardId, groupId, taskId) {
 // remove task
 async function removeTask(boardId, groupId, taskId) {
     try {
-        const board = await getByBoardId(boardId)
-        const group = await getByGroupId(boardId, groupId)
+        const board = await getBoardById(boardId)
+        const group = await getGroupById(boardId, groupId)
         const newTasks = group.tasks.filter(task => task.id !== taskId)
         board.groups.forEach((group, idx) => {
             if (group.id === groupId)
@@ -229,8 +220,8 @@ async function saveTask(boardId, groupId, task) {
             task = { title: 'New Item' }
         }
 
-        const board = await getByBoardId(boardId)
-        const group = await getByGroupId(boardId, groupId)
+        const board = await getBoardById(boardId)
+        const group = await getGroupById(boardId, groupId)
         if (task.id) {
             task.lastUpdated = Date.now()
             const updatedTasks = group.tasks.map(currTask => (currTask.id === task.id) ? task : currTask)
