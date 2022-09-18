@@ -46,7 +46,11 @@
     }
 }
 
-@mixin arrow-btn($bgColor: rgba(0, 0, 0, 0),
+@mixin btn-modal {
+    
+}
+
+@mixin btn-arrow($bgColor: rgba(0, 0, 0, 0),
     $color: var(--primary-text-color),
     $hoverBgColor: var(--primary-background-hover-color)) {
         

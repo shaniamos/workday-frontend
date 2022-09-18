@@ -7,7 +7,7 @@ export function TaskEdit() {
     return (
         <section className="task-edit">
             <h1>Hello TaskEdit</h1>
-            <Link to={`/board/${params.boardId}`}>Back</Link>
+            <Link to={`/board/${params.id}`} className="close-modal">X</Link>
         </section>
     )
 }

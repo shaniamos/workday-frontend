@@ -65,7 +65,7 @@ export const TaskPreview = ({ task, groupId, groupColor }) => {
                             <input className="task-name clean-input" {...register('title', 'text')} />
                         </form>
                         <Link to={`/board/${params.id}/edit/${task.id}`}>
-                            <div className="flex"><TbArrowsDiagonal /> Open</div>
+                            <div className="flex"><TbArrowsDiagonal />Open</div>
                             <div className="preview-update"><BiMessageRoundedAdd /></div>
                         </Link>
                     </div>
