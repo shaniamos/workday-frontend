@@ -11,6 +11,7 @@ import { HiOutlineInbox } from 'react-icons/hi' //box
 import { useDispatch } from "react-redux"
 import { addTask } from "../../../store/actions/board.action.js"
 import { useRef } from "react"
+import { useState } from "react"
 
 //IoHomeOutline - Main Table
 //RiErrorWarningLine - description
@@ -23,7 +24,8 @@ import { useRef } from "react"
 //IoIosCheckmarkCircleOutline -checklist 
 
 
-export function ViewbarBoardHeader({ onSaveGroup }) {
+export function ViewbarBoardHeader({ onSaveGroup, board, onChangeFilter }) {
+    const [isSearch, setSearch] = useState(false)
 
     const dispatch = useDispatch()
 

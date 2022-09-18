@@ -4,10 +4,11 @@ import { showErrorMsg, showSuccessMsg } from "../../services/event-bus.service.j
 // CRUDL BOARD
 
 //get list of boards
-export function loadBoards() {
+export function loadBoards(filterBy) {
+    // console.log('filterBy', filterBy);
     return async (dispatch) => {
         try {
-            const boards = await boardService.query()
+            const boards = await boardService.query(filterBy)
             dispatch({ type: 'SET_BOARDS', boards })
         } catch (err) {
             console.error('Cannot load boards:', err)
@@ -32,7 +33,7 @@ export function removeBoard(boardId) {
     return async (dispatch) => {
         try {
             const board = await boardService.removeBoard(boardId)
-            console.log('board',board);
+            console.log('board', board);
             dispatch({ type: 'REMOVE_BOARD', boardId })
             dispatch({ type: 'RESET_SELECTED_BOARD' })
             showSuccessMsg(`Board successfully deleted`)
@@ -67,6 +68,14 @@ export function updateBoard(board) {
         }
     }
 }
+
+export function setFilterBy(filterBy) {
+    // console.log('filterBy', filterBy);
+    return (dispatch) => {
+        dispatch({ type: 'SET_FILTER_BY', filterBy });
+    };
+}
+
 
 // CRUDL GROUP
 
@@ -147,3 +156,5 @@ export function updateTask(boardId, groupId, task) {
         }
     }
 }
+
+

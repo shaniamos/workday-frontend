@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux"
 import { useNavigate } from "react-router-dom"
 import { useFormRegister } from "../hooks/useFormRegister.js"
 import { addBoard } from "../store/actions/board.action.js"
+import { GoX } from 'react-icons/go'
 
 export const NewBoardMoadl = ({ toggleNewBoardModal }) => {
 
@@ -33,7 +34,7 @@ export const NewBoardMoadl = ({ toggleNewBoardModal }) => {
     return (
         <section className="add-modal flex column">
             <div className="close-modal-btn" onClick={toggleNewBoardModal}>
-                <span>X</span>
+                <span><GoX /></span>
             </div>
             <h1 className="create-board">Create board</h1>
             <label> Board name:

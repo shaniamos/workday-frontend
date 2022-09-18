@@ -5,7 +5,7 @@ import { BoardHeader } from '../cmps/board/board-header.jsx'
 import { GroupList } from '../cmps/group-list.jsx'
 import { addGroup, loadSelectedBoard } from '../store/actions/board.action.js'
 
-export const BoardDetails = () => {
+export const BoardDetails = ({onChangeFilter}) => {
     const board = useSelector(state => state.boardModule.selectedBoard)
     const isLoading = useSelector(state => state.boardModule.isLoading)
     const dispatch = useDispatch()
@@ -32,7 +32,7 @@ export const BoardDetails = () => {
     
     return (
         <section className="board-details">
-            {board && <BoardHeader board={board} onSaveGroup={onSaveGroup} />}
+            {board && <BoardHeader board={board} onSaveGroup={onSaveGroup} onChangeFilter={onChangeFilter} />}
             <div className='board-content'>
                 {board && < GroupList groups={board.groups} onSaveGroup={onSaveGroup} />}
             </div>

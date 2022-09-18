@@ -21,23 +21,19 @@ const defultBoards = [board]
 // CRUDL Board
 
 async function query(filterBy) {
-
     try {
         let boards = await storageService.query(STORAGE_KEY)
-
         if (!boards || !boards.length) {
             storageService.postMany(STORAGE_KEY, defultBoards)
             boards = defultBoards
         }
         if (filterBy) {
-            const { name, minPrice } = filterBy
-            if (name) {
-                const regex = new RegExp(name, 'i')
-                boards = boards.filter(board => regex.test(board.name))
-            }
-
-            if (minPrice) {
-                boards = boards.filter(board => board.price >= minPrice)
+            console.log('filterBy', filterBy);
+            const { txt } = filterBy
+            console.log('txt', txt);
+            if (txt) {
+                const regex = new RegExp(txt, 'i')
+                boards = boards.filter(board => regex.test(board.title))
             }
         }
         return boards
