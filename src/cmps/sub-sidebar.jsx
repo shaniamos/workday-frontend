@@ -81,23 +81,24 @@ export function SubSidebar({ boards, isOpen, onChangeFilter }) {
                         <div>
                             <div className="workspace-options flex column">
                                 <div className="action-btn ">
-                                    <a onClick={toggleNewBoardModal} className="flex  option"> <GrAdd /><span>Add</span></a>
-                                    <a className="flex  option"> <GrFilter /><span>Filter</span></a>
-                                    <ClickAwayListener onClickAway={() => setSearch(false)}> 
-                                    <div>
-                                    {!isSearchClicked && <a className="flex  option last-one" onClick={() => setSearch(!isSearchClicked)}><FiSearch /> <span>Search</span>  </a>}
-                                    {isSearchClicked && <SearchBoard contentSearch={'boards'} onChangeFilter={onChangeFilter} setSearch={setSearch} />}
-                                    </div>
+                                    <a onClick={toggleNewBoardModal} className="flex  option"> <GrAdd /><span className="menu-btn-inner-text">Add</span></a>
+                                    <a className="flex  option"> <GrFilter /><span className="menu-btn-inner-text">Filter</span></a>
+                                    <ClickAwayListener onClickAway={() => setSearch(false)}>
+                                        <div>
+                                            {!isSearchClicked && <a className="flex  option last-one" onClick={() => setSearch(!isSearchClicked)}><FiSearch /> <span className="menu-btn-inner-text">Search</span>  </a>}
+                                            {isSearchClicked && <SearchBoard contentSearch={'boards'} onChangeFilter={onChangeFilter} setSearch={setSearch} />}
+                                        </div>
                                     </ClickAwayListener>
-                                    
+
                                 </div>
+                                <div className="spacer"></div>
                                 <div className="boards-options">
                                     {boards.map(board =>
                                         <div className="boards-list flex space-between" key={board._id}>
 
                                             <NavLink className="flex inline-flex option" to={`/board/${board._id}`}>
                                                 <HiOutlineClipboard className="table-chart flex column align-center" />
-                                                <span>{board.title}</span>
+                                                <span className="menu-btn-inner-text">{board.title}</span>
                                                 <i className="dropdown-dot">
                                                     <div className="dropdown" onClick={(ev) => {
                                                         ev.preventDefault()
