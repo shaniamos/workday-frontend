@@ -1,0 +1,89 @@
+.add-modal {
+    position: fixed;
+    background-color: white;
+    box-shadow: 0 4px 17px 6px #0000001a;
+    border-radius: 8px;
+    width: 500px;
+    height: 310px;
+    padding: 32px;
+    z-index: 15;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    .close-modal {
+        height: 20px;
+        width: 10px;
+        border-radius: 5px;
+        border: 1px solid rgb(216, 211, 211);
+        cursor: pointer;
+        position: absolute;
+        right: 16px;
+        top: 16px;
+        padding: 4px 8px;
+        transition: background-color .2s;
+
+        &:hover {
+            background-color: rgb(212, 212, 216);
+        }
+    }
+
+    .focused-form {
+        border: 1px solid gray;
+    }
+
+    .create-board {
+        font-family: roboto-bold;
+        font-size: rem(32px);
+        font-weight: 500;
+        margin-bottom: 16px;
+    }
+
+    .input-container {
+        padding: 8px 16px;
+        outline: none;
+        width: 100%;
+        border-radius: 4px;
+
+
+        .create-board-input {
+            input {
+                outline: none;
+                border: none;
+            }
+        }
+    }
+
+    .modal-btns{
+        font-size: rem(16px);
+        justify-content: flex-end;
+        margin-top: 16px;
+        
+        >* {
+            padding: 8px 16px;
+        }
+        
+        .cancel-modal-btn {
+            cursor: pointer;
+            margin-right: 8px;
+            background-color: white;
+            border: none;
+            border-radius: 4px;
+            &:hover {
+                background-color:rgb(212, 212, 216);
+            }
+        }
+        
+        .create-modal-btn {
+            background-color: #0073ea;
+            border-radius: 4px;
+            cursor: pointer;
+            color: white;
+            border: none;
+            &:hover {
+                background-color: #065db9;
+            }
+        }
+    }
+
+}

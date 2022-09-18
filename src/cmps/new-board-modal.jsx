@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react"
+import { useEffect, useRef, useState } from "react"
 import { useDispatch } from "react-redux"
 import { useNavigate } from "react-router-dom"
 import { useFormRegister } from "../hooks/useFormRegister.js"
@@ -9,6 +9,7 @@ export const NewBoardMoadl = ({ toggleNewBoardModal }) => {
     const inputRef = useRef()
     const dispatch = useDispatch()
     const navigate = useNavigate()
+    const [isFocusTxt, setFocusTxt] = useState(false)
     const [register, setNewBoardTitle, newBoardTitle] = useFormRegister({
         title: 'New Board'
     })
@@ -30,13 +31,33 @@ export const NewBoardMoadl = ({ toggleNewBoardModal }) => {
     }
 
     return (
-        <section className="new-board-modal">
-            <h1>Create board</h1>
+        <section className="add-modal flex column space-evenly">
+            <div className="close-modal header-btn flex align-center" onClick={toggleNewBoardModal}>
+                <span>X</span>
+            </div>
+            <h1 className="create-board">Create board</h1>
             <label> Board name:
-                <input ref={inputRef} {...register('title', 'text')} />
-                <button onClick={onSaveBoard}>Create Board</button>
-                <button onClick={toggleNewBoardModal}>Cancel</button>
+                <div className={`input-container ${isFocusTxt ? 'focused-form' : ''}`}>
+                    <input className="create-board-input" ref={inputRef} {...register('title', 'text')} />
+                    <div className="modal-btns" >
+                        <button className="cancel-modal-btn" onClick={toggleNewBoardModal}>Cancel</button>
+                        <button className="create-modal-btn" onClick={onSaveBoard}>Create Board</button>
+                    </div>
+                </div>
             </label>
         </section>
     )
+
 }
+
+{/* <input
+                ref={(inputEl) => (this.searchInput = inputEl)}
+                name="title"
+                id="title"
+                type="text"
+                placeholder="New Board"
+                value={title}
+                onChange={this.handleChange}
+                onBlur={() => this.setState({ ...this.state, isFocus: false })}
+                onFocus={() => this.setState({ ...this.state, isFocus: true })}
+              /> */}
