@@ -1,51 +1,18 @@
-.board-preview {
-    .dot {
-        height: 30px;
-        font-size: 18px;
-        transform: translateY(5px);
+.group-preview {
+    .dots {
         cursor: pointer;
         opacity: 0;
+        display: block;
+        height: 25px;
+        font-size: 18px;
         transition: background-color .2s;
-        border-radius: 6px 0 0 6px;
+        border-radius:6px;
         &:hover {
-            background-color:#dcdfec; 
+            background-color: #dcdfec;
         }
     }
-    &:hover .dot {
-        opacity: 1;
-    }
-
-    .preview-cell {
-
-        .label-type {
-            color: white;
-        }
-
-        .task-preview {
-            flex: 0 0 6px;
-            &:hover {
-                z-index: 100;
-                box-shadow: 4px 3px 6px -3px var(--ui-border-color);
-            }
-        }
-        .task-name {
-            @include editable-heading;
-            font-size: 14px
-        }
-        .name-cell {
-            @include cell;
-        }
-        &.preview-cell:hover {
-            .dot {
-                opacity: 1;
-            }
-        }
-    }
-
-    /* The container <div> - needed to position the dropdown content */
-    .dropdown {
-        // position: relative;
-        display: inline-block;
+    .group-header-name:hover .dots{
+            opacity: 1;
     }
 
     /* Dropdown Content (Hidden by Default) */
@@ -57,10 +24,10 @@
         background-color: white;
         min-width: 190px;
         box-shadow: 0px 8px 16px 0px rgba(31, 30, 30, 0.4);
-        z-index: 100;
+        z-index: 300;
         border-radius: 10px;
         padding: 10px;
-        transform: translateX(-30px);
+        // transform: translateX(-30px);
     }
 
     /* Links inside the dropdown */
@@ -84,4 +51,6 @@
         display: flex;
         flex-direction: column;
     }
+
+   
 }

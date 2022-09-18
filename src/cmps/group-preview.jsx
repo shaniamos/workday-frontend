@@ -5,6 +5,10 @@ import { TaskList } from "./task-list.jsx"
 import { useFormRegister } from "../hooks/useFormRegister.js"
 import { updateGroup } from "../store/actions/board.action.js"
 import { GroupHeader } from "./group-header.jsx"
+import { HiOutlineDotsHorizontal } from 'react-icons/hi' //More
+import { MdDeleteOutline } from 'react-icons/md'//Delete
+import { HiOutlineDocumentDuplicate } from 'react-icons/hi'//Duplicate
+
 // import { GroupFooter } from "./group-footer.jsx"
 import { BiDotsHorizontalRounded } from "./group-header.jsx"
 
@@ -36,6 +40,13 @@ export const GroupPreview = ({ group }) => {
 
             {/* Board Name  */}
             <div className="group-header-name flex">
+            <div className="dropdown">
+                <div ><HiOutlineDotsHorizontal className="dots" /></div>
+                <div className="dropdown-content">
+                    <a onClick={() => onRemoveGroup()}>< MdDeleteOutline /> Delete Gruop</a>
+                    <a><HiOutlineDocumentDuplicate /> Duplicate</a>
+                </div>
+            </div>
                 <span className="collapse-group-button"><BsChevronDown /></span>
                 <form onSubmit={onSaveTask}>
                     <input {...register('title', 'text')} className="group-name-input clean-input"/>

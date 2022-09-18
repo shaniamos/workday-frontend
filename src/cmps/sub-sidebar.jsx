@@ -13,7 +13,7 @@ import { HiOutlineDocumentDuplicate } from 'react-icons/hi'
 import { RiPencilLine } from 'react-icons/ri'
 import { HiOutlineArchive } from 'react-icons/hi'
 import { useDispatch } from "react-redux"
-import { Link } from "react-router-dom"
+import { Link, NavLink } from "react-router-dom"
 import { removeBoard } from '../store/actions/board.action.js'
 import { useNavigate } from 'react-router-dom'
 import { NewBoardMoadl } from "./new-board-modal.jsx"
@@ -85,7 +85,7 @@ export function SubSidebar({ boards, isOpen }) {
                         {boards.map(board =>
                             <div className="boards-list flex space-between" key={board._id}>
 
-                                <Link className="flex inline-flex  option" to={`/board/${board._id}`}>
+                                <NavLink className="flex inline-flex option" to={`/board/${board._id}`}>
                                     <HiOutlineClipboard className="table-chart flex column align-center" />
                                     <span>{board.title}</span>
                                     <i className="dropdown-dot">
@@ -107,7 +107,7 @@ export function SubSidebar({ boards, isOpen }) {
                                             </div>}
                                         </div>
                                     </i>
-                                </Link>
+                                </NavLink>
 
                             </div>
 

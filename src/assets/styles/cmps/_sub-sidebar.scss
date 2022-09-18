@@ -101,8 +101,11 @@
                 border-bottom: 1px solid #babbc4;
             }
         }
-
+        
         .option:hover {
+            background-color: #dcdfec;
+        }
+        .active {
             background-color: #dcdfec;
         }
         .boards-options {

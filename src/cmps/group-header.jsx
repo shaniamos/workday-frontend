@@ -15,20 +15,10 @@ export const GroupHeader = ({ groupColor, onRemoveGroup }) => {
     return (
 
         <div className='preview-group-header flex'>
-
-            <div className="dropdown">
-                <div ><HiOutlineDotsHorizontal className="dot" /></div>
-                <div className="dropdown-content">
-                    <a onClick={() => onRemoveGroup()}>< MdDeleteOutline /> Delete Gruop</a>
-                    <a><HiOutlineDocumentDuplicate /> Duplicate</a>
-                </div>
-            </div>
-
+            <div ><HiOutlineDotsHorizontal className="dot" /></div>
             <div className="preview-cell group-header-identifier  flex">
-
-
                 <div className="task-name-area group-task-name-area  preview-cell flex">
-                    
+
                     <div className="task-group-color task-group-color-header" style={{ backgroundColor: `var(${groupColor})` }}></div>
                     <div className="preview-checkbox"><input className="input-checkbox" type="checkbox" name="" id="" /></div>
                     <span>Item</span>
