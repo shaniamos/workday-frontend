@@ -15,19 +15,25 @@ export const GroupHeader = ({ groupColor, onRemoveGroup }) => {
     return (
 
         <div className='preview-group-header flex'>
+            
             <div ><HiOutlineDotsHorizontal className="dot" /></div>
             <div className="group-header-identifier  flex">
                 <div className="cell task-name-area group-task-name-area cell sticky-feature flex">
                     <div className="task-group-color task-group-color-header" style={{ backgroundColor: `var(${groupColor})` }}></div>
                     <div className="preview-checkbox"><input className="input-checkbox" type="checkbox" name="" id="" /></div>
+                    <button >Sort</button>
                     <div className='header-identifier-title'>Item</div>
 
                 </div>
 
                 <div className="cell persons-header">
+                <button >Sort</button>
+
                     <span>Person</span>
                 </div>
                 <div className="cell label-type">
+                <button >Sort</button>
+
                     <span>Status</span>
                 </div>
                 <div className="cell label-type">

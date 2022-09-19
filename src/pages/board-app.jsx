@@ -20,7 +20,6 @@ export const BoardApp = () => {
     }, [params.id])
 
     const onChangeFilter = async (filterBy, contentSearch) =>  {
-        // console.log('filterBy', filterBy);
         try {
 
             await dispatch(setFilterBy(filterBy))

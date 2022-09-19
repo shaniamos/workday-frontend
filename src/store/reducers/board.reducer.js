@@ -1,10 +1,7 @@
 const INITIAL_STATE = {
     boards: null,
     selectedBoard: null,
-    filterBy:{
-        txt: ''
-    },
-    sortBy: 'status',
+    filterBy:null,
     isLoading: true,
 
 }
@@ -29,9 +26,8 @@ export function boardReducer(state = INITIAL_STATE, action) {
                 selectedBoard: action.board
             }
         case 'SET_FILTER_BY':
-            return { ...state, filterBy: { ...action.filterBy } }
-        case 'SET_SORT_BY':
-            return { ...state, sortBy: { ...action.sortBy } }
+            return { ...state, filterBy: { ...action.filterBy } || null}
+        
         case 'SET_LOADING':
             return { ...state, isLoading: action.isLoading }
         default:

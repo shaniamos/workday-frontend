@@ -23,6 +23,7 @@ import { ViewbarBoardHeader } from './board-header/viewbar-board-header.jsx'
 export function BoardHeader({ board, onSaveGroup, onChangeFilter }) {
         
 
+    
     // const [title , setTitle] = useState(selectedBoard.title)
     // console.log('board',board );
     // useEffect(() => {

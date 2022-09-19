@@ -50,6 +50,7 @@ export function ViewbarBoardHeader({ onSaveGroup, board, onChangeFilter }) {
                     </div>
                 </section>
             </div>
+
             <ClickAwayListener onClickAway={() => setSearch(false)}>
                 <div>
                     {!isSearch && <button className="view-nav-btn" onClick={() => setSearch(!isSearch)}><BsSearch /> <span>Search</span>  </button>}
@@ -66,6 +67,7 @@ export function ViewbarBoardHeader({ onSaveGroup, board, onChangeFilter }) {
                     }
                 </div>
             </ClickAwayListener>
+            
             {/* <button className="view-nav-btn"><BiFilterAlt /> Filter <IoIosArrowDown /> </button> */}
             <button className="view-nav-btn"><CgArrowsScrollV /> Sort  </button>
             <button className="view-nav-btn"><AiOutlineEyeInvisible /> Hide  </button>
