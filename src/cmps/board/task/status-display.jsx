@@ -71,7 +71,7 @@ export const StatusTypeDisplay = ({ label, value, options }) => {
                 <div className="picker-content">
                     <ul className="picker-list" style={{ gridTemplateRows: `repeat(${options.length}, auto)` }}>
                         {options.map(option => {
-                            return <li className="option" style={{backgroundColor: `var(${option.id})`}} onClick={() => { console.log('Option') }}>{option.title}</li>
+                            return <li key={option.id} className="option" style={{backgroundColor: `var(${option.id})`}} onClick={() => { console.log('Option') }}>{option.title}</li>
                         })}
                     </ul>
                 </div>

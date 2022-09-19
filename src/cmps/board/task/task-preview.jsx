@@ -10,7 +10,7 @@ import { LastUpdated } from "../task/last-updated.jsx"
 // ICONS
 import { RiArrowRightSLine } from 'react-icons/ri' //subitem
 import { TbArrowsDiagonal } from 'react-icons/tb' //open item
-import { BiMessageRoundedAdd, BiMessageRounded } from 'react-icons/bi' //empty updates, with updates
+import { BiMessageRoundedAdd } from 'react-icons/bi' //empty updates, with updates
 import { HiOutlineDotsHorizontal } from 'react-icons/hi' //More
 import { MdDeleteOutline } from 'react-icons/md'//Delete
 import { HiOutlineDocumentDuplicate } from 'react-icons/hi'//Duplicate
@@ -21,7 +21,7 @@ export const TaskPreview = ({ task, groupId, groupColor }) => {
     const dispatch = useDispatch()
     const params = useParams()
     const boardId = params.id
-    
+
 
     const [register, setNewTask, newTask] = useFormRegister({
         title: task.title
@@ -81,7 +81,7 @@ export const TaskPreview = ({ task, groupId, groupColor }) => {
                     {labels.map(label => {
                         const labelName = label.name
                         const labelValue = task[labelName]
-                        return <StatusTypeDisplay label={`${label.name}`} value={labelValue} options={label.options} />
+                        return <StatusTypeDisplay key={label.name} label={`${label.name}`} value={labelValue} options={label.options} />
                     })}
 
                     {/* DeadLine */}

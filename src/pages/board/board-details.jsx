@@ -10,15 +10,15 @@ export const BoardDetails = ({ filteredGroups, onChangeFilter }) => {
     const isLoading = useSelector(state => state.boardModule.isLoading)
     const dispatch = useDispatch()
     const params = useParams()
-    const [groups, setGroups] = useState([])
+    // const [groups, setGroups] = useState([])
 
     useEffect(() => {
         loadBoard()
     }, [params.id])
 
-    useEffect(() => {
-        setGroups(filteredGroups)
-    }, [filteredGroups])
+    // useEffect(() => {
+    //     setGroups(filteredGroups)
+    // }, [filteredGroups])
 
     const onAddGroup = () => {
         const boardId = board._id
@@ -28,7 +28,7 @@ export const BoardDetails = ({ filteredGroups, onChangeFilter }) => {
 
     const loadBoard = async () => {
         const currBoard = await dispatch(loadSelectedBoard(params.id))
-        setGroups(currBoard.groups)
+        // setGroups(currBoard.groups)
     }
 
     // if (isLoading) {
