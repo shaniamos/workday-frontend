@@ -50,10 +50,10 @@ export function ViewbarBoardHeader({ onAddGroup, onChangeFilter }) {
 
             <ClickAwayListener onClickAway={() => setSearch(false)}>
                 <div>
-                    {!isSearch && <button className="view-nav-btn" onClick={() => setSearch(!isSearch)}><BsSearch /> <span>Search</span>  </button>}
-                    {isSearch && <Search contentSearch={'items'} onChangeFilter={onChangeFilter} setSearch={setSearch} />}
+                     <Search contentSearch={'items'} onChangeFilter={onChangeFilter} setSearch={setSearch} />
                 </div>
             </ClickAwayListener>
+            
             <button className="view-nav-btn"><FaRegUserCircle /> Person  </button>
 
             <ClickAwayListener onClickAway={() => setFilter(false)}>

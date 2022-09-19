@@ -13,11 +13,9 @@ export const BoardDetails = ({ filteredGroups, onChangeFilter }) => {
     const [groups, setGroups] = useState([])
 
     useEffect(() => {
-        // loadBoard() 
-        dispatch(loadSelectedBoard(params.id))
+        loadBoard()
     }, [params.id])
-    
-    
+
     useEffect(() => {
         setGroups(filteredGroups)
     }, [filteredGroups])
@@ -27,11 +25,11 @@ export const BoardDetails = ({ filteredGroups, onChangeFilter }) => {
         const group = { title: 'New Group' }
         dispatch(addGroup(boardId, group))
     }
-    
-    // const loadBoard = async () => {
-    //     const currBoard = await dispatch(loadSelectedBoard(params.id))
-    //     setGroups(currBoard.groups)
-    // }
+
+    const loadBoard = async () => {
+        const currBoard = await dispatch(loadSelectedBoard(params.id))
+        setGroups(currBoard.groups)
+    }
 
     // if (isLoading) {
     //     return (
@@ -44,7 +42,7 @@ export const BoardDetails = ({ filteredGroups, onChangeFilter }) => {
         <section className="board-details">
             {board && <BoardHeader board={board} onAddGroup={onAddGroup} onChangeFilter={onChangeFilter} />}
             <div className='board-content'>
-                {board && < GroupList groups={board.groups} onAddGroup={onAddGroup} />}
+                {board && < GroupList groups={board.groups} onAddGroup={onAddGroup} onChangeFilter={onChangeFilter} />}
             </div>
         </section>
     )

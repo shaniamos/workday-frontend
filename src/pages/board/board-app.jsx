@@ -20,14 +20,14 @@ export const BoardApp = () => {
         dispatch(loadBoards(filterBy))
     }, [params.id])
 
-    const onChangeFilter = async (filterBy, contentSearch) => {
+    const onChangeFilter = async (filterBy, contentSearch, sortBy) => {
         try {
             await dispatch(setFilterBy(filterBy))
             if (contentSearch === 'boards')
                 await dispatch(loadBoards(filterBy))
             else {
                 try {
-                    const filteredGroups = await boardService.filterGroupAndTasks(params.id, filterBy)
+                    const filteredGroups = await boardService.filterGroupAndTasks(params.id, filterBy, sortBy)
                     setFilteredGroups(filteredGroups)
                 }
                 catch (err) {
