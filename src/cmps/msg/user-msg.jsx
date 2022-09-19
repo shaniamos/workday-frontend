@@ -1,7 +1,8 @@
 import React from 'react'
 
 import { MdOutlineDone } from 'react-icons/md'
-import { eventBusService } from '../services/event-bus.service.js'
+// import { eventBusService } from '../../../services/event-bus.service.js'
+import { eventBusService } from '../../services/event-bus.service.js'
 
 
 export class UserMsg extends React.Component {

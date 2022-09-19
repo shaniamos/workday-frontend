@@ -1,24 +1,19 @@
 import { useDispatch } from "react-redux"
 import { useParams } from "react-router-dom"
-import { removeGroup } from "../store/actions/board.action.js"
-import { TaskList } from "./task-list.jsx"
-import { useFormRegister } from "../hooks/useFormRegister.js"
-import { updateGroup } from "../store/actions/board.action.js"
+import { useFormRegister } from "../../../hooks/useFormRegister.js"
+import { removeGroup, updateGroup } from "../../../store/actions/board.action.js"
+import { TaskList } from "../task/task-list.jsx"
 import { GroupHeader } from "./group-header.jsx"
+// ICONS
 import { HiOutlineDotsHorizontal } from 'react-icons/hi' //More
 import { MdDeleteOutline } from 'react-icons/md'//Delete
 import { HiOutlineDocumentDuplicate } from 'react-icons/hi'//Duplicate
-
-// import { GroupFooter } from "./group-footer.jsx"
-import { BiDotsHorizontalRounded } from "./group-header.jsx"
-
 import { BsChevronDown } from 'react-icons/bs'
-
+import { BiDotsHorizontalRounded } from "./group-header.jsx"
 
 export const GroupPreview = ({ group }) => {
     const params = useParams()
     const dispatch = useDispatch()
-
     const [register, setNewGroup, newGroup] = useFormRegister({
         title: group.title
     })
@@ -36,8 +31,7 @@ export const GroupPreview = ({ group }) => {
     }
     return (
         <section className="group-preview ">
-            
-            {/* Board Name  */}
+            {/* Group Title  */}
             <div className="group-header-name heading-component flex  sticky-feature">
                 <div className="dropdown">
                     <div ><HiOutlineDotsHorizontal className="dots" /></div>
@@ -50,16 +44,12 @@ export const GroupPreview = ({ group }) => {
                 <form onSubmit={onUpdateGroup}>
                     <input {...register('title', 'text')} className="group-name-input clean-input" />
                 </form>
-
                 <span className="group-task-count">{`${group.tasks.length} items`}</span>
             </div>
-
-            {/* Board identifier (color, checkbox, task name, persons, status, priority....) */}
+            {/* Group columns identifier (color, checkbox, task name, persons, status, priority....) */}
             <GroupHeader groupColor={group.colorId} />
-
-            {/* Task list - lines of items */}
             <TaskList tasks={group.tasks} groupId={group.id} groupColor={group.colorId} />
-            {/* <GroupFooter/> */}
+            {/* TODO <GroupFooter/> (Columns Summary) */}
         </section>
     )
 }

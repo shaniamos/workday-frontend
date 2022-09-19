@@ -1,9 +1,8 @@
-import { useEffect, useRef, useState } from "react"
+import { useEffect, useRef } from "react"
 import { useDispatch } from "react-redux"
 import { useNavigate } from "react-router-dom"
-import { useFormRegister } from "../hooks/useFormRegister.js"
-import { addBoard } from "../store/actions/board.action.js"
-import { GoX } from 'react-icons/go'
+import { useFormRegister } from "../../hooks/useFormRegister.js"
+import { addBoard } from "../../store/actions/board.action.js"
 
 export const NewBoardMoadl = ({ toggleNewBoardModal }) => {
 

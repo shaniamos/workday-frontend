@@ -1,8 +1,8 @@
 import { useDispatch } from "react-redux"
 import { useParams } from "react-router-dom"
 import { TaskPreview } from "./task-preview.jsx"
-import { useFormRegister } from '../hooks/useFormRegister.js'
-import { addTask } from '../store/actions/board.action.js'
+import { useFormRegister } from '../../../hooks/useFormRegister.js'
+import { addTask } from '../../../store/actions/board.action.js'
 import React from "react"
 
 export const TaskList = ({ tasks, groupId, groupColor }) => {

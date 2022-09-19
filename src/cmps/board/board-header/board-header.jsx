@@ -1,6 +1,6 @@
-import { MainBoardHeader } from './board-header/main-board-header.jsx'
-import { ToolbarBoardHeader } from './board-header/toolbar-board-header.jsx'
-import { ViewbarBoardHeader } from './board-header/viewbar-board-header.jsx'
+import { MainBoardHeader } from './main-board-header.jsx'
+import { ToolbarBoardHeader } from './toolbar-board-header.jsx'
+import { ViewbarBoardHeader } from './viewbar-board-header.jsx'
 
 //IoHomeOutline - Main Table
 //RiErrorWarningLine - description
