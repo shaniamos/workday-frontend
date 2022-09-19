@@ -6,6 +6,7 @@ import { BoardDetails } from './board-details'
 import { SubSidebar } from '../../cmps/side-bar/sub-sidebar.jsx'
 import { UserMsg } from "../../cmps/msg/user-msg.jsx"
 import { MainSidebar } from '../../cmps/side-bar/main-sidebar.jsx'
+import { boardService } from '../../services/board.service.local.js'
 
 export const BoardApp = () => {
 
@@ -14,9 +15,8 @@ export const BoardApp = () => {
     const [filteredGroups, setFilteredGroups] = useState([])
     const dispatch = useDispatch()
     const params = useParams()
-    // const isNavOpenn = true
+ 
     useEffect(() => {
-        // console.log('filterBy', filterBy);
         dispatch(loadBoards(filterBy))
     }, [params.id])
 
@@ -40,12 +40,10 @@ export const BoardApp = () => {
         }
     }
 
-  
-
-
     // if (!boards) return <section className='monday-loader-page'>
     //     <img className='monday-loader-animation' src="https://cdn.monday.com/images/loader/loader.gif" alt="" />
     // </section>
+    
     return (
         <section className="board-app flex">
             <MainSidebar />
