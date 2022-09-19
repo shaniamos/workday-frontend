@@ -10,25 +10,22 @@
 @import 'basics/layout';
 
 // COMPONENTS
-
-@import './cmps/main-sidebar.scss';
-@import './cmps/sub-sidebar.scss';
-@import './cmps/main-sidebar';
-@import 'cmps/person-circle';
 @import 'cmps/user-msg';
-@import 'cmps/modal-new-board';
-@import 'cmps/group-preview';
-
-//BOARD-HEADER
+@import 'cmps/person-circle';
+//SIDEBAR
+@import './cmps/main-sidebar';
+@import './cmps/sub-sidebar';
+//BOARD
 @import 'cmps/board-header';
-
-
-//GROUP
-@import 'pages/board-details';
 @import 'cmps/board-content';
+//GROUP
 @import 'cmps/group-header';
+@import 'cmps/group-preview';
+@import 'cmps/group-footer'; //TODO
+@import 'cmps/modal-new-board';
+//TASK
+@import 'pages/task-edit';
 @import 'cmps/task-preview';
-
 
 // PAGES
 @import 'pages/home';
@@ -36,6 +33,3 @@
 @import 'pages/board-app';
 @import 'pages/board-details';
 @import 'pages/loader';
-@import 'pages/task-edit';
-
-

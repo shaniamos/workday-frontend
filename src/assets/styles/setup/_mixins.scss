@@ -65,13 +65,6 @@
     line-height: 22px;
     letter-spacing: initial;
 
-    // font-size: 32px;
-    // line-height: 52px;
-    // font-weight: var(--font-weight-bold);
-    // font-family: var(--font-family);
-    // letter-spacing: -1px;
-    // -webkit-font-smoothing: var(--font-smoothing-webkit);
-    // -moz-osx-font-smoothing: var(--font-smoothing-moz);
     &:focus-visible {
         outline: .5px solid var(--primary-background-hover-color);
     }

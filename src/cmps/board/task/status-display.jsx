@@ -30,7 +30,7 @@ export const StatusTypeDisplay = ({ label, value }) => {
                 colorName = '--color-lipstick' //'#ff5ac4'
                 return colorName
             default:
-                colorName = ' --color-wolf_gray' //c3c6d4
+                colorName = '--color-wolf_gray' //c3c6d4
                 return colorName
         }
     }
@@ -55,7 +55,5 @@ export const StatusTypeDisplay = ({ label, value }) => {
         }
     }
 
-    return (
-        <div className="cell label-type status-header" style={{ backgroundColor: `var(${getColorByLabel(label, value)})` }}>{`${value}`}</div>
-    )
+    return <div className="cell label-type status-header" style={{ backgroundColor: `var(${getColorByLabel(label, value)})` }}>{`${value}`}</div>
 }

@@ -1,10 +1,9 @@
 import '../src/assets/styles/main.scss';
 import { Routes, Route } from 'react-router-dom'
 import { Home } from './pages/home.jsx'
-import { BoardApp } from './pages/board-app.jsx'
-import { BoardDesc } from './cmps/board-desc.jsx'
-import { TaskEdit } from './pages/task-edit.jsx'
-import { LoginSignup } from './pages/login-signup.jsx'
+import { BoardApp } from './pages/board/board-app.jsx'
+import { TaskEdit } from './cmps/board/task/task-edit.jsx'
+import { LoginSignup } from './pages/user/login-signup'
 
 
 function App() {

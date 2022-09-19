@@ -11,8 +11,8 @@ import { HiOutlineInbox } from 'react-icons/hi' //box
 import { useDispatch } from "react-redux"
 import { addTask } from "../../../store/actions/board.action.js"
 import { useState } from "react"
-import { SearchBoard } from "../../search-board.jsx"
-import { FilterBoardByType } from '../../filter-board.jsx';
+import { SearchBoard } from "../../search.jsx"
+import { FilterBoardByType } from './board-filter.jsx';
 
 //IoHomeOutline - Main Table
 //RiErrorWarningLine - description

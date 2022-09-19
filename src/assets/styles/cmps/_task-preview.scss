@@ -56,7 +56,6 @@
                 border-left: 1px solid var(--layout-border-color);
                 transition: color 200ms ease;
 
-                // border-left-color: var(--layout-border-color);
                 &:hover {
                     color: var(--primary-color);
                 }
@@ -82,41 +81,17 @@
             width: 200px;
             @include task-cell-with-content;
         }
+
         .date-header {
             width: 200px;
             @include task-cell-with-content;
         }
+
         .add-column {
             width: 400px;
             @include task-cell-with-content;
         }
     }
-
-    // .cell {
-
-    //     .label-type {
-    //         color: white;
-    //     }
-
-    //     .task-preview {
-    //         &:hover {
-    //             z-index: 100;
-    //             box-shadow: 4px 3px 6px -3px var(--ui-border-color);
-    //         }
-    //     }
-    //     .task-name-area:not(.group-task-name-area) {
-    //         @include editable-heading;
-    //         font-size: 14px
-    //     }
-    //     .name-cell {
-    //         @include cell;
-    //     }
-    //     &.cell:hover {
-    //         .dot {
-    //             opacity: 1;
-    //         }
-    //     }
-    // }
 
     .dot {
         height: 30px;

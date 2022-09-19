@@ -1,12 +1,11 @@
 import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { loadBoards, setFilterBy} from '../store/actions/board.action.js'
+import { loadBoards, setFilterBy, onSetFilterTasks } from '../../store/actions/board.action.js'
 import { Outlet, useParams } from 'react-router-dom'
 import { BoardDetails } from './board-details'
-import { SubSidebar } from '../cmps/sub-sidebar.jsx'
-import { UserMsg } from "../cmps/user-msg.jsx"
-import { MainSidebar } from '../cmps/main-sidebar.jsx'
-import { boardService } from '../services/board.service.local.js'
+import { SubSidebar } from '../../cmps/side-bar/sub-sidebar.jsx'
+import { UserMsg } from "../../cmps/msg/user-msg.jsx"
+import { MainSidebar } from '../../cmps/side-bar/main-sidebar.jsx'
 
 export const BoardApp = () => {
 

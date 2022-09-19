@@ -1,18 +1,19 @@
+import React from "react"
 import { useDispatch } from "react-redux"
 import { Link, useParams } from "react-router-dom"
-import { useFormRegister } from "../hooks/useFormRegister.js"
-import { addTask, removeTask } from "../store/actions/board.action.js"
-import { updateTask } from "../store/actions/board.action.js"
-import { PersonCircle } from "./person-circle.jsx"
-import { StatusTypeDisplay } from "./board/status-display.jsx"
-import { LastUpdated } from "./last-updated.jsx"
+
+import { addTask, removeTask, updateTask } from "../../../store/actions/board.action.js"
+import { useFormRegister } from "../../../hooks/useFormRegister.js"
+import { StatusTypeDisplay } from "../task/status-display.jsx"
+import { PersonCircle } from "../../person-circle.jsx"
+import { LastUpdated } from "../task/last-updated.jsx"
+// ICONS
 import { RiArrowRightSLine } from 'react-icons/ri' //subitem
 import { TbArrowsDiagonal } from 'react-icons/tb' //open item
 import { BiMessageRoundedAdd, BiMessageRounded } from 'react-icons/bi' //empty updates, with updates
 import { HiOutlineDotsHorizontal } from 'react-icons/hi' //More
 import { MdDeleteOutline } from 'react-icons/md'//Delete
 import { HiOutlineDocumentDuplicate } from 'react-icons/hi'//Duplicate
-import React from "react"
 
 export const TaskPreview = ({ task, groupId, groupColor }) => {
     const dispatch = useDispatch()
