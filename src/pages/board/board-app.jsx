@@ -6,6 +6,7 @@ import { BoardDetails } from './board-details'
 import { SubSidebar } from '../../cmps/side-bar/sub-sidebar.jsx'
 import { UserMsg } from "../../cmps/msg/user-msg.jsx"
 import { MainSidebar } from '../../cmps/side-bar/main-sidebar.jsx'
+import { boardService } from '../../services/board.service.local.js'
 
 export const BoardApp = () => {
 
@@ -27,7 +28,7 @@ export const BoardApp = () => {
                 await dispatch(loadBoards(filterBy))
             else {
                 try {
-                    const filteredGroups = boardService.filterGroupAndTasks(params.id, filterBy)
+                    const filteredGroups = await boardService.filterGroupAndTasks(params.id, filterBy)
                     setFilteredGroups(filteredGroups)
                 }
                 catch (err) {

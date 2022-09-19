@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
 import { BoardHeader } from '../../cmps/board/board-header/board-header.jsx'
 import { GroupList } from '../../cmps/board/group/group-list.jsx'
-import { addGroup, loadSelectedBoard } from '../../store/actions/board.action.js'
+import { addGroup, loadBoards, loadSelectedBoard } from '../../store/actions/board.action.js'
 
 export const BoardDetails = ({ filteredGroups, onChangeFilter }) => {
     const board = useSelector(state => state.boardModule.selectedBoard)
@@ -13,10 +13,10 @@ export const BoardDetails = ({ filteredGroups, onChangeFilter }) => {
     const [groups, setGroups] = useState([])
 
     useEffect(() => {
-        dispatch(loadSelectedBoard(params.id))
-        setGroups(board.groups)
+        loadBoard() 
     }, [params.id])
-
+    
+    
     useEffect(() => {
         setGroups(filteredGroups)
     }, [filteredGroups])
@@ -25,6 +25,11 @@ export const BoardDetails = ({ filteredGroups, onChangeFilter }) => {
         const boardId = board._id
         const group = { title: 'New Group' }
         dispatch(addGroup(boardId, group))
+    }
+    
+    const loadBoard = async () => {
+        const currBoard = await dispatch(loadSelectedBoard(params.id))
+        setGroups(currBoard.groups)
     }
 
     // if (isLoading) {

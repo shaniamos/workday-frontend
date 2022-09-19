@@ -19,7 +19,7 @@ import { useDispatch } from "react-redux"
 import { useNavigate, NavLink } from 'react-router-dom'
 import { removeBoard } from '../../store/actions/board.action.js'
 import { NewBoardMoadl } from "../board/new-board-modal.jsx"
-import { SearchBoard } from "../search.jsx"
+import { Search } from "../search.jsx"
 
 export function SubSidebar({ boards, isOpen, onChangeFilter }) {
     const [isSearchClicked, setSearch] = useState(false)
@@ -80,7 +80,7 @@ export function SubSidebar({ boards, isOpen, onChangeFilter }) {
                                 <ClickAwayListener onClickAway={() => setSearch(false)}>
                                     <div>
                                         {!isSearchClicked && <a className="flex  option last-one" onClick={() => setSearch(!isSearchClicked)}><FiSearch /> <span className="menu-btn-inner-text">Search</span>  </a>}
-                                        {isSearchClicked && <SearchBoard contentSearch={'boards'} onChangeFilter={onChangeFilter} setSearch={setSearch} />}
+                                        {isSearchClicked && <Search contentSearch={'boards'} onChangeFilter={onChangeFilter} setSearch={setSearch} />}
                                     </div>
                                 </ClickAwayListener>
 

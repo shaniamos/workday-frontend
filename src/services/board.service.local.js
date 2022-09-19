@@ -246,30 +246,21 @@ async function filterGroupAndTasks(boardId, filterBy = {}) {
         const regex = new RegExp(filterBy.txt, 'i')
         const board = await getBoardById(boardId)
         let groups = [...board.groups]
-
          const filteredGroups =  groups.filter( (group) => {
-
             if (regex.test(group.title)) {
-                console.log('group.title', group.title);
                 return group
             }
             else {
                 const filteredTasks =  group.tasks.filter((task) => {
                     if(regex.test(task.title))
-                    // console.log('task.title',task.title);
                     return task
                 })
-                console.log('filteredTasks', filteredTasks);
                 group.tasks = filteredTasks
                 if(group.tasks.length) return group
-                console.log('group',group);
             }
-            
         })
-        console.log('filteredGroups', filteredGroups);
         return filteredGroups
     }
-
     catch (err) {
         console.error(err);
         throw err
