@@ -27,7 +27,7 @@ export const TaskPreview = ({ task, groupId, groupColor }) => {
         dispatch(removeTask(boardId, groupId, task.id))
     }
 
-    const onSaveTask = (event) => {
+    const onUpdateTask = (event) => {
         event.preventDefault()
         task.title = newTask.title
         dispatch(updateTask(boardId, groupId, task))
@@ -44,9 +44,7 @@ export const TaskPreview = ({ task, groupId, groupColor }) => {
     let date = new Date(Date.now())
     return (
         <React.Fragment>
-
             <div className="preview-full-task flex">
-
                 <div className="dropdown">
                     <div ><HiOutlineDotsHorizontal className="dot" /></div>
                     <div className="dropdown-content">
@@ -61,7 +59,7 @@ export const TaskPreview = ({ task, groupId, groupColor }) => {
                         <div className="preview-checkbox"><input className="input-checkbox" type="checkbox" name="" id="" /></div>
                         <div className="btn-subitem"><RiArrowRightSLine className="subitem-icon" /></div>
                         <div className="task-name-heading">
-                            <form className="editable-heading" onSubmit={onSaveTask}>
+                            <form className="editable-heading" onSubmit={onUpdateTask}>
                                 <input className="clean-input" {...register('title', 'text')} />
                             </form>
                         </div>
@@ -89,10 +87,6 @@ export const TaskPreview = ({ task, groupId, groupColor }) => {
                     </div> 
                     {/* Empty column */}
                     <div className="cell add-column"></div> 
-
-                    {/* <div onClick={onRemoveTask}> Delete</div> */}
-
-
                 </section>
             </div>
         </React.Fragment>

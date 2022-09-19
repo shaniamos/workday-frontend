@@ -28,7 +28,7 @@ export const GroupPreview = ({ group }) => {
         dispatch(removeGroup(boardId, group.id))
     }
 
-    const onSaveTask = (event) => {
+    const onUpdateGroup = (event) => {
         event.preventDefault()
         group.title = newGroup.title
         const boardId = params.id
@@ -36,19 +36,18 @@ export const GroupPreview = ({ group }) => {
     }
     return (
         <section className="group-preview ">
-            {/* <button onClick={onRemoveGroup}>Delete Group</button> */}
-
+            
             {/* Board Name  */}
             <div className="group-header-name heading-component flex  sticky-feature">
                 <div className="dropdown">
                     <div ><HiOutlineDotsHorizontal className="dots" /></div>
                     <div className="dropdown-content">
-                        <a onClick={() => onRemoveGroup()}>< MdDeleteOutline /> Delete Gruop</a>
+                        <a onClick={onRemoveGroup}>< MdDeleteOutline /> Delete Gruop</a>
                         <a><HiOutlineDocumentDuplicate /> Duplicate</a>
                     </div>
                 </div>
                 <span className="collapse-group-button"><BsChevronDown /></span>
-                <form onSubmit={onSaveTask}>
+                <form onSubmit={onUpdateGroup}>
                     <input {...register('title', 'text')} className="group-name-input clean-input" />
                 </form>
 
@@ -56,9 +55,9 @@ export const GroupPreview = ({ group }) => {
             </div>
 
             {/* Board identifier (color, checkbox, task name, persons, status, priority....) */}
-            <GroupHeader groupColor={group.colorId} onRemoveGroup={onRemoveGroup} />
+            <GroupHeader groupColor={group.colorId} />
 
-            {/* Task lines  */}
+            {/* Task list - lines of items */}
             <TaskList tasks={group.tasks} groupId={group.id} groupColor={group.colorId} />
             {/* <GroupFooter/> */}
         </section>
