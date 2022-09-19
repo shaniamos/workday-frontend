@@ -247,22 +247,27 @@ async function filterGroupAndTasks(boardId, filterBy = {}) {
         const board = await getBoardById(boardId)
         let groups = [...board.groups]
 
-        board.groups = await groups.filter(async (group) => {
+         const filteredGroups =  groups.filter( (group) => {
 
             if (regex.test(group.title)) {
+                console.log('group.title', group.title);
                 return group
             }
             else {
-
-                const tasks = await queryTasks(boardId, group.id, filterBy)
-                console.log('tasks from service', tasks);
-                if (tasks.length) {
-                    group.tasks = tasks
-                    return group
-                }
+                const filteredTasks =  group.tasks.filter((task) => {
+                    if(regex.test(task.title))
+                    // console.log('task.title',task.title);
+                    return task
+                })
+                console.log('filteredTasks', filteredTasks);
+                group.tasks = filteredTasks
+                if(group.tasks.length) return group
+                console.log('group',group);
             }
+            
         })
-        return board
+        console.log('filteredGroups', filteredGroups);
+        return filteredGroups
     }
 
     catch (err) {

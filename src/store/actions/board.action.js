@@ -157,22 +157,15 @@ export function updateTask(boardId, groupId, task) {
     }
 }
 
-export function onSetFilterTasks(boardId) {
-    // console.log('boardId', boardId);
-    return async (dispatch, getState) => {
-        try {
-            const { filterBy } = getState().boardModule
-            // console.log('filterBy', filterBy);
-            const board = await boardService.filterGroupAndTasks(boardId, filterBy)
-
-            dispatch({ type: "SET_SELECTED_BOARD", board })
-        } catch (err) {
-            console.log(err);
-        }
-
-
-    }
-
-}
+// export function onSetFilterTasks(boardId) {
+//     return async (dispatch, getState) => {
+//         try {
+//             const { filterBy } = getState().boardModule
+           
+//         } catch (err) {
+//             console.log(err);
+//         }
+//     }
+// }
 
 
