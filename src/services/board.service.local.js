@@ -51,6 +51,7 @@ function getBoardById(boardId) {
     return storageService.get(STORAGE_KEY, boardId)
 }
 
+
 // remove board
 function removeBoard(boardId) {
     return storageService.remove(STORAGE_KEY, boardId)

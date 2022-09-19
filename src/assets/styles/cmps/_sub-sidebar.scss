@@ -16,10 +16,11 @@
     }
 
     &.is-open {
-        min-width: rem(254px);
+        min-width: rem(280px);
         .open-btn {
             position: absolute;
-            left: rem(305px);
+            top: 25px;
+            left: rem(340px);
         }
     }
 

@@ -1,7 +1,12 @@
+import React from "react";
+import { useState } from "react"
 
 
-export const StatusTypeDisplay = ({ label, value }) => {
-
+export const StatusTypeDisplay = ({ label, value, options }) => {
+    const [isShownClass, setIsShownClass] = useState('')
+    const onLabelClick = () => {
+        setIsShownClass((isShownClass) ? '' : 'show')
+    }
     const getColorByLabel = (label, value) => {
         switch (label) {
             case 'status':
@@ -55,5 +60,23 @@ export const StatusTypeDisplay = ({ label, value }) => {
         }
     }
 
-    return <div className="cell label-type status-header" style={{ backgroundColor: `var(${getColorByLabel(label, value)})` }}>{`${value}`}</div>
+    return <React.Fragment>
+
+        <div className="label-dropdown">
+            <div className="cell label-type status-header btn-open-label-drop" onClick={onLabelClick} style={{ backgroundColor: `var(${getColorByLabel(label, value)})` }}>
+                {`${value}`}
+            </div>
+            {/* <button onclick="myFunction()" class="dropbtn">Dropdown</button> */}
+            <div className={`dropdown-labels-content ${isShownClass}`}>
+                <div className="picker-content">
+                    <ul className="picker-list" style={{ gridTemplateRows: `repeat(${options.length}, auto)` }}>
+                        {options.map(option => {
+                            return <li className="option" style={{backgroundColor: `var(${option.id})`}} onClick={() => { console.log('Option') }}>{option.title}</li>
+                        })}
+                    </ul>
+                </div>
+                {/* TODO picker-footer for edit labels */}
+            </div>
+        </div>
+    </React.Fragment>
 }
