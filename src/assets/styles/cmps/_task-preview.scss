@@ -249,3 +249,11 @@
         }
     }
 }
+
+.label-dropdown .main-screen {
+    @include main-screen;
+}
+
+.label-dropdown.show .main-screen {
+    @include main-screen-open;
+}
