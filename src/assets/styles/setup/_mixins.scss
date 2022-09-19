@@ -70,10 +70,37 @@
     }
 }
 
+@mixin tool-bar {
+    overflow: hidden;
+    margin-top: var(--spacing-small);
+    padding-bottom: 4px;
+    height: 32px;
+    border-bottom: .5px solid var(--ui-border-color);
+
+    & span {
+        padding: 8px 24px 5px 12px;
+        font-weight: 500;
+        padding: 0 4px;
+        font-size: 14px;
+        max-width: 150px;
+        min-width: 30px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    & a {
+        padding: 8px 24px 5px 12px;
+
+        &.active {
+            border-bottom: 2px solid var(--primary-color);
+        }
+    }
+}
+
 @mixin modal ($bgColor: white, $width: rem(500px), $height: 100vh) {
     position: fixed;
     background-color: $bgColor;
-    box-shadow: 0 4px 17px 6px #0000001a;
     width: $width;
     height: $height;
     padding: rem(32px);
@@ -85,7 +112,6 @@
     height: rem(20px);
     width: rem(10px);
     border-radius: 5px;
-    border: 1px solid rgb(216, 211, 211);
     padding: rem(4px) rem(8px);
     transition: background-color .2s;
     cursor: pointer;
@@ -98,7 +124,7 @@
     background-color: var(--color-basic_blue);
 }
 
-@mixin btn($bgColor: rgba(0, 0, 0, 0), $color: var(--primary-text-color), $hoverBgColor: var(--primary-background-hover-color)) {
+@mixin btn($bgColor: var(--primary-background-color), $color: var(--primary-text-color), $hoverBgColor: var(--primary-background-hover-color)) {
     display: inline-block;
     background-color: $bgColor;
     color: $color;

@@ -15,25 +15,25 @@ export const BoardApp = () => {
     const [filteredGroups, setFilteredGroups] = useState([])
     const dispatch = useDispatch()
     const params = useParams()
- 
+
     useEffect(() => {
         dispatch(loadBoards(filterBy))
     }, [params.id])
 
-    const onChangeFilter = async (filterBy, contentSearch) =>  {
+    const onChangeFilter = async (filterBy, contentSearch, sortBy) => {
         try {
             await dispatch(setFilterBy(filterBy))
-            if(contentSearch === 'boards') 
+            if (contentSearch === 'boards')
                 await dispatch(loadBoards(filterBy))
             else {
                 try {
-                    const filteredGroups = await boardService.filterGroupAndTasks(params.id, filterBy)
+                    const filteredGroups = await boardService.filterGroupAndTasks(params.id, filterBy, sortBy)
                     setFilteredGroups(filteredGroups)
                 }
                 catch (err) {
                     console.error(err);
                 }
-            }    
+            }
         }
         catch (err) {
             console.error(err);
@@ -43,7 +43,7 @@ export const BoardApp = () => {
     // if (!boards) return <section className='monday-loader-page'>
     //     <img className='monday-loader-animation' src="https://cdn.monday.com/images/loader/loader.gif" alt="" />
     // </section>
-    
+
     return (
         <section className="board-app flex">
             <MainSidebar />

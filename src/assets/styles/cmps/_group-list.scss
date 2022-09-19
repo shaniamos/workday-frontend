@@ -1,0 +1,23 @@
+.group-list {
+
+    & .btn-add-group {
+        @include btn;
+        display: flex;
+        align-items: center;
+        line-height: 22px;
+        border: rem(1px) solid var(--ui-border-color);
+        -webkit-font-smoothing: var(--font-smoothing-webkit);
+        font: var(--font-general-label);
+        height: rem(32px);
+        margin-top: rem(8px);
+        max-width: rem(300px);
+    }
+
+    & .add-icon {
+        display: flex;
+        align-items: center;
+        overflow: hidden;
+        position: relative;
+        margin-right: var(--spacing-small);
+    }
+}

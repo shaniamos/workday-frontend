@@ -30,7 +30,7 @@ export const NewBoardMoadl = ({ toggleNewBoardModal }) => {
     }
 
     return (
-        <section className="add-modal flex column justify-center align-center">
+        <section className="add-modal flex column justify-center">
             <div className="close-modal-btn flex align-center" onClick={toggleNewBoardModal}>
                 <span>X</span>
             </div>
