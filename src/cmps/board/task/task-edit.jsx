@@ -26,8 +26,8 @@ export function TaskEdit() {
     useEffectUpdate(() => dispatch(updateTask(boardId, groupId, task)), [task])
 
     const loadTask = async () => {
-        // const task = await boardService.getTaskById(boardId, groupId, params.taskId)
-        // setTask(task)
+        const task = await boardService.getTaskById(boardId, groupId, params.taskId)
+        setTask(task)
         setNewTask({ title: task.title })
     }
 
@@ -46,9 +46,9 @@ export function TaskEdit() {
         <section className="container open">
             <div className="main-screen" onClick={onCloseModal}></div>
             <section className={`task-edit`}>
-                {/* <form className="editable-heading" onSubmit={onUpdateTask}>
-                <input className="clean-input" {...register('title', 'text')} />
-            </form> */}
+                <form className="editable-heading" onSubmit={onUpdateTask}>
+                    <input className="clean-input" {...register('title', 'text')} />
+                </form>
                 <div className="task-edit-tool-bar flex align-center">
                     <button className="view-nav-btn"><span>Updates</span></button>|
                     <button className="view-nav-btn"><span>Files</span></button>|
