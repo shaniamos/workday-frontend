@@ -43,7 +43,7 @@ export function TaskEdit() {
     }
 
     return (
-        <section className="container open">
+        <section className="task-edit-container open">
             <div className="main-screen" onClick={onCloseModal}></div>
             <section className={`task-edit`}>
                 <form className="editable-heading" onSubmit={onUpdateTask}>

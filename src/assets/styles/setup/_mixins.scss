@@ -1,3 +1,22 @@
+@mixin main-screen($bgColor: rgba(0, 0, 0, 0) ) {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    cursor: pointer;
+    background-color: $bgColor;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .6s;
+    z-index: 10;
+}
+
+@mixin main-screen-open {
+    opacity: 1;
+    pointer-events: auto;
+}
+
 @mixin editable-heading {
     border-radius: 4px;
     overflow: hidden;
