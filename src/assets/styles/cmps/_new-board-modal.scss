@@ -1,9 +1,10 @@
 .add-modal {
-    @include modal($height: rem(310px));
+    @include modal($height: rem(280px), $width: rem(310px));
     border-radius: 8px;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    transition: all 0.3s ease 0s;
 
     .close-modal-btn {
         @include btn-close-modal;
@@ -14,7 +15,6 @@
             background-color: rgb(212, 212, 216);
         }
     }
-
 
     .focused-form {
         border: 1px solid gray;
@@ -28,7 +28,7 @@
     }
 
     .input-container {
-        padding: 8px 16px;
+        padding: 8px 0px;
         outline: none;
         width: 100%;
         border-radius: 4px;
@@ -41,6 +41,7 @@
             padding: 7px;
             transition: .3s;
             background-color: rgb(220 230 236 / 64%);
+            width: 95%;
 
             &:focus {
                 background-color: rgb(255, 255, 255);
@@ -49,10 +50,10 @@
     }
 
     .modal-btns {
+        display: flex;
         font-family: roboto-bold;
         justify-content: flex-end;
         margin-top: rem(50px);
-        margin-left: rem(60px);
 
         .cancel-modal-btn {
             @include btn($bgColor: white);
