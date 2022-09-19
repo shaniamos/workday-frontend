@@ -90,7 +90,7 @@
 
         .persons-header {
             &:hover .sort-btn {
-                    opacity: 1;     
+                opacity: 1;
             }
 
             width: 150px;
@@ -99,16 +99,17 @@
 
         .label-type-status {
             &:hover .sort-btn {
-                opacity: 1;     
-        }
+                opacity: 1;
+            }
 
             width: 150px;
             @include task-cell-with-content;
         }
+
         .label-type-priority {
             &:hover .sort-btn {
-                opacity: 1;     
-        }
+                opacity: 1;
+            }
 
             width: 150px;
             @include task-cell-with-content;
@@ -116,16 +117,18 @@
 
         .last-updated {
             &:hover .sort-btn {
-                opacity: 1;     
-        }
+                opacity: 1;
+            }
+
             width: 200px;
             @include task-cell-with-content;
         }
 
         .date-header {
             &:hover .sort-btn {
-                opacity: 1;     
-        }
+                opacity: 1;
+            }
+
             width: 200px;
             @include task-cell-with-content;
         }
@@ -139,7 +142,7 @@
 
         .sort-btn {
             padding: 3px;
-           margin: auto;
+            margin: auto;
             width: rem(20px);
             height: rem(20px);
             position: absolute;
@@ -151,6 +154,7 @@
             transition: background-color .2s, color .2s;
             transition: transform .2s;
             opacity: 0;
+
             &.name {
                 left: rem(207px);
             }
@@ -161,6 +165,7 @@
                 transform: rotate(360deg)
             }
         }
+
         .group-task-name-area {
             &:hover .sort-btn {
                 opacity: 1;

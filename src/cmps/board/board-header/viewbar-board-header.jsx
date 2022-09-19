@@ -42,8 +42,8 @@ export function ViewbarBoardHeader({ onAddGroup, onChangeFilter }) {
                 <section className="dropdown">
                     <button className="view-nav-btn-arrow">< IoIosArrowDown className="arrow-down" /></button>
                     <div className="dropdown-content flex column ">
-                        <i onClick={onAddTask}> <AiOutlinePlusCircle className="dropdown-icon" /> <span> + Add new Item </span></i>
-                        <i onClick={onAddGroup}> <HiOutlineInbox className="dropdown-icon" /><span> + New group of Items </span></i>
+                        <i onClick={onAddTask}> <AiOutlinePlusCircle className="dropdown-icon" /> <span>Add new Item</span></i>
+                        <i onClick={onAddGroup}> <HiOutlineInbox className="dropdown-icon" /><span>New group of Items</span></i>
                     </div>
                 </section>
             </div>

@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
 import { BoardHeader } from '../../cmps/board/board-header/board-header.jsx'
 import { GroupList } from '../../cmps/board/group/group-list.jsx'
-import { addGroup, loadBoards, loadSelectedBoard } from '../../store/actions/board.action.js'
+import { addGroup, loadSelectedBoard } from '../../store/actions/board.action.js'
 
 export const BoardDetails = ({ filteredGroups, onChangeFilter }) => {
     const board = useSelector(state => state.boardModule.selectedBoard)
@@ -42,7 +42,7 @@ export const BoardDetails = ({ filteredGroups, onChangeFilter }) => {
         <section className="board-details">
             {board && <BoardHeader board={board} onAddGroup={onAddGroup} onChangeFilter={onChangeFilter} />}
             <div className='board-content'>
-                {board && < GroupList groups={groups} onAddGroup={onAddGroup} onChangeFilter={onChangeFilter} />}
+                {board && < GroupList groups={board.groups} onAddGroup={onAddGroup} onChangeFilter={onChangeFilter} />}
             </div>
         </section>
     )

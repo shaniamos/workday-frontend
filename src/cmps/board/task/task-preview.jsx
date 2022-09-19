@@ -64,17 +64,17 @@ export const TaskPreview = ({ task, groupId, groupColor }) => {
                                 <input className="clean-input" {...register('title', 'text')} />
                             </form>
                         </div>
-                        <Link to={`/board/${params.id}/edit/${task.id}`} className="">
+                        <Link to={`/board/${params.id}/${groupId}/${task.id}`} className="">
                             <div className="btn-open-task flex"><TbArrowsDiagonal />Open</div>
                         </Link>
-                            <div className="btn-updates-count"><BiMessageRoundedAdd /></div>
+                        <div className="btn-updates-count"><BiMessageRoundedAdd /></div>
                     </div>
 
-                     {/* Persons / Responsbility */}
+                    {/* Persons / Responsbility */}
                     <div className="cell persons-header"> {typeof persons === 'object' && <PersonCircle persons={persons} />}</div>
 
                     {/* Status */}
-                    <StatusTypeDisplay  label='status' value={`${status}`} />
+                    <StatusTypeDisplay label='status' value={`${status}`} />
 
                     {/* Priority */}
                     <StatusTypeDisplay label='priority' value={`${priority}`} />
@@ -85,12 +85,11 @@ export const TaskPreview = ({ task, groupId, groupColor }) => {
                     {/* Due Date */}
                     <div className="cell date-header">
                         {date.getDate() + "/" + (date.getMonth() + 1) + "/" + date.getFullYear()}
-                    </div> 
+                    </div>
                     {/* Empty column */}
-                    <div className="cell add-column"></div> 
+                    <div className="cell add-column"></div>
                 </section>
             </div>
         </React.Fragment>
-
     )
 }

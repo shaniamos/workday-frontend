@@ -13,7 +13,7 @@ function App() {
         <Route path='auth/:status' element={<LoginSignup />} />
         {/* <Route path='/board/:id/description' element={<BoardDesc />} /> */}
         <Route path='board/:id' element={<BoardApp />} >
-          <Route path='edit/:taskId' element={<TaskEdit />} />
+          <Route path=':groupId/:taskId' element={<TaskEdit />} />
         </Route>
         <Route path='/' element={<Home />} />
       </Routes>

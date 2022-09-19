@@ -19,11 +19,12 @@
 //BOARD
 @import 'cmps/board-header';
 @import 'cmps/board-content';
+@import 'cmps/modal-new-board';
 //GROUP
 @import 'cmps/group-header';
 @import 'cmps/group-preview';
 @import 'cmps/group-footer'; //TODO
-@import 'cmps/modal-new-board';
+@import 'cmps/group-list'; //TODO
 //TASK
 @import 'pages/task-edit';
 @import 'cmps/task-preview';

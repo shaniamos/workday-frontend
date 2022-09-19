@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { loadBoards, setFilterBy, onSetFilterTasks } from '../../store/actions/board.action.js'
+import { loadBoards, setFilterBy } from '../../store/actions/board.action.js'
 import { Outlet, useParams } from 'react-router-dom'
 import { BoardDetails } from './board-details'
 import { SubSidebar } from '../../cmps/side-bar/sub-sidebar.jsx'
@@ -15,17 +15,15 @@ export const BoardApp = () => {
     const [filteredGroups, setFilteredGroups] = useState([])
     const dispatch = useDispatch()
     const params = useParams()
+
     useEffect(() => {
         dispatch(loadBoards(filterBy))
     }, [params.id])
 
-    const onChangeFilter = async (filterBy, contentSearch, sortBy) =>  {
-        console.log('filterBy',filterBy);
-        console.log('contentSearch',contentSearch);
-        console.log('sortBy',sortBy);
+    const onChangeFilter = async (filterBy, contentSearch) => {
         try {
             await dispatch(setFilterBy(filterBy))
-            if(contentSearch === 'boards') 
+            if (contentSearch === 'boards')
                 await dispatch(loadBoards(filterBy))
             else {
                 try {
@@ -35,19 +33,17 @@ export const BoardApp = () => {
                 catch (err) {
                     console.error(err);
                 }
-            }    
+            }
         }
         catch (err) {
             console.error(err);
         }
     }
 
-  
-
-
     // if (!boards) return <section className='monday-loader-page'>
     //     <img className='monday-loader-animation' src="https://cdn.monday.com/images/loader/loader.gif" alt="" />
     // </section>
+
     return (
         <section className="board-app flex">
             <MainSidebar />

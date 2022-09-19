@@ -10,6 +10,17 @@
         left: rem(16px);
         top: rem(16px);
     }
+
+    & .task-edit-tool-bar {
+        @include tool-bar;
+
+        & .view-nav-btn {
+            font-size: 15px;
+            height: rem(34px);
+            gap: 7px;
+            text-align: center;
+        }
+    }
 }
 
 .main-screen {
@@ -21,8 +32,6 @@
     background-color: rgb(0 0 0 / 60%);
     cursor: pointer;
     opacity: 0;
-
     pointer-events: none;
-
     transition: opacity .6s;
 }

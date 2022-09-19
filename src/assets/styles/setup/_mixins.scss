@@ -70,10 +70,38 @@
     }
 }
 
+@mixin tool-bar {
+    overflow: hidden;
+    margin-top: var(--spacing-small);
+    padding-bottom: 4px;
+    height: 32px;
+    border-bottom: .5px solid var(--ui-border-color);
+
+    & span {
+        padding: 8px 24px 5px 12px;
+        font-weight: 500;
+        padding: 0 4px;
+        font-size: 14px;
+        max-width: 150px;
+        min-width: 30px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    & a {
+        padding: 8px 24px 5px 12px;
+
+        &.active {
+            border-bottom: 2px solid var(--primary-color);
+        }
+    }
+}
+
 @mixin modal ($bgColor: white, $width: rem(500px), $height: 100vh) {
     position: fixed;
     background-color: $bgColor;
-    box-shadow: 0 4px 17px 6px #0000001a;
+    box-shadow: 1px -14px 4px 0px #0000001a;
     width: $width;
     height: $height;
     padding: rem(32px);

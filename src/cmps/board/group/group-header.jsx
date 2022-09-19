@@ -9,7 +9,7 @@ export const GroupHeader = ({ groupColor, onChangeFilter }) => {
   
 
     const onSort = (sortOption) => {
-        // console.log('sortOption:', sortOption);
+        console.log('sortOption:', sortOption);
        
         onChangeFilter(filterBy, '', sortOption)
     }
