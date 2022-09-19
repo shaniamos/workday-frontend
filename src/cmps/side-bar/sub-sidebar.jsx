@@ -75,7 +75,7 @@ export function SubSidebar({ boards, isOpen, onChangeFilter }) {
                     <div>
                         <div className="workspace-options flex column">
                             <div className="action-btn ">
-                                <a onClick={toggleNewBoardModal} className="flex  option"> <GrAdd /><span className="menu-btn-inner-text">Add</span></a>
+                                <a onClick={toggleNewBoardModal} className="flex option"> <GrAdd /><span className="menu-btn-inner-text">Add</span></a>
                                 <a className="flex  option"> <GrFilter /><span className="menu-btn-inner-text">Filter</span></a>
                                 <ClickAwayListener onClickAway={() => setSearch(false)}>
                                     <div>

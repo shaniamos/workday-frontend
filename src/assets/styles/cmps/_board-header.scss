@@ -102,33 +102,7 @@
 //TOOL-BAR HEADER
 
 .board-header-tool-bar {
-    display: flex;
-    align-items: center;
-    overflow: hidden;
-    margin-top: var(--spacing-small);
-    padding-bottom: 4px;
-    height: 32px;
-    border-bottom: .5px solid var(--ui-border-color);
-
-    & span {
-        padding: 8px 24px 5px 12px;
-        font-weight: 500;
-        padding: 0 4px;
-        font-size: 14px;
-        max-width: 150px;
-        min-width: 30px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-
-    & a {
-        padding: 8px 24px 5px 12px;
-
-        &.active {
-            border-bottom: 2px solid var(--primary-color);
-        }
-    }
+    @include tool-bar;
 }
 
 .board-header-tool-bar a {
