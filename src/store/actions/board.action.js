@@ -22,6 +22,7 @@ export function loadSelectedBoard(boardId, filterBy = {}) {
         try {
             const board = await boardService.getBoardById(boardId, filterBy)
             dispatch({ type: 'SET_SELECTED_BOARD', board })
+            return board
         } catch (err) {
             console.log('Cannot load board:', err)
         }

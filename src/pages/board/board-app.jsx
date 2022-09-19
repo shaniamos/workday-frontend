@@ -27,7 +27,7 @@ export const BoardApp = () => {
                 await dispatch(loadBoards(filterBy))
             else {
                 try {
-                    const filteredGroups = boardService.filterGroupAndTasks(params.id, filterBy)
+                    const filteredGroups = await boardService.filterGroupAndTasks(params.id, filterBy)
                     setFilteredGroups(filteredGroups)
                 }
                 catch (err) {

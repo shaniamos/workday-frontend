@@ -11,7 +11,7 @@ import { HiOutlineInbox } from 'react-icons/hi' //box
 import { useDispatch } from "react-redux"
 import { addTask } from "../../../store/actions/board.action.js"
 import { useState } from "react"
-import { SearchBoard } from "../../search.jsx"
+import { Search } from "../../search.jsx"
 import { FilterBoardByType } from './board-filter.jsx';
 
 //IoHomeOutline - Main Table
@@ -51,7 +51,7 @@ export function ViewbarBoardHeader({ onAddGroup, onChangeFilter }) {
             <ClickAwayListener onClickAway={() => setSearch(false)}>
                 <div>
                     {!isSearch && <button className="view-nav-btn" onClick={() => setSearch(!isSearch)}><BsSearch /> <span>Search</span>  </button>}
-                    {isSearch && <SearchBoard contentSearch={'items'} onChangeFilter={onChangeFilter} setSearch={setSearch} />}
+                    {isSearch && <Search contentSearch={'items'} onChangeFilter={onChangeFilter} setSearch={setSearch} />}
                 </div>
             </ClickAwayListener>
             <button className="view-nav-btn"><FaRegUserCircle /> Person  </button>
