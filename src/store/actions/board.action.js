@@ -34,7 +34,6 @@ export function removeBoard(boardId) {
     return async (dispatch) => {
         try {
             const board = await boardService.removeBoard(boardId)
-            console.log('board', board);
             dispatch({ type: 'REMOVE_BOARD', boardId })
             dispatch({ type: 'RESET_SELECTED_BOARD' })
             showSuccessMsg(`Board successfully deleted`)

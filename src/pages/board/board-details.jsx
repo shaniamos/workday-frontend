@@ -3,17 +3,18 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
 import { BoardHeader } from '../../cmps/board/board-header/board-header.jsx'
 import { GroupList } from '../../cmps/board/group/group-list.jsx'
-import { addGroup, loadBoards, loadSelectedBoard } from '../../store/actions/board.action.js'
+import { addGroup, loadSelectedBoard } from '../../store/actions/board.action.js'
 
 export const BoardDetails = ({ filteredGroups, onChangeFilter }) => {
     const board = useSelector(state => state.boardModule.selectedBoard)
     const isLoading = useSelector(state => state.boardModule.isLoading)
     const dispatch = useDispatch()
     const params = useParams()
-    // const [groups, setGroups] = useState([])
+    const [groups, setGroups] = useState([])
 
     useEffect(() => {
-        loadBoard() 
+        // loadBoard() 
+        dispatch(loadSelectedBoard(params.id))
     }, [params.id])
     
     
@@ -27,15 +28,10 @@ export const BoardDetails = ({ filteredGroups, onChangeFilter }) => {
         dispatch(addGroup(boardId, group))
     }
     
-    const loadBoard = async () => {
-        const currBoard = await dispatch(loadSelectedBoard(params.id))
-        setGroups(currBoard.groups)
-    }
-
-    const loadBoard = async () => {
-        const currBoard = await dispatch(loadSelectedBoard(params.id))
-        setGroups(currBoard.groups)
-    }
+    // const loadBoard = async () => {
+    //     const currBoard = await dispatch(loadSelectedBoard(params.id))
+    //     setGroups(currBoard.groups)
+    // }
 
     // if (isLoading) {
     //     return (

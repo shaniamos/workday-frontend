@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { loadBoards, setFilterBy, onSetFilterTasks } from '../../store/actions/board.action.js'
+import { loadBoards, setFilterBy } from '../../store/actions/board.action.js'
 import { Outlet, useParams } from 'react-router-dom'
 import { BoardDetails } from './board-details'
 import { SubSidebar } from '../../cmps/side-bar/sub-sidebar.jsx'
