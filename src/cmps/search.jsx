@@ -32,10 +32,6 @@ export const SearchBoard = ({ onChangeFilter, contentSearch }) => {
                     onChange={handleChange}
                     autoFocus /> */}
             </div>
-
-
         </form>
-
-
     )
 }
