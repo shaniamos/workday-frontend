@@ -1,5 +1,5 @@
 import React from "react"
-import { useDispatch } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import { Link, useParams } from "react-router-dom"
 
 import { addTask, removeTask, updateTask } from "../../../store/actions/board.action.js"
@@ -16,9 +16,12 @@ import { MdDeleteOutline } from 'react-icons/md'//Delete
 import { HiOutlineDocumentDuplicate } from 'react-icons/hi'//Duplicate
 
 export const TaskPreview = ({ task, groupId, groupColor }) => {
+    const labels = useSelector(state => state.boardModule.selectedBoard.labels)
+
     const dispatch = useDispatch()
     const params = useParams()
     const boardId = params.id
+    
 
     const [register, setNewTask, newTask] = useFormRegister({
         title: task.title
@@ -40,6 +43,7 @@ export const TaskPreview = ({ task, groupId, groupColor }) => {
         delete duplicateTask.lastUpdated
         dispatch(addTask(boardId, groupId, duplicateTask))
     }
+
 
     const { persons, status, priority, lastUpdated } = task
     let date = new Date(Date.now())
@@ -73,11 +77,12 @@ export const TaskPreview = ({ task, groupId, groupColor }) => {
                      {/* Persons / Responsbility */}
                     <div className="cell persons-header"> {typeof persons === 'object' && <PersonCircle persons={persons} />}</div>
 
-                    {/* Status */}
-                    <StatusTypeDisplay  label='status' value={`${status}`} />
-
-                    {/* Priority */}
-                    <StatusTypeDisplay label='priority' value={`${priority}`} />
+                    {/* ALL Label Type Columns (Status + Priority) */}
+                    {labels.map(label => {
+                        const labelName = label.name
+                        const labelValue = task[labelName]
+                        return <StatusTypeDisplay label={`${label.name}`} value={labelValue} options={label.options} />
+                    })}
 
                     {/* DeadLine */}
                     <LastUpdated lastUpdated={lastUpdated} />

@@ -1,4 +1,5 @@
-import { useDispatch } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
+
 import { useParams } from "react-router-dom"
 import { TaskPreview } from "./task-preview.jsx"
 import { useFormRegister } from '../../../hooks/useFormRegister.js'
@@ -6,7 +7,7 @@ import { addTask } from '../../../store/actions/board.action.js'
 import React from "react"
 
 export const TaskList = ({ tasks, groupId, groupColor }) => {
-
+    const board = useSelector(state => state.boardModule.selectedBoard)
     const dispatch = useDispatch()
     const params = useParams()
     const [register, setTask, task] = useFormRegister({

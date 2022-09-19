@@ -8,7 +8,7 @@ export const GroupHeader = ({ groupColor }) => {
 
         <div className='preview-group-header flex'>
             
-            <div ><HiOutlineDotsHorizontal className="dot" /></div>
+            {/* <div ><HiOutlineDotsHorizontal className="dot" /></div> */}
             <div className="group-header-identifier  flex">
                 <div className="cell task-name-area group-task-name-area cell sticky-feature flex">
                     <div className="task-group-color task-group-color-header" style={{ backgroundColor: `var(${groupColor})` }}></div>

@@ -4,14 +4,14 @@
     display: flex;
     align-items: center;
     position: sticky;
-    top: 173px;
+    top: 209px;
     height: 40px;
     font-size: 18px;
     margin-left: 4px;
     z-index: 1;
     background-color: white;
 
-    span {
+    .collapse-group-button {
         display: inline-block;
         margin-right: 2px;
         margin-left: 9px;
@@ -20,8 +20,15 @@
         cursor: pointer;
     }
 
-    .group-name-input {
-        @include editable-heading;
+    .group-title {
+
+        padding-inline-start: 10px;
+        padding-top: 5px;
+        .group-name-input {
+            @include editable-heading;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
     }
 
     .group-task-count {
@@ -42,7 +49,7 @@
 //COLUMNS NAMES LINE 
 .preview-group-header {
     position: sticky;
-    top: 213px;
+    top: 249px;
     z-index: 1;
     width: 100%;
     background-color: white;
@@ -62,24 +69,29 @@
         }
     }
 
-    
-    .group-header-identifier{
 
-        .cell{
+    .group-header-identifier {
+        position: relative;
+        left: 18px;
+
+        .cell {
             @include cell;
         }
-        .task-name-area{
+
+        .task-name-area {
             width: 400px;
 
-            .task-group-color{
+            .task-group-color {
                 width: 6px;
                 height: 100%;
                 border-top-left-radius: 10px
             }
+
             .preview-checkbox {
                 @include checkbox;
             }
-            .header-identifier-title{
+
+            .header-identifier-title {
                 margin: auto;
             }
         }
@@ -88,18 +100,22 @@
             width: 150px;
             @include task-cell-with-content;
         }
+
         .label-type {
             width: 150px;
             @include task-cell-with-content;
         }
-        .last-updated{
+
+        .last-updated {
             width: 200px;
             @include task-cell-with-content;
         }
-        .date-header{
+
+        .date-header {
             width: 200px;
             @include task-cell-with-content;
         }
+
         .add-column {
             width: 400px;
             padding-inline-start: 10px;

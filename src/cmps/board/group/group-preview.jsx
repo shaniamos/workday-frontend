@@ -8,7 +8,7 @@ import { GroupHeader } from "./group-header.jsx"
 import { HiOutlineDotsHorizontal } from 'react-icons/hi' //More
 import { MdDeleteOutline } from 'react-icons/md'//Delete
 import { HiOutlineDocumentDuplicate } from 'react-icons/hi'//Duplicate
-import { BsChevronDown } from 'react-icons/bs'
+import { IoChevronDown } from 'react-icons/io5'
 import { BiDotsHorizontalRounded } from "./group-header.jsx"
 
 export const GroupPreview = ({ group }) => {
@@ -40,10 +40,12 @@ export const GroupPreview = ({ group }) => {
                         <a><HiOutlineDocumentDuplicate /> Duplicate</a>
                     </div>
                 </div>
-                <span className="collapse-group-button"><BsChevronDown /></span>
-                <form onSubmit={onUpdateGroup}>
-                    <input {...register('title', 'text')} className="group-name-input clean-input" />
-                </form>
+                <span className="collapse-group-button" style={{ color: `var(${group.colorId})` }}><IoChevronDown /></span>
+                <div className="group-title" >
+                    <form onSubmit={onUpdateGroup}>
+                        <input {...register('title', 'text')} className="group-name-input clean-input" style={{ color: `var(${group.colorId})` }}/>
+                    </form>
+                </div>
                 <span className="group-task-count">{`${group.tasks.length} items`}</span>
             </div>
             {/* Group columns identifier (color, checkbox, task name, persons, status, priority....) */}
