@@ -15,20 +15,21 @@ export const BoardApp = () => {
     const [filteredGroups, setFilteredGroups] = useState([])
     const dispatch = useDispatch()
     const params = useParams()
-    // const isNavOpenn = true
     useEffect(() => {
-        // console.log('filterBy', filterBy);
         dispatch(loadBoards(filterBy))
     }, [params.id])
 
-    const onChangeFilter = async (filterBy, contentSearch) =>  {
+    const onChangeFilter = async (filterBy, contentSearch, sortBy) =>  {
+        console.log('filterBy',filterBy);
+        console.log('contentSearch',contentSearch);
+        console.log('sortBy',sortBy);
         try {
             await dispatch(setFilterBy(filterBy))
             if(contentSearch === 'boards') 
                 await dispatch(loadBoards(filterBy))
             else {
                 try {
-                    const filteredGroups = await boardService.filterGroupAndTasks(params.id, filterBy)
+                    const filteredGroups = await boardService.filterGroupAndTasks(params.id, filterBy, sortBy)
                     setFilteredGroups(filteredGroups)
                 }
                 catch (err) {

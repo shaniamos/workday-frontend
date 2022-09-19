@@ -11,7 +11,7 @@ import { HiOutlineDocumentDuplicate } from 'react-icons/hi'//Duplicate
 import { BsChevronDown } from 'react-icons/bs'
 import { BiDotsHorizontalRounded } from "./group-header.jsx"
 
-export const GroupPreview = ({ group }) => {
+export const GroupPreview = ({ group, onChangeFilter }) => {
     const params = useParams()
     const dispatch = useDispatch()
     const [register, setNewGroup, newGroup] = useFormRegister({
@@ -47,7 +47,7 @@ export const GroupPreview = ({ group }) => {
                 <span className="group-task-count">{`${group.tasks.length} items`}</span>
             </div>
             {/* Group columns identifier (color, checkbox, task name, persons, status, priority....) */}
-            <GroupHeader groupColor={group.colorId} />
+            <GroupHeader groupColor={group.colorId} onChangeFilter={onChangeFilter} />
             <TaskList tasks={group.tasks} groupId={group.id} groupColor={group.colorId} />
             {/* TODO <GroupFooter/> (Columns Summary) */}
         </section>

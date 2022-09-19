@@ -62,49 +62,109 @@
         }
     }
 
-    
-    .group-header-identifier{
 
-        .cell{
+    .group-header-identifier {
+
+        .cell {
             @include cell;
         }
-        .task-name-area{
+
+        .task-name-area {
             width: 400px;
 
-            .task-group-color{
+            .task-group-color {
                 width: 6px;
                 height: 100%;
                 border-top-left-radius: 10px
             }
+
             .preview-checkbox {
                 @include checkbox;
             }
-            .header-identifier-title{
+
+            .header-identifier-title {
                 margin: auto;
             }
+
         }
 
         .persons-header {
+            &:hover .sort-btn {
+                    opacity: 1;     
+            }
+
             width: 150px;
             @include task-cell-with-content;
         }
-        .label-type {
+
+        .label-type-status {
+            &:hover .sort-btn {
+                opacity: 1;     
+        }
+
             width: 150px;
             @include task-cell-with-content;
         }
-        .last-updated{
+        .label-type-priority {
+            &:hover .sort-btn {
+                opacity: 1;     
+        }
+
+            width: 150px;
+            @include task-cell-with-content;
+        }
+
+        .last-updated {
+            &:hover .sort-btn {
+                opacity: 1;     
+        }
             width: 200px;
             @include task-cell-with-content;
         }
-        .date-header{
+
+        .date-header {
+            &:hover .sort-btn {
+                opacity: 1;     
+        }
             width: 200px;
             @include task-cell-with-content;
         }
+
         .add-column {
             width: 400px;
             padding-inline-start: 10px;
             font-size: 20px;
             border-inline-start: 0.5px solid #d0d4e4;
+        }
+
+        .sort-btn {
+            padding: 3px;
+           margin: auto;
+            width: rem(20px);
+            height: rem(20px);
+            position: absolute;
+            background-color: white;
+            border: .5px solid rgb(230, 222, 222);
+            border-radius: 10px;
+            cursor: pointer;
+            top: -10px;
+            transition: background-color .2s, color .2s;
+            transition: transform .2s;
+            opacity: 0;
+            &.name {
+                left: rem(207px);
+            }
+
+            &:hover {
+                background-color: var(--primary-color);
+                color: white;
+                transform: rotate(360deg)
+            }
+        }
+        .group-task-name-area {
+            &:hover .sort-btn {
+                opacity: 1;
+            }
         }
     }
 }
