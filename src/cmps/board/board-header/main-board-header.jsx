@@ -6,11 +6,9 @@ import { useDispatch } from "react-redux"
 import { useFormRegister } from "../../../hooks/useFormRegister.js"
 import { updateBoard } from "../../../store/actions/board.action.js"
 import { useEffect } from "react"
-import { useParams } from "react-router-dom"
 
 export function MainBoardHeader({ board }) {
     const dispatch = useDispatch()
-    const params = useParams()
     const [register, setNewBoard, newBoard] = useFormRegister({
         title: board.title
     })

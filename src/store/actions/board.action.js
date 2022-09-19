@@ -20,7 +20,7 @@ export function loadBoards(filterBy) {
 export function loadSelectedBoard(boardId, filterBy = {}) {
     return async (dispatch) => {
         try {
-            const board = await boardService.getByBoardId(boardId, filterBy)
+            const board = await boardService.getBoardById(boardId, filterBy)
             dispatch({ type: 'SET_SELECTED_BOARD', board })
         } catch (err) {
             console.log('Cannot load board:', err)
@@ -137,7 +137,7 @@ export function removeTask(boardId, groupId, taskId) {
 export function addTask(boardId = '', groupId = '', task = '') {
     return async (dispatch) => {
         try {
-            const savedBoard = await boardService.saveTask(boardId, groupId, task)
+            const savedBoard = await boardService.addTask(boardId, groupId, task)
             dispatch({ type: 'UPDATE_BOARD', board: savedBoard })
         } catch (err) {
             console.error('err:', err)
@@ -149,7 +149,7 @@ export function addTask(boardId = '', groupId = '', task = '') {
 export function updateTask(boardId, groupId, task) {
     return async (dispatch) => {
         try {
-            const savedBoard = await boardService.saveTask(boardId, groupId, task)
+            const savedBoard = await boardService.updateTask(boardId, groupId, task)
             dispatch({ type: 'UPDATE_BOARD', board: savedBoard })
         } catch (err) {
             console.error('err:', err)

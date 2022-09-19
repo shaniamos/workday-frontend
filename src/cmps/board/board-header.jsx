@@ -1,8 +1,3 @@
-// import { NavLink, useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux"
-// import { addGroup } from "../store/actions/board.action.js"
-import { addGroup } from "../../store/actions/board.action.js"
-
 import { MainBoardHeader } from './board-header/main-board-header.jsx'
 import { ToolbarBoardHeader } from './board-header/toolbar-board-header.jsx'
 import { ViewbarBoardHeader } from './board-header/viewbar-board-header.jsx'
@@ -16,20 +11,10 @@ import { ViewbarBoardHeader } from './board-header/viewbar-board-header.jsx'
 //FaSort - Sort on group
 //CgArrowsScrollV - Sort
 //HiFolder - new item
-
 //IoIosCheckmarkCircleOutline -checklist 
 
 
-export function BoardHeader({ board, onSaveGroup, onChangeFilter }) {
-        
-
-    
-    // const [title , setTitle] = useState(selectedBoard.title)
-    // console.log('board',board );
-    // useEffect(() => {
-    //     setTitle(selectedBoard.title)
-    // }, [])
-    const dispatch = useDispatch()
+export function BoardHeader({ board, onAddGroup, onChangeFilter }) {
 
     return (
         <header className="board-header-container">
@@ -37,7 +22,7 @@ export function BoardHeader({ board, onSaveGroup, onChangeFilter }) {
                 
                 <MainBoardHeader board={board} />
                 <ToolbarBoardHeader />
-                <ViewbarBoardHeader onSaveGroup={onSaveGroup} onChangeFilter={onChangeFilter} />
+                <ViewbarBoardHeader onAddGroup={onAddGroup} onChangeFilter={onChangeFilter} />
             </div>
         </header>
     )

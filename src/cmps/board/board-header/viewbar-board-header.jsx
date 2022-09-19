@@ -1,4 +1,3 @@
-// import { NavLink } from "react-router-dom"
 import { IoIosArrowDown } from 'react-icons/io' //New item
 import { FaRegUserCircle } from 'react-icons/fa' //Person
 import { CgArrowsScrollV } from 'react-icons/cg' //Sort
@@ -11,11 +10,9 @@ import { AiOutlinePlusCircle } from 'react-icons/ai' //Plus
 import { HiOutlineInbox } from 'react-icons/hi' //box
 import { useDispatch } from "react-redux"
 import { addTask } from "../../../store/actions/board.action.js"
-import { useRef } from "react"
 import { useState } from "react"
 import { SearchBoard } from "../../search-board.jsx"
 import { FilterBoardByType } from '../../filter-board.jsx';
-
 
 //IoHomeOutline - Main Table
 //RiErrorWarningLine - description
@@ -28,25 +25,25 @@ import { FilterBoardByType } from '../../filter-board.jsx';
 //IoIosCheckmarkCircleOutline -checklist 
 
 
-export function ViewbarBoardHeader({ onSaveGroup, board, onChangeFilter }) {
+export function ViewbarBoardHeader({ onAddGroup, onChangeFilter }) {
     const [isSearch, setSearch] = useState(false)
     const [isFilter, setFilter] = useState(false)
 
     const dispatch = useDispatch()
 
-    const onSaveTask = () => {
+    const onAddTask = () => {
         dispatch(addTask())
     }
 
     return (
         <div className="board-header-view-bar flex ">
             <div className="new-item-btn flex ">
-                <button onClick={onSaveTask} className="view-nav-btn btn">New Item</button>
+                <button onClick={onAddTask} className="view-nav-btn btn">New Item</button>
                 <section className="dropdown">
                     <button className="view-nav-btn-arrow">< IoIosArrowDown className="arrow-down" /></button>
                     <div className="dropdown-content flex column ">
-                        <i onClick={onSaveTask}> <AiOutlinePlusCircle className="dropdown-icon" /> <span> + Add new Item </span></i>
-                        <i onClick={onSaveGroup}> <HiOutlineInbox className="dropdown-icon" /><span> + New group of Items </span></i>
+                        <i onClick={onAddTask}> <AiOutlinePlusCircle className="dropdown-icon" /> <span> + Add new Item </span></i>
+                        <i onClick={onAddGroup}> <HiOutlineInbox className="dropdown-icon" /><span> + New group of Items </span></i>
                     </div>
                 </section>
             </div>
@@ -67,19 +64,9 @@ export function ViewbarBoardHeader({ onSaveGroup, board, onChangeFilter }) {
                     }
                 </div>
             </ClickAwayListener>
-            
-            {/* <button className="view-nav-btn"><BiFilterAlt /> Filter <IoIosArrowDown /> </button> */}
             <button className="view-nav-btn"><CgArrowsScrollV /> Sort  </button>
             <button className="view-nav-btn"><AiOutlineEyeInvisible /> Hide  </button>
             <button className="view-nav-btn"><HiOutlineDotsHorizontal />  </button>
         </div>
-
-
     )
 }
-{/* <ClickAwayListener onClickAway={() => setSearch(false)}>
-    <div>
-        {!isSearch && <a className="view-nav-btn arrow" onClick={() => setSearch(!isSearch)}><FiSearch /> <span>Search</span>  </a>}
-        {isSearch && <SearchBoard onChangeFilterBoards={onChangeFilterBoards} setSearch={setSearch} />}
-    </div>
-</ClickAwayListener> */}

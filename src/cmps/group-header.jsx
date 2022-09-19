@@ -1,14 +1,6 @@
-// import { useEffect, useState } from 'react'
-// import { useDispatch } from 'react-redux'
-// import { useSelector } from 'react-redux'
-// import { updateGroup } from '../../store/actions/board.actions'
-// import { GroupModal } from './group-modal'
-
 import { HiOutlineDotsHorizontal } from 'react-icons/hi' //More
-import { MdDeleteOutline } from 'react-icons/md'//Delete
-import { HiOutlineDocumentDuplicate } from 'react-icons/hi'//Duplicate
 
-export const GroupHeader = ({ groupColor, onRemoveGroup }) => {
+export const GroupHeader = ({ groupColor }) => {
 
 
 

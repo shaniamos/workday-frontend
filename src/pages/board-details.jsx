@@ -15,14 +15,13 @@ export const BoardDetails = ({onChangeFilter}) => {
         dispatch(loadSelectedBoard(params.id))
     }, [params.id])
 
-    const onSaveGroup = () => {
+    const onAddGroup = () => {
         const boardId = board._id
         const group = { title: 'New Group' }
         dispatch(addGroup(boardId, group))
     }
 
     // if (isLoading) {
-    //     console.log(isLoading)
     //     return (
     //         <section className='monday-loader-page'>
     //             <img className='monday-loader-animation' src="https://cdn.monday.com/images/loader/loader.gif" alt="" />
@@ -32,9 +31,9 @@ export const BoardDetails = ({onChangeFilter}) => {
     
     return (
         <section className="board-details">
-            {board && <BoardHeader board={board} onSaveGroup={onSaveGroup} onChangeFilter={onChangeFilter} />}
+            {board && <BoardHeader board={board} onAddGroup={onAddGroup} onChangeFilter={onChangeFilter} />}
             <div className='board-content'>
-                {board && < GroupList groups={board.groups} onSaveGroup={onSaveGroup} />}
+                {board && < GroupList groups={board.groups} onAddGroup={onAddGroup} />}
             </div>
         </section>
     )

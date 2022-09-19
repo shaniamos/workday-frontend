@@ -6,15 +6,16 @@ export const boardService = {
     queryBoards,
     saveBoard,
     removeBoard,
-    getByBoardId,
+    getBoardById,
     queryGroups,
     saveGroup,
     removeGroup,
-    getByGroupId,
+    getGroupById,
     queryTasks,
-    saveTask,
+    addTask,
+    updateTask,
     removeTask,
-    getByTaskId,
+    getTaskById,
     filterGroupAndTasks
 }
 
@@ -23,6 +24,7 @@ const defultBoards = [board]
 
 // CRUDL Board
 
+// get boards
 async function queryBoards(filterBy) {
 
     try {
@@ -32,9 +34,7 @@ async function queryBoards(filterBy) {
             boards = defultBoards
         }
         if (filterBy) {
-            // console.log('filterBy', filterBy);
             const { txt } = filterBy
-            // console.log('txt', txt);
             if (txt) {
                 const regex = new RegExp(txt, 'i')
                 boards = boards.filter(board => regex.test(board.title))
@@ -47,19 +47,21 @@ async function queryBoards(filterBy) {
 }
 
 // get board by id
-function getByBoardId(boardId) {
+function getBoardById(boardId) {
     return storageService.get(STORAGE_KEY, boardId)
 }
 
-//remove board
+// remove board
 function removeBoard(boardId) {
     return storageService.remove(STORAGE_KEY, boardId)
 }
 
 // add + update board
 function saveBoard(board) {
+    // update board
     if (board._id) {
         return storageService.put(STORAGE_KEY, board)
+        // add board
     } else {
         board = _createBoard(board)
         return storageService.post(STORAGE_KEY, board)
@@ -68,51 +70,10 @@ function saveBoard(board) {
 
 // CRUDL Groups
 
-
-
-async function filterGroupAndTasks(boardId, filterBy = {}) {
-    try {
-        const regex = new RegExp(filterBy.txt, 'i')
-        const board = await getByBoardId(boardId)
-        let groups = [...board.groups]
-
-         board.groups = await groups.filter(async (group) => {
-
-            if (regex.test(group.title)) {
-                // console.log('group from regex', group);
-                return group
-            }
-            else {
-
-                const tasks = await queryTasks(boardId, group.id, filterBy)
-                console.log('tasks from service', tasks);
-                if (tasks.length) {
-                    group.tasks = tasks
-                    // console.log('group from service', group);
-                    console.log('group from task length', group);
-                    return group
-                }
-            }
-        })
-        // console.log('filteredGroups', filteredGroups);
-        console.log('board', board);
-        return board
-    }
-
-    catch (err) {
-        console.error(err);
-        throw err
-    }
-}
-
-
 // get groups
-
 async function queryGroups(boardId, filterBy = {}) {
     try {
-        // console.log('boardId', boardId);
-        const board = await getByBoardId(boardId)
-        // console.log('board', board);
+        const board = await getBoardById(boardId)
         var groups = [...board.groups]
 
         if (filterBy) {
@@ -128,9 +89,9 @@ async function queryGroups(boardId, filterBy = {}) {
 }
 
 // get group by id
-async function getByGroupId(boardId, groupId) {
+async function getGroupById(boardId, groupId) {
     try {
-        const board = await getByBoardId(boardId)
+        const board = await getBoardById(boardId)
         const group = board.groups.find(group => group.id === groupId)
         return group
     } catch (err) {
@@ -141,7 +102,7 @@ async function getByGroupId(boardId, groupId) {
 // remove group
 async function removeGroup(boardId, groupId) {
     try {
-        const board = await getByBoardId(boardId)
+        const board = await getBoardById(boardId)
         const newGroups = board.groups.filter(group => group.id !== groupId)
         board.groups = newGroups
         return storageService.put(STORAGE_KEY, board)
@@ -153,11 +114,13 @@ async function removeGroup(boardId, groupId) {
 // add + update group
 async function saveGroup(boardId, group) {
     try {
-        const board = await getByBoardId(boardId)
+        const board = await getBoardById(boardId)
+        // update group
         if (group.id) {
             const updatedGroups = board.groups.map(currGroup => (currGroup.id === group.id) ? group : currGroup)
             board.groups = updatedGroups
         }
+        // add group
         else {
             group.id = utilService.makeId()
             group.style = {}
@@ -172,11 +135,10 @@ async function saveGroup(boardId, group) {
 
 // CRUDL Task
 
-//get tasks
+// get tasks
 async function queryTasks(boardId, groupId, filterBy) {
     try {
-        const group = await getByGroupId(boardId, groupId)
-        // console.log('group from service', group);
+        const group = await getGroupById(boardId, groupId)
         let tasks = [...group.tasks]
 
         if (filterBy) {
@@ -192,9 +154,9 @@ async function queryTasks(boardId, groupId, filterBy) {
 }
 
 // get task by id
-async function getByTaskId(boardId, groupId, taskId) {
+async function getTaskById(boardId, groupId, taskId) {
     try {
-        const group = await getByGroupId(boardId, groupId)
+        const group = await getGroupById(boardId, groupId)
         const task = group.find(task => task.id === taskId)
         return task
     } catch (err) {
@@ -205,9 +167,10 @@ async function getByTaskId(boardId, groupId, taskId) {
 // remove task
 async function removeTask(boardId, groupId, taskId) {
     try {
-        const board = await getByBoardId(boardId)
-        const group = await getByGroupId(boardId, groupId)
+        const board = await getBoardById(boardId)
+        const group = await getGroupById(boardId, groupId)
         const newTasks = group.tasks.filter(task => task.id !== taskId)
+
         board.groups.forEach((group, idx) => {
             if (group.id === groupId)
                 board.groups[idx].tasks = newTasks
@@ -216,53 +179,96 @@ async function removeTask(boardId, groupId, taskId) {
     } catch (err) {
         throw err
     }
-
 }
 
-// add + update task
-async function saveTask(boardId, groupId, task) {
+async function addTask(boardId, groupId, task) {
     try {
-        if (!boardId || !groupId || !task) {
+        // button - New Item
+        // add a new empty task to the first group in the first board
+        if (!boardId && !groupId && !task) {
             const boards = await queryBoards()
             boardId = boards[0]._id
             groupId = boards[0].groups[0].id
             task = { title: 'New Item' }
         }
 
-        const board = await getByBoardId(boardId)
-        const group = await getByGroupId(boardId, groupId)
-        if (task.id) {
-            task.lastUpdated = Date.now()
-            const updatedTasks = group.tasks.map(currTask => (currTask.id === task.id) ? task : currTask)
-            board.groups.forEach((group, idx) => {
-                if (group.id === groupId)
-                    board.groups[idx].tasks = updatedTasks
-            })
-        } else {
-            if (!task.persons)
-                task = _createTask(task)
-            else {
-                task.id = utilService.makeId()
-                task.lastUpdate = Date.now()
-            }
-            board.groups.forEach((group, idx) => {
-                if (group.id === groupId) {
-                    if (task.title === 'New Item')
-                        board.groups[idx].tasks.unshift(task)
-                    else board.groups[idx].tasks.push(task)
-                }
-            })
+        const board = await getBoardById(boardId)
+
+        // if task empty, create new one
+        if (!task.persons)
+            task = _createTask(task)
+        // else - duplicate the task - adding the same full task,
+        // just with another id 
+        else {
+            task.id = utilService.makeId()
+            task.lastUpdate = Date.now()
         }
+
+        board.groups.forEach((group, idx) => {
+            if (group.id === groupId) {
+                // if the user clicked on 'New Item' button, 
+                // the task should appear at the top of the group
+                if (task.title === 'New Item')
+                    board.groups[idx].tasks.unshift(task)
+                // if the user clicked on 'Add Item' button,
+                // the task should appear at the bottom of the group
+                else board.groups[idx].tasks.push(task)
+            }
+        })
         return storageService.put(STORAGE_KEY, board)
     } catch (err) {
         throw err
     }
 }
 
-async function updateTask(boardId, groupId, taskId, taskToUpdate) {
-    // const board = await getBoardById(boardId)
-    // board.groups[groupIdx].tasks.splice(taskIdx, 1, taskToUpdate)
-    // saveBoard(board)
+// update task
+async function updateTask(boardId, groupId, task) {
+    try {
+        const board = await getBoardById(boardId)
+        const group = await getGroupById(boardId, groupId)
+
+        task.lastUpdated = Date.now()
+        const updatedTasks = group.tasks.map(currTask => (currTask.id === task.id) ? task : currTask)
+
+        board.groups.forEach((group, idx) => {
+            if (group.id === groupId)
+                board.groups[idx].tasks = updatedTasks
+        })
+        return storageService.put(STORAGE_KEY, board)
+    } catch (err) {
+        throw err
+    }
+}
+
+// filter groups and tasks title
+async function filterGroupAndTasks(boardId, filterBy = {}) {
+    try {
+        const regex = new RegExp(filterBy.txt, 'i')
+        const board = await getBoardById(boardId)
+        let groups = [...board.groups]
+
+        board.groups = await groups.filter(async (group) => {
+
+            if (regex.test(group.title)) {
+                return group
+            }
+            else {
+
+                const tasks = await queryTasks(boardId, group.id, filterBy)
+                console.log('tasks from service', tasks);
+                if (tasks.length) {
+                    group.tasks = tasks
+                    return group
+                }
+            }
+        })
+        return board
+    }
+
+    catch (err) {
+        console.error(err);
+        throw err
+    }
 }
 
 
