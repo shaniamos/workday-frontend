@@ -5,6 +5,8 @@
     left: 50%;
     transform: translate(-50%, -50%);
     transition: all 0.3s ease 0s;
+    z-index: 30;
+    padding: rem(16px) rem(48px);
 
     .close-modal-btn {
         @include btn-close-modal;
@@ -76,5 +78,12 @@
             }
         }
     }
+}
 
+.new-board-modal-container.open .main-screen {
+    @include main-screen-open;
+}
+
+.new-board-modal-container .main-screen {
+    @include main-screen($bgColor: rgb(0 0 0 / 60%));
 }

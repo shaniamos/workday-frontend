@@ -1,4 +1,5 @@
 .home-page {
+
     min-height: 100vh;
     font-family: sofia;
     font-size: 16px;
@@ -7,14 +8,14 @@
     background-image: url('../../../imgs/home-bg.jpg');
 
     & .img-container {
-        height: 300px;
-        width: 300px;
+        height: rem(300px);
+        width: rem(300px);
     }
 
     .get-started-btn {
         cursor: pointer;
         color: inherit;
-        font-size: 16px;
+        font-size: rem(16px);
         height: rem(50px);
         min-width: rem(160px);
         padding-right: rem(14px);
@@ -43,12 +44,6 @@
         transform: translateY(120px);
     }
 
-    h2 {
-        color: #fff;
-        align-items: center;
-        font-size: 6rem;
-    }
-
     p {
         font-size: rem(24px);
         line-height: rem(40px);
@@ -56,7 +51,6 @@
         padding-left: rem(50px);
         padding-right: rem(50px);
         color: #fff;
-        font-size: 1.6rem;
     }
 
     .get-started-btn-home {
@@ -78,7 +72,6 @@
         font-weight: 400;
         border: none;
         text-align: center;
-
     }
 
     .get-started-btn-home span {
@@ -97,14 +90,15 @@
     .home-header {
         height: rem(70px);
         padding-left: rem(32px);
-        padding-right: rem(32px);;
+        padding-right: rem(32px);
         align-items: center;
         background-color: #ffffff;
 
         .header-nav .nav-a {
             font-family: sofia-thin;
             border-radius: rem(8px);
-            padding: rem(8px) rem(10px);;
+            padding: rem(8px) rem(10px);
+            ;
             transition: background-color .2s;
         }
 
@@ -113,7 +107,7 @@
         }
 
         .logo {
-            width:rem(167px);
+            width: rem(167px);
             padding-top: rem(9px);
         }
     }
@@ -125,7 +119,187 @@
 
     .main-text {
         font-weight: 400;
-        line-height: rem(85px);
+        // line-height: rem(px);
+        color: #fff;
+        align-items: center;
     }
 
+    @include for-wide-layout {
+
+        .nav-a {
+            font-size: rem(25px);
+        }
+
+        .get-started-btn-home {
+            font-size: 1.3rem;
+            height: rem(70px);
+            width: rem(50px);
+        }
+
+        .main-text {
+            font-weight: 400;
+            font-size: rem(10px);
+        }
+
+        .home-header {
+            height: rem(80px);
+            padding-left: rem(20px);
+            padding-right: rem(20px);
+
+            .logo {
+                width: rem(160px);
+                padding-top: rem(9px);
+            }
+
+            .sub-text {
+                font-size: rem(40px);
+            }
+
+            .small-text {
+                font-size: rem(10px);
+            }
+        }
+    }
+
+    @include for-normal-layout {
+        .text-container {
+            // margin: auto;
+            // width: rem(800px);
+            padding-top: 50px;
+        }
+
+        .nav-a {
+            font-size: rem(20px);
+        }
+
+        .get-started-btn-home {
+            font-size: 1.2rem;
+            height: rem(70px);
+            width: rem(50px);
+        }
+
+        .main-text {
+            font-weight: 400;
+            // font-size: rem(90px);
+        }
+
+        .home-header {
+            height: rem(70px);
+            padding-left: rem(20px);
+            padding-right: rem(20px);
+
+            .logo {
+                width: rem(140px);
+                padding-top: rem(9px);
+            }
+
+            .sub-text {
+                font-size: rem(35px);
+            }
+
+            .small-text {
+                font-size: rem(8px);
+            }
+        }
+    }
+
+    //NARROW
+    @include for-narrow-layout {
+        .text-container {
+            margin: auto;
+            width: rem(700px);
+            padding-top: 40px;
+        }
+
+        .nav-a {
+            font-size: rem(20px);
+        }
+
+        .get-started-btn-home {
+            font-size: 1.3rem;
+            height: rem(70px);
+            width: rem(50px);
+        }
+
+        .main-text {
+            font-weight: 400;
+            font-size: rem(50px);
+        }
+
+        .home-header {
+            height: rem(80px);
+            padding-left: rem(20px);
+            padding-right: rem(20px);
+
+            .logo {
+                width: rem(120px);
+                padding-top: rem(9px);
+            }
+
+            .sub-text {
+                font-size: rem(20px);
+            }
+
+            .small-text {
+                font-size: rem(7px);
+            }
+
+        }
+    }
+
+
+    //MOBILE
+    @include for-mobile-layout {
+        .text-container {
+            margin: auto;
+            width: rem(450px);
+        }
+    
+        .nav-a {
+            font-size: rem(15px);
+        }
+    
+        .get-started-btn {
+            display: none;
+        }
+    
+        .get-started-btn-home {
+            font-size: 1rem;
+            height: rem(60px);
+            width: rem(40px);
+        }
+    
+        .main-text {
+            font-weight: 400;
+            font-size: rem(40px);
+        }
+    
+        .home-header {
+            height: rem(50px);
+            padding-left: rem(20px);
+            padding-right: rem(20px);
+    
+    
+            .logo {
+                width: rem(90px);
+                padding-top: rem(9px);
+            }
+    
+            .sub-text {
+                font-size: 10px;
+            }
+    
+    
+    
+            .small-text {
+                font-size: rem(25px);
+            }
+    
+    
+        }
+    }
 }
+
+
+
+

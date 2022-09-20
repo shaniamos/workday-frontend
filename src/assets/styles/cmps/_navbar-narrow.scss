@@ -1,0 +1,33 @@
+.navbar-mobile-container {
+    @include for-narrow-layout  {
+        display: none;
+        
+    }
+
+    @include for-normal-layout  {
+        display: none;
+    }
+
+    @include for-wide-layout   {
+        display: none;
+    }
+
+
+    @include for-mobile-layout {
+        position: fixed;
+        height: rem(80px);
+        width: 100%;
+        background-color: rgb(255, 255, 255);
+        bottom: 0;     
+        z-index: 10;  
+        border-top: 1px solid rgb(199, 194, 194);
+        
+        .icons-navigation {
+            justify-content: space-around;
+            gap: 15px;
+            padding: 20px;
+            // padding-left: 14px;
+            // padding-right: 14px;
+        }
+    }
+}

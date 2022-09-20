@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { HomeHeader } from '../cmps/home/home-header'
+import { HomeHeader } from './home-header'
 
 export function Home() {
     return (
@@ -12,7 +12,7 @@ export function Home() {
                     <br />
                     new way of working
                 </h2>
-                <p>What would you like to manage with Workday.com Work OS?</p>
+                <p className='sub-text'>What would you like to manage with Workday.com Work OS?</p>
                 <Link to={`/board/b101`} ><button className='get-started-btn-home'>Get Started <span> &#8594;	</span></button> </Link>
                 <p className='small-text'>No credit card needed   ✦   Unlimited time on Free plan</p>
             </div>
