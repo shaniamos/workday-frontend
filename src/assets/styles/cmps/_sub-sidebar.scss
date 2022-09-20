@@ -79,13 +79,6 @@
             }
 
             .boards-list {
-                span {
-                    white-space: nowrap;
-                    overflow: hidden;
-                    text-overflow: ellipsis;
-                    width: 14ch;
-                }
-
                 .dropdown-dot:hover {
                     color: #7f8083
                 }
@@ -159,14 +152,12 @@
         }
     }
 
-    .workspace-board {
+    & .workspace-board {
         position: relative;
         width: 80%;
         padding: 6px;
         padding: 6px;
-        border: 1px solid;
         border-radius: 4px;
-        border-color: #676879;
         margin-right: 4px;
         margin: auto;
         margin-bottom: 18px;
@@ -188,11 +179,25 @@
     .sub-sidebar-container {
         width: 100vw;
 
+        & .workspace-board {
+            & .arrow-btn {
+                display: none;
+            }
+        }
+
         & .open-btn {
             display: none;
         }
 
         & .workspace-options {
+
+            & .boards-options {
+                & .boards-list span {
+                    padding: 10px;
+                    border: 1px solid lightgray;
+                }
+            }
+
             & .action-btn {
                 display: none;
             }
@@ -206,8 +211,22 @@
 
 @include for-narrow-layout {
     .sub-sidebar-container {
+        position: relative;
+
+        & .workspace-board {
+            border: 1px solid #676879;
+        }
 
         & .workspace-options {
+            & .boards-options {
+                & .boards-list span {
+                    overflow: hidden;
+                    white-space: nowrap;
+                    text-overflow: ellipsis;
+                    width: 14ch;
+                }
+            }
+
             & .action-btn {
                 padding: 0 16px 16px 14px;
                 justify-content: start;
@@ -221,11 +240,8 @@
                     & .menu-btn-inner-text {
                         font-size: 14px;
                         margin: 0 8px;
-
                     }
-
                 }
-
             }
 
             & .spacer {
@@ -242,11 +258,11 @@
         &.is-open .open-btn {
             position: absolute;
             top: 25px;
-            left: rem(328px);
+            left: rem(268px);
         }
 
         .open-btn {
-            left: rem(94px);
+            left: rem(20px);
             position: absolute;
             height: 23px;
             width: 23px;
@@ -257,11 +273,14 @@
             cursor: pointer;
             top: 20px;
             z-index: 5;
-            transition: background-color .2s;
-        }
+            transition: all .2s;
+            padding: rem(2px);
 
-        .open-btn:hover {
-            background-color: #529eee;
+            &:hover {
+                background-color: #529eee;
+                color: white;
+                padding-right: rem(8px);
+            }
         }
     }
 }
@@ -270,11 +289,11 @@
     .sub-sidebar-container {
 
         &.is-open .open-btn {
-            left: rem(372px);
+            left: rem(303px);
         }
 
-        & .open-btn {
-            left: rem(103px);
+        .open-btn {
+            left: rem(14px);
         }
     }
 }

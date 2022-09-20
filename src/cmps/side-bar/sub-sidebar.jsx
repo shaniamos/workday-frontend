@@ -37,7 +37,8 @@ export function SubSidebar({ boards, isOpen, onChangeFilter }) {
     }, [])
 
     const loadBoardsFromServer = async () => {
-        await dispatch(loadBoards())
+        boards = await dispatch(loadBoards())
+        setNavOpen(true)
     }
 
     const toggleSubSidebar = () => {
@@ -83,7 +84,7 @@ export function SubSidebar({ boards, isOpen, onChangeFilter }) {
                             </div>
                             <h2>Workday Project</h2>
                         </div>
-                        <IoIosArrowDown />
+                        <IoIosArrowDown className='arrow-btn' />
                     </div>
                     <div>
                         <div className="workspace-options flex column">
