@@ -8,7 +8,7 @@ export function Home() {
             <HomeHeader />
             <div className='text-container flex column justify-center align-center'>
                 <h2 className='main-text'>
-                    A platform built for a
+                    A platform built for a 
                     <br />
                     new way of working
                 </h2>

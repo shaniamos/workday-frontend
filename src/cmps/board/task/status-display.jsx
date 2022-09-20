@@ -6,7 +6,6 @@ export const StatusTypeDisplay = ({ label, value, options }) => {
     const [isLabelsOpen, setIsLabelsOpen] = useState('')
 
     const getColorByValue = (value) => {
-        console.log(options, value)
         const option = options.find(option => option.title === value)
         if (!option) return '--color-navy-selected' //default bgColor
         return option.id

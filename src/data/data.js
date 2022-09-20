@@ -19,6 +19,8 @@
 // (later on we can place it in a modal and nested route)
 // Component
 
+import { darken } from "@material-ui/core"
+
 // const activity = {
 //     // "id": makeId(),
 //     "entity": "", // Columns: Status/Priority/Person, Board: Created/Delete
@@ -197,8 +199,8 @@ export const board = {
                     ],
                     "status": "Working on it",
                     "priority": "Medium",
-                    "deadline": "1589983468418",
-                    "lastUpdated": "1663091776159",
+                    "deadline": Date.now(),
+                    "lastUpdated": 1663091776159,
                     "comments": [
                         {
                             "byMember": {
@@ -206,7 +208,7 @@ export const board = {
                                 "fullname": "Tal Tarablus",
                                 "imgUrl": "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg"
                             },
-                            "createdAt": "1589983468418",
+                            "createdAt": 1589983468418,
                             "content": {
                                 "txt": "What's going on",
                                 "likes": [],
@@ -215,7 +217,7 @@ export const board = {
                         },
                         {
                             "memberId": "m102",
-                            "createdAt": "1589983468418",
+                            "createdAt": 1589983468418,
                             "content": {
                                 "txt": "What's going on",
                                 "likes": [],
@@ -237,8 +239,8 @@ export const board = {
                     ],
                     "status": "On Hold",
                     "priority": "Medium",
-                    "deadline": "1589983468418",
-                    "lastUpdated": "1663091776159",
+                    "deadline": 1589983468418,
+                    "lastUpdated": 1663091776159,
                     "comments": [],
                 },
                 {
@@ -255,8 +257,8 @@ export const board = {
                     ],
                     "status": "Done",
                     "priority": "Critical",
-                    "deadline": "1589983468418",
-                    "lastUpdated": "1663091776159",
+                    "deadline": 1589983468418,
+                    "lastUpdated": 1663091776159,
                     "comments": [],
                 },
                 {
@@ -273,8 +275,8 @@ export const board = {
                     ],
                     "status": "Working on it",
                     "priority": "Low",
-                    "deadline": "1589983468418",
-                    "lastUpdated": "1663199753073",
+                    "deadline": 1589983468418,
+                    "lastUpdated": 1663199753073,
                     "comments": [
                         {
                             "byMember": {
@@ -320,8 +322,8 @@ export const board = {
                     ],
                     "status": "Done",
                     "priority": "High",
-                    "deadline": "1589983468418",
-                    "lastUpdated": "1663091776159",
+                    "deadline": 1589983468418,
+                    "lastUpdated": 1663091776159,
                     "comments": [],
                 },
                 {
@@ -344,8 +346,8 @@ export const board = {
                     ],
                     "status": "Done",
                     "priority": "High",
-                    "deadline": "1589983468418",
-                    "lastUpdated": "1663091776159",
+                    "deadline": 1589983468418,
+                    "lastUpdated": 1663091776159,
                     "comments": [],
                 },
             ],
@@ -370,8 +372,8 @@ export const board = {
                     ],
                     "status": "On Hold",
                     "priority": "Critical",
-                    "deadline": "1589983468418",
-                    "lastUpdated": "1663365269898",
+                    "deadline": 1589983468418,
+                    "lastUpdated": 1663365269898,
                 },
                 {
                     "id": "c104",
@@ -406,8 +408,8 @@ export const board = {
                     ],
                     "status": "Done",
                     "priority": "High",
-                    "deadline": "1589983468418",
-                    "lastUpdated": "1663371422099",
+                    "deadline": 1589983468418,
+                    "lastUpdated": 1663371422099,
                     "comments": [
                         {
                             "byMember": {
@@ -460,8 +462,8 @@ export const board = {
                     "persons": [],
                     "status": "Stuck",
                     "priority": "Low",
-                    "deadline": "1589983468418",
-                    "lastUpdated": "1663199753073",
+                    "deadline": 1589983468418,
+                    "lastUpdated": 1663199753073,
                 },
             ],
             "colorId": '--color-peach',
@@ -485,8 +487,8 @@ export const board = {
                     ],
                     "status": "Done",
                     "priority": "Low",
-                    "deadline": "1589983468418",
-                    "lastUpdated": "1663365269898",
+                    "deadline": 1589983468418,
+                    "lastUpdated": 1663365269898,
                 },
                 {
                     "id": "c104",
@@ -521,8 +523,8 @@ export const board = {
                     ],
                     "status": "On Hold",
                     "priority": "Medium",
-                    "deadline": "1589983468418",
-                    "lastUpdated": "1663371422099",
+                    "deadline": 1589983468418,
+                    "lastUpdated": 1663371422099,
                     "comments": [],
                     "createdAt": 1590999730348,
                     "byMember": {
@@ -540,8 +542,8 @@ export const board = {
                     "persons": [],
                     "status": "",
                     "priority": "Low",
-                    "deadline": "1589983468418",
-                    "lastUpdated": "1663199753073",
+                    "deadline": 1589983468418,
+                    "lastUpdated": 1663199753073,
                 },
                 {
                     "id": "c106",
@@ -550,8 +552,8 @@ export const board = {
                     "persons": [],
                     "status": "Stuck",
                     "priority": "Low",
-                    "deadline": "1589983468418",
-                    "lastUpdated": "1663199753073",
+                    "deadline": 1589983468418,
+                    "lastUpdated": 1663199753073,
                 },
             ],
             "colorId": '--color-purple',
@@ -575,8 +577,8 @@ export const board = {
                     ],
                     "status": "Done",
                     "priority": "Low",
-                    "deadline": "1589983468418",
-                    "lastUpdated": "1663365269898",
+                    "deadline": 1589983468418,
+                    "lastUpdated": 1663365269898,
                 },
                 {
                     "id": "c104",
@@ -611,8 +613,8 @@ export const board = {
                     ],
                     "status": "On Hold",
                     "priority": "Medium",
-                    "deadline": "1589983468418",
-                    "lastUpdated": "1663371422099",
+                    "deadline": 1589983468418,
+                    "lastUpdated": 1663371422099,
                     "comments": [],
                     "createdAt": 1590999730348,
                     "byMember": {
@@ -630,8 +632,8 @@ export const board = {
                     "persons": [],
                     "status": "",
                     "priority": "Low",
-                    "deadline": "1589983468418",
-                    "lastUpdated": "1663199753073",
+                    "deadline": 1589983468418,
+                    "lastUpdated": 1663199753073,
                 },
                 {
                     "id": "c106",
@@ -640,8 +642,8 @@ export const board = {
                     "persons": [],
                     "status": "Stuck",
                     "priority": "Low",
-                    "deadline": "1589983468418",
-                    "lastUpdated": "1663199753073",
+                    "deadline": 1589983468418,
+                    "lastUpdated": 1663199753073,
                 },
             ],
             "colorId": '--color-chili-blue',

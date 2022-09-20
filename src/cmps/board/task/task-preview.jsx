@@ -45,8 +45,8 @@ export const TaskPreview = ({ task, groupId, groupColor }) => {
     }
 
 
-    const { persons, status, priority, lastUpdated } = task
-    let date = new Date(Date.now())
+    const { persons, lastUpdated, deadline } = task
+    let date = new Date(1663091776159)
     return (
         <React.Fragment>
             <div className="preview-full-task flex">

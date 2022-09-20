@@ -71,6 +71,9 @@
     @include heading;
     padding: 4px 8px;
 
+    & span {
+        margin-inline-end: rem(4px);
+    }
 }
 
 .btn-invite-subscribers {
