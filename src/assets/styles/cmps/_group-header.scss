@@ -4,11 +4,11 @@
     display: flex;
     align-items: center;
     position: sticky;
-    top: 209px;
+    top: 167px;
     height: 40px;
     font-size: 18px;
     margin-left: 4px;
-    z-index: 1;
+    z-index: 2;
     background-color: white;
 
     .collapse-group-button {
@@ -50,7 +50,7 @@
 //COLUMNS NAMES LINE 
 .preview-group-header {
     position: sticky;
-    top: 249px;
+    top: 207px;
     z-index: 1;
     width: 100%;
     background-color: white;

@@ -36,12 +36,17 @@
         cursor: pointer;
         top: 20px;
         z-index: 10;
-        transition: background-color .2s;
+        transition: all .8s;
+        padding: rem(4px);
+
+        &:hover {
+            background-color: #529eee;
+            color: white;
+            padding-right: rem(8px) ;
+        }
     }
 
-    .open-btn:hover {
-        background-color: #529eee;
-    }
+    
 
 
     .workspace-options {
