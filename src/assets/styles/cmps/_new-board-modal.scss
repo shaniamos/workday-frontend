@@ -81,20 +81,9 @@
 }
 
 .new-board-modal-container.open .main-screen {
-    opacity: 1;
-    pointer-events: auto;
+    @include main-screen-open;
 }
 
 .new-board-modal-container .main-screen {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background-color: rgb(0 0 0 / 60%);
-    cursor: pointer;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity .6s;
-    z-index: 20;
+    @include main-screen($bgColor: rgb(0 0 0 / 60%));
 }
