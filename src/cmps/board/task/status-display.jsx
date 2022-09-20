@@ -6,11 +6,10 @@ export const StatusTypeDisplay = ({ label, value, options }) => {
     const [isLabelsOpen, setIsLabelsOpen] = useState('')
 
     const getColorByValue = (value) => {
-        console.log(options)
+        console.log(options, value)
         const option = options.find(option => option.title === value)
-        console.log(option, value)
-        console.log(option.id)
-        return option
+        if (!option) return '--color-navy-selected' //default bgColor
+        return option.id
     }
     const onOpenLabels = () => {
         setIsLabelsOpen('show')
@@ -22,13 +21,9 @@ export const StatusTypeDisplay = ({ label, value, options }) => {
     return <React.Fragment>
         <div className={`label-dropdown ${isLabelsOpen}`}>
             <div className="main-screen" onClick={onCloseLabels}></div>
-            <div className="cell label-type status-header btn-open-label-drop" onClick={onOpenLabels}
-                // style={{ backgroundColor: `var(${getColorByValue(value)})` }}
-            // style={{ backgroundColor: `var(${getColorByLabel(label, value)})` }}
-            >
+            <div className="cell label-type status-header btn-open-label-drop" onClick={onOpenLabels} style={{ backgroundColor: `var(${getColorByValue(value)})` }}>
                 {`${value}`}
             </div>
-            {/* <button onclick="myFunction()" class="dropbtn">Dropdown</button> */}
             <div className={`dropdown-labels-content ${isLabelsOpen} `}>
                 <div className="picker-content">
                     <ul className="picker-list" style={{ gridTemplateRows: `repeat(${options.length}, auto)` }}>

@@ -267,33 +267,33 @@ async function filterGroupAndTasks(boardId, filterBy = {txt: ''}, sortBy) {
         if(sortBy) {
             switch(sortBy){
                 case 'itemTitle':
+                    console.log('sortBy 1', sortBy);
                     filteredGroups.forEach(group => {
                         group.tasks.sort((a ,b) => a.title.localeCompare(b.title))
                     })
                     break
-                case 'personName':
-                    console.log('filteredGroups', filteredGroups);
-                    filteredGroups.forEach(group => {
-                        // console.log('group', group);
-                        group.tasks.forEach(task => {
-                            task.persons.sort((a ,b) => a.fullname.localeCompare(b.fullname))
-                        })
-                    })
+                // case 'personName':
+                //     console.log('sortBy 2', sortBy);
+                //     filteredGroups.forEach(group => {
+                //         group.tasks.forEach(task => {
+                //             task.persons.sort((a ,b) => a.fullname.localeCompare(b.fullname))
+                //         })
+                //     })
                     break
                 case 'lastUpdate':
+                    console.log('sortBy 3', sortBy);
                     filteredGroups.forEach(group => {
                         group.tasks.sort((a ,b) => b.lastUpdated - a.lastUpdated)
                     })
                     break
                 case 'deadline':
+                    console.log('sortBy 4', sortBy);
                     filteredGroups.forEach(group => {
                         group.tasks.sort((a ,b) => b.deadline - a.deadline)
                     })
                     break
-
             }
         }
-
         return filteredGroups
     }
     catch (err) {
@@ -301,7 +301,6 @@ async function filterGroupAndTasks(boardId, filterBy = {txt: ''}, sortBy) {
         throw err
     }
 }
-
 
 function _createBoard(board) {
     board._createdAt = Date.now()

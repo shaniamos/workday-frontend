@@ -78,7 +78,7 @@ export const TaskPreview = ({ task, groupId, groupColor }) => {
                     <div className="cell persons-header"> {typeof persons === 'object' && <PersonCircle persons={persons} />}</div>
 
                     {/* ALL Label Type Columns (Status + Priority) */}
-                    {labels.map(label => {
+                    {labels && labels.map(label => {
                         const labelName = label.name
                         const labelValue = task[labelName]
                         return <StatusTypeDisplay key={label.name} label={`${label.name}`} value={labelValue} options={label.options} />
