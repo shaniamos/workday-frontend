@@ -92,4 +92,9 @@
     .menu {
         color: rgb(143, 143, 255);
     }
+
+    @include for-mobile-layout  {
+        display: none;
+    }
+    
 }
