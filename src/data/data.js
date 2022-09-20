@@ -88,7 +88,8 @@ export const board = {
     "cmpsOrder": ["member-picker", "status-picker", "priority-picker", "date-picker", "last-updated"],
     "labels": [
         {
-            "status-picker": [
+            "name": "status",
+            "options": [
                 {
                     "id": "--color-done-green",
                     "title": "Done",
@@ -110,7 +111,10 @@ export const board = {
                     "color": "#e2445c"
                 },
             ],
-            "priority-picker": [
+        }, 
+        {
+            "name": "priority",
+            "options": [
                 {
                     "id": "--color-error",
                     "title": "Critical",

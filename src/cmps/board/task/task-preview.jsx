@@ -1,5 +1,5 @@
 import React from "react"
-import { useDispatch } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import { Link, useParams } from "react-router-dom"
 
 import { addTask, removeTask, updateTask } from "../../../store/actions/board.action.js"
@@ -10,15 +10,18 @@ import { LastUpdated } from "../task/last-updated.jsx"
 // ICONS
 import { RiArrowRightSLine } from 'react-icons/ri' //subitem
 import { TbArrowsDiagonal } from 'react-icons/tb' //open item
-import { BiMessageRoundedAdd, BiMessageRounded } from 'react-icons/bi' //empty updates, with updates
+import { BiMessageRoundedAdd } from 'react-icons/bi' //empty updates, with updates
 import { HiOutlineDotsHorizontal } from 'react-icons/hi' //More
 import { MdDeleteOutline } from 'react-icons/md'//Delete
 import { HiOutlineDocumentDuplicate } from 'react-icons/hi'//Duplicate
 
 export const TaskPreview = ({ task, groupId, groupColor }) => {
+    const labels = useSelector(state => state.boardModule.selectedBoard.labels)
+
     const dispatch = useDispatch()
     const params = useParams()
     const boardId = params.id
+
 
     const [register, setNewTask, newTask] = useFormRegister({
         title: task.title
@@ -40,6 +43,7 @@ export const TaskPreview = ({ task, groupId, groupColor }) => {
         delete duplicateTask.lastUpdated
         dispatch(addTask(boardId, groupId, duplicateTask))
     }
+
 
     const { persons, status, priority, lastUpdated } = task
     let date = new Date(Date.now())
@@ -73,11 +77,12 @@ export const TaskPreview = ({ task, groupId, groupColor }) => {
                     {/* Persons / Responsbility */}
                     <div className="cell persons-header"> {typeof persons === 'object' && <PersonCircle persons={persons} />}</div>
 
-                    {/* Status */}
-                    <StatusTypeDisplay label='status' value={`${status}`} />
-
-                    {/* Priority */}
-                    <StatusTypeDisplay label='priority' value={`${priority}`} />
+                    {/* ALL Label Type Columns (Status + Priority) */}
+                    {labels.map(label => {
+                        const labelName = label.name
+                        const labelValue = task[labelName]
+                        return <StatusTypeDisplay key={label.name} label={`${label.name}`} value={labelValue} options={label.options} />
+                    })}
 
                     {/* DeadLine */}
                     <LastUpdated lastUpdated={lastUpdated} />

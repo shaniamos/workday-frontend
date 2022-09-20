@@ -15,19 +15,30 @@ import { HiOutlineArchive } from 'react-icons/hi'
 //LIBS
 import ClickAwayListener from '@material-ui/core/ClickAwayListener';
 import { useState } from "react"
-import { useDispatch } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import { useNavigate, NavLink } from 'react-router-dom'
-import { removeBoard } from '../../store/actions/board.action.js'
+import { loadBoards, removeBoard } from '../../store/actions/board.action.js'
 import { NewBoardMoadl } from "../board/new-board-modal.jsx"
 import { Search } from "../search.jsx"
+import { useEffect } from 'react'
 
 export function SubSidebar({ boards, isOpen, onChangeFilter }) {
+    boards = useSelector(state => state.boardModule.boards)
+
     const [isSearchClicked, setSearch] = useState(false)
     const [isNavOpen, setNavOpen] = useState(isOpen)
     const [isNewBoardModalOpen, setNewBoardModalOpen] = useState(false)
     const [isDropDownOpen, setDropDownOpen] = useState(false)
     const dispatch = useDispatch()
     const navigate = useNavigate()
+
+    useEffect(() => {
+        if (!boards) loadBoardsFromServer()
+    }, [])
+
+    const loadBoardsFromServer = async () => {
+        await dispatch(loadBoards())
+    }
 
     const toggleSubSidebar = () => {
         setNavOpen(!isNavOpen)
@@ -51,9 +62,11 @@ export function SubSidebar({ boards, isOpen, onChangeFilter }) {
         }
     }
 
+    const sideBarClassName = isNavOpen ? "sub-sidebar-container is-open" : "sub-sidebar-container"
+
     if (!boards) return <div>Loading.....</div>
     return (
-        <section className={isNavOpen ? "sub-sidebar-container is-open" : "sub-sidebar-container"}>
+        <section className={sideBarClassName}>
             {isNewBoardModalOpen && <NewBoardMoadl toggleNewBoardModal={toggleNewBoardModal} />}
             {isNavOpen && <IoIosArrowBack className='btn-left open-btn' onClick={toggleSubSidebar} />}
             {!isNavOpen && <IoIosArrowForward className='btn-right open-btn' onClick={toggleSubSidebar} />}
@@ -68,7 +81,7 @@ export function SubSidebar({ boards, isOpen, onChangeFilter }) {
                             <div className="workspace-icon flex align-center" >
                                 <BsFillLightningFill />
                             </div>
-                            <h2> Workday Project</h2>
+                            <h2>Workday Project</h2>
                         </div>
                         <IoIosArrowDown />
                     </div>

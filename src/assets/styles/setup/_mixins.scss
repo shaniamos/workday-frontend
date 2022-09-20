@@ -1,3 +1,22 @@
+@mixin main-screen($bgColor: rgba(0, 0, 0, 0) ) {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    cursor: pointer;
+    background-color: $bgColor;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .6s;
+    z-index: 10;
+}
+
+@mixin main-screen-open {
+    opacity: 1;
+    pointer-events: auto;
+}
+
 @mixin editable-heading {
     border-radius: 4px;
     overflow: hidden;
@@ -14,7 +33,7 @@
 @mixin task-cell-with-content {
     display: flex;
     justify-content: center;
-    border-inline-start: 0.5px solid #d0d4e4;
+    border-inline-start: 0.5px solid #0c0d11;
 
 }
 
@@ -101,7 +120,6 @@
 @mixin modal ($bgColor: white, $width: rem(500px), $height: 100vh) {
     position: fixed;
     background-color: $bgColor;
-    box-shadow: 1px -14px 4px 0px #0000001a;
     width: $width;
     height: $height;
     padding: rem(32px);
@@ -113,7 +131,6 @@
     height: rem(20px);
     width: rem(10px);
     border-radius: 5px;
-    border: 1px solid rgb(216, 211, 211);
     padding: rem(4px) rem(8px);
     transition: background-color .2s;
     cursor: pointer;
@@ -126,7 +143,7 @@
     background-color: var(--color-basic_blue);
 }
 
-@mixin btn($bgColor: rgba(0, 0, 0, 0), $color: var(--primary-text-color), $hoverBgColor: var(--primary-background-hover-color)) {
+@mixin btn($bgColor: var(--primary-background-color), $color: var(--primary-text-color), $hoverBgColor: var(--primary-background-hover-color)) {
     display: inline-block;
     background-color: $bgColor;
     color: $color;

@@ -40,13 +40,19 @@
     margin: 0;
 }
 
-// INPUT
+// input
 .clean-input {
     &:focus-visible {
         outline: none;
     }
 
     border: 0;
+}
+
+// position
+.sticky-feature {
+    position: sticky;
+    left: 40px;
 }
 
 

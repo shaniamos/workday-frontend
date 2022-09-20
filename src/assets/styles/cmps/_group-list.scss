@@ -4,13 +4,11 @@
         @include btn;
         display: flex;
         align-items: center;
-        position: sticky;
         line-height: 22px;
         border: rem(1px) solid var(--ui-border-color);
         -webkit-font-smoothing: var(--font-smoothing-webkit);
         font: var(--font-general-label);
         height: rem(32px);
-        left: rem(40px);
         margin-top: rem(8px);
         max-width: rem(300px);
     }

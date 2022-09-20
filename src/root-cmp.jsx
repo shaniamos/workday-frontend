@@ -4,6 +4,7 @@ import { Home } from '../src/cmps/home/home'
 import { BoardApp } from './pages/board/board-app.jsx'
 import { TaskEdit } from './cmps/board/task/task-edit.jsx'
 import { LoginSignup } from './pages/user/login-signup'
+import { SubSidebar } from './cmps/side-bar/sub-sidebar';
 import { SidebarNarrow } from './cmps/side-bar/sidebar-narrow';
 
 
@@ -16,6 +17,7 @@ function App() {
         <Route path='board/:id' element={<BoardApp />} >
           <Route path=':groupId/:taskId' element={<TaskEdit />} />
         </Route>
+        <Route path='workspace' element={<SubSidebar />} />
         <Route path='/' element={<Home />} />
       </Routes>
 

@@ -6,11 +6,9 @@ import { TiArrowUnsorted } from 'react-icons/ti' //More
 
 export const GroupHeader = ({ groupColor, onChangeFilter }) => {
     const { filterBy } = useSelector(state => state.boardModule)
-  
+
 
     const onSort = (sortOption) => {
-        console.log('sortOption:', sortOption);
-       
         onChangeFilter(filterBy, '', sortOption)
     }
 
@@ -18,8 +16,8 @@ export const GroupHeader = ({ groupColor, onChangeFilter }) => {
 
     return (
         <div className='preview-group-header flex'>
-
-            <div ><HiOutlineDotsHorizontal className="dot" /></div>
+            
+            {/* <div ><HiOutlineDotsHorizontal className="dot" /></div> */}
             <div className="group-header-identifier  flex">
                 <div className="cell task-name-area group-task-name-area cell sticky-feature flex">
                     <div className="task-group-color task-group-color-header" style={{ backgroundColor: `var(${groupColor})` }}></div>
@@ -35,12 +33,12 @@ export const GroupHeader = ({ groupColor, onChangeFilter }) => {
                 </div>
 
                 <div className="cell label-type-status">
-                <button className='sort-btn' ><TiArrowUnsorted /></button>
+                    <button className='sort-btn' ><TiArrowUnsorted /></button>
                     <span>Status</span>
                 </div>
 
                 <div className="cell label-type-priority">
-                <button className='sort-btn' ><TiArrowUnsorted /></button>
+                    <button className='sort-btn' ><TiArrowUnsorted /></button>
                     <span>Priority</span>
                 </div>
 

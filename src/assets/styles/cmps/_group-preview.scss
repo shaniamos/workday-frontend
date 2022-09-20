@@ -1,4 +1,6 @@
 .group-preview {
+    margin-bottom: 30px;
+
     .dots {
         cursor: pointer;
         opacity: 0;
@@ -24,10 +26,9 @@
         background-color: white;
         min-width: 190px;
         box-shadow: 0px 8px 16px 0px rgba(31, 30, 30, 0.4);
-        z-index: 300;
+        z-index: 100;
         border-radius: 10px;
         padding: 10px;
-        // transform: translateX(-30px);
     }
 
     /* Links inside the dropdown */
