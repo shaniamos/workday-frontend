@@ -1,95 +1,104 @@
-.sidebar-container {
-    background-color: #292f4c;
-    height: 100vh;
-    width: 89px;
-
-    .sidebar-icon {
-        width: 23px;
-        height: 23px;
-        font-size: 20px;
-        margin: 11px;
-        color: white;
-        border-radius: 8px;
-        cursor: pointer;
-        transition: background-color .2s;
+@include for-mobile-layout {
+    .sidebar-container {
+        display: none;
     }
+}
 
-    .sidebar-icon:hover {
-        background-color: #0c0d18;
-    }
+@include for-narrow-layout {
 
-    .all-nav-bar {
-        height: 91vh;
-    }
+    .sidebar-container {
+        background-color: #292f4c;
+        height: 100vh;
+        width: 89px;
 
-    .home-btn {
-        margin: auto;
-    }
-
-    .sidebar-logo {
-        margin-top: rem(12px);
-        height: rem(43px);
-        width: rem(43px);
-    }
-
-    .plans-modal {
-        cursor: pointer;
-        margin-top: 10px;
-        margin-bottom: 10px;
-        height: 110px;
-        width: 34px;
-        color: white;
-        border-radius: 0 16px 16px 0;
-        background-color: #258750;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        transition: width .1s;
-
-        .stars {
-            font-size: rem(20px);
+        .sidebar-icon {
+            width: 23px;
+            height: 23px;
+            font-size: 20px;
+            margin: 11px;
+            color: white;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color .2s;
         }
-    }
 
-    .plans-modal:hover {
-        width: rem(43px);
-        background-color: #007038;
-        ;
-    }
+        .sidebar-icon:hover {
+            background-color: #0c0d18;
+        }
 
-    span {
-        transform: rotate(270deg);
-        font-size: rem(13px);
-        text-align: center;
-        white-space: nowrap;
-    }
+        .all-nav-bar {
+            height: 91vh;
+        }
 
-    .nav-top-down {
-        gap: 5px;
-    }
+        .home-btn {
+            margin: auto;
+        }
 
-    .icons-bottom {
-        margin: auto;
-        width: 90%;
-        border-bottom: 1px solid rgb(133, 129, 129);
-    }
+        .sidebar-logo {
+            margin-top: rem(12px);
+            height: rem(43px);
+            width: rem(43px);
+        }
 
-    .navigations-icons {
-        padding-top: 10px;
-        // margin: auto;
-        margin-left: 8px;
-        // margin-right: 5px;
-        width: 70%;
-        border-top: 1px solid rgb(133, 129, 129);
-    }
+        .plans-modal {
+            cursor: pointer;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            height: 110px;
+            width: 34px;
+            color: white;
+            border-radius: 0 16px 16px 0;
+            background-color: #258750;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            transition: width .1s;
 
-    .down {
-        width: 38px;
-        height: 38px;
-    }
+            .stars {
+                font-size: rem(20px);
+            }
+        }
 
-    .menu {
-        color: rgb(143, 143, 255);
+        .plans-modal:hover {
+            width: rem(43px);
+            background-color: #007038;
+            ;
+        }
+
+        span {
+            transform: rotate(270deg);
+            font-size: rem(13px);
+            text-align: center;
+            white-space: nowrap;
+        }
+
+        .nav-top-down {
+            gap: 5px;
+        }
+
+        .icons-bottom {
+            margin: auto;
+            width: 90%;
+            border-bottom: 1px solid rgb(133, 129, 129);
+        }
+
+        .navigations-icons {
+            padding-top: 10px;
+            // margin: auto;
+            margin-left: 8px;
+            // margin-right: 5px;
+            width: 70%;
+            border-top: 1px solid rgb(133, 129, 129);
+        }
+
+        .down {
+            width: 38px;
+            height: 38px;
+        }
+
+        .menu {
+            color: rgb(143, 143, 255);
+        }
     }
 }

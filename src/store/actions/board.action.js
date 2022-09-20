@@ -4,12 +4,12 @@ import { showErrorMsg, showSuccessMsg } from "../../services/event-bus.service.j
 // CRUDL BOARD
 
 //get list of boards
-export function loadBoards(filterBy) {
-    // console.log('filterBy', filterBy);
+export function loadBoards(filterBy = {}) {
     return async (dispatch) => {
         try {
             const boards = await boardService.queryBoards(filterBy)
             dispatch({ type: 'SET_BOARDS', boards })
+            return boards
         } catch (err) {
             console.error('Cannot load boards:', err)
         }

@@ -416,9 +416,9 @@ $clr6: #676879;
 $layoutPadding: 20px;
 
 // LAYOUT BREAKPOINTS
-$break-narrow: 600px;
-$break-normal: 900px;
-$break-wide: 1200px;
+$break-narrow: 530px;
+$break-normal: 760px;
+$break-wide: 1900px;
 
 $padded-break-narrow: $break-narrow + $layoutPadding * 2;
 $padded-break-normal: $break-normal + $layoutPadding * 2;
