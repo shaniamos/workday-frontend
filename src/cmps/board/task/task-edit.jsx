@@ -23,7 +23,8 @@ export function TaskEdit() {
         loadTask()
     }, [params.taskId])
 
-    useEffectUpdate(() => dispatch(updateTask(boardId, groupId, task)), [task])
+    useEffectUpdate(() =>
+        dispatch(updateTask(boardId, groupId, task)), [task])
 
     const loadTask = async () => {
         const task = await boardService.getTaskById(boardId, groupId, params.taskId)
@@ -34,7 +35,7 @@ export function TaskEdit() {
     const onUpdateTask = (event) => {
         event.preventDefault()
         setTask(prevTask => {
-            return { ...prevTask, title: newTask.title }
+            return { ...prevTask, title: newTask.title, lastUpdated: Date.now() }
         })
     }
 

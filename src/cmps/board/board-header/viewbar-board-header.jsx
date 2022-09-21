@@ -1,8 +1,6 @@
 import { IoIosArrowDown } from 'react-icons/io' //New item
 import { FaRegUserCircle } from 'react-icons/fa' //Person
 import { CgArrowsScrollV } from 'react-icons/cg' //Sort
-import ClickAwayListener from '@material-ui/core/ClickAwayListener';
-import { BsSearch } from 'react-icons/bs'  //Search
 import { BiFilterAlt } from 'react-icons/bi'//Filter
 import { AiOutlineEyeInvisible } from 'react-icons/ai'//Hide
 import { HiOutlineDotsHorizontal } from 'react-icons/hi' //More
@@ -13,6 +11,7 @@ import { addTask } from "../../../store/actions/board.action.js"
 import { useState } from "react"
 import { Search } from "../../search.jsx"
 import { FilterBoardByType } from './board-filter.jsx';
+import { utilService } from '../../../services/util.service.js';
 
 //IoHomeOutline - Main Table
 //RiErrorWarningLine - description
@@ -32,7 +31,19 @@ export function ViewbarBoardHeader({ board, onAddGroup, onChangeFilter }) {
     const dispatch = useDispatch()
 
     const onAddTask = () => {
-        dispatch(addTask(board.id, board.groups[0].id, { title: 'New Item' }))
+        let task = { title: 'New Item' }
+        task = createTask(task)
+        dispatch(addTask(board.id, board.groups[0].id, task))
+    }
+
+    const createTask = (task) => {
+        task.id = utilService.makeId()
+        task.status = ''
+        task.priority = ''
+        task.persons = ''
+        task.deadLine = ''
+        task.lastUpdate = Date.now()
+        return task
     }
 
     return (
@@ -47,23 +58,17 @@ export function ViewbarBoardHeader({ board, onAddGroup, onChangeFilter }) {
                     </div>
                 </section>
             </div>
-
-            <ClickAwayListener onClickAway={() => setSearch(false)}>
                 <div>
-                     <Search contentSearch={'items'} onChangeFilter={onChangeFilter} setSearch={setSearch} />
+                    <Search contentSearch={'items'} onChangeFilter={onChangeFilter} setSearch={setSearch} />
                 </div>
-            </ClickAwayListener>
-            
-            <button className="view-nav-btn"><FaRegUserCircle /> Person  </button>
 
-            <ClickAwayListener onClickAway={() => setFilter(false)}>
+            <button className="view-nav-btn"><FaRegUserCircle /> Person  </button>
                 <div>
                     <button onClick={() => setFilter(!isFilter)} className="view-nav-btn"><BiFilterAlt /> <p>Filter</p></button>
                     {isFilter &&
                         <FilterBoardByType />
                     }
                 </div>
-            </ClickAwayListener>
             <button className="view-nav-btn"><CgArrowsScrollV /> Sort  </button>
             <button className="view-nav-btn"><AiOutlineEyeInvisible /> Hide  </button>
             <button className="view-nav-btn"><HiOutlineDotsHorizontal />  </button>

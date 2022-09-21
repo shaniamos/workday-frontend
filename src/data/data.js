@@ -19,8 +19,6 @@
 // (later on we can place it in a modal and nested route)
 // Component
 
-import { darken } from "@material-ui/core"
-
 // const activity = {
 //     // "id": makeId(),
 //     "entity": "", // Columns: Status/Priority/Person, Board: Created/Delete
