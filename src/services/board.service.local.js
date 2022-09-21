@@ -185,15 +185,6 @@ async function addTask(boardId, groupId, task) {
         const board = await getBoardById(boardId)
         const groupIdx = board.groups.findIndex(group => group.id === groupId)
 
-        // if task empty, create new one
-        if (!task.persons)
-            task = _createTask(task)
-        // else - duplicate the task - adding the same full task,
-        // just with another id 
-        else {
-            task.id = utilService.makeId()
-            task.lastUpdate = Date.now()
-        }
         // if the user clicked on 'New Item' button, 
         // the task should appear at the top of the group
         if (task.title === 'New Item')
@@ -213,8 +204,6 @@ async function updateTask(boardId, groupId, task) {
     try {
         const board = await getBoardById(boardId)
         const groupIdx = board.groups.findIndex(group => group.id === groupId)
-
-        task.lastUpdated = Date.now()
         const updatedTasks = board.groups[groupIdx].tasks.map(currTask => (currTask.id === task.id) ? task : currTask)
 
         board.groups[groupIdx].tasks = updatedTasks
@@ -263,7 +252,7 @@ async function filterGroupAndTasks(boardId, filterBy = { txt: '' }, sortBy) {
                     //             task.persons.sort((a ,b) => a.fullname.localeCompare(b.fullname))
                     //         })
                     //     })
-                    break
+                    // break
                 case 'lastUpdate':
                     console.log('sortBy 3', sortBy);
                     filteredGroups.forEach(group => {

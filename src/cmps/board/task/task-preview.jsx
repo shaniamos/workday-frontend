@@ -14,6 +14,7 @@ import { BiMessageRoundedAdd } from 'react-icons/bi' //empty updates, with updat
 import { HiOutlineDotsHorizontal } from 'react-icons/hi' //More
 import { MdDeleteOutline } from 'react-icons/md'//Delete
 import { HiOutlineDocumentDuplicate } from 'react-icons/hi'//Duplicate
+import { utilService } from "../../../services/util.service.js"
 
 export const TaskPreview = ({ task, groupId, groupColor }) => {
     const labels = useSelector(state => state.boardModule.selectedBoard.labels)
@@ -34,13 +35,14 @@ export const TaskPreview = ({ task, groupId, groupColor }) => {
     const onUpdateTask = (event) => {
         event.preventDefault()
         task.title = newTask.title
+        task.lastUpdated = Date.now()
         dispatch(updateTask(boardId, groupId, task))
     }
 
     const onDuplicateTask = () => {
         const duplicateTask = { ...task }
-        delete duplicateTask.id
-        delete duplicateTask.lastUpdated
+        duplicateTask.id = utilService.makeId()
+        duplicateTask.lastUpdated = Date.now()
         dispatch(addTask(boardId, groupId, duplicateTask))
     }
 
