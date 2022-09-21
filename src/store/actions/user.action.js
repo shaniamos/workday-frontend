@@ -1,4 +1,4 @@
-import { userService } from "../../services/user.service"
+import { userService } from '../../services/user.service.local.js'
 
 // login
 export function login(loggedInUser) {

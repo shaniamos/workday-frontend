@@ -26,13 +26,9 @@ export const Search = ({onChangeFilter, contentSearch, sortOption}) => {
                  <BsSearch />
                     <input
                         className="board-search" autoComplete="off" type="text" name="txt" id="txt"
-                        value={txt} placeholder= "Search" onChange={handleChange}
-                        autoFocus />
+                        value={txt}  placeholder= " Search" onChange={handleChange}
+                        autoFocus />            
                 </div>
-
-
         </form>
-
-       
     )
 }

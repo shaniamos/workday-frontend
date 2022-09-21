@@ -1,18 +1,18 @@
 .search-board-form {
 
     .input-container {
-        margin-left: 5px;
+        margin-left: rem(5px);
         // color: gray;
     }
     input {
-        width: 50px;
+        width: rem(50px);
         font-size: rem(14px);
         // margin-left: 5px;
-        border-radius: 4px;
-        padding-top: 9px;
-        padding-bottom: 7px;
+        border-radius: rem(4px);
+        padding-top: rem(9px);
+        padding-bottom: rem(7px);
         transition: .3s;
-        background-color: white;
+        background-color: transparent;
         border: none;
         &::placeholder {
             font-weight: 400;
@@ -20,11 +20,14 @@
         }
 
         &:focus {
-            box-shadow: 0px 1px 1px 0 rgba(60, 64, 67, 0.6), 0 1px 1px 1px rgba(60, 64, 67, 0.249);
-            background-color: rgb(220 230 236 / 64%);
-            width: 140px;
+            
+            // box-shadow: 0px 1px 1px 0 rgba(60, 64, 67, 0.6), 0 1px 1px 1px rgba(60, 64, 67, 0.249);
+            // background-color: rgb(220 230 236 / 64%);
+            background-color: var(--primary-background-hover-color);
+            width: rem(140px);
             border: .5px solid rgb(212, 210, 210);
             border: none;
+            outline: none;
         }
     }
 

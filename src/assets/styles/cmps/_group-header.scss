@@ -4,17 +4,17 @@
     display: flex;
     align-items: center;
     position: sticky;
-    top: 167px;
-    height: 40px;
-    font-size: 18px;
-    margin-left: 4px;
+    top: rem(167px);
+    height: rem(40px);
+    font-size: rem(18px);
+    margin-left: rem(4px);
     z-index: 2;
     background-color: white;
     
     .collapse-group-button {
         display: inline-block;
-        margin-right: 2px;
-        margin-left: 9px;
+        margin-right: rem(2px);
+        margin-left: rem(9px);
         position: relative;
         top: 4px;
         cursor: pointer;
@@ -22,20 +22,20 @@
 
     .group-title {
 
-        padding-inline-start: 10px;
-        padding-top: 5px;
+        padding-inline-start: rem(10px);
+        padding-top: rem(5px);
 
         .group-name-input {
             @include editable-heading;
             font-weight: bold;
-            letter-spacing: 1px;
+            letter-spacing: rem(1px);
         }
     }
 
     .group-task-count {
         opacity: 0;
-        font-size: 14px;
-        line-height: 22px;
+        font-size: rem(14px);
+        line-height: rem(22px);
         color: var(--secondary-text-color);
         margin-left: var(--spacing-xs);
 
@@ -50,7 +50,7 @@
 //COLUMNS NAMES LINE 
 .preview-group-header {
     position: sticky;
-    top: 207px;
+    top: rem(207px);
     z-index: 1;
     width: 100%;
     background-color: white;
@@ -60,8 +60,8 @@
         cursor: pointer;
         opacity: 0;
         display: block;
-        height: 35px;
-        font-size: 18px;
+        height: rem(35px);
+        font-size: rem(18px);
         transition: background-color .2s;
         border-radius: 6px 0 0 6px;
 
@@ -73,17 +73,17 @@
 
     .group-header-identifier {
         position: relative;
-        left: 18px;
+        left: rem(18px);
 
         .cell {
             @include cell;
         }
 
         .task-name-area {
-            width: 400px;
+            width: rem(400px);
 
             .task-group-color {
-                width: 6px;
+                width: rem(6px);
                 height: 100%;
                 border-top-left-radius: 10px
             }
@@ -103,7 +103,7 @@
                 opacity: 1;
             }
 
-            width: 150px;
+            width: rem(150px);
             @include task-cell-with-content;
         }
 
@@ -112,7 +112,7 @@
                 opacity: 1;
             }
 
-            width: 150px;
+            width: rem(150px);
             @include task-cell-with-content;
         }
 
@@ -121,7 +121,7 @@
                 opacity: 1;
             }
 
-            width: 150px;
+            width: rem(150px);
             @include task-cell-with-content;
         }
 
@@ -130,7 +130,7 @@
                 opacity: 1;
             }
 
-            width: 200px;
+            width: rem(200px);
             @include task-cell-with-content;
         }
 
@@ -139,19 +139,19 @@
                 opacity: 1;
             }
 
-            width: 200px;
+            width: rem(200px);
             @include task-cell-with-content;
         }
 
         .add-column {
-            width: 400px;
-            padding-inline-start: 10px;
-            font-size: 20px;
+            width: rem(400px);
+            padding-inline-start: rem(10px);
+            font-size: rem(20px);
             border-inline-start: 0.5px solid #d0d4e4;
         }
 
         .sort-btn {
-            padding: 3px;
+            padding: rem(3px);
             margin: auto;
             width: rem(20px);
             height: rem(20px);

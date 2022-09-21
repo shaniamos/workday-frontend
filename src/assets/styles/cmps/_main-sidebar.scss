@@ -9,7 +9,7 @@
     .sidebar-container {
         background-color: #292f4c;
         height: 100vh;
-        width: 89px;
+        width: rem(89px);
 
         .sidebar-icon {
             width:rem(23px);
@@ -42,10 +42,10 @@
 
         .plans-modal {
             cursor: pointer;
-            margin-top: 10px;
-            margin-bottom: 10px;
-            height: 110px;
-            width: 34px;
+            margin-top: rem(10px);
+            margin-bottom: rem(10px);
+            height: rem(110px);
+            width: rem(34px);
             color: white;
             border-radius: 0 16px 16px 0;
             background-color: #258750;

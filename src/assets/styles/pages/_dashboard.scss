@@ -1,13 +1,13 @@
 .toy-dashboard {
-    padding: 30px;
+    padding: rem(30px);
 
     & .btn-back {
         position: fixed;
         top: 10vh;
-        left: 20px
+        left: rem(20px);
     }
 
     >.chart:not(:last-child) {
-        margin-bottom: 30px;
+        margin-bottom: rem(30px);
     }
 }

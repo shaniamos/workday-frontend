@@ -25,7 +25,7 @@ import { useEffect } from 'react'
 export function SubSidebar({ boards, isOpen, onChangeFilter }) {
     boards = useSelector(state => state.boardModule.boards)
 
-    const [isSearchClicked, setSearch] = useState(false)
+    // const [isSearchClicked, setSearch] = useState(false)
     const [isNavOpen, setNavOpen] = useState(isOpen)
     const [isNewBoardModalOpen, setNewBoardModalOpen] = useState(false)
     const [isDropDownOpen, setDropDownOpen] = useState(false)
@@ -89,12 +89,12 @@ export function SubSidebar({ boards, isOpen, onChangeFilter }) {
                         <div className="workspace-options flex column">
                             <div className="action-btn ">
                                 <a onClick={toggleNewBoardModal} className="flex option"> <GrAdd /><span className="menu-btn-inner-text">Add</span></a>
-                                <ClickAwayListener onClickAway={() => setSearch(false)}>
+                                {/* <ClickAwayListener onClickAway={() => setSearch(false)}> */}
                                     <div>
-                                        {!isSearchClicked && <a className="flex  option last-one" onClick={() => setSearch(!isSearchClicked)}><FiSearch /> <span className="menu-btn-inner-text">Search</span>  </a>}
-                                        {isSearchClicked && <Search contentSearch={'boards'} onChangeFilter={onChangeFilter} setSearch={setSearch} />}
+                                        {/* {!isSearchClicked && <a className="flex  option last-one" onClick={() => setSearch(!isSearchClicked)}><FiSearch /> <span className="menu-btn-inner-text">Search</span>  </a>} */}
+                                        {<a className="flex  option last-one"><Search contentSearch={'boards'} onChangeFilter={onChangeFilter} /> </a>}
                                     </div>
-                                </ClickAwayListener>
+                                {/* </ClickAwayListener> */}
 
                             </div>
                             <div className="spacer"></div>

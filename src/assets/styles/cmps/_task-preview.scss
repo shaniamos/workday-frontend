@@ -3,16 +3,16 @@
 
         .cell {
             @include cell;
-            font-size: 14px;
+            font-size: rem(14px);
 
         }
 
         .task-name-area {
-            width: 400px;
+            width: rem(400px);
             background-color: var(--primary-background-color);
 
             .task-group-color {
-                width: 6px;
+                width: rem(6px);
                 height: 100%;
             }
 
@@ -21,10 +21,10 @@
             }
 
             .btn-subitem {
-                width: 30px;
+                width: rem(30px);
                 transition: opacity .2s, transform .2s;
                 display: flex;
-                margin: 7px 4px;
+                margin: rem(7px) rem(4px);
 
                 .subitem-icon {
                     margin: auto;
@@ -42,7 +42,7 @@
             }
 
             .btn-open-task {
-                margin-inline: 15px;
+                margin-inline: rem(15px);
 
             }
 
@@ -50,9 +50,9 @@
                 display: flex;
                 align-items: center;
                 height: 100%;
-                padding-inline: 16px;
-                margin-left: 8px;
-                font-size: 24px;
+                padding-inline: rem(16px);
+                margin-left: rem(8px);
+                font-size: rem(24px);
                 color: #c5c7d0;
                 border-left: 1px solid var(--layout-border-color);
                 transition: color 200ms ease;
@@ -68,40 +68,40 @@
         }
 
         .persons-header {
-            width: 150px;
+            width: rem(150px);
             @include task-cell-with-content;
         }
 
         .label-type {
-            width: 150px;
+            width: rem(150px);
             @include task-cell-with-content;
             color: white;
         }
 
         .last-updated {
-            width: 200px;
+            width: rem(200px);
             @include task-cell-with-content;
         }
 
         .date-header {
-            width: 200px;
+            width: rem(200px);
             @include task-cell-with-content;
         }
 
         .add-column {
-            width: 400px;
+            width: rem(400px);
             @include task-cell-with-content;
         }
     }
 
     .dot {
-        height: 30px;
-        font-size: 18px;
+        height: rem(30px);
+        font-size: rem(18px);
         transform: translateY(5px);
         cursor: pointer;
         opacity: 0;
         transition: background-color .2s;
-        border-radius: 6px 0 0 6px;
+        border-radius: rem(6px) 0 0 rem(6px);
 
         &:hover {
             background-color: #dcdfec;
@@ -125,11 +125,11 @@
         font-weight: 400;
         font-size: rem(17px);
         background-color: white;
-        min-width: 190px;
-        box-shadow: 0px 8px 16px 0px rgba(31, 30, 30, 0.4);
+        min-width: rem(190px);
+        box-shadow: 0 rem(8px) rem(16px) 0 rgba(31, 30, 30, 0.4);
         z-index: 100;
-        border-radius: 10px;
-        padding: 10px;
+        border-radius: rem(10px);
+        padding: rem(10px);
         transform: translateX(-30px);
     }
 
@@ -137,7 +137,7 @@
     .dropdown-content a {
         font-style: normal;
         color: #5b5c63;
-        padding: 12px 16px;
+        padding:rem(12px) rem(16px);
         text-decoration: none;
         // display: block;
     }
@@ -145,7 +145,7 @@
     /* Change color of dropdown links on hover */
     .dropdown-content a:hover {
         background-color: #dcdfec;
-        border-radius: 8px;
+        border-radius: rem(8px);
         cursor: pointer;
     }
 
@@ -161,17 +161,17 @@
     .cell {
         @include cell;
         position: relative;
-        left: 18px;
+        left: rem(18px);
     }
 
     .task-name-area {
-        width: 400px;
+        width: rem(400px);
 
         .task-group-color {
-            width: 6px;
+            width: rem(6px);
             height: 100%;
             opacity: .5;
-            border-bottom-left-radius: 10px;
+            border-bottom-left-radius: rem(10px);
         }
 
         .preview-checkbox {
@@ -180,7 +180,7 @@
 
         .editable-heading {
             margin-block: auto;
-            margin-inline-start: 36px;
+            margin-inline-start: rem(36px);
             @include editable-heading;
         }
 
@@ -206,10 +206,10 @@
         position: absolute;
         display: none;
         pointer-events: all;
-        border-radius: 8px;
-        font-size: 14px;
+        border-radius: rem(8px);
+        font-size: rem(14px);
         background-color: var(--secondary-background-color);
-        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+        box-shadow: 0px rem(8px) rem(16px) 0px rgba(0, 0, 0, 0.2);
         color: var(--primary-text-color);
         transition: width .1s;
         z-index: 2;
@@ -224,8 +224,8 @@
             .picker-list {
                 display: grid;
                 grid-auto-flow: column;
-                padding: 16px 24px 8px;
-                grid-column-gap: 8px;
+                padding: rem(16px) rem(24px) rem(8px);
+                grid-column-gap: rem(8px);
                 list-style-type: none;
 
                 .option {
@@ -233,12 +233,12 @@
                     display: block;
                     color: #fff;
                     text-align: center;
-                    width: 160px;
-                    margin-bottom: 8px;
+                    width: rem(160px);
+                    margin-bottom: rem(8px);
                     transition: transform .1s ease-in-out, opacity .1s ease-in-out;
-                    line-height: 32px;
-                    border-radius: 2px;
-                    padding: 0 4px;
+                    line-height: rem(32px);
+                    border-radius: rem(2px);
+                    padding: 0 rem(4px);
 
 
                     &:hover {

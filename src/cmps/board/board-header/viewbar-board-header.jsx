@@ -13,6 +13,7 @@ import { addTask } from "../../../store/actions/board.action.js"
 import { useState } from "react"
 import { Search } from "../../search.jsx"
 import { FilterBoardByType } from './board-filter.jsx';
+import { utilService } from '../../../services/util.service.js';
 
 //IoHomeOutline - Main Table
 //RiErrorWarningLine - description
@@ -32,7 +33,19 @@ export function ViewbarBoardHeader({ board, onAddGroup, onChangeFilter }) {
     const dispatch = useDispatch()
 
     const onAddTask = () => {
-        dispatch(addTask(board.id, board.groups[0].id, { title: 'New Item' }))
+        let task = { title: 'New Item' }
+        task = createTask(task)
+        dispatch(addTask(board.id, board.groups[0].id, task))
+    }
+
+    const createTask = (task) => {
+        task.id = utilService.makeId()
+        task.status = ''
+        task.priority = ''
+        task.persons = ''
+        task.deadLine = ''
+        task.lastUpdate = Date.now()
+        return task
     }
 
     return (
@@ -48,12 +61,12 @@ export function ViewbarBoardHeader({ board, onAddGroup, onChangeFilter }) {
                 </section>
             </div>
 
-            <ClickAwayListener onClickAway={() => setSearch(false)}>
+            {/* <ClickAwayListener onClickAway={() => setSearch(false)}> */}
                 <div>
-                     <Search contentSearch={'items'} onChangeFilter={onChangeFilter} setSearch={setSearch} />
+                    <Search contentSearch={'items'} onChangeFilter={onChangeFilter} setSearch={setSearch} />
                 </div>
-            </ClickAwayListener>
-            
+            {/* </ClickAwayListener> */}
+
             <button className="view-nav-btn"><FaRegUserCircle /> Person  </button>
 
             <ClickAwayListener onClickAway={() => setFilter(false)}>
