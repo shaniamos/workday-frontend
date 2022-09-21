@@ -4,6 +4,8 @@
     }
 }
 
+
+
 @include for-narrow-layout {
 
     .sidebar-container {
@@ -102,8 +104,4 @@
         }
     }
 
-    @include for-mobile-layout  {
-        display: none;
-    }
-    
 }
