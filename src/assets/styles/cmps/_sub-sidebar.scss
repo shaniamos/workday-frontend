@@ -32,22 +32,21 @@
                 .menu-btn-inner-text {
                     font-size: 14px;
                     margin: 0 8px;
-
                 }
-
             }
-
         }
-
         .dropdown-dot .dropdown {
             position: absolute;
             display: none;
             padding-bottom: 6px;
             font-size: 13px;
             transition: color .2s;
-            transform: translateY(-15px);
+            transform: translateX(60px);
             z-index: 10;
             font-size: 27px;
+            & .points{
+                transform: translateY(-15px);
+            }
         }
 
         .option {
@@ -61,6 +60,9 @@
             // padding-bottom: 4px;
             border-radius: 4px;
             // gap: 16px;
+            &.active {
+                background-color: var(--primary-background-hover-color);
+            }
 
 
         }
@@ -214,7 +216,7 @@
         position: relative;
 
         & .workspace-board {
-            border: 1px solid #676879;
+            border: 1px solid  #b6b6bc;
         }
 
         & .workspace-options {

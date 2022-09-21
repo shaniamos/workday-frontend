@@ -64,9 +64,9 @@ export function ViewbarBoardHeader({ board, onAddGroup, onChangeFilter }) {
                     }
                 </div>
             </ClickAwayListener>
-            <button className="view-nav-btn"><CgArrowsScrollV /> Sort  </button>
-            <button className="view-nav-btn"><AiOutlineEyeInvisible /> Hide  </button>
-            <button className="view-nav-btn"><HiOutlineDotsHorizontal />  </button>
+            {/* <button className="view-nav-btn"><CgArrowsScrollV /> Sort  </button>
+            <button className="view-nav-btn"><AiOutlineEyeInvisible /> Hide  </button> */}
+            {/* <button className="view-nav-btn"><HiOutlineDotsHorizontal />  </button> */}
         </div>
     )
 }

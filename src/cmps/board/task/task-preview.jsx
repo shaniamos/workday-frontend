@@ -64,7 +64,7 @@ export const TaskPreview = ({ task, groupId, groupColor }) => {
                     </div>
                 </div>
                 <div className="questModal">
-                    {isDeleteBtnClicked && <AreYouSureModal toggleNewBoardModal={toggleNewBoardModal} onRemoveTask={onRemoveTask} />}
+                    {isDeleteBtnClicked && <AreYouSureModal toggleNewBoardModal={toggleNewBoardModal} onRemoveEntity={onRemoveTask} />}
 
                 </div>
 

@@ -75,7 +75,6 @@ export function SubSidebar({ boards, isOpen, onChangeFilter }) {
                 <div className="side-bar-content">
                     <div className="workspace-sidebar flex space-between">
                         <span>Workspace</span>
-                        <HiDotsHorizontal className="dot" />
                     </div>
                     <div className="workspace-board flex space-between align-center">
                         <div className="workspace-board-name flex align-center">
@@ -90,7 +89,6 @@ export function SubSidebar({ boards, isOpen, onChangeFilter }) {
                         <div className="workspace-options flex column">
                             <div className="action-btn ">
                                 <a onClick={toggleNewBoardModal} className="flex option"> <GrAdd /><span className="menu-btn-inner-text">Add</span></a>
-                                <a className="flex  option"> <GrFilter /><span className="menu-btn-inner-text">Filter</span></a>
                                 <ClickAwayListener onClickAway={() => setSearch(false)}>
                                     <div>
                                         {!isSearchClicked && <a className="flex  option last-one" onClick={() => setSearch(!isSearchClicked)}><FiSearch /> <span className="menu-btn-inner-text">Search</span>  </a>}
@@ -111,7 +109,7 @@ export function SubSidebar({ boards, isOpen, onChangeFilter }) {
                                                 <div className="dropdown" onClick={(ev) => {
                                                     ev.preventDefault()
                                                     toggleDropdown()
-                                                }} ><HiDotsHorizontal />
+                                                }} ><HiDotsHorizontal className="points" />
 
                                                     {isDropDownOpen && <div className="dropdown-content ">
                                                         <i><HiOutlineDocumentDuplicate className="icon-dropdown" /> Duplicate Board</i>

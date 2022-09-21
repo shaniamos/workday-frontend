@@ -1,42 +1,66 @@
 .are-you-sure-modal-container {
-    @include modal($height: rem(130px), $width: rem(310px));
-    border-radius: 8px;
-    top: 30%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    transition: all 0.3s ease 0s;
-    z-index: 30;
-    padding: rem(16px) rem(48px);
-    border: 1px solid #726a6a;
-    box-shadow: 0 0 4px 0px #4b4848;
+
+    &.open .main-screen {
+        @include main-screen-open;
+    
+    }
+
+    & .main-screen {
+        @include main-screen($bgColor: rgb(0 0 0 / 60%));
+    }
+
+    & .delete-modal {
+        @include modal($height: rem(168px), $width: rem(598px));
+        border-radius: 8px;
+        top: 13%;
+        left: 47%;
+        transform: translate(-50%, -50%);
+        transition: all 0.3s ease 0s;
+        z-index: 30;
+        padding: rem(12px) rem(36px);
+        border: 0.5px solid #000000;
+        box-shadow: 0 0 10px 3px #383737;
+    
+    }
 
     .cancel-modal-btn {
         @include btn($bgColor: white);
         margin-right: 8px;
-        font-size: rem(16px);
+        font-size: rem(18px);
+        padding: 8px 16px;
+        height: 40px;
         padding: rem(8px) rem(16px);
+        float: right;
 
         &:hover {
             background-color: rgb(212, 212, 216);
         }
     }
-
+    
     .delete-modal-btn {
         @include btn($bgColor: #0073ea, $color: white);
-        font-size: rem(16px);
+        font-size: rem(18px);
         padding: rem(8px) rem(16px);
-
+        float: right;
+        padding: 8px 16px;
+        height: 40px;
+        
         &:hover {
             background-color: #065db9;
         }
     }
-
     .modal-btns {
-        margin-top: rem(20px);
+        border-top: .5px solid grey;
+        padding-top: rem(20px);
+        padding-bottom: rem(20px);
+        height: rem(40px);
     }
 
     .delete-item {
-        font-size: rem(30px);
+        padding-top: rem(15px);
+        font-size: rem(18px);
     }
-
 }
+
+
+
