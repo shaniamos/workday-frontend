@@ -22,7 +22,16 @@
             text-align: center;
         }
     }
+    .navigate-btns {
+
+        .is-selected {
+            border-bottom: 2px solid black;
+          }
+        
+    
+    }
 }
+
 
 .task-edit-container .main-screen {
     @include main-screen($bgColor: rgb(0 0 0 / 60%));

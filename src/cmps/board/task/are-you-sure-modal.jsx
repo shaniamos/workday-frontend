@@ -1,7 +1,7 @@
 import { useNavigate, useParams } from "react-router-dom"
 
 export const AreYouSureModal = ({ toggleNewBoardModal, onRemoveEntity }) => {
-    const params = useParams()
+    // const params = useParams()
 
     const onCloseModal = () => {
         toggleNewBoardModal()

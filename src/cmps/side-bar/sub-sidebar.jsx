@@ -13,7 +13,6 @@ import { HiOutlineDocumentDuplicate } from 'react-icons/hi'
 import { RiPencilLine } from 'react-icons/ri'
 import { HiOutlineArchive } from 'react-icons/hi'
 //LIBS
-import ClickAwayListener from '@material-ui/core/ClickAwayListener';
 import { useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { useNavigate, NavLink } from 'react-router-dom'
@@ -63,11 +62,11 @@ export function SubSidebar({ boards, isOpen, onChangeFilter }) {
         }
     }
 
-    const sideBarClassName = isNavOpen ? "sub-sidebar-container is-open" : "sub-sidebar-container"
+    const sideBarClassName = isNavOpen ? 'is-open' : ''
 
     if (!boards) return <div>Loading.....</div>
     return (
-        <section className={sideBarClassName}>
+        <section className={`sub-sidebar-container ${sideBarClassName}`}>
             {isNewBoardModalOpen && <NewBoardMoadl toggleNewBoardModal={toggleNewBoardModal} />}
             {isNavOpen && <IoIosArrowBack className='btn-left open-btn' onClick={toggleSubSidebar} />}
             {!isNavOpen && <IoIosArrowForward className='btn-right open-btn' onClick={toggleSubSidebar} />}
@@ -85,7 +84,7 @@ export function SubSidebar({ boards, isOpen, onChangeFilter }) {
                         </div>
                         <IoIosArrowDown className='arrow-btn' />
                     </div>
-                    <div>
+                    
                         <div className="workspace-options flex column">
                             <div className="action-btn ">
                                 <a onClick={toggleNewBoardModal} className="flex option"> <GrAdd /><span className="menu-btn-inner-text">Add</span></a>
@@ -129,7 +128,7 @@ export function SubSidebar({ boards, isOpen, onChangeFilter }) {
                                 )}
                             </div>
                         </div>
-                    </div>
+                   
                 </div>
             )}
         </section >

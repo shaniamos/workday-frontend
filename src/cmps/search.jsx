@@ -4,16 +4,12 @@ import { BsSearch } from 'react-icons/bs'  //Search
 
 export const Search = ({onChangeFilter, contentSearch, sortOption}) => {
     const [txt, setInputTxt] = useState('')
-    const [sortBy, setSort] = useState(sortOption)
     
     useEffect(() => {
         onChangeFilter({ txt }, contentSearch)
     }, [txt])
 
-    useEffect(() => {
-        onChangeFilter({ sortBy }, contentSearch)
-    }, [sortBy])
-
+ 
     const handleChange = async (ev) => {
         const value = ev.target.value
         setInputTxt(value)

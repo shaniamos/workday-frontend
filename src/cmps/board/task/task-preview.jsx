@@ -31,6 +31,7 @@ export const TaskPreview = ({ task, groupId, groupColor }) => {
     })
 
     const onRemoveTask = () => {
+        toggleNewBoardModal()
         dispatch(removeTask(boardId, groupId, task.id))
     }
 

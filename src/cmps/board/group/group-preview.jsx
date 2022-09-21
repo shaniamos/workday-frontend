@@ -22,6 +22,7 @@ export const GroupPreview = ({ group, onChangeFilter }) => {
     })
 
     const onRemoveGroup = () => {
+        toggleNewBoardModal()
         const boardId = params.id
         dispatch(removeGroup(boardId, group.id))
     }

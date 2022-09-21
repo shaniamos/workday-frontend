@@ -16,7 +16,8 @@ export const boardService = {
     updateTask,
     removeTask,
     getTaskById,
-    filterGroupAndTasks
+    // filterGroupAndTasks,
+    removeComment,
 }
 
 const STORAGE_KEY = 'board'
@@ -42,7 +43,7 @@ async function queryBoards(filterBy) {
         }
         return boards
     } catch (err) {
-        console.error(err)
+        throw err
     }
 }
 
@@ -157,12 +158,30 @@ async function queryTasks(boardId, groupId, filterBy) {
 // get task by id
 async function getTaskById(boardId, groupId, taskId) {
     try {
+
         const group = await getGroupById(boardId, groupId)
-        const task = group.find(task => task.id === taskId)
+        const task = group.tasks.find(task => task.id === taskId)
+        // console.log('task', task);
         return task
     } catch (err) {
         throw err
     }
+}
+
+async function removeComment(boardId, groupId, taskId, commentIdx) {
+    try {
+
+        const board = await getBoardById(boardId)
+        const groupIdx = board.groups.findIndex(group => group.id === groupId)
+        const taskIdx = board.groups[groupIdx].tasks.findIndex(task => task.id === taskId)
+        board.groups[groupIdx].tasks[taskIdx].comments.splice(commentIdx, 1)
+        return storageService.put(STORAGE_KEY, board)
+    }
+    catch(err) {
+        console.error(err, 'Cannot delete comment')
+        throw err
+    }
+
 }
 
 // remove task
@@ -215,61 +234,61 @@ async function updateTask(boardId, groupId, task) {
 }
 
 // filter groups and tasks title
-async function filterGroupAndTasks(boardId, filterBy = { txt: '' }, sortBy) {
-    try {
-        const board = await getBoardById(boardId)
-        let groups = [...board.groups]
-        let filteredGroups = groups
+// async function filterGroupAndTasks(boardId, filterBy = { txt: '' }, sortBy) {
+//     try {
+//         const board = await getBoardById(boardId)
+//         let groups = [...board.groups]
+//         let filteredGroups = groups
 
-        if (filterBy.txt) {
-            const regex = new RegExp(filterBy.txt, 'i')
-            filteredGroups = groups.filter((group) => {
-                if (regex.test(group.title)) {
-                    return group
-                }
-                else {
-                    const filteredTasks = group.tasks.filter((task) => {
-                        if (regex.test(task.title))
-                            return task
-                    })
-                    group.tasks = filteredTasks
-                    if (group.tasks.length) return group
-                }
-            })
-        }
-        if (sortBy) {
-            switch (sortBy) {
-                case 'itemTitle':
-                    filteredGroups.forEach(group => {
-                        group.tasks.sort((a, b) => a.title.localeCompare(b.title))
-                    })
-                    break
-                    // case 'personName':
-                    //     filteredGroups.forEach(group => {
-                    //         group.tasks.forEach(task => {
-                    //             task.persons.sort((a ,b) => a.fullname.localeCompare(b.fullname))
-                    //         })
-                    //     })
-                    // break
-                case 'lastUpdate':
-                    filteredGroups.forEach(group => {
-                        group.tasks.sort((a, b) => b.lastUpdated - a.lastUpdated)
-                    })
-                    break
-                case 'deadline':
-                    filteredGroups.forEach(group => {
-                        group.tasks.sort((a, b) => b.deadline - a.deadline)
-                    })
-                    break
-            }
-        }
-        return filteredGroups
-    }
-    catch (err) {
-        console.error(err);
-        throw err
-    }
-}
+//         if (filterBy.txt) {
+//             const regex = new RegExp(filterBy.txt, 'i')
+//             filteredGroups = groups.filter((group) => {
+//                 if (regex.test(group.title)) {
+//                     return group
+//                 }
+//                 else {
+//                     const filteredTasks = group.tasks.filter((task) => {
+//                         if (regex.test(task.title))
+//                             return task
+//                     })
+//                     group.tasks = filteredTasks
+//                     if (group.tasks.length) return group
+//                 }
+//             })
+//         }
+//         if (sortBy) {
+//             switch (sortBy) {
+//                 case 'itemTitle':
+//                     filteredGroups.forEach(group => {
+//                         group.tasks.sort((a, b) => a.title.localeCompare(b.title))
+//                     })
+//                     break
+//                 // case 'personName':
+//                 //     filteredGroups.forEach(group => {
+//                 //         group.tasks.forEach(task => {
+//                 //             task.persons.sort((a ,b) => a.fullname.localeCompare(b.fullname))
+//                 //         })
+//                 //     })
+//                 // break
+//                 case 'lastUpdate':
+//                     filteredGroups.forEach(group => {
+//                         group.tasks.sort((a, b) => b.lastUpdated - a.lastUpdated)
+//                     })
+//                     break
+//                 case 'deadline':
+//                     filteredGroups.forEach(group => {
+//                         group.tasks.sort((a, b) => b.deadline - a.deadline)
+//                     })
+//                     break
+//             }
+//         }
+//         return filteredGroups
+//     }
+//     catch (err) {
+//         console.error(err);
+//         throw err
+//     }
+// }
 
 function _createBoard(board) {
     board._createdAt = Date.now()

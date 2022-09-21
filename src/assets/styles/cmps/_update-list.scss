@@ -1,0 +1,112 @@
+.item-updates-container {
+    .user-update-card {
+        margin-top: rem(15px);
+
+        .user-text-area {
+            margin-bottom: rem(10px);
+            padding: rem(7px) rem(15px);
+            min-height: rem(50px);
+        }
+
+        position: relative;
+        overflow: visible;
+        border-radius: 4px;
+        border: 1px solid rgb(206, 204, 204);
+
+        .user-details {
+            padding: rem(15px);
+
+            .user-img-name {
+                position: relative;
+                flex: 1;
+               
+
+                img {
+                    width: rem(40px);
+                    height: rem(40px);
+                    border-radius: 50%;
+                }
+
+                .username-name {
+                    font-size: rem(26px);
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    line-height: rem(18px);
+                    margin-left: rem(8px);
+                }
+            }
+
+            .time {
+                position: absolute;
+                padding-top: rem(5px);
+                right: 0;
+                gap: rem(7px);
+                justify-content: center;
+            }
+
+            .delete-update-btn {
+                cursor: pointer;
+                padding-top: rem(2px);
+                padding-left: rem(4px);
+                &:hover {
+                    color: gray;
+                }
+            }
+        }
+
+        .action-btns {
+            cursor: pointer;
+            height: rem(42px);
+            border-top: 1px solid;
+            border-top-color: rgb(206, 204, 204);
+            justify-content: space-around;
+            align-items: center;
+            
+
+            .like-post-wrapper {
+                height: 100%;
+                width: 100%;
+                display: flex;
+                
+                align-items: center;
+                justify-content: center;
+
+                .like-post {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    border-radius: 4px;
+                    font-size: 14px;
+                    width: calc(100% - 8px);
+                    height: calc(100% - 8px);
+                    &:hover {
+                        background-color: var(--primary-background-hover-color);
+                    }
+                }
+                
+            }
+
+            .reply-post-wrapper {
+                height: 100%;
+                width: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                .reply-post {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    width: calc(100% - 8px);
+                    height: calc(100% - 8px);
+                    border-radius: 4px;
+                    font-size: 14px;
+                    &:hover {
+                        background-color: var(--primary-background-hover-color);
+                    }
+                }
+            }
+        }
+    }
+}

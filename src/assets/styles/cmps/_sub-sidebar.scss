@@ -5,18 +5,12 @@
     border-right: 1px solid #c2c9d8;
     transition: .1s ease;
 
-    .workspace-icon {
-        width: rem(26px);
-        height: rem(26px);
-        border-radius: rem(8px);
-        justify-content: center;
-        margin-right: rem(5px);
-        background-color: #d83a52;
-        color: rgb(255, 255, 255);
+    @include for-mobile-layout {
+        width: 100vw;
     }
 
-    .workspace-options {
 
+    .workspace-options {
         color: #323338;
 
         .boards-options {
@@ -55,16 +49,7 @@
             align-items: center;
             font-size: rem(16px);
             transition: background-color .2s;
-            // padding-left: 6px;
-            // padding-top: 4px;
-            // padding-bottom: 4px;
             border-radius: 4px;
-            // gap: 16px;
-            &.active {
-                background-color: var(--primary-background-hover-color);
-            }
-
-
         }
 
         .option:hover,
@@ -91,6 +76,7 @@
 
             }
         }
+
 
         /* Dropdown Content (Hidden by Default) */
         .dropdown-content {
@@ -164,8 +150,19 @@
         margin: auto;
         margin-bottom: 18px;
 
+
         .workspace-board-name {
             width: 100%;
+
+            .workspace-icon {
+                width: rem(26px);
+                height: rem(26px);
+                border-radius: rem(8px);
+                justify-content: center;
+                margin-right: rem(5px);
+                background-color: #d83a52;
+                color: rgb(255, 255, 255);
+            }
 
             h2 {
                 font-size: rem(16px);
@@ -174,17 +171,23 @@
                 font-family: roboto-bold;
             }
         }
+
+        .arrow-btn {
+            @include for-mobile-layout {
+                display: none;
+            }
+        }
     }
+
+
 }
 
 @include for-mobile-layout {
     .sub-sidebar-container {
-        width: 100vw;
+
 
         & .workspace-board {
-            & .arrow-btn {
-                display: none;
-            }
+            & .arrow-btn {}
         }
 
         & .open-btn {
