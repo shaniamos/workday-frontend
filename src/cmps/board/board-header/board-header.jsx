@@ -22,7 +22,7 @@ export function BoardHeader({ board, onAddGroup, onChangeFilter }) {
                 
                 <MainBoardHeader board={board} />
                 <ToolbarBoardHeader />
-                <ViewbarBoardHeader onAddGroup={onAddGroup} onChangeFilter={onChangeFilter} />
+                <ViewbarBoardHeader board={board} onAddGroup={onAddGroup} onChangeFilter={onChangeFilter} />
             </div>
         </header>
     )

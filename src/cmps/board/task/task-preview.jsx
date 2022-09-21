@@ -14,10 +14,12 @@ import { BiMessageRoundedAdd } from 'react-icons/bi' //empty updates, with updat
 import { HiOutlineDotsHorizontal } from 'react-icons/hi' //More
 import { MdDeleteOutline } from 'react-icons/md'//Delete
 import { HiOutlineDocumentDuplicate } from 'react-icons/hi'//Duplicate
+import { useState } from "react"
+import { AreYouSureModal } from "./are-you-sure-modal.jsx"
 
 export const TaskPreview = ({ task, groupId, groupColor }) => {
     const labels = useSelector(state => state.boardModule.selectedBoard.labels)
-
+    const [isDeleteBtnClicked, setBtnClicked] = useState(false)
     const dispatch = useDispatch()
     const params = useParams()
     const boardId = params.id
@@ -44,18 +46,26 @@ export const TaskPreview = ({ task, groupId, groupColor }) => {
         dispatch(addTask(boardId, groupId, duplicateTask))
     }
 
+    const toggleNewBoardModal = () => {
+        setBtnClicked(!isDeleteBtnClicked)
+    }
 
-    const { persons, status, priority, lastUpdated } = task
-    let date = new Date(Date.now())
+
+    const { persons, lastUpdated, deadline } = task
+    let date = new Date(1663091776159)
     return (
         <React.Fragment>
             <div className="preview-full-task flex">
                 <div className="dropdown">
                     <div ><HiOutlineDotsHorizontal className="dot" /></div>
                     <div className="dropdown-content">
-                        <a onClick={onRemoveTask}>< MdDeleteOutline /> Delete Item</a>
+                        <a onClick={toggleNewBoardModal}>< MdDeleteOutline /> Delete Item</a>
                         <a onClick={onDuplicateTask}><HiOutlineDocumentDuplicate /> Duplicate</a>
                     </div>
+                </div>
+                <div className="questModal">
+                    {isDeleteBtnClicked && <AreYouSureModal toggleNewBoardModal={toggleNewBoardModal} onRemoveTask={onRemoveTask} />}
+
                 </div>
 
                 <section className="task-preview flex">

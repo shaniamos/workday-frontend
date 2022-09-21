@@ -40,17 +40,17 @@
         background-color: #454592;
     }
 
-    .text-container {
+    & .text-container {
         transform: translateY(120px);
-    }
 
-    p {
-        font-size: rem(24px);
-        line-height: rem(40px);
-        font-weight: 300;
-        padding-left: rem(50px);
-        padding-right: rem(50px);
-        color: #fff;
+        & p {
+            font-size: rem(24px);
+            line-height: rem(40px);
+            font-weight: 300;
+            padding-left: rem(50px);
+            padding-right: rem(50px);
+            color: #fff;
+        }
     }
 
     .get-started-btn-home {
@@ -202,14 +202,61 @@
             }
         }
     }
+}
 
-    //NARROW
-    @include for-narrow-layout {
-        .text-container {
-            margin: auto;
-            width: rem(700px);
-            padding-top: 40px;
+//MOBILE
+@include for-mobile-layout {
+    .text-container {
+        margin: auto;
+        width: rem(450px);
+    }
+
+    .nav-a {
+        font-size: rem(15px);
+    }
+
+    .get-started-btn {
+        display: none;
+    }
+
+    .get-started-btn-home {
+        font-size: 1rem;
+        height: rem(60px);
+        width: rem(40px);
+    }
+
+    .main-text {
+        font-weight: 400;
+        font-size: rem(40px);
+    }
+
+    .home-header {
+        height: rem(50px);
+        padding-left: rem(20px);
+        padding-right: rem(20px);
+
+
+        .logo {
+            width: rem(90px);
+            padding-top: rem(9px);
         }
+
+        .sub-text {
+            font-size: 10px;
+        }
+
+        .small-text {
+            font-size: rem(25px);
+        }
+    }
+}
+
+//NARROW
+@include for-narrow-layout {
+    .text-container {
+        margin: auto;
+        width: rem(700px);
+        padding-top: 40px;
 
         .nav-a {
             font-size: rem(20px);
@@ -246,60 +293,4 @@
 
         }
     }
-
-
-    //MOBILE
-    @include for-mobile-layout {
-        .text-container {
-            margin: auto;
-            width: rem(450px);
-        }
-    
-        .nav-a {
-            font-size: rem(15px);
-        }
-    
-        .get-started-btn {
-            display: none;
-        }
-    
-        .get-started-btn-home {
-            font-size: 1rem;
-            height: rem(60px);
-            width: rem(40px);
-        }
-    
-        .main-text {
-            font-weight: 400;
-            font-size: rem(40px);
-        }
-    
-        .home-header {
-            height: rem(50px);
-            padding-left: rem(20px);
-            padding-right: rem(20px);
-    
-    
-            .logo {
-                width: rem(90px);
-                padding-top: rem(9px);
-            }
-    
-            .sub-text {
-                font-size: 10px;
-            }
-    
-    
-    
-            .small-text {
-                font-size: rem(25px);
-            }
-    
-    
-        }
-    }
 }
-
-
-
-

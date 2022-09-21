@@ -12,13 +12,11 @@ export const GroupHeader = ({ groupColor, onChangeFilter }) => {
         onChangeFilter(filterBy, '', sortOption)
     }
 
-
-
     return (
         <div className='preview-group-header flex'>
             
             {/* <div ><HiOutlineDotsHorizontal className="dot" /></div> */}
-            <div className="group-header-identifier  flex">
+            <div className="group-header-identifier flex">
                 <div className="cell task-name-area group-task-name-area cell sticky-feature flex">
                     <div className="task-group-color task-group-color-header" style={{ backgroundColor: `var(${groupColor})` }}></div>
                     <div className="preview-checkbox"><input className="input-checkbox" type="checkbox" name="" id="" /></div>

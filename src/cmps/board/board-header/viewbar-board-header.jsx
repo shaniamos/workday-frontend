@@ -25,14 +25,14 @@ import { FilterBoardByType } from './board-filter.jsx';
 //IoIosCheckmarkCircleOutline -checklist 
 
 
-export function ViewbarBoardHeader({ onAddGroup, onChangeFilter }) {
+export function ViewbarBoardHeader({ board, onAddGroup, onChangeFilter }) {
     const [isSearch, setSearch] = useState(false)
     const [isFilter, setFilter] = useState(false)
 
     const dispatch = useDispatch()
 
     const onAddTask = () => {
-        dispatch(addTask())
+        dispatch(addTask(board.id, board.groups[0].id, { title: 'New Item' }))
     }
 
     return (

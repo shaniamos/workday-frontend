@@ -169,13 +169,11 @@ async function getTaskById(boardId, groupId, taskId) {
 async function removeTask(boardId, groupId, taskId) {
     try {
         const board = await getBoardById(boardId)
-        const group = await getGroupById(boardId, groupId)
-        const newTasks = group.tasks.filter(task => task.id !== taskId)
+        const groupIdx = board.groups.findIndex(group => group.id === groupId)
+        const newTasks = board.groups[groupIdx].tasks.filter(task => task.id !== taskId)
 
-        board.groups.forEach((group, idx) => {
-            if (group.id === groupId)
-                board.groups[idx].tasks = newTasks
-        })
+        board.groups[groupIdx].tasks = newTasks
+
         return storageService.put(STORAGE_KEY, board)
     } catch (err) {
         throw err
@@ -184,16 +182,8 @@ async function removeTask(boardId, groupId, taskId) {
 
 async function addTask(boardId, groupId, task) {
     try {
-        // button - New Item
-        // add a new empty task to the first group in the first board
-        if (!boardId && !groupId && !task) {
-            const boards = await queryBoards()
-            boardId = boards[0]._id
-            groupId = boards[0].groups[0].id
-            task = { title: 'New Item' }
-        }
-
         const board = await getBoardById(boardId)
+        const groupIdx = board.groups.findIndex(group => group.id === groupId)
 
         // if task empty, create new one
         if (!task.persons)
@@ -204,18 +194,14 @@ async function addTask(boardId, groupId, task) {
             task.id = utilService.makeId()
             task.lastUpdate = Date.now()
         }
+        // if the user clicked on 'New Item' button, 
+        // the task should appear at the top of the group
+        if (task.title === 'New Item')
+            board.groups[groupIdx].tasks.unshift(task)
+        // if the user clicked on 'Add Item' button,
+        // the task should appear at the bottom of the group
+        else board.groups[groupIdx].tasks.push(task)
 
-        board.groups.forEach((group, idx) => {
-            if (group.id === groupId) {
-                // if the user clicked on 'New Item' button, 
-                // the task should appear at the top of the group
-                if (task.title === 'New Item')
-                    board.groups[idx].tasks.unshift(task)
-                // if the user clicked on 'Add Item' button,
-                // the task should appear at the bottom of the group
-                else board.groups[idx].tasks.push(task)
-            }
-        })
         return storageService.put(STORAGE_KEY, board)
     } catch (err) {
         throw err
@@ -226,15 +212,13 @@ async function addTask(boardId, groupId, task) {
 async function updateTask(boardId, groupId, task) {
     try {
         const board = await getBoardById(boardId)
-        const group = await getGroupById(boardId, groupId)
+        const groupIdx = board.groups.findIndex(group => group.id === groupId)
 
         task.lastUpdated = Date.now()
-        const updatedTasks = group.tasks.map(currTask => (currTask.id === task.id) ? task : currTask)
+        const updatedTasks = board.groups[groupIdx].tasks.map(currTask => (currTask.id === task.id) ? task : currTask)
 
-        board.groups.forEach((group, idx) => {
-            if (group.id === groupId)
-                board.groups[idx].tasks = updatedTasks
-        })
+        board.groups[groupIdx].tasks = updatedTasks
+
         return storageService.put(STORAGE_KEY, board)
     } catch (err) {
         throw err
@@ -242,54 +226,50 @@ async function updateTask(boardId, groupId, task) {
 }
 
 // filter groups and tasks title
-async function filterGroupAndTasks(boardId, filterBy = {txt: ''}, sortBy) {
+async function filterGroupAndTasks(boardId, filterBy = { txt: '' }, sortBy) {
     try {
         const board = await getBoardById(boardId)
         let groups = [...board.groups]
         let filteredGroups = groups
 
-        if(filterBy.txt){
+        if (filterBy.txt) {
             const regex = new RegExp(filterBy.txt, 'i')
-            filteredGroups =  groups.filter( (group) => {
+            filteredGroups = groups.filter((group) => {
                 if (regex.test(group.title)) {
                     return group
                 }
                 else {
-                    const filteredTasks =  group.tasks.filter((task) => {
-                        if(regex.test(task.title))
-                        return task
+                    const filteredTasks = group.tasks.filter((task) => {
+                        if (regex.test(task.title))
+                            return task
                     })
                     group.tasks = filteredTasks
-                    if(group.tasks.length) return group
+                    if (group.tasks.length) return group
                 }
             })
         }
-        if(sortBy) {
-            switch(sortBy){
+        if (sortBy) {
+            switch (sortBy) {
                 case 'itemTitle':
-                    console.log('sortBy 1', sortBy);
                     filteredGroups.forEach(group => {
-                        group.tasks.sort((a ,b) => a.title.localeCompare(b.title))
+                        group.tasks.sort((a, b) => a.title.localeCompare(b.title))
                     })
                     break
-                // case 'personName':
-                //     console.log('sortBy 2', sortBy);
-                //     filteredGroups.forEach(group => {
-                //         group.tasks.forEach(task => {
-                //             task.persons.sort((a ,b) => a.fullname.localeCompare(b.fullname))
-                //         })
-                //     })
+                    // case 'personName':
+                    //     filteredGroups.forEach(group => {
+                    //         group.tasks.forEach(task => {
+                    //             task.persons.sort((a ,b) => a.fullname.localeCompare(b.fullname))
+                    //         })
+                    //     })
                     break
                 case 'lastUpdate':
-                    console.log('sortBy 3', sortBy);
                     filteredGroups.forEach(group => {
-                        group.tasks.sort((a ,b) => b.lastUpdated - a.lastUpdated)
+                        group.tasks.sort((a, b) => b.lastUpdated - a.lastUpdated)
                     })
                     break
                 case 'deadline':
-                    console.log('sortBy 4', sortBy);
                     filteredGroups.forEach(group => {
-                        group.tasks.sort((a ,b) => b.deadline - a.deadline)
+                        group.tasks.sort((a, b) => b.deadline - a.deadline)
                     })
                     break
             }

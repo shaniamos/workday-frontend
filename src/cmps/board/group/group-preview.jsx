@@ -10,10 +10,12 @@ import { MdDeleteOutline } from 'react-icons/md'//Delete
 import { HiOutlineDocumentDuplicate } from 'react-icons/hi'//Duplicate
 import { IoChevronDown } from 'react-icons/io5'
 import { BiDotsHorizontalRounded } from "./group-header.jsx"
+import { useState } from "react"
 
 export const GroupPreview = ({ group, onChangeFilter }) => {
     const params = useParams()
     const dispatch = useDispatch()
+    const [isDeleteBtnClicked, setBtnClicked] = useState(false)
     const [register, setNewGroup, newGroup] = useFormRegister({
         title: group.title
     })
@@ -40,10 +42,14 @@ export const GroupPreview = ({ group, onChangeFilter }) => {
                         <a><HiOutlineDocumentDuplicate /> Duplicate</a>
                     </div>
                 </div>
+                {/* <div className="questModal">
+                    {isDeleteBtnClicked && <AreYouSureModal toggleNewBoardModal={toggleNewBoardModal} onRemoveGroup={onRemoveGroup} />}
+
+                </div> */}
                 <span className="collapse-group-button" style={{ color: `var(${group.colorId})` }}><IoChevronDown /></span>
                 <div className="group-title" >
                     <form onSubmit={onUpdateGroup}>
-                        <input {...register('title', 'text')} className="group-name-input clean-input" style={{ color: `var(${group.colorId})` }}/>
+                        <input {...register('title', 'text')} className="group-name-input clean-input" style={{ color: `var(${group.colorId})` }} />
                     </form>
                 </div>
                 <span className="group-task-count">{`${group.tasks.length} items`}</span>
