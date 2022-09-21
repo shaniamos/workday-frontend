@@ -1,5 +1,4 @@
 .home-page {
-
     min-height: 100vh;
     font-family: sofia;
     font-size: 16px;
@@ -7,290 +6,180 @@
     width: 100vw;
     background-image: url('../../../imgs/home-bg.jpg');
 
-    & .img-container {
-        height: rem(300px);
-        width: rem(300px);
-    }
-
-    .get-started-btn {
-        cursor: pointer;
-        color: inherit;
-        font-size: rem(16px);
-        height: rem(50px);
-        min-width: rem(160px);
-        padding-right: rem(14px);
-        border-radius: rem(40px);
-        margin-left: rem(26px);
-        color: #fff;
-        background-color: #6C6CFF;
-        transition: background-color .2s;
-        border: 1px solid #fff;
-    }
-
-    .get-started-btn span {
-        margin-left: 3px;
-        transition: margin-left .2s;
-    }
-
-    .get-started-btn:hover span {
-        margin-left: rem(8px);
-    }
-
-    .get-started-btn:hover {
-        background-color: #454592;
-    }
-
-    & .text-container {
-        transform: translateY(120px);
-
-        & p {
-            font-size: rem(24px);
-            line-height: rem(40px);
-            font-weight: 300;
-            padding-left: rem(50px);
-            padding-right: rem(50px);
-            color: #fff;
-        }
-    }
-
-    .get-started-btn-home {
-        cursor: pointer;
-        color: inherit;
-        font-size: rem(18px);
-        overflow: hidden;
-        height: rem(60px);
-        min-width: rem(200px);
-        border-radius: rem(40px);
-        margin-top: rem(40px);
-        margin-left: rem(26px);
-        margin-bottom: rem(8px);
-        color: #fff;
-        box-shadow: 0 3px 6px 1px rgb(0 0 0 / 15%);
-        background-image: linear-gradient(90deg, #5034FF 25.69%, #B4B4FF 100%);
-        transition: background-image .2s;
-        justify-items: center;
-        font-weight: 400;
-        border: none;
-        text-align: center;
-    }
-
-    .get-started-btn-home span {
-        margin-left: rem(2px);
-        transition: margin-left .2s;
-    }
-
-    .get-started-btn-home:hover span {
-        margin-left: rem(8px);
-    }
-
-    .get-started-btn-home:hover {
-        background-image: linear-gradient(90deg, #432cd5 25.69%, #9797d5 100%);
-    }
-
     .home-header {
-        height: rem(70px);
-        padding-left: rem(32px);
-        padding-right: rem(32px);
+        height: rem(72px);
+        padding-inline: rem(32px);
         align-items: center;
         background-color: #ffffff;
 
-        .header-nav .nav-a {
-            font-family: sofia-thin;
-            border-radius: rem(8px);
-            padding: rem(8px) rem(10px);
-            ;
-            transition: background-color .2s;
+
+        @include for-mobile-layout {
+            height: rem(50px);
+            padding-inline: rem(10px);
         }
 
-        .header-nav .nav-a:hover {
-            background-color: rgb(216, 234, 243)
+        @include for-wide-layout {
+            // padding-inline: rem(200px);
         }
 
         .logo {
-            width: rem(167px);
+            // width: rem(167px);
             padding-top: rem(9px);
-        }
-    }
 
-    .small-text {
-        font-family: sofia-thin;
-        font-size: rem(14px);
-    }
-
-    .main-text {
-        font-weight: 400;
-        // line-height: rem(px);
-        color: #fff;
-        align-items: center;
-    }
-
-    @include for-wide-layout {
-
-        .nav-a {
-            font-size: rem(25px);
-        }
-
-        .get-started-btn-home {
-            font-size: 1.3rem;
-            height: rem(70px);
-            width: rem(50px);
-        }
-
-        .main-text {
-            font-weight: 400;
-            font-size: rem(10px);
-        }
-
-        .home-header {
-            height: rem(80px);
-            padding-left: rem(20px);
-            padding-right: rem(20px);
-
-            .logo {
-                width: rem(160px);
-                padding-top: rem(9px);
+            @include for-mobile-layout {
+                width: rem(130px);
             }
-
-            .sub-text {
-                font-size: rem(40px);
-            }
-
-            .small-text {
-                font-size: rem(10px);
-            }
-        }
-    }
-
-    @include for-normal-layout {
-        .text-container {
-            // margin: auto;
-            // width: rem(800px);
-            padding-top: 50px;
-        }
-
-        .nav-a {
-            font-size: rem(20px);
-        }
-
-        .get-started-btn-home {
-            font-size: 1.2rem;
-            height: rem(70px);
-            width: rem(50px);
-        }
-
-        .main-text {
-            font-weight: 400;
-            // font-size: rem(90px);
-        }
-
-        .home-header {
-            height: rem(70px);
-            padding-left: rem(20px);
-            padding-right: rem(20px);
-
-            .logo {
+            @include for-normal-layout {
                 width: rem(140px);
-                padding-top: rem(9px);
+            }
+            @include for-narrow-layout {
+                width: rem(170px);
+            }
+            @include for-wide-layout {
+                width: rem(180px);
+            }
+        }
+
+        .header-nav {
+            display: flex;
+            align-items: center;
+
+            .side-header-links {
+
+                font-family: sofia-thin;
+                color: #535768;
+
+                >* {
+                    transition: background-color .2s;
+                    padding: rem(8px) rem(10px);
+                    border-radius: rem(8px);
+                }
+
+                :hover {
+                    color: #5034FF;
+                    background-color: #F0F3FF;
+                }
             }
 
-            .sub-text {
-                font-size: rem(35px);
-            }
+            .get-started-btn {
+                cursor: pointer;
+                font-size: rem(16px);
+                height: rem(50px);
+                min-width: rem(160px);
+                padding-right: rem(14px);
+                border-radius: rem(40px);
+                color: #fff;
+                background-color: #6C6CFF;
+                transition: background-color .2s;
+                border: 1px solid #fff;
 
-            .small-text {
-                font-size: rem(8px);
+                @include for-narrow-layout {
+                    margin-left: rem(5px);
+                }
+
+                @include for-mobile-layout {
+                    display: none;
+                }
+
+                @include for-wide-layout {
+                    margin-left: rem(26px);
+                }
+
+                span {
+                    margin-left: 3px;
+                    transition: margin-left .2s;
+                }
+
+                :hover {
+                    background-color: #454592;
+
+                    span {
+                        margin-left: rem(8px);
+                    }
+                }
             }
         }
     }
-}
 
-//MOBILE
-@include for-mobile-layout {
-    .text-container {
-        margin: auto;
-        width: rem(450px);
-    }
+    .main-content {
+        transform: translateY(120px);
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        align-items: center;
 
-    .nav-a {
-        font-size: rem(15px);
-    }
+        .main-text {
+            font-weight: 400;
+            color: #fff;
+            align-items: center;
 
-    .get-started-btn {
-        display: none;
-    }
-
-    .get-started-btn-home {
-        font-size: 1rem;
-        height: rem(60px);
-        width: rem(40px);
-    }
-
-    .main-text {
-        font-weight: 400;
-        font-size: rem(40px);
-    }
-
-    .home-header {
-        height: rem(50px);
-        padding-left: rem(20px);
-        padding-right: rem(20px);
-
-
-        .logo {
-            width: rem(90px);
-            padding-top: rem(9px);
+            @include for-mobile-layout {
+                max-width: rem(400px);
+                font-size: rem(30px);
+            }
+            @include for-narrow-layout {
+                max-width: rem(500px);
+                font-size: rem(50px);
+            }
+            @include for-normal-layout {
+                max-width: rem(700px);
+                font-size: rem(60px);
+            }
+            @include for-wide-layout {
+                max-width: rem(800px);
+                font-size: rem(80px);
+                line-height: rem(85px);
+            }
         }
 
         .sub-text {
-            font-size: 10px;
-        }
+            font-size: rem(24px);
+            line-height: rem(40px);
+            font-weight: 300;
+            padding-inline: rem(50px);
+            color: #fff;
 
-        .small-text {
-            font-size: rem(25px);
-        }
-    }
-}
-
-//NARROW
-@include for-narrow-layout {
-    .text-container {
-        margin: auto;
-        width: rem(700px);
-        padding-top: 40px;
-
-        .nav-a {
-            font-size: rem(20px);
+            @include for-mobile-layout {
+                font-size: rem(20px);
+                font-family: sofia-thin;
+            }
         }
 
         .get-started-btn-home {
-            font-size: 1.3rem;
-            height: rem(70px);
-            width: rem(50px);
+            cursor: pointer;
+            font-size: rem(18px);
+            overflow: hidden;
+            height: rem(60px);
+            min-width: rem(200px);
+            border-radius: rem(40px);
+            margin-top: rem(40px);
+            margin-left: rem(26px);
+            margin-bottom: rem(8px);
+            color: #fff;
+            box-shadow: 0 3px 6px 1px rgb(0 0 0 / 15%);
+            background-image: linear-gradient(90deg, #5034FF 25.69%, #B4B4FF 100%);
+            transition: background-image .2s;
+            border: none;
+
+            &:hover {
+                background-image: linear-gradient(90deg, #432cd5 25.69%, #9797d5 100%);
+
+                p {
+                    margin-left: rem(2px);
+                    transition: margin-left .2s;
+
+                    .get-started-arrow {
+                        margin-left: rem(8px);
+                    }
+                }
+            }
+
         }
 
-        .main-text {
-            font-weight: 400;
-            font-size: rem(50px);
-        }
-
-        .home-header {
-            height: rem(80px);
-            padding-left: rem(20px);
-            padding-right: rem(20px);
-
-            .logo {
-                width: rem(120px);
-                padding-top: rem(9px);
-            }
-
-            .sub-text {
-                font-size: rem(20px);
-            }
-
-            .small-text {
-                font-size: rem(7px);
-            }
-
+        .credit-text {
+            color: #fff;
+            font-family: sofia-thin;
+            font-size: rem(14px);
         }
     }
 }

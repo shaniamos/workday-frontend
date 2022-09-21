@@ -62,11 +62,11 @@ export function SubSidebar({ boards, isOpen, onChangeFilter }) {
         }
     }
 
-    const sideBarClassName = isNavOpen ? "sub-sidebar-container is-open" : "sub-sidebar-container"
+    const sideBarClassName = isNavOpen ? 'is-open' : ''
 
     if (!boards) return <div>Loading.....</div>
     return (
-        <section className={sideBarClassName}>
+        <section className={`sub-sidebar-container ${sideBarClassName}`}>
             {isNewBoardModalOpen && <NewBoardMoadl toggleNewBoardModal={toggleNewBoardModal} />}
             {isNavOpen && <IoIosArrowBack className='btn-left open-btn' onClick={toggleSubSidebar} />}
             {!isNavOpen && <IoIosArrowForward className='btn-right open-btn' onClick={toggleSubSidebar} />}
@@ -85,15 +85,15 @@ export function SubSidebar({ boards, isOpen, onChangeFilter }) {
                         </div>
                         <IoIosArrowDown className='arrow-btn' />
                     </div>
-                    <div>
+                    
                         <div className="workspace-options flex column">
                             <div className="action-btn ">
                                 <a onClick={toggleNewBoardModal} className="flex option"> <GrAdd /><span className="menu-btn-inner-text">Add</span></a>
                                 <a className="flex  option"> <GrFilter /><span className="menu-btn-inner-text">Filter</span></a>
-                                <div>
-                                    {!isSearchClicked && <a className="flex  option last-one" onClick={() => setSearch(!isSearchClicked)}><FiSearch /> <span className="menu-btn-inner-text">Search</span>  </a>}
-                                    {isSearchClicked && <Search contentSearch={'boards'} onChangeFilter={onChangeFilter} setSearch={setSearch} />}
-                                </div>
+                                    <div>
+                                        {!isSearchClicked && <a className="flex  option last-one" onClick={() => setSearch(!isSearchClicked)}><FiSearch /> <span className="menu-btn-inner-text">Search</span>  </a>}
+                                        {isSearchClicked && <Search contentSearch={'boards'} onChangeFilter={onChangeFilter} setSearch={setSearch} />}
+                                    </div>
                             </div>
                             <div className="spacer"></div>
                             <div className="boards-options">
@@ -127,7 +127,7 @@ export function SubSidebar({ boards, isOpen, onChangeFilter }) {
                                 )}
                             </div>
                         </div>
-                    </div>
+                   
                 </div>
             )}
         </section >

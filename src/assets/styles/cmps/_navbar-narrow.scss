@@ -1,7 +1,6 @@
 .navbar-mobile-container {
     @include for-narrow-layout  {
         display: none;
-        
     }
 
     @include for-normal-layout  {
@@ -18,16 +17,30 @@
         height: rem(80px);
         width: 100%;
         background-color: rgb(255, 255, 255);
+        border-top: 1px solid rgb(199, 194, 194);
         bottom: 0;     
         z-index: 10;  
-        border-top: 1px solid rgb(199, 194, 194);
         
         .icons-navigation {
+            display: flex;
             justify-content: space-around;
             gap: 15px;
-            padding: 20px;
-            // padding-left: 14px;
-            // padding-right: 14px;
+            padding-block: 12px;
+            font-size: rem(12px);
+            >*{
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                border-radius: 10px;
+                padding-inline: 10px;
+            }
+            .mobile-navbar-icon {
+                font-size: rem(25px);
+            }
+            .active {
+                background-color: rgb(199, 194, 194);
+            }
+
         }
     }
 }
