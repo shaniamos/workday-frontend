@@ -240,13 +240,11 @@ async function filterGroupAndTasks(boardId, filterBy = { txt: '' }, sortBy) {
         if (sortBy) {
             switch (sortBy) {
                 case 'itemTitle':
-                    console.log('sortBy 1', sortBy);
                     filteredGroups.forEach(group => {
                         group.tasks.sort((a, b) => a.title.localeCompare(b.title))
                     })
                     break
                     // case 'personName':
-                    //     console.log('sortBy 2', sortBy);
                     //     filteredGroups.forEach(group => {
                     //         group.tasks.forEach(task => {
                     //             task.persons.sort((a ,b) => a.fullname.localeCompare(b.fullname))
@@ -254,13 +252,11 @@ async function filterGroupAndTasks(boardId, filterBy = { txt: '' }, sortBy) {
                     //     })
                     // break
                 case 'lastUpdate':
-                    console.log('sortBy 3', sortBy);
                     filteredGroups.forEach(group => {
                         group.tasks.sort((a, b) => b.lastUpdated - a.lastUpdated)
                     })
                     break
                 case 'deadline':
-                    console.log('sortBy 4', sortBy);
                     filteredGroups.forEach(group => {
                         group.tasks.sort((a, b) => b.deadline - a.deadline)
                     })

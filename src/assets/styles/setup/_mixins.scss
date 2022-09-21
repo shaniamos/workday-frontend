@@ -120,7 +120,7 @@
     width: $width;
     height: $height;
     padding: rem(32px);
-    z-index: 30;
+    z-index: 20;
 }
 
 @mixin btn-close-modal {
@@ -158,8 +158,6 @@
     user-select: none;
     min-width: var(--element-width);
     padding: 4px 8px;
-
-    // padding: 8px 24px 8px 12px ;
     &:hover {
         background-color: $hoverBgColor ;
     }

@@ -1,7 +1,9 @@
-import React from "react"
+import React, { useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { Link, useParams } from "react-router-dom"
 
+import { AreYouSureModal } from "./are-you-sure-modal.jsx"
+import { utilService } from "../../../services/util.service.js"
 import { addTask, removeTask, updateTask } from "../../../store/actions/board.action.js"
 import { useFormRegister } from "../../../hooks/useFormRegister.js"
 import { StatusTypeDisplay } from "../task/status-display.jsx"
@@ -14,11 +16,11 @@ import { BiMessageRoundedAdd } from 'react-icons/bi' //empty updates, with updat
 import { HiOutlineDotsHorizontal } from 'react-icons/hi' //More
 import { MdDeleteOutline } from 'react-icons/md'//Delete
 import { HiOutlineDocumentDuplicate } from 'react-icons/hi'//Duplicate
-import { utilService } from "../../../services/util.service.js"
+
 
 export const TaskPreview = ({ task, groupId, groupColor }) => {
     const labels = useSelector(state => state.boardModule.selectedBoard.labels)
-
+    const [isDeleteBtnClicked, setBtnClicked] = useState(false)
     const dispatch = useDispatch()
     const params = useParams()
     const boardId = params.id
@@ -46,6 +48,10 @@ export const TaskPreview = ({ task, groupId, groupColor }) => {
         dispatch(addTask(boardId, groupId, duplicateTask))
     }
 
+    const toggleNewBoardModal = () => {
+        setBtnClicked(!isDeleteBtnClicked)
+    }
+
 
     const { persons, lastUpdated, deadline } = task
     let date = new Date(1663091776159)
@@ -55,9 +61,13 @@ export const TaskPreview = ({ task, groupId, groupColor }) => {
                 <div className="dropdown">
                     <div ><HiOutlineDotsHorizontal className="dot" /></div>
                     <div className="dropdown-content">
-                        <a onClick={onRemoveTask}>< MdDeleteOutline /> Delete Item</a>
+                        <a onClick={toggleNewBoardModal}>< MdDeleteOutline /> Delete Item</a>
                         <a onClick={onDuplicateTask}><HiOutlineDocumentDuplicate /> Duplicate</a>
                     </div>
+                </div>
+                <div className="questModal">
+                    {isDeleteBtnClicked && <AreYouSureModal toggleNewBoardModal={toggleNewBoardModal} onRemoveTask={onRemoveTask} />}
+
                 </div>
 
                 <section className="task-preview flex">
