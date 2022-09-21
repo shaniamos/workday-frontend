@@ -11,7 +11,7 @@ export function SidebarNarrow() {
                     <div className="mobile-navbar-icon"><AiOutlineHome /></div>
                     <span>Home</span>
                 </NavLink>
-                <NavLink className='workspace-btn' to='/workspace'>
+                <NavLink className='workspace-btn' to='/board/b101'>
                     <div className="mobile-navbar-icon"><MdOutlineWorkOutline /></div>
                     <span>Workspace</span>
                 </NavLink>

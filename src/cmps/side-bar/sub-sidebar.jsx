@@ -63,11 +63,11 @@ export function SubSidebar({ boards, isOpen, onChangeFilter }) {
         }
     }
 
-    const sideBarClassName = isNavOpen ? "sub-sidebar-container is-open" : "sub-sidebar-container"
+    const sideBarClassName = isNavOpen ? 'is-open' : ''
 
     if (!boards) return <div>Loading.....</div>
     return (
-        <section className={sideBarClassName}>
+        <section className={`sub-sidebar-container ${sideBarClassName}`}>
             {isNewBoardModalOpen && <NewBoardMoadl toggleNewBoardModal={toggleNewBoardModal} />}
             {isNavOpen && <IoIosArrowBack className='btn-left open-btn' onClick={toggleSubSidebar} />}
             {!isNavOpen && <IoIosArrowForward className='btn-right open-btn' onClick={toggleSubSidebar} />}
@@ -86,52 +86,52 @@ export function SubSidebar({ boards, isOpen, onChangeFilter }) {
                         </div>
                         <IoIosArrowDown className='arrow-btn' />
                     </div>
-                    <div>
-                        <div className="workspace-options flex column">
-                            <div className="action-btn ">
-                                <a onClick={toggleNewBoardModal} className="flex option"> <GrAdd /><span className="menu-btn-inner-text">Add</span></a>
-                                <a className="flex  option"> <GrFilter /><span className="menu-btn-inner-text">Filter</span></a>
-                                <ClickAwayListener onClickAway={() => setSearch(false)}>
-                                    <div>
-                                        {!isSearchClicked && <a className="flex  option last-one" onClick={() => setSearch(!isSearchClicked)}><FiSearch /> <span className="menu-btn-inner-text">Search</span>  </a>}
-                                        {isSearchClicked && <Search contentSearch={'boards'} onChangeFilter={onChangeFilter} setSearch={setSearch} />}
-                                    </div>
-                                </ClickAwayListener>
 
-                            </div>
-                            <div className="spacer"></div>
-                            <div className="boards-options">
-                                {boards.map(board =>
-                                    <div className="boards-list flex space-between" key={board._id}>
+                    <div className="workspace-options flex column">
+                        <div className="action-btn ">
+                            <a onClick={toggleNewBoardModal} className="flex option"> <GrAdd /><span className="menu-btn-inner-text">Add</span></a>
+                            <a className="flex  option"> <GrFilter /><span className="menu-btn-inner-text">Filter</span></a>
+                            <ClickAwayListener onClickAway={() => setSearch(false)}>
+                                <div>
+                                    {!isSearchClicked && <a className="flex  option last-one" onClick={() => setSearch(!isSearchClicked)}><FiSearch /> <span className="menu-btn-inner-text">Search</span>  </a>}
+                                    {isSearchClicked && <Search contentSearch={'boards'} onChangeFilter={onChangeFilter} setSearch={setSearch} />}
+                                </div>
+                            </ClickAwayListener>
 
-                                        <NavLink className="flex inline-flex option" to={`/board/${board._id}`}>
-                                            <HiOutlineClipboard className="table-chart flex column align-center" />
-                                            <span className="menu-btn-inner-text">{board.title}</span>
-                                            <i className="dropdown-dot">
-                                                <div className="dropdown" onClick={(ev) => {
-                                                    ev.preventDefault()
-                                                    toggleDropdown()
-                                                }} ><HiDotsHorizontal />
+                        </div>
+                        <div className="spacer"></div>
+                        <div className="boards-options">
+                            {boards.map(board =>
+                                <div className="boards-list flex space-between" key={board._id}>
 
-                                                    {isDropDownOpen && <div className="dropdown-content ">
-                                                        <i><HiOutlineDocumentDuplicate className="icon-dropdown" /> Duplicate Board</i>
-                                                        <i><RiPencilLine className="icon-dropdown" /> Rename</i><hr />
-                                                        <i><HiOutlineArchive className="icon-dropdown" /> Archive</i>
-                                                        <i onClick={(ev) => {
-                                                            ev.preventDefault()
-                                                            ev.stopPropagation()
-                                                            onRemoveBoard(board._id)
-                                                        }}><MdDeleteOutline className="icon-dropdown" /> Delete</i>
+                                    <NavLink className="flex inline-flex option" to={`/board/${board._id}`}>
+                                        <HiOutlineClipboard className="table-chart flex column align-center" />
+                                        <span className="menu-btn-inner-text">{board.title}</span>
+                                        <i className="dropdown-dot">
+                                            <div className="dropdown" onClick={(ev) => {
+                                                ev.preventDefault()
+                                                toggleDropdown()
+                                            }} ><HiDotsHorizontal />
 
-                                                    </div>}
-                                                </div>
-                                            </i>
-                                        </NavLink>
-                                    </div>
-                                )}
-                            </div>
+                                                {isDropDownOpen && <div className="dropdown-content ">
+                                                    <i><HiOutlineDocumentDuplicate className="icon-dropdown" /> Duplicate Board</i>
+                                                    <i><RiPencilLine className="icon-dropdown" /> Rename</i><hr />
+                                                    <i><HiOutlineArchive className="icon-dropdown" /> Archive</i>
+                                                    <i onClick={(ev) => {
+                                                        ev.preventDefault()
+                                                        ev.stopPropagation()
+                                                        onRemoveBoard(board._id)
+                                                    }}><MdDeleteOutline className="icon-dropdown" /> Delete</i>
+
+                                                </div>}
+                                            </div>
+                                        </i>
+                                    </NavLink>
+                                </div>
+                            )}
                         </div>
                     </div>
+
                 </div>
             )}
         </section >
