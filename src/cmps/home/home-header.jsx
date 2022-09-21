@@ -14,7 +14,7 @@ export function HomeHeader() {
             <div className="home-header flex space-between">
                 <Link to='/' ><img className="logo" src={logo} /></Link>
                 <nav className='header-nav'>
-                    <NavLink className='nav-a' to='/auth/:status' >Log in</NavLink>
+                    <NavLink className='nav-a' to='/auth/login' >Log in</NavLink>
                     <Link to='/board/b101'>
                         <button className='get-started-btn btn fa-arrow-right'>
                             Get Started <span> &#8594; </span>
