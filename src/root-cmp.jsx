@@ -3,8 +3,8 @@ import { Routes, Route } from 'react-router-dom'
 import { Home } from '../src/cmps/home/home'
 import { BoardApp } from './pages/board/board-app.jsx'
 import { TaskEdit } from './cmps/board/task/task-edit.jsx'
-import { LoginSignup } from './pages/user/login-signup'
-import { SubSidebar } from './cmps/side-bar/sub-sidebar';
+import { LoginSignup } from './pages/user/login-signup.jsx'
+import { SubSidebar } from './cmps/side-bar/sub-sidebar.jsx';
 import { SidebarNarrow } from './cmps/side-bar/sidebar-narrow';
 
 
