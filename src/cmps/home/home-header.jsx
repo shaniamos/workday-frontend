@@ -15,7 +15,7 @@ export function HomeHeader() {
                 <Link to='/' ><img className="logo" src={logo} /></Link>
                 <nav className='header-nav'>
                     <div className='side-header-links'>
-                        <NavLink className='btn-login' to='/auth/:status' >Log in</NavLink>
+                        <NavLink className='btn-login' to='/auth/login' >Log in</NavLink>
                         <NavLink className='btn-contant-us' >Contact us</NavLink>
                     </div>
                     <Link to='/board/b101'>
