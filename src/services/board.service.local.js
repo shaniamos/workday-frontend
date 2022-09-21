@@ -42,7 +42,7 @@ async function queryBoards(filterBy) {
         }
         return boards
     } catch (err) {
-        console.error(err)
+        throw err
     }
 }
 
@@ -244,13 +244,13 @@ async function filterGroupAndTasks(boardId, filterBy = { txt: '' }, sortBy) {
                         group.tasks.sort((a, b) => a.title.localeCompare(b.title))
                     })
                     break
-                    // case 'personName':
-                    //     filteredGroups.forEach(group => {
-                    //         group.tasks.forEach(task => {
-                    //             task.persons.sort((a ,b) => a.fullname.localeCompare(b.fullname))
-                    //         })
-                    //     })
-                    // break
+                // case 'personName':
+                //     filteredGroups.forEach(group => {
+                //         group.tasks.forEach(task => {
+                //             task.persons.sort((a ,b) => a.fullname.localeCompare(b.fullname))
+                //         })
+                //     })
+                // break
                 case 'lastUpdate':
                     filteredGroups.forEach(group => {
                         group.tasks.sort((a, b) => b.lastUpdated - a.lastUpdated)

@@ -13,7 +13,6 @@ import { HiOutlineDocumentDuplicate } from 'react-icons/hi'
 import { RiPencilLine } from 'react-icons/ri'
 import { HiOutlineArchive } from 'react-icons/hi'
 //LIBS
-import ClickAwayListener from '@material-ui/core/ClickAwayListener';
 import { useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { useNavigate, NavLink } from 'react-router-dom'
@@ -91,13 +90,10 @@ export function SubSidebar({ boards, isOpen, onChangeFilter }) {
                             <div className="action-btn ">
                                 <a onClick={toggleNewBoardModal} className="flex option"> <GrAdd /><span className="menu-btn-inner-text">Add</span></a>
                                 <a className="flex  option"> <GrFilter /><span className="menu-btn-inner-text">Filter</span></a>
-                                <ClickAwayListener onClickAway={() => setSearch(false)}>
-                                    <div>
-                                        {!isSearchClicked && <a className="flex  option last-one" onClick={() => setSearch(!isSearchClicked)}><FiSearch /> <span className="menu-btn-inner-text">Search</span>  </a>}
-                                        {isSearchClicked && <Search contentSearch={'boards'} onChangeFilter={onChangeFilter} setSearch={setSearch} />}
-                                    </div>
-                                </ClickAwayListener>
-
+                                <div>
+                                    {!isSearchClicked && <a className="flex  option last-one" onClick={() => setSearch(!isSearchClicked)}><FiSearch /> <span className="menu-btn-inner-text">Search</span>  </a>}
+                                    {isSearchClicked && <Search contentSearch={'boards'} onChangeFilter={onChangeFilter} setSearch={setSearch} />}
+                                </div>
                             </div>
                             <div className="spacer"></div>
                             <div className="boards-options">
