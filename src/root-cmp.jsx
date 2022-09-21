@@ -20,7 +20,6 @@ function App() {
         <Route path='workspace' element={<SubSidebar />} />
         <Route path='/' element={<Home />} />
       </Routes>
-
       <SidebarNarrow />
     </section>
   );

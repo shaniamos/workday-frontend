@@ -43,7 +43,7 @@ export function MainBoardHeader({ board }) {
                     <FaStumbleuponCircle />
                 </button>
                 <div className="btn-last-seen flex">
-                    Last seen
+                    <span>Last seen</span>
                     <PersonCircle persons={board.members} />
                 </div>
                 <div className="btn-invite-subscribers">

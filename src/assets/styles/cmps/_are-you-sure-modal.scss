@@ -1,0 +1,42 @@
+.are-you-sure-modal-container {
+    @include modal($height: rem(130px), $width: rem(310px));
+    border-radius: 8px;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: all 0.3s ease 0s;
+    z-index: 30;
+    padding: rem(16px) rem(48px);
+    border: 1px solid #726a6a;
+    box-shadow: 0 0 4px 0px #4b4848;
+
+    .cancel-modal-btn {
+        @include btn($bgColor: white);
+        margin-right: 8px;
+        font-size: rem(16px);
+        padding: rem(8px) rem(16px);
+
+        &:hover {
+            background-color: rgb(212, 212, 216);
+        }
+    }
+
+    .delete-modal-btn {
+        @include btn($bgColor: #0073ea, $color: white);
+        font-size: rem(16px);
+        padding: rem(8px) rem(16px);
+
+        &:hover {
+            background-color: #065db9;
+        }
+    }
+
+    .modal-btns {
+        margin-top: rem(20px);
+    }
+
+    .delete-item {
+        font-size: rem(30px);
+    }
+
+}
