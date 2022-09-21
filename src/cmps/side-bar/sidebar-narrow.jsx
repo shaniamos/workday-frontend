@@ -5,19 +5,20 @@ import { CgMoreO } from 'react-icons/cg'
 
 export function SidebarNarrow() {
     return (
-
         <section className="navbar-mobile-container">
-            <div className='icons-navigation flex '>
-
-                <NavLink className='flex column align-center' to='/'> <AiOutlineHome />
+            <div className='icons-navigation'>
+                <NavLink className='home-btn' to='/'>
+                    <div className="mobile-navbar-icon"><AiOutlineHome /></div>
                     <span>Home</span>
                 </NavLink>
-                <NavLink className='flex column align-center' to='/workspace'> <MdOutlineWorkOutline />
-                    <span>Work Space </span>
+                <NavLink className='workspace-btn' to='/workspace'>
+                    <div className="mobile-navbar-icon"><MdOutlineWorkOutline /></div>
+                    <span>Workspace</span>
                 </NavLink>
-                <NavLink className='flex column align-center'> <CgMoreO />
+                <div className='more-btn'>
+                    <div className="mobile-navbar-icon"><CgMoreO /></div>
                     <span>More</span>
-                </NavLink>
+                </div>
             </div>
 
 
