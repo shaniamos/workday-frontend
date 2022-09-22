@@ -4,7 +4,7 @@
     right: 0;
     transition: transform .6s, box-shadow .6s;
     transform: translate(0);
-    z-index: 20;
+    z-index: 300;
 
     .close-modal {
         @include btn-close-modal;

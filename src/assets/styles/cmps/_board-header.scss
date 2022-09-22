@@ -1,197 +1,278 @@
-.board-header-container button {
-    @include btn;
-}
-
 .board-header-container {
-    top: 0;
-    left: 0;
     position: sticky;
     background-color: var(--primary-background-color);
-    z-index: 3;
-}
+    top: 0;
+    left: 0;
+    z-index: 100;
 
-.board-header-content {
-    padding: 16px 30px 0px 38px;
-}
-
-.board-header-title {
-    display: flex;
-    align-items: center;
-    flex: 1 0;
-    gap: rem(10px);
-    width: 100%;
-    margin-right: rem(8px);
-    margin-left: rem(-5px);
-}
-
-.board-header-left {
-    display: inline-flex;
-    align-items: center;
-    flex: 1 0;
-    min-width: rem(100px);
-    max-width: 100%;
-    margin-right: rem(8px);
-    margin-left: rem(-5px);
-    font-size: rem(32px);
-    font-weight: 500;
-    line-height: rem(40px);
-    white-space: nowrap;
-    cursor: text;
-    overflow: hidden;
-}
-
-.board-header-right {
-    display: flex;
-    gap: rem(40px);
-}
-
-.btn-board-description {
-    @include icon-cmp;
-    padding-left: 4px;
-    padding-right: 4px;
-    margin-top: 0;
-    height: 28px;
-}
-
-.btn-board-starred {
-    @include icon-cmp;
-    padding-left: 4px;
-    padding-right: 4px;
-    margin-top: 0;
-    height: 28px;
-}
-
-.btn-board-activity {
-    @include icon-cmp;
-}
-
-.btn-last-seen {
-    @include icon-cmp;
-    @include btn;
-    @include heading;
-    padding: 4px 8px;
-
-    & span {
-        margin-inline-end: rem(4px);
+    button {
+        @include btn;
     }
-}
 
-.btn-invite-subscribers {
-    @include icon-cmp;
-    @include btn;
-    @include heading;
-}
+    .board-header-content {
+        padding: 16px 30px 0px 38px;
 
-.input-title {
-    @include input-title;
-    @include heading;
-    font-weight: 600;
-    font-size: 32px;
-    border: none;
-}
-
-.input-title :hover {
-    cursor: text;
-    border: 1px solid;
-}
-
-.input-title :focus-visible {
-    cursor: text;
-    border: none;
-}
-
-.board-header-tool-bar {
-    @include tool-bar;
-}
-
-.board-header-tool-bar a {
-    min-width: var(--element-width);
-    max-width: 180px;
-}
-.board-header-view-bar {
-    margin-bottom: 16px;
-    margin-top: 16px;
-    height: 34px;
-
-    .view-nav-btn {
-        font-size: 15px;
-        height: rem(34px);
-        gap: 7px;
-        text-align: center;
-    }
-    .new-item-btn {
-        .view-nav-btn {
-            min-width: rem(80px);
-            color: white;
-            background-color: #0073ea;
-            border-radius: 4px 0px 0px 4px;
-            padding: rem(4px);
-        }
-
-        .view-nav-btn-arrow {
-            height: rem(34px);
-            font-size: rem(18px);
-            font-weight: bold;
-            color: white;
-            border-radius: 0 4px 4px 0;
-            background-color: #0073ea;
-
-        }
-
-        .arrow-down {
-            justify-content: center;
+        .board-header-title {
+            display: flex;
             align-items: center;
+            flex: 1 0;
+            gap: rem(10px);
+            width: 100%;
+            margin-right: rem(8px);
+            margin-left: rem(-5px);
+
+            .board-header-left {
+                display: inline-flex;
+                align-items: center;
+                // flex: 1 0;
+                min-width: rem(100px);
+                max-width: 100%;
+                margin-right: rem(8px);
+                margin-left: rem(-5px);
+                font-size: rem(32px);
+                font-weight: 500;
+                line-height: rem(40px);
+                white-space: nowrap;
+                cursor: text;
+                overflow: hidden;
+
+                .btn-board-description {
+                    @include icon-cmp;
+                    padding-left: 4px;
+                    padding-right: 4px;
+                    margin-top: 0;
+                    height: 28px;
+                    display: none;
+
+                    @include for-narrow-layout {
+                        display: block;
+                    }
+                }
+
+                .btn-board-starred {
+                    @include icon-cmp;
+                    padding-left: 4px;
+                    padding-right: 4px;
+                    margin-top: 0;
+                    height: 28px;
+                    display: none;
+
+                    @include for-narrow-layout {
+                        display: block;
+                    }
+                }
+
+                .input-title {
+                    @include input-title;
+                    @include heading;
+                    font-weight: 600;
+                    border: none;
+                    width: 100%;
+                    text-align: center;
+
+                    @include for-narrow-layout {
+                        font-size: 32px;
+                        text-align: left;
+
+                    }
+
+                    :hover {
+                        cursor: text;
+                        border: 1px solid;
+                    }
+
+                    :focus-visible {
+                        cursor: text;
+                        border: none;
+                    }
+                }
+            }
+
+            .board-header-right {
+                display: flex;
+                gap: rem(40px);
+
+                .btn-board-activity {
+                    @include icon-cmp;
+                    display: none;
+
+                    @include for-narrow-layout {
+                        display: block;
+                    }
+
+                }
+
+                .btn-last-seen {
+                    @include icon-cmp;
+                    @include btn;
+                    @include heading;
+                    padding: 4px 8px;
+                    display: none;
+
+                    @include for-narrow-layout {
+                        display: inline-flex;
+                    }
+
+                    & span {
+                        margin-inline-end: rem(4px);
+                    }
+                }
+
+                .btn-invite-subscribers {
+                    @include icon-cmp;
+                    @include btn;
+                    @include heading;
+                    display: none;
+
+                    @include for-narrow-layout {
+                        display: block;
+                    }
+                }
+
+            }
         }
     }
 
-    .view-nav-btn-arrow:hover {
-        background-color: #0060b9
-    }
-
-    .view-nav-btn.btn:hover {
-        background-color: #0060b9
-    }
-    .dropdown-content {
-        display: none;
-        position: absolute;
-        font-weight: 400;
-        font-size: rem(16px);
-        background-color: white;
-        min-width: rem(240px);
-        box-shadow: 0px 8px 16px 0px rgba(31, 30, 30, 0.4);
-        z-index: 100;
-        border-radius: rem(10px);
-        padding: rem(10px);
-    }
-
-    .dropdown-icon {
-        font-size: rem(19px);
-        transform: translateY(3px);
-    }
-
-    span {
-        font-size: rem(15px);
-        margin-left: rem(5px);
-
-    }
-
-    .dropdown-content i {
-        font-style: normal;
-        color: #5b5c63;
-        padding: rem(12px) rem(16px);
-        text-decoration: none;
-        display: block;
-    }
-
-
-    .dropdown-content i:hover {
-        background-color: #dcdfec;
-        border-radius: rem(8px);
-        cursor: pointer;
-    }
-
-    .dropdown:hover .dropdown-content {
-        display: flex;
+    .board-header-tool-bar {
+        @include tool-bar;
         flex-direction: column;
+        // align-content: center;
+        @include for-narrow-layout {
+            flex-direction: row;
+        }
+
+        .separator {
+            display: none;
+
+            @include for-narrow-layout {
+                color: var(--layout-border-color);
+                display: block;
+            }
+        }
+
+        a {
+            min-width: var(--element-width);
+            max-width: 180px;
+        }
+    }
+
+    .board-header-view-bar {
+        margin-bottom: 16px;
+        margin-top: 16px;
+        height: 34px;
+
+        @include for-mobile-layout {}
+
+        .new-item-btn {
+            @include for-mobile-layout {
+                position: fixed;
+
+                bottom: rem(90px);
+                right: rem(20px);
+            }
+
+            .dropdown:hover .dropdown-content {
+                display: flex;
+                flex-direction: column;
+            }
+
+            .view-nav-btn {
+                min-width: rem(80px);
+                color: white;
+                background-color: #0073ea;
+                border-radius: 4px 0px 0px 4px;
+                padding: rem(4px);
+
+                @include for-mobile-layout {
+                    display: none;
+                }
+
+            }
+
+            .view-nav-btn-arrow {
+                height: rem(34px);
+                font-size: rem(18px);
+                font-weight: bold;
+                color: white;
+                border-radius: 0 4px 4px 0;
+                background-color: #0073ea;
+
+                @include for-mobile-layout {
+                    border-radius: 50%;
+                    height: 50px;
+                    width: 50px;
+                    box-shadow: 0px 1px 14px -4px rgba(0, 0, 0, 0.84);
+
+                }
+
+            }
+
+            .arrow-down {
+                justify-content: center;
+                align-items: center;
+            }
+        }
+
+        .view-nav-btn {
+            font-size: 15px;
+            height: rem(34px);
+            gap: 7px;
+            text-align: center;
+        }
+
+
+
+        .view-nav-btn-arrow:hover {
+            background-color: #0060b9
+        }
+
+        .view-nav-btn.btn:hover {
+            background-color: #0060b9
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            font-weight: 400;
+            font-size: rem(16px);
+            background-color: white;
+            min-width: rem(240px);
+            box-shadow: 0px 8px 16px 0px rgba(31, 30, 30, 0.4);
+            z-index: 100;
+            border-radius: rem(10px);
+            padding: rem(10px);
+
+            @include for-mobile-layout {
+                bottom: 65px;
+                right: 5px;
+            }
+
+            i {
+                font-style: normal;
+                color: #5b5c63;
+                padding: rem(12px) rem(16px);
+                text-decoration: none;
+                display: block;
+
+                :hover {
+                    background-color: #dcdfec;
+                    border-radius: rem(8px);
+                    cursor: pointer;
+                }
+            }
+
+            .dropdown-icon {
+                font-size: rem(19px);
+                transform: translateY(3px);
+            }
+        }
+
+
+
+        span {
+            font-size: rem(15px);
+            margin-left: rem(5px);
+
+        }
     }
 }

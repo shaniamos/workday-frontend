@@ -1,12 +1,17 @@
 .board-content {
-    padding-inline-start: 26px;
+    // padding-inline-start: 26px;
     padding-bottom: 40px;
     padding-top: 18px;
     height: 100%;
     width: 100%;
     outline: none;
     position: relative;
+    @include for-narrow-layout{
+        padding-inline-start: 26px;
+
+    }
     .group-list {
         padding-top: 18px;
+        z-index: 50;
     }
 }

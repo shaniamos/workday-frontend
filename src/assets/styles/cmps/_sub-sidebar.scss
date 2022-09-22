@@ -8,7 +8,7 @@
     @include for-mobile-layout {
         width: 100vw;
     }
-
+    
 
     .workspace-options {
         color: #323338;
@@ -26,11 +26,8 @@
                 .menu-btn-inner-text {
                     font-size: 14px;
                     margin: 0 8px;
-
                 }
-
             }
-
         }
 
         .dropdown-dot .dropdown {
@@ -151,7 +148,6 @@
         margin: auto;
         margin-bottom: 18px;
 
-
         .workspace-board-name {
             width: 100%;
 
@@ -179,17 +175,10 @@
             }
         }
     }
-
-
 }
 
 @include for-mobile-layout {
     .sub-sidebar-container {
-
-
-        & .workspace-board {
-            & .arrow-btn {}
-        }
 
         & .open-btn {
             display: none;

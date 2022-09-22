@@ -58,17 +58,15 @@ export function ViewbarBoardHeader({ board, onAddGroup, onChangeFilter }) {
                     </div>
                 </section>
             </div>
-                <div>
-                    <Search contentSearch={'items'} onChangeFilter={onChangeFilter} setSearch={setSearch} />
-                </div>
+            <div>
+                <Search contentSearch={'items'} onChangeFilter={onChangeFilter} setSearch={setSearch} />
+            </div>
 
             <button className="view-nav-btn"><FaRegUserCircle /> Person  </button>
-                <div>
-                    <button onClick={() => setFilter(!isFilter)} className="view-nav-btn"><BiFilterAlt /> <p>Filter</p></button>
-                    {isFilter &&
-                        <FilterBoardByType />
-                    }
-                </div>
+            <div>
+                <button onClick={() => setFilter(!isFilter)} className="view-nav-btn"><BiFilterAlt /> <p>Filter</p></button>
+                {isFilter && <FilterBoardByType />}
+            </div>
             <button className="view-nav-btn"><CgArrowsScrollV /> Sort  </button>
             <button className="view-nav-btn"><AiOutlineEyeInvisible /> Hide  </button>
             <button className="view-nav-btn"><HiOutlineDotsHorizontal />  </button>
