@@ -96,6 +96,7 @@
                 @include editable-heading;
 
                 & input {
+                    background-color: transparent;
                     font-family: roboto, rubik, sans-serif;
                 }
             }
@@ -222,7 +223,9 @@
         }
 
     }
+   
 }
+
 
 
 /* The container <div> - needed to position the dropdown content */
