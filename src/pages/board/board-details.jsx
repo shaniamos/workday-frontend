@@ -8,6 +8,7 @@ import { addGroup, loadSelectedBoard } from '../../store/actions/board.action.js
 export const BoardDetails = ({ onChangeFilter }) => {
     const board = useSelector(state => state.boardModule.selectedBoard)
     const isLoading = useSelector(state => state.boardModule.isLoading)
+    
     // const filterBy = useSelector(state => state.boardModule.filterBy)
     // console.log('filterBy', filterBy)
     // const [newGroups, setNewGroups] = useState([])
