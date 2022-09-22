@@ -4,6 +4,7 @@
     top: 0;
     left: 0;
     z-index: 40;
+    font-family: roboto, rubik, sans-serif;
 
     button {
         @include btn;
@@ -70,6 +71,7 @@
                     border: none;
                     // width: 100%;
                     text-align: center;
+                    font-family: roboto, rubik, sans-serif;
 
                     @include for-narrow-layout {
                         font-size: 32px;
@@ -137,6 +139,7 @@
     .board-header-tool-bar {
         @include tool-bar;
         flex-direction: column;
+
         // align-content: center;
         @include for-narrow-layout {
             flex-direction: row;
@@ -183,6 +186,7 @@
                 color: white;
                 background-color: #0073ea;
                 border-radius: 4px 0px 0px 4px;
+
                 @include for-mobile-layout {
                     display: none;
                 }
