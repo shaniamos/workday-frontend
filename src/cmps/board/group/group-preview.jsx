@@ -52,7 +52,7 @@ export const GroupPreview = ({ group }) => {
                 <div className="questModal">
                     {isDeleteBtnClicked && <AreYouSureModal toggleNewBoardModal={toggleNewBoardModal} onRemoveEntity={onRemoveGroup} />}
                 </div>
-                <div className=" flex sticky-feature">
+                <div className="group-name flex sticky-feature">
 
                     <span className="collapse-group-button" style={{ color: `var(${group.colorId})` }}><IoChevronDown /></span>
                     <div className="group-title" >

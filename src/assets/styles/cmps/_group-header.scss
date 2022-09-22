@@ -10,45 +10,30 @@
     margin-left: rem(4px);
     z-index: 20;
     background-color: white;
-
-    .collapse-group-button {
-        display: inline-block;
-        margin-right: rem(2px);
-        margin-left: rem(9px);
-        position: relative;
-        top: 4px;
-        cursor: pointer;
-    }
-
-    .group-title {
-
-        padding-inline-start: rem(10px);
-        padding-top: rem(5px);
-
-        .group-name-input {
-            @include editable-heading;
-            font-weight: bold;
-            letter-spacing: rem(1px);
+    .group-name {
+        height: 40px;
+        display: flex;
+        align-items: center;
+        .collapse-group-button {
+            margin-right: rem(2px);
+            margin-left: rem(9px);
+            position: relative;
+            top: 4px;
+            cursor: pointer;
         }
-    }
-
-    .group-task-count {
-        opacity: 0;
-        padding-top: rem(9px);
-        font-size: rem(14px);
-        line-height: rem(22px);
-        color: var(--secondary-text-color);
-        margin-left: var(--spacing-xs);
-
-    }
-    &:hover .group-task-count {
-        opacity: 1;
+        .group-title {
+            padding-inline-start: rem(10px);
+            padding-top: rem(5px);
+            .group-name-input {
+                @include editable-heading;
+                font-weight: bold;
+                letter-spacing: rem(1px);
+            }
+        }
+       
     }
 }
-
-
-
-//COLUMNS NAMES LINE 
+//COLUMNS NAMES LINE
 .preview-group-header {
     position: sticky;
     top: rem(207px);
@@ -56,7 +41,6 @@
     width: 100%;
     background-color: white;
     box-shadow: 4px 6px 15px -8px var(--ui-border-color);
-
     .dot {
         cursor: pointer;
         opacity: 0;
@@ -65,103 +49,79 @@
         font-size: rem(18px);
         transition: background-color .2s;
         border-radius: 6px 0 0 6px;
-
         &:hover {
-            background-color: #dcdfec;
+            background-color: #DCDFEC;
         }
     }
-
-
     .group-header-identifier {
         position: relative;
         left: rem(18px);
-
         .cell {
             @include cell;
         }
-
         .task-name-area {
             width: rem(245px);
             background-color: var(--primary-background-color);
-
             @include for-narrow-layout {
                 width: rem(400px);
             }
-
             .task-group-color {
                 width: rem(6px);
                 height: 100%;
                 border-top-left-radius: 10px
             }
-
             .preview-checkbox {
                 display: none;
-
                 @include for-narrow-layout {
                     @include checkbox;
                 }
-
                 // @include checkbox;
             }
-
             .header-identifier-title {
                 margin: auto;
             }
-
         }
-
         .persons-header {
             &:hover .sort-btn {
                 opacity: 1;
             }
-
             width: rem(150px);
             @include task-cell-with-content;
         }
-
         .label-type-status {
             &:hover .sort-btn {
                 opacity: 1;
             }
-
             width: rem(150px);
             @include task-cell-with-content;
         }
-
         .label-type-priority {
             &:hover .sort-btn {
                 opacity: 1;
             }
-
             width: rem(150px);
             @include task-cell-with-content;
         }
-
         .last-updated {
             &:hover .sort-btn {
                 opacity: 1;
             }
-
             width: rem(200px);
             @include task-cell-with-content;
         }
-
         .date-header {
             &:hover .sort-btn {
                 opacity: 1;
             }
-
             width: rem(200px);
             @include task-cell-with-content;
         }
-
         .add-column {
             width: rem(400px);
             padding-inline-start: rem(10px);
             font-size: rem(20px);
-            border-inline-start: 0.5px solid #d0d4e4;
+            border-inline-start: 0.5px solid #D0D4E4;
         }
-
         .sort-btn {
             padding: rem(3px);
             margin: auto;
@@ -176,18 +136,15 @@
             transition: background-color .2s, color .2s;
             transition: transform .2s;
             opacity: 0;
-
             &.name {
                 left: rem(207px);
             }
-
             &:hover {
                 background-color: var(--primary-color);
                 color: white;
                 transform: rotate(360deg)
             }
         }
-
         .group-task-name-area {
             &:hover .sort-btn {
                 opacity: 1;

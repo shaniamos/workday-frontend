@@ -47,6 +47,17 @@
             }
 
         }
+        .group-task-count {
+            opacity: 0;
+            font-size: rem(14px);
+            line-height: rem(22px);
+            color: var(--secondary-text-color);
+            margin-left: var(--spacing-xs);
+        }
+    }
+
+    &:hover .group-task-count{
+        opacity: 1;
     }
 
     .dropdown:hover .dropdown-content {
