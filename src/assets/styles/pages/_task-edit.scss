@@ -1,8 +1,16 @@
 .task-edit {
+    .clean-input {
+        font-size: 30px;
+        padding-top: rem(8px);
+        padding-bottom: rem(8px);
+    }
+
     @include modal;
     top: 0;
     right: 0;
-    transition: transform .6s, box-shadow .6s;
+    transition: transform .6s,
+    box-shadow .6s;
+    width: rem(700px);
     transform: translate(0);
     z-index: 20;
 
@@ -12,25 +20,42 @@
         top: rem(16px);
     }
 
-    & .task-edit-tool-bar {
-        @include tool-bar;
-        cursor: pointer;
-
-        & .view-nav-btn {
-            font-size: rem(15px);
-            height: rem(34px);
-            // gap: rem(7px);
+    .navigate-btns {
+        gap: 20px;
+        
+        & .task-edit-tool-bar {
+            cursor: pointer;
+            gap: 20px;
             text-align: center;
+            
+            .updates-btn {
+                padding-top: rem(5px);
+                border-radius: 2px;
+                height: rem(32px);
+                width: rem(100px);
+                &.is-selected {
+                    border-bottom: 2px solid #0073ea;
+                }
+                &:hover {
+                    background-color: var(--primary-background-hover-color);
+                }
+            }
+            
+            .activity-btn {
+                padding-top: rem(3px);
+                border-radius: 2px;
+                height: rem(32px);
+            width: rem(100px);
+                &.is-selected {
+                    border-bottom: 2px solid #0073ea;
+                }
+                &:hover {
+                    background-color: var(--primary-background-hover-color);
+                }
+            }
         }
     }
-    .navigate-btns {
 
-        .is-selected {
-            border-bottom: 2px solid rgb(1, 60, 252);
-          }
-        
-    
-    }
 }
 
 

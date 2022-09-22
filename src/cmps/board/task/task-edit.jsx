@@ -65,32 +65,30 @@ export function TaskEdit() {
     return (
         <section className="task-edit-container open">
             <div className="main-screen" onClick={onCloseModal}></div>
-            <section className={`task-edit`}>
+            <section className="task-edit">
                 <form className="editable-heading" onSubmit={onUpdateTask}>
                     <input className="clean-input" {...register('title', 'text')} />
                 </form>
-                <div className="navigate-btns flex">
+                <div className="navigate-btns ">
                     {/* buttons navigation */}
                     <div className="task-edit-tool-bar flex align-center">
-                        <a className={`updates-tab btn ${!toggle && "is-selected"}`}
+                        <a className={`updates-btn btn ${!toggle && "is-selected"}`}
                             onClick={(ev) => {
                                 ev.preventDefault();
-                                console.log('update');
                                 togglePage(false);
                             }}
                         >Updates 
                         </a>
-                        <a className={`activity-tab btn ${toggle && "is-selected"}`}
+                        <a className={`activity-btn btn ${toggle && "is-selected"}`}
                             onClick={(ev) => {
                                 ev.preventDefault();
-                                console.log('active');
                                 togglePage(true);
                             }}
                         >Activity
                         </a>
 
                     </div>
-                    <Link to={`/board/${params.id}`} className="close-modal">X</Link>
+                    {/* <Link to={`/board/${params.id}`} className="close-modal">X</Link> */}
                 </div>
 
                 

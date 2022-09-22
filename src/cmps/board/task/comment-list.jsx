@@ -3,10 +3,12 @@ import { PersonCircle } from "../../person-circle";
 import { BiTime } from 'react-icons/bi'
 import { GoX } from 'react-icons/go';//delete
 import { LastUpdated } from "./last-updated";
+import { PostUpdate } from "./post-comment";
 
 
 export function CommentList({ task,comments, onRemoveComment }) {
     return <section className="item-updates-container">
+        <PostUpdate />
         {comments.map(((content, idx) => {
             return (
                 <div className="user-update-card" key={content.byMember._id}>
@@ -25,10 +27,6 @@ export function CommentList({ task,comments, onRemoveComment }) {
                                         onRemoveComment(idx);
                                     }}><GoX /></a>
                                 </div>
-                         
-
-                            {/* <FaCaretDown /> */}
-                            {/* <h1>text: {content.content.txt}</h1> */}
                         </div>
                     </div>
 
