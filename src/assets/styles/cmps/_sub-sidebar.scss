@@ -271,7 +271,7 @@
             line-height: 1.5;
             cursor: pointer;
             top: 20px;
-            z-index: 5;
+            z-index: 41;
             transition: all .2s;
             padding: rem(2px);
 
@@ -289,17 +289,19 @@
 
         &.is-open .open-btn {
             left: rem(303px);
+            
         }
 
         .open-btn {
             left: rem(14px);
+           
         }
     }
 }
 
 @include for-wide-layout {
     .sub-sidebar-container {
-        z-index: 110;
+        // z-index: 40;
 
         &.is-open .open-btn {
             left: rem(270px);

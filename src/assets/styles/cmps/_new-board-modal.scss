@@ -3,7 +3,7 @@
     border-radius: rem(8px);
     top: 45%;
     left: 50%;
-    z-index: 10;
+    z-index: 50;
     border: 1px solid black;
     box-shadow: 0 0 12px 1px grey;
     transform: translate(-50%, -50%);
@@ -39,15 +39,16 @@
         border-radius: 4px;
 
         input {
-            font-size: rem(20px);
-            box-shadow: 0px 1px 5px 0 rgba(60, 64, 67, 0.6), 0 1px 3px 1px rgba(60, 64, 67, 0.249);
-            margin-right: rem(10px);
-            border-radius: rem(10px);
-            padding: rem(7px);
-            transition: .3s;
-            background-color: rgb(220 230 236 / 64%);
-            width: 95%;
-
+            width: 100%;
+            border-radius: 4px;
+            border: 1px solid;
+            background-color: var(--primary-background-color);
+            border-color: var(--ui-border-color);
+            font-size: rem(16px);
+            padding: rem(8px) rem(16px);
+            outline: 0;
+            position: relative;
+           
             &:focus {
                 background-color: rgb(255, 255, 255);
             }
@@ -83,10 +84,10 @@
     }
 }
 
-// .new-board-modal-container.open .main-screen {
-//     @include main-screen-open;
-//     z-index: 100;
-// }
+.new-board-modal-container.open .main-screen {
+    @include main-screen-open;
+    z-index: 45;
+}
 
 .new-board-modal-container .main-screen {
     @include main-screen($bgColor: rgb(0 0 0 / 60%));

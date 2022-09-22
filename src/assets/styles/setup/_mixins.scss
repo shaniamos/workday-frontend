@@ -9,7 +9,7 @@
     opacity: 0;
     pointer-events: none;
     transition: opacity .6s;
-    z-index: 200;
+    z-index: 50;
 }
 
 @mixin main-screen-open {
@@ -90,7 +90,7 @@
     overflow: hidden;
     margin-top: var(--spacing-small);
     padding-bottom: 4px;
-    height: 32px;
+    height: 25px;
     border-bottom: .5px solid var(--ui-border-color);
 
     & span {

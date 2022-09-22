@@ -34,14 +34,15 @@
 
     .group-task-count {
         opacity: 0;
+        padding-top: rem(9px);
         font-size: rem(14px);
         line-height: rem(22px);
         color: var(--secondary-text-color);
         margin-left: var(--spacing-xs);
 
-        &:hover {
-            opacity: 1;
-        }
+    }
+    &:hover .group-task-count {
+        opacity: 1;
     }
 }
 
