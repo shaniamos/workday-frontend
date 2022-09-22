@@ -2,67 +2,68 @@ import { Component } from "react";
 import { Editor } from '@tinymce/tinymce-react';
 
 export class PostUpdate extends Component {
-    state = {
-      update: '',
-      toggleEditor: false,
-    };
-  
-    handleModelChange = (e) => {
-      this.setState({
-        update: e.target.getContent(),
-      });
-    };
-    onPost = () => {
-      this.props.onPost(this.state.update);
-      this.setState((prevState) => ({ ...prevState, update: '' }));
-    };
-    toggleEditor = (value) => {
-      this.setState((prevState) => ({ ...prevState, toggleEditor: value }));
-    };
-  
-    render() {
-      return (
+  state = {
+    update: '',
+    toggleEditor: false,
+  };
+
+  handleModelChange = (e) => {
+    this.setState({
+      update: e.target.getContent(),
+    });
+  };
+  onPost = () => {
+    this.props.onPost(this.state.update);
+    this.setState((prevState) => ({ ...prevState, update: '' }));
+  };
+  toggleEditor = (value) => {
+    this.setState((prevState) => ({ ...prevState, toggleEditor: value }));
+  };
+
+  render() {
+    return (
+      <div>
         <div>
-          <div>
-            {this.state.toggleEditor ? (
-              <Editor
-                init={{
-                  max_height: 145,
-                  resize: false,
-                  menubar: false,
-                }}
-                onChange={this.handleModelChange}
-              />
-            ) : (
-              <div
-                className="update-input btn"
-                onClick={() => this.toggleEditor(true)}
-              >
-                Write an update...
-              </div>
-            )}
-          </div>
-          {this.state.toggleEditor && (
-            <div className="side-panel-actions flex align-center space-between">
-              <div className="left-side-actions flex">
-                {/* <div className="add-files">Add files</div>
-                <div className="gif">GIF</div>
-                <div className="emoji">Emoji</div>
-                <div className="mention">Mention</div> */}
-              </div>
-              <button
-                className="update-btn"
-                onClick={(ev) => {
-                  ev.preventDefault();
-                  this.onPost();
-                  this.toggleEditor(false);
-                }}
-              >
-                Update
-              </button>
+          {this.state.toggleEditor ? (
+            <Editor
+              apiKey="8oty9fy177hya366jthfhnnfan4vpydo8mqzzb04z3c5sapy"
+              init={{
+                max_height: 160,
+                resize: false,
+                menubar: false,
+              }}
+              onChange={this.handleModelChange}
+            />
+          ) : (
+            <div
+              className="update-input btn"
+              onClick={() => this.toggleEditor(true)}
+            >
+              Write an update...
             </div>
           )}
         </div>
-      );
-    }
+        {this.state.toggleEditor && (
+          <div className="side-panel-actions flex align-center space-between">
+            <div className="left-side-actions flex">
+              {/* <div className="add-files">Add files</div>
+                <div className="gif">GIF</div>
+                <div className="emoji">Emoji</div>
+                <div className="mention">Mention</div> */}
+            </div>
+            <button
+              className="update-btn"
+              onClick={(ev) => {
+                ev.preventDefault();
+                this.onPost();
+                this.toggleEditor(false);
+              }}
+            >
+              Update
+            </button>
+          </div>
+        )}
+      </div>
+    );
   }
+}

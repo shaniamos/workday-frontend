@@ -58,10 +58,9 @@ export function TaskEdit() {
     }
 
     const onRemoveComment = async (commentIdx) => {
-        
         dispatch(removeComment(boardId, groupId, task.id, commentIdx))
-       
       }
+
     return (
         <section className="task-edit-container open">
             <div className="main-screen" onClick={onCloseModal}></div>
