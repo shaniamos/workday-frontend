@@ -34,13 +34,14 @@ export const TaskList = ({ tasks, groupId, groupColor }) => {
 
     return (
         <DragDropContext>
-            {/* <Droppable droppableId={groupId}>
-                {(provided) => { */}
-                    {/* {...provided.droppableProps} ref={provided.innerRef} ref={provided.innerRef} */}
-                    <section className="task-list">
+            {/* <Droppable droppableId={groupId}> */}
+                {/* {(provided) => { */}
+                    {/* <section {...provided.droppableProps} ref={provided.innerRef} className="task-list">  */}
+                        <section className="task-list"> 
                         {tasks.map((task, idx) => {
                             // <Draggable draggableId={task.id} index={idx}>
                                 // {(provided) => {
+                                    // return <TaskPreview provided={provided} key={task.id} task={task} groupId={groupId} groupColor={groupColor} />
                                     return <TaskPreview key={task.id} task={task} groupId={groupId} groupColor={groupColor} />
                                 // }}
                             // </Draggable>
@@ -58,8 +59,8 @@ export const TaskList = ({ tasks, groupId, groupColor }) => {
                             </div>
                         </div>
                     </section>
-                {/* }}
-            </Droppable> */}
+                 {/* }}  */}
+            {/* </Droppable> */}
         </DragDropContext >
     )
 }

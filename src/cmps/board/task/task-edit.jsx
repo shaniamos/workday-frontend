@@ -74,17 +74,15 @@ export function TaskEdit() {
                     <div className="task-edit-tool-bar flex align-center">
                         <a className={`updates-tab btn ${!toggle && "is-selected"}`}
                             onClick={(ev) => {
-                                ev.preventDefault();
-                                console.log('update');
-                                togglePage(false);
+                                ev.preventDefault()
+                                togglePage(false)
                             }}
                         >Updates 
                         </a>
                         <a className={`activity-tab btn ${toggle && "is-selected"}`}
                             onClick={(ev) => {
-                                ev.preventDefault();
-                                console.log('active');
-                                togglePage(true);
+                                ev.preventDefault()
+                                togglePage(true)
                             }}
                         >Activity
                         </a>

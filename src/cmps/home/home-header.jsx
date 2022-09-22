@@ -4,10 +4,11 @@ import logo from '../../assets/imgs/logo.png'
 import { AiOutlineHome } from 'react-icons/ai'
 import { MdOutlineWorkOutline } from 'react-icons/md'
 import { CgMoreO } from 'react-icons/cg'
-
+import { useSelector } from 'react-redux'
 
 
 export function HomeHeader() {
+    // const loggedinuser = useSelector(state => state.userModule.loggedinuser)
 
     return (
         <React.Fragment>
@@ -20,7 +21,7 @@ export function HomeHeader() {
                     </div>
                     <Link to='/board/b101'>
                         <button className='get-started-btn btn fa-arrow-right'>
-                            Get Started <span> &#8594; </span>
+                            <p>Get Started<span className='get-started-arrow'>&#8594;</span></p>
                         </button>
                     </Link>
                 </nav>
