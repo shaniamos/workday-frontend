@@ -8,8 +8,12 @@
         }
 
         .task-name-area {
-            width: rem(400px);
+            // width: 200px;
             background-color: var(--primary-background-color);
+
+            @include for-narrow-layout {
+                width: 400px;
+            }
 
             .task-group-color {
                 width: rem(6px);
@@ -17,14 +21,23 @@
             }
 
             .preview-checkbox {
-                @include checkbox;
+                display: none;
+
+                @include for-narrow-layout {
+                    @include checkbox;
+                }
             }
 
+
             .btn-subitem {
+                display: none;
+                margin: 7px 4px;
                 width: rem(30px);
                 transition: opacity .2s, transform .2s;
-                display: flex;
-                margin: rem(7px) rem(4px);
+
+                @include for-narrow-layout {
+                    display: flex;
+                }
 
                 .subitem-icon {
                     margin: auto;
@@ -41,10 +54,18 @@
                 }
             }
 
-            .btn-open-task {
-                margin-inline: rem(15px);
+            .btn-open-link {
+                display: none;
 
+                @include for-narrow-layout {
+                    display: block;
+                }
+
+                .btn-open-task {
+                    margin-inline: 15px;
+                }
             }
+
 
             .btn-updates-count {
                 display: flex;
@@ -114,7 +135,6 @@
 
     /* The container <div> - needed to position the dropdown content */
     .dropdown {
-        // position: relative;
         display: inline-block;
     }
 
@@ -160,8 +180,8 @@
 
     .cell {
         @include cell;
-        position: relative;
-        left: rem(18px);
+        // position: relative;
+        // left: 18px;
     }
 
     .task-name-area {
@@ -175,7 +195,10 @@
         }
 
         .preview-checkbox {
-            @include checkbox;
+            display: none;
+            @include for-narrow-layout {
+                @include checkbox;
+            }
         }
 
         .editable-heading {

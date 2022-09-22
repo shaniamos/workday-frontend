@@ -13,7 +13,6 @@ import { ViewbarBoardHeader } from './viewbar-board-header.jsx'
 //HiFolder - new item
 //IoIosCheckmarkCircleOutline -checklist 
 
-
 export function BoardHeader({ board, onAddGroup, onChangeFilter }) {
 
     return (

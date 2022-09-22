@@ -9,7 +9,7 @@
     opacity: 0;
     pointer-events: none;
     transition: opacity .6s;
-    z-index: 10;
+    z-index: 200;
 }
 
 @mixin main-screen-open {

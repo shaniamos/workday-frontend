@@ -7,36 +7,29 @@
     background-image: url('../../../assets/imgs/home-bg.jpg');
 
     .home-header {
-        height: rem(72px);
-        padding-inline: rem(32px);
         align-items: center;
         background-color: #ffffff;
-
-
-        @include for-mobile-layout {
-            height: rem(50px);
-            padding-inline: rem(10px);
-        }
-
-        @include for-wide-layout {
-            // padding-inline: rem(200px);
+        height: rem(50px);
+        padding-inline: rem(10px);
+        
+        @include for-narrow-layout {
+            padding-inline: rem(15px);
+            height: rem(80px);
         }
 
         .logo {
-            // width: rem(167px);
             padding-top: rem(9px);
-
-            @include for-mobile-layout {
-                width: rem(130px);
-            }
-            @include for-normal-layout {
+            width: rem(130px);
+            
+            @include for-narrow-layout {
                 width: rem(140px);
             }
-            @include for-narrow-layout {
+            @include for-normal-layout {
                 width: rem(170px);
             }
             @include for-wide-layout {
-                width: rem(180px);
+                width: rem(175px);
+                padding-inline: rem(32px);
             }
         }
 
@@ -45,7 +38,6 @@
             align-items: center;
 
             .side-header-links {
-
                 font-family: sofia-thin;
                 color: #535768;
 
@@ -102,7 +94,7 @@
     }
 
     .main-content {
-        transform: translateY(120px);
+        margin-top: rem(120px);
         display: flex;
         flex-direction: column;
         text-align: center;
@@ -111,20 +103,19 @@
         .main-text {
             font-weight: 400;
             color: #fff;
-            align-items: center;
+            max-width: rem(330px);
+            font-size: rem(30px);
 
-            @include for-mobile-layout {
-                max-width: rem(400px);
-                font-size: rem(30px);
-            }
             @include for-narrow-layout {
                 max-width: rem(500px);
                 font-size: rem(50px);
             }
+
             @include for-normal-layout {
                 max-width: rem(700px);
                 font-size: rem(60px);
             }
+
             @include for-wide-layout {
                 max-width: rem(800px);
                 font-size: rem(80px);
@@ -181,5 +172,21 @@
             font-family: sofia-thin;
             font-size: rem(14px);
         }
+    }
+}
+
+.home-layout {
+    width: 90%;
+
+    @include for-narrow-layout {
+        width: 85%;
+    }
+
+    @include for-normal-layout {
+        width: 80%;
+    }
+
+    @include for-wide-layout {
+        width: 70%;
     }
 }

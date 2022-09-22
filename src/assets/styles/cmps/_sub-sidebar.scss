@@ -9,7 +9,7 @@
         width: 100vw;
         // display: none;
     }
-
+    
 
     .workspace-options {
         color: #323338;
@@ -151,7 +151,6 @@
         margin: auto;
         margin-bottom: 18px;
 
-
         .workspace-board-name {
             width: 100%;
 
@@ -179,15 +178,10 @@
             }
         }
     }
-
-
 }
 
 @include for-mobile-layout {
     .sub-sidebar-container {
-
-        & .workspace-board {
-        }
 
         & .open-btn {
             display: none;

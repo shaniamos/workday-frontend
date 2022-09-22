@@ -12,7 +12,7 @@
     box-shadow .6s;
     width: rem(700px);
     transform: translate(0);
-    z-index: 20;
+    z-index: 300;
 
     .close-modal {
         @include btn-close-modal;
