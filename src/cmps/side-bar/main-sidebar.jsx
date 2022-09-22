@@ -1,5 +1,4 @@
 import { AiOutlineStar } from 'react-icons/ai'
-import { SiGoogletagmanager } from 'react-icons/si'
 import { IoMdNotificationsOutline } from 'react-icons/io'
 import { FiInbox } from 'react-icons/fi'
 import { FaRegCalendarCheck } from 'react-icons/fa'
@@ -10,7 +9,7 @@ import { BiQuestionMark } from 'react-icons/bi'
 import { CgMenuGridO } from 'react-icons/cg'
 import { FaUserCircle } from 'react-icons/fa'
 import { Link } from 'react-router-dom'
-import logo from '../../imgs/sidebar-icon.png'
+import logo from '../../assets/imgs/sidebar-icon.png'
 
 export function MainSidebar() {
 

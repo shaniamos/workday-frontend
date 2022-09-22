@@ -185,9 +185,7 @@
 @include for-mobile-layout {
     .sub-sidebar-container {
 
-
         & .workspace-board {
-            & .arrow-btn {}
         }
 
         & .open-btn {
@@ -267,7 +265,7 @@
         }
 
         .open-btn {
-            left: rem(20px);
+            left: rem(18px);
             position: absolute;
             height: 23px;
             width: 23px;
@@ -299,6 +297,19 @@
 
         .open-btn {
             left: rem(14px);
+        }
+    }
+}
+
+@include for-wide-layout {
+    .sub-sidebar-container {
+
+        &.is-open .open-btn {
+            left: rem(270px);
+        }
+        
+        .open-btn {
+            left: rem(15px);
         }
     }
 }
