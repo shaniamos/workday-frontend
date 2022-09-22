@@ -14,18 +14,19 @@
 
     & .task-edit-tool-bar {
         @include tool-bar;
+        cursor: pointer;
 
         & .view-nav-btn {
             font-size: rem(15px);
             height: rem(34px);
-            gap: rem(7px);
+            // gap: rem(7px);
             text-align: center;
         }
     }
     .navigate-btns {
 
         .is-selected {
-            border-bottom: 2px solid black;
+            border-bottom: 2px solid rgb(1, 60, 252);
           }
         
     

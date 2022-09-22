@@ -41,8 +41,8 @@ export function TaskEdit() {
         setNewTask({ title: task.title })
     }
     
-    const togglePage = () => {
-        setNewBoardModalOpen(!toggle)
+    const togglePage = (isTrue) => {
+        setNewBoardModalOpen(isTrue)
     }
 
     
@@ -72,22 +72,22 @@ export function TaskEdit() {
                 <div className="navigate-btns flex">
                     {/* buttons navigation */}
                     <div className="task-edit-tool-bar flex align-center">
-                        <button className={`updates-tab btn ${!toggle && "is-selected"}`}
+                        <a className={`updates-tab btn ${!toggle && "is-selected"}`}
                             onClick={(ev) => {
                                 ev.preventDefault();
                                 console.log('update');
                                 togglePage(false);
                             }}
-                        >Updates
-                        </button>
-                        <button className={`activity-tab btn ${toggle && "is-selected"}`}
+                        >Updates 
+                        </a>
+                        <a className={`activity-tab btn ${toggle && "is-selected"}`}
                             onClick={(ev) => {
                                 ev.preventDefault();
                                 console.log('active');
                                 togglePage(true);
                             }}
                         >Activity
-                        </button>
+                        </a>
 
                     </div>
                     <Link to={`/board/${params.id}`} className="close-modal">X</Link>

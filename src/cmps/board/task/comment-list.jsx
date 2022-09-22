@@ -6,12 +6,8 @@ import { LastUpdated } from "./last-updated";
 
 
 export function CommentList({ task,comments, onRemoveComment }) {
-    // console.log('comments', comments);
     return <section className="item-updates-container">
-
         {comments.map(((content, idx) => {
-            // {console.log('idx', idx);}
-            // {console.log('content', content);}
             return (
                 <div className="user-update-card" key={content.byMember._id}>
                     <div className="user-details flex align-center">
