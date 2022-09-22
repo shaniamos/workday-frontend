@@ -1,4 +1,4 @@
-@mixin main-screen($bgColor: rgba(0, 0, 0, 0) ) {
+@mixin main-screen($bgColor: rgba(0, 0, 0, 0)) {
     position: fixed;
     top: 0;
     left: 0;
@@ -41,6 +41,7 @@
     height: 36px;
     align-items: center;
     border-top: 0.5px solid #d0d4e4;
+
     // & :not(:first-of-type) {
     //     border-inline-start: 0.5px solid #d0d4e4;
     // }
@@ -75,13 +76,14 @@
 
 @mixin heading {
     border: 1px solid rgba(0, 0, 0, 0);
-    margin-inline: 2px ;
+    margin-inline: 2px;
     border-radius: 4px;
     min-width: 0;
     padding: 0 4px;
     color: inherit;
 
-    &:focus-visible, &:hover {
+    &:focus-visible,
+    &:hover {
         outline: .5px solid var(--primary-background-hover-color);
     }
 }
@@ -157,6 +159,7 @@
     user-select: none;
     min-width: var(--element-width);
     padding: 4px 8px;
+
     &:hover {
         background-color: $hoverBgColor ;
     }

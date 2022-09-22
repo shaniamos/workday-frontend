@@ -11,36 +11,42 @@
     z-index: 20;
     background-color: white;
 
-    .collapse-group-button {
-        display: inline-block;
-        margin-right: rem(2px);
-        margin-left: rem(9px);
-        position: relative;
-        top: 4px;
-        cursor: pointer;
-    }
 
-    .group-title {
+    .group-name {
+        height: 40px;
+        display: flex;
+        align-items: center;
 
-        padding-inline-start: rem(10px);
-        padding-top: rem(5px);
-
-        .group-name-input {
-            @include editable-heading;
-            font-weight: bold;
-            letter-spacing: rem(1px);
+        .collapse-group-button {
+            margin-right: rem(2px);
+            margin-left: rem(9px);
+            position: relative;
+            top: 4px;
+            cursor: pointer;
         }
-    }
 
-    .group-task-count {
-        opacity: 0;
-        font-size: rem(14px);
-        line-height: rem(22px);
-        color: var(--secondary-text-color);
-        margin-left: var(--spacing-xs);
+        .group-title {
 
-        &:hover {
-            opacity: 1;
+            padding-inline-start: rem(10px);
+            padding-top: rem(5px);
+
+            .group-name-input {
+                @include editable-heading;
+                font-weight: bold;
+                letter-spacing: rem(1px);
+            }
+        }
+
+        .group-task-count {
+            opacity: 0;
+            font-size: rem(14px);
+            line-height: rem(22px);
+            color: var(--secondary-text-color);
+            margin-left: var(--spacing-xs);
+
+            &:hover {
+                opacity: 1;
+            }
         }
     }
 }

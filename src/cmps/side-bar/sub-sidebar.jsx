@@ -20,6 +20,8 @@ import { loadBoards, removeBoard } from '../../store/actions/board.action.js'
 import { NewBoardMoadl } from "../board/new-board-modal.jsx"
 import { Search } from "../search.jsx"
 import { useEffect } from 'react'
+import BoardNavIcon from '../../assets/SVGs/BoardNavIcon.svg'
+
 
 export function SubSidebar({ isOpen }) {
     const boards = useSelector(state => state.boardModule.boards)
@@ -105,7 +107,8 @@ export function SubSidebar({ isOpen }) {
                             {boards.map(board => {
                                 return <div className="boards-list flex space-between" key={board._id}>
                                     <NavLink className="flex inline-flex option" to={`/board/${board._id}`}>
-                                        <HiOutlineClipboard className="table-chart flex column align-center" />
+                                        {/* <HiOutlineClipboard className="table-chart flex column align-center" /> */}
+                                        <img className="table-chart flex column align-center" src={BoardNavIcon} alt="" />
                                         <span className="menu-btn-inner-text">{board.title}</span>
                                         <i className="dropdown-dot">
                                             <div className="dropdown" onClick={(ev) => {

@@ -19,7 +19,7 @@ export class PostUpdate extends Component {
   toggleEditor = (value) => {
     this.setState((prevState) => ({ ...prevState, toggleEditor: value }));
   };
-
+  
   render() {
     return (
       <div>
@@ -32,8 +32,7 @@ export class PostUpdate extends Component {
                 resize: false,
                 menubar: false,
               }}
-              onChange={this.handleModelChange}
-            />
+              onChange={this.handleModelChange}/>
           ) : (
             <div
               className="update-input btn"
@@ -57,8 +56,7 @@ export class PostUpdate extends Component {
                 ev.preventDefault();
                 this.onPost();
                 this.toggleEditor(false);
-              }}
-            >
+              }}>
               Update
             </button>
           </div>
