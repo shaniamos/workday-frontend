@@ -93,7 +93,6 @@ export function SubSidebar({ isOpen }) {
                         </div>
                         <IoIosArrowDown className='arrow-btn' />
                     </div>
-
                     <div className="workspace-options flex column">
                         <div className="action-btn ">
                             <a onClick={toggleNewBoardModal} className="flex option"> <GrAdd /><span className="menu-btn-inner-text">Add</span></a>
@@ -104,9 +103,7 @@ export function SubSidebar({ isOpen }) {
                         <div className="spacer"></div>
                         <div className="boards-options">
                             {boards.map(board => {
-
-                                 return <div className="boards-list flex space-between" key={board._id}>
-
+                                return <div className="boards-list flex space-between" key={board._id}>
                                     <NavLink className="flex inline-flex option" to={`/board/${board._id}`}>
                                         <HiOutlineClipboard className="table-chart flex column align-center" />
                                         <span className="menu-btn-inner-text">{board.title}</span>
@@ -133,13 +130,8 @@ export function SubSidebar({ isOpen }) {
                             )}
                         </div>
                     </div>
-
                 </div>
             )}
         </section >
-
     )
-
-
-
 }

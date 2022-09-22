@@ -56,8 +56,8 @@ export const TaskPreview = ({ task, groupId, groupColor, provided }) => {
     const { persons, lastUpdated, deadline } = task
     let date = new Date(1663091776159)
     return (
-        // {...provided.dragHandleProps} {...provided.draggableProps} ref={provided.innerRef}
-        <div className="preview-full-task flex">
+        // <div className="preview-full-task flex" {...provided.dragHandleProps} {...provided.draggableProps} ref={provided.innerRef}>
+            <div className="preview-full-task flex"> 
             <div className="dropdown">
                 <div ><HiOutlineDotsHorizontal className="dot" /></div>
                 <div className="dropdown-content">

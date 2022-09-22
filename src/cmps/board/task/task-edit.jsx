@@ -36,30 +36,30 @@ export function TaskEdit() {
 
     const loadTask = async () => {
         const groupIdx = board.groups.findIndex(group => group.id === groupId)
-        const task =  board.groups[groupIdx].tasks.find(task => task.id === taskId)
+        const task = board.groups[groupIdx].tasks.find(task => task.id === taskId)
         setTask(task)
         setNewTask({ title: task.title })
     }
-    
+
     const togglePage = (isTrue) => {
         setNewBoardModalOpen(isTrue)
     }
 
-    
+
     const onUpdateTask = (event) => {
         event.preventDefault()
         setTask(prevTask => {
             return { ...prevTask, title: newTask.title, lastUpdated: Date.now() }
         })
     }
-    
+
     const onCloseModal = () => {
         navigate(`/board/${params.id}`)
     }
 
     const onRemoveComment = async (commentIdx) => {
         dispatch(removeComment(boardId, groupId, task.id, commentIdx))
-      }
+    }
 
     return (
         <section className="task-edit-container open">
@@ -73,15 +73,15 @@ export function TaskEdit() {
                     <div className="task-edit-tool-bar flex align-center">
                         <a className={`updates-btn btn ${!toggle && "is-selected"}`}
                             onClick={(ev) => {
-                                ev.preventDefault();
-                                togglePage(false);
+                                ev.preventDefault()
+                                togglePage(false)
                             }}
-                        >Updates 
+                        >Updates
                         </a>
                         <a className={`activity-btn btn ${toggle && "is-selected"}`}
                             onClick={(ev) => {
-                                ev.preventDefault();
-                                togglePage(true);
+                                ev.preventDefault()
+                                togglePage(true)
                             }}
                         >Activity
                         </a>
@@ -90,9 +90,9 @@ export function TaskEdit() {
                     {/* <Link to={`/board/${params.id}`} className="close-modal">X</Link> */}
                 </div>
 
-                
-                    {toggle ? <TaskActivity task={task} /> : <TaskComment task={task} onRemoveComment={onRemoveComment} />}
-                
+
+                {toggle ? <TaskActivity task={task} /> : <TaskComment task={task} onRemoveComment={onRemoveComment} />}
+
 
             </section>
         </section>

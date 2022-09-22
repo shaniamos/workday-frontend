@@ -24,9 +24,11 @@
             @include for-narrow-layout {
                 width: rem(140px);
             }
+
             @include for-normal-layout {
                 width: rem(170px);
             }
+
             @include for-wide-layout {
                 width: rem(175px);
                 padding-inline: rem(32px);
@@ -56,9 +58,7 @@
             .get-started-btn {
                 cursor: pointer;
                 font-size: rem(16px);
-                height: rem(50px);
                 min-width: rem(160px);
-                padding-right: rem(14px);
                 border-radius: rem(40px);
                 color: #fff;
                 background-color: #6C6CFF;
@@ -77,15 +77,16 @@
                     margin-left: rem(26px);
                 }
 
-                span {
-                    margin-left: 3px;
+                & p span {
+                    margin-left: rem(5px);
                     transition: margin-left .2s;
+                    vertical-align: text-bottom;
                 }
 
-                :hover {
+                &:hover {
                     background-color: #454592;
 
-                    span {
+                    p span {
                         margin-left: rem(8px);
                     }
                 }
@@ -105,6 +106,7 @@
             color: #fff;
             max-width: rem(330px);
             font-size: rem(30px);
+
 
             @include for-narrow-layout {
                 max-width: rem(500px);
@@ -151,6 +153,10 @@
             background-image: linear-gradient(90deg, #5034FF 25.69%, #B4B4FF 100%);
             transition: background-image .2s;
             border: none;
+
+            & p span {
+                margin-left: rem(5px);
+            }
 
             &:hover {
                 background-image: linear-gradient(90deg, #432cd5 25.69%, #9797d5 100%);
