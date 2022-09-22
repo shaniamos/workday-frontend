@@ -15,29 +15,39 @@ import { HiOutlineArchive } from 'react-icons/hi'
 //LIBS
 import { useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { useNavigate, NavLink, useLocation} from 'react-router-dom'
+import { useNavigate, NavLink, useLocation } from 'react-router-dom'
 import { loadBoards, removeBoard } from '../../store/actions/board.action.js'
 import { NewBoardMoadl } from "../board/new-board-modal.jsx"
 import { Search } from "../search.jsx"
 import { useEffect } from 'react'
 
-export function SubSidebar({ boards, isOpen, onChangeFilter }) {
-    boards = useSelector(state => state.boardModule.boards)
+export function SubSidebar({ isOpen }) {
+    const boards = useSelector(state => state.boardModule.boards)
+    const [filteredBoards, setFilteredBoards] = useState([boards])
     const [isNavOpen, setNavOpen] = useState(isOpen)
     const [isNewBoardModalOpen, setNewBoardModalOpen] = useState(false)
     const [isDropDownOpen, setDropDownOpen] = useState(false)
     const dispatch = useDispatch()
     const navigate = useNavigate()
+
     // const currLocation = useLocation()
 
     useEffect(() => {
-        if (!boards) loadBoardsFromServer()
+        dispatch(loadBoards())
+        // if (!boards) loadBoardsFromServer()
     }, [])
 
-    const loadBoardsFromServer = async () => {
-        boards = await dispatch(loadBoards())
-        setNavOpen(true)
+    const onChangeBoardsFilter = (filterBy) => {
+        const { txt } = filterBy
+        const regex = new RegExp(txt, 'i')
+        const newBoards = boards.filter(board => regex.test(board.title))
+        setFilteredBoards(newBoards)
     }
+
+    // const loadBoardsFromServer = async () => {
+    //     boards = await dispatch(loadBoards())
+    //     setNavOpen(true)
+    // }
 
     const toggleSubSidebar = () => {
         setNavOpen(!isNavOpen)
@@ -88,38 +98,42 @@ export function SubSidebar({ boards, isOpen, onChangeFilter }) {
                         <div className="action-btn ">
                             <a onClick={toggleNewBoardModal} className="flex option"> <GrAdd /><span className="menu-btn-inner-text">Add</span></a>
                             <div>
-                                {<a className="flex  option last-one"><Search contentSearch={'boards'} onChangeFilter={onChangeFilter} /> </a>}
+                                {<a className="flex  option last-one"><Search onChangeFilter={onChangeBoardsFilter} /> </a>}
                             </div>
                         </div>
                         <div className="spacer"></div>
-                        <div className="boards-options">
-                            {boards.map(board =>
-                                <div className="boards-list flex space-between" key={board._id}>
+                        {(filteredBoards && filteredBoards?.length) &&
+                            <div className="boards-options">
+                                {filteredBoards.map(board =>
+                                    <div className="boards-list flex space-between" key={board._id}>
 
-                                    <NavLink className="flex inline-flex option" to={`/board/${board._id}`}>
-                                        <HiOutlineClipboard className="table-chart flex column align-center" />
-                                        <span className="menu-btn-inner-text">{board.title}</span>
-                                        <i className="dropdown-dot">
-                                            <div className="dropdown" onClick={(ev) => {
-                                                ev.preventDefault()
-                                                toggleDropdown()
-                                            }} ><HiDotsHorizontal className="points" />
-                                                {isDropDownOpen && <div className="dropdown-content ">
-                                                    <i><HiOutlineDocumentDuplicate className="icon-dropdown" /> Duplicate Board</i>
-                                                    <i><RiPencilLine className="icon-dropdown" /> Rename</i><hr />
-                                                    <i><HiOutlineArchive className="icon-dropdown" /> Archive</i>
-                                                    <i onClick={(ev) => {
-                                                        ev.preventDefault()
-                                                        ev.stopPropagation()
-                                                        onRemoveBoard(board._id)
-                                                    }}><MdDeleteOutline className="icon-dropdown" /> Delete</i>
-                                                </div>}
-                                            </div>
-                                        </i>
-                                    </NavLink>
-                                </div>
-                            )}
-                        </div>
+                                        <NavLink className="flex inline-flex option" to={`/board/${board._id}`}>
+                                            <HiOutlineClipboard className="table-chart flex column align-center" />
+                                            <span className="menu-btn-inner-text">{board.title}</span>
+                                            <i className="dropdown-dot">
+                                                <div className="dropdown" onClick={(ev) => {
+                                                    ev.preventDefault()
+                                                    toggleDropdown()
+                                                }} ><HiDotsHorizontal className="points" />
+                                                    {isDropDownOpen && <div className="dropdown-content ">
+                                                        <i><HiOutlineDocumentDuplicate className="icon-dropdown" /> Duplicate Board</i>
+                                                        <i><RiPencilLine className="icon-dropdown" /> Rename</i><hr />
+                                                        <i><HiOutlineArchive className="icon-dropdown" /> Archive</i>
+                                                        <i onClick={(ev) => {
+                                                            ev.preventDefault()
+                                                            ev.stopPropagation()
+                                                            onRemoveBoard(board._id)
+                                                        }}><MdDeleteOutline className="icon-dropdown" /> Delete</i>
+                                                    </div>}
+                                                </div>
+                                            </i>
+                                        </NavLink>
+                                    </div>
+                                )}
+                            </div>}
+                        {!boards.length && <div>
+                            <h1>No result found</h1>
+                        </div>}
                     </div>
 
                 </div>

@@ -70,10 +70,27 @@ export function updateBoard(board) {
 }
 
 export function setFilterBy(filterBy) {
-    // console.log('filterBy', filterBy);
-    return (dispatch) => {
-        dispatch({ type: 'SET_FILTER_BY', filterBy });
-    };
+    // CR - changed to try & catch
+    try { 
+        return (dispatch) => {
+            dispatch({ type: 'SET_FILTER_BY', filterBy });
+        };
+    } catch (err) { 
+        console.log('err:', err);
+        throw err
+    }
+}
+
+export function setSortBy(sortBy) {
+    // CR - changed to try & catch
+    try { 
+        return (dispatch) => {
+            dispatch({ type: 'SET_SORT_BY', sortBy });
+        };
+    } catch (err) { 
+        console.log('err:', err);
+        throw err
+    }
 }
 
 

@@ -18,16 +18,19 @@ export const BoardApp = () => {
         dispatch(loadBoards(filterBy))
     }, [params.id])
 
-    const onChangeFilter = async (filterBy, contentSearch, sortBy) => {
-        try {
-
-            if (contentSearch === 'boards') await dispatch(loadBoards(filterBy))
-            else await dispatch(setFilterBy(filterBy))
+     //  CR - function that called filter won't do sort
+    // const onChangeFilter = async (filterBy, sortBy) => {
+        const onChangeFilter = async (filterBy, sortBy) => {
+            try {
+                // if (contentSearch === 'boards') await dispatch(loadBoards(filterBy))
+                // else  await dispatch(setFilterBy(filterBy))
+                // CR - why not two seperated functions?
+                await dispatch(setFilterBy(filterBy))
+            }
+            catch (err) {
+                console.error(err);
+            }
         }
-        catch (err) {
-            console.error(err);
-        }
-    }
 
     // if (!boards) return <section className='monday-loader-page'>
     //     <img className='monday-loader-animation' src="https://cdn.monday.com/images/loader/loader.gif" alt="" />
@@ -40,7 +43,7 @@ export const BoardApp = () => {
         <section className="board-app flex">
             <MainSidebar />
             <UserMsg boards={boards} />
-            <SubSidebar boards={boards} isOpen={true} onChangeFilter={onChangeFilter} />
+            <SubSidebar isOpen={true}  />
             <BoardDetails onChangeFilter={onChangeFilter} />
             <Outlet />
         </section>

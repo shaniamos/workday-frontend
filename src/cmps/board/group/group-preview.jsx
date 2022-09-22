@@ -13,7 +13,7 @@ import { BiDotsHorizontalRounded } from "./group-header.jsx"
 import { useState } from "react"
 import { AreYouSureModal } from "../task/are-you-sure-modal.jsx"
 
-export const GroupPreview = ({ group, onChangeFilter }) => {
+export const GroupPreview = ({ group }) => {
     const params = useParams()
     const dispatch = useDispatch()
     const [isDeleteBtnClicked, setBtnClicked] = useState(false)
@@ -64,7 +64,7 @@ export const GroupPreview = ({ group, onChangeFilter }) => {
                 </div>
             </div>
             {/* Group columns identifier (color, checkbox, task name, persons, status, priority....) */}
-            <GroupHeader groupColor={group.colorId} onChangeFilter={onChangeFilter} />
+            <GroupHeader groupColor={group.colorId} />
             <TaskList tasks={group.tasks} groupId={group.id} groupColor={group.colorId} />
             {/* TODO <GroupFooter/> (Columns Summary) */}
         </section>
