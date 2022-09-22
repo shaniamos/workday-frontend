@@ -36,9 +36,6 @@ export const BoardApp = () => {
     //     <img className='monday-loader-animation' src="https://cdn.monday.com/images/loader/loader.gif" alt="" />
     // </section>
     
-
-        console.log('boards',boards)
-    
     return (
         <section className="board-app flex">
             <MainSidebar />

@@ -10,7 +10,6 @@ import { useDispatch } from "react-redux"
 import { addTask } from "../../../store/actions/board.action.js"
 import { useState } from "react"
 import { Search } from "../../search.jsx"
-import { FilterBoardByType } from './board-filter.jsx';
 import { utilService } from '../../../services/util.service.js';
 
 //IoHomeOutline - Main Table
@@ -61,17 +60,6 @@ export function ViewbarBoardHeader({ board, onAddGroup, onChangeFilter }) {
                 <div className="search-area">
                     <Search contentSearch={'items'} onChangeFilter={onChangeFilter}/>
                 </div>
-
-            {/* <button className="view-nav-btn"><FaRegUserCircle /> Person  </button> */}
-                <div>
-                    <button onClick={() => setFilter(!isFilter)} className="view-nav-btn"><BiFilterAlt /> <p>Filter</p></button>
-                    {isFilter &&
-                        <FilterBoardByType />
-                    }
-                </div>
-            {/* <button className="view-nav-btn"><CgArrowsScrollV /> Sort  </button>
-            <button className="view-nav-btn"><AiOutlineEyeInvisible /> Hide  </button>
-            <button className="view-nav-btn"><HiOutlineDotsHorizontal />  </button> */}
         </div>
     )
 }
