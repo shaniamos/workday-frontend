@@ -116,13 +116,14 @@
     }
 
     .dot {
-        height: rem(30px);
+        height: rem(29px);
         font-size: rem(18px);
-        transform: translateY(5px);
+        // transform: translateY(5px);
+        transform: translateX(-8px);
         cursor: pointer;
         opacity: 0;
         transition: background-color .2s;
-        border-radius: rem(6px) 0 0 rem(6px);
+        border-radius: 6px;
 
         &:hover {
             background-color: #dcdfec;

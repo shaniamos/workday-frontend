@@ -66,8 +66,9 @@
                     @include input-title;
                     @include heading;
                     font-weight: 600;
+                    width: 300px;
                     border: none;
-                    width: 100%;
+                    // width: 100%;
                     text-align: center;
 
                     @include for-narrow-layout {
@@ -157,9 +158,9 @@
     }
 
     .board-header-view-bar {
-        margin-bottom: 16px;
-        margin-top: 16px;
-        height: 34px;
+        margin-bottom: rem(16px);
+        margin-top: rem(24px);
+        height: rem(34px);
 
         @include for-mobile-layout {}
 
@@ -178,10 +179,11 @@
 
             .view-nav-btn {
                 min-width: rem(80px);
+                border-right: 0.3px solid #636363;
                 color: white;
                 background-color: #0073ea;
                 border-radius: 4px 0px 0px 4px;
-                padding: rem(4px);
+                // padding: rem(4px);
 
                 @include for-mobile-layout {
                     display: none;

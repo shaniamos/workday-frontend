@@ -1,18 +1,18 @@
 .are-you-sure-modal-container {
 
-    &.open .main-screen {
-        @include main-screen-open;
+    // &.open .main-screen {
+    //     @include main-screen-open;
 
-    }
+    // }
 
-    & .main-screen {
-        @include main-screen($bgColor: rgb(0 0 0 / 60%));
-    }
+    // & .main-screen {
+    //     @include main-screen($bgColor: rgb(0 0 0 / 60%));
+    // }
 
     & .delete-modal {
         @include modal($height: rem(168px), $width: rem(598px));
         border-radius: 8px;
-        top: 13%;
+        top: 45%;
         left: 47%;
         transform: translate(-50%, -50%);
         transition: all 0.3s ease 0s;

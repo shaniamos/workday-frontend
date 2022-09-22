@@ -21,6 +21,7 @@
             .option {
                 padding-left: 6px;
                 height: 32px;
+                margin-top: 8px;
                 border-radius: 4px;
                 width: 100%;
 
@@ -298,6 +299,7 @@
 
 @include for-wide-layout {
     .sub-sidebar-container {
+        z-index: 110;
 
         &.is-open .open-btn {
             left: rem(270px);
