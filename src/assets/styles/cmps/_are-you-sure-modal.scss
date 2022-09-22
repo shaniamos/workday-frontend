@@ -1,13 +1,13 @@
 .are-you-sure-modal-container {
 
-    // &.open .main-screen {
-    //     @include main-screen-open;
+    &.open .main-screen {
+        @include main-screen-open;
 
-    // }
+    }
 
-    // & .main-screen {
-    //     @include main-screen($bgColor: rgb(0 0 0 / 60%));
-    // }
+    & .main-screen {
+        @include main-screen($bgColor: rgb(0 0 0 / 60%));
+    }
 
     & .delete-modal {
         @include modal($height: rem(168px), $width: rem(310px));
@@ -16,10 +16,10 @@
         left: 47%;
         transform: translate(-50%, -50%);
         transition: all 0.3s ease 0s;
-        z-index: 110;
+        z-index: 100;
         padding: rem(12px) rem(36px);
-        border: 0.5px solid #000000;
-        box-shadow: 0 0 10px 3px #383737;
+        border: 1px solid rgba(0,0,0,0.2);
+        box-shadow: 0 5px 15px rgb(0 0 0 / 50%);
 
     }
 

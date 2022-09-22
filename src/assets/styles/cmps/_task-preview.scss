@@ -10,6 +10,7 @@
         }
 
         .task-name-area {
+            
             // width: 200px;
             background-color: var(--primary-background-color);
 
@@ -32,7 +33,7 @@
 
             .btn-subitem {
                 display: none;
-                margin: 7px 4px;
+                margin: rem(7px) 0px;
                 width: rem(30px);
                 transition: opacity .2s, transform .2s;
 
@@ -43,7 +44,7 @@
                 .subitem-icon {
                     margin: auto;
                     opacity: 0;
-                    border-radius: 4px;
+                    border-radius: rem(4px);
                     color: var(--ui-border-color);
                     @include collapsable-icon-btn;
 
@@ -63,17 +64,25 @@
                 }
 
                 .btn-open-task {
-                    margin-inline: 15px;
+                    opacity: 0;
+                    margin-inline: rem(15px);
+                    padding-top: 5px;
+                    .open-icon {
+                        font-size: rem(18px);
+                        padding-right: 3px;
+                    }
                 }
             }
-
-
+            &:hover .btn-open-task{
+                opacity: 1;
+            }
             .btn-updates-count {
                 display: flex;
                 align-items: center;
                 height: 100%;
                 padding-inline: rem(16px);
-                margin-left: rem(8px);
+                margin-left: rem(18px);
+                
                 font-size: rem(24px);
                 color: #c5c7d0;
                 border-left: 1px solid var(--layout-border-color);
@@ -83,7 +92,6 @@
                     color: var(--primary-color);
                 }
             }
-
             .editable-heading {
                 @include editable-heading;
 
@@ -92,7 +100,6 @@
                 }
             }
         }
-
         .persons-header {
             width: rem(150px);
             @include task-cell-with-content;

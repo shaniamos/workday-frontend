@@ -82,7 +82,7 @@ export const TaskPreview = ({ task, groupId, groupColor, provided }) => {
                         </form>
                     </div>
                     <Link to={`/board/${params.id}/${groupId}/${task.id}`} className="btn-open-link">
-                        <div className="btn-open-task flex"><TbArrowsDiagonal />Open</div>
+                        <div className="btn-open-task flex"><TbArrowsDiagonal className="open-icon" /> <span className="open-txt"> Open </span></div>
                     </Link>
                     <div className="btn-updates-count"><BiMessageRoundedAdd /></div>
                 </div>

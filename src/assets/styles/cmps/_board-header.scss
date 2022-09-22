@@ -3,7 +3,7 @@
     background-color: var(--primary-background-color);
     top: 0;
     left: 0;
-    z-index: 100;
+    z-index: 40;
     font-family: roboto, rubik, sans-serif;
 
     button {
@@ -163,7 +163,7 @@
     .board-header-view-bar {
         margin-bottom: rem(16px);
         margin-top: rem(24px);
-        height: rem(34px);
+        height: rem(40px);
 
         @include for-mobile-layout {}
 

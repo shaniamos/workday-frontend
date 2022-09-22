@@ -53,7 +53,7 @@
 .sticky-feature {
     position: sticky;
     left: 1px;
-    z-index: 3;;
+    z-index: 3;
     @include for-narrow-layout{
         left: 44px;
 

@@ -51,7 +51,7 @@ export const GroupHeader = ({ groupColor, onChangeFilter }) => {
                 </div>
 
                 <div className="cell add-column">
-                    <span>+</span>
+                    {/* <span>+</span> */}
                 </div>
 
             </div>
