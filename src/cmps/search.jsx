@@ -13,6 +13,7 @@ export const Search = ({onChangeFilter, contentSearch, sortOption}) => {
     const handleChange = async (ev) => {
         const value = ev.target.value
         setInputTxt(value)
+        // onChangeFilter({ txt }, contentSearch)
     }
 
     return (

@@ -1,7 +1,7 @@
 .add-modal {
-    @include modal($height: rem(280px), $width: rem(310px));
+    @include modal($height: rem(280px), $width: rem(500px));
     border-radius: rem(8px);
-    top: 50%;
+    top: 45%;
     left: 50%;
     transform: translate(-50%, -50%);
     transition: all 0.3s ease 0s;

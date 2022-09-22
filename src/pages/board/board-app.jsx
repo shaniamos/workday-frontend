@@ -1,4 +1,4 @@
-import { useEffect} from 'react'
+import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { loadBoards, setFilterBy } from '../../store/actions/board.action.js'
 import { Outlet, useParams } from 'react-router-dom'
@@ -20,9 +20,9 @@ export const BoardApp = () => {
 
     const onChangeFilter = async (filterBy, contentSearch, sortBy) => {
         try {
-           
+
             if (contentSearch === 'boards') await dispatch(loadBoards(filterBy))
-            else  await dispatch(setFilterBy(filterBy))
+            else await dispatch(setFilterBy(filterBy))
         }
         catch (err) {
             console.error(err);
@@ -32,7 +32,10 @@ export const BoardApp = () => {
     // if (!boards) return <section className='monday-loader-page'>
     //     <img className='monday-loader-animation' src="https://cdn.monday.com/images/loader/loader.gif" alt="" />
     // </section>
+    
 
+        console.log('boards',boards)
+    
     return (
         <section className="board-app flex">
             <MainSidebar />
