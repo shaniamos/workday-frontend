@@ -135,6 +135,11 @@ export function SubSidebar({ isOpen }) {
                     </div>
                 </div>
             )}
+            {!boards.length && <div className='workspace-empty'>
+                <h2 className='workspace-empty-title'>Your workspace is empty</h2>
+                <h2 className='workspace-empty-subtitle'>Get started by adding new boards</h2>
+                <button onClick={toggleNewBoardModal} className='btn-add-board'>Add New Board</button>
+            </div>}
         </section >
     )
 }
