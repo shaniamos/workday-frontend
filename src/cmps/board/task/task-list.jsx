@@ -48,7 +48,7 @@ export const TaskList = ({ tasks, groupId, groupColor }) => {
                         })}
                         {/* NEW TASK */}
                         <div className="preview-new-task sticky-feature">
-                            <div className="cell task-name-area flex">
+                            <div className="cell task-name-area sticky-feature flex">
                                 <div className="task-group-color" style={{ backgroundColor: `var(${groupColor})` }}></div>
                                 <div className="preview-checkbox"><input className="input-checkbox" type="checkbox" /></div>
                                 <div className="editable-heading task-name-heading">

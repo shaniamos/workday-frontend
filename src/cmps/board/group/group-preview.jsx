@@ -13,7 +13,7 @@ import { BiDotsHorizontalRounded } from "./group-header.jsx"
 import { useState } from "react"
 import { AreYouSureModal } from "../task/are-you-sure-modal.jsx"
 
-export const GroupPreview = ({ group, onChangeFilter }) => {
+export const GroupPreview = ({ group }) => {
     const params = useParams()
     const dispatch = useDispatch()
     const [isDeleteBtnClicked, setBtnClicked] = useState(false)
@@ -51,18 +51,20 @@ export const GroupPreview = ({ group, onChangeFilter }) => {
                 </div>
                 <div className="questModal">
                     {isDeleteBtnClicked && <AreYouSureModal toggleNewBoardModal={toggleNewBoardModal} onRemoveEntity={onRemoveGroup} />}
+                </div>
+                <div className=" flex sticky-feature">
 
+                    <span className="collapse-group-button" style={{ color: `var(${group.colorId})` }}><IoChevronDown /></span>
+                    <div className="group-title" >
+                        <form onSubmit={onUpdateGroup}>
+                            <input {...register('title', 'text')} className="group-name-input clean-input" style={{ color: `var(${group.colorId})` }} />
+                        </form>
+                    </div>
+                    <span className="group-task-count">{`${group.tasks.length} items`}</span>
                 </div>
-                <span className="collapse-group-button" style={{ color: `var(${group.colorId})` }}><IoChevronDown /></span>
-                <div className="group-title" >
-                    <form onSubmit={onUpdateGroup}>
-                        <input {...register('title', 'text')} className="group-name-input clean-input" style={{ color: `var(${group.colorId})` }} />
-                    </form>
-                </div>
-                <span className="group-task-count">{`${group.tasks.length} items`}</span>
             </div>
             {/* Group columns identifier (color, checkbox, task name, persons, status, priority....) */}
-            <GroupHeader groupColor={group.colorId} onChangeFilter={onChangeFilter} />
+            <GroupHeader groupColor={group.colorId} />
             <TaskList tasks={group.tasks} groupId={group.id} groupColor={group.colorId} />
             {/* TODO <GroupFooter/> (Columns Summary) */}
         </section>

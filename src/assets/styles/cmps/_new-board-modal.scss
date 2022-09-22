@@ -1,14 +1,18 @@
 .add-modal {
-    @include modal($height: rem(280px), $width: rem(310px));
+    @include modal($height: rem(280px), $width: rem(500px));
     border-radius: rem(8px);
-    top: 50%;
+    top: 45%;
     left: 50%;
+    z-index: 10;
+    border: 1px solid black;
+    box-shadow: 0 0 12px 1px grey;
     transform: translate(-50%, -50%);
     transition: all 0.3s ease 0s;
     padding: rem(16px) rem(48px);
 
     .close-modal-btn {
         @include btn-close-modal;
+        width: 1.6rem;
         right: rem(16px);
         top: rem(16px);
 
@@ -79,9 +83,10 @@
     }
 }
 
-.new-board-modal-container.open .main-screen {
-    @include main-screen-open;
-}
+// .new-board-modal-container.open .main-screen {
+//     @include main-screen-open;
+//     z-index: 100;
+// }
 
 .new-board-modal-container .main-screen {
     @include main-screen($bgColor: rgb(0 0 0 / 60%));

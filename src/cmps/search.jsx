@@ -5,9 +5,9 @@ import { BsSearch } from 'react-icons/bs'  //Search
 export const Search = ({onChangeFilter, contentSearch, sortOption}) => {
     const [txt, setInputTxt] = useState('')
     
-    // useEffect(() => {
-    //     onChangeFilter({ txt }, contentSearch)
-    // }, [txt])
+    useEffect(() => {
+        onChangeFilter({ txt })
+    }, [txt])
 
  
     const handleChange = async (ev) => {

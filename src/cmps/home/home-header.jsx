@@ -12,7 +12,7 @@ export function HomeHeader() {
 
     return (
         <React.Fragment>
-            <div className="home-header flex space-between">
+            <div className="home-header flex space-between ">
                 <Link to='/' ><img className="logo" src={logo} /></Link>
                 <nav className='header-nav'>
                     <div className='side-header-links'>

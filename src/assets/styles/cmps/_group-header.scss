@@ -8,9 +8,9 @@
     height: rem(40px);
     font-size: rem(18px);
     margin-left: rem(4px);
-    z-index: 2;
+    z-index: 20;
     background-color: white;
-    
+
     .collapse-group-button {
         display: inline-block;
         margin-right: rem(2px);
@@ -51,7 +51,7 @@
 .preview-group-header {
     position: sticky;
     top: rem(207px);
-    z-index: 1;
+    z-index: 20;
     width: 100%;
     background-color: white;
     box-shadow: 4px 6px 15px -8px var(--ui-border-color);
@@ -80,7 +80,12 @@
         }
 
         .task-name-area {
-            width: rem(400px);
+            width: rem(245px);
+            background-color: var(--primary-background-color);
+
+            @include for-narrow-layout {
+                width: rem(400px);
+            }
 
             .task-group-color {
                 width: rem(6px);
@@ -89,7 +94,13 @@
             }
 
             .preview-checkbox {
-                @include checkbox;
+                display: none;
+
+                @include for-narrow-layout {
+                    @include checkbox;
+                }
+
+                // @include checkbox;
             }
 
             .header-identifier-title {
