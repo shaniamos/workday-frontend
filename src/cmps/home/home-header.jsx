@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link, NavLink } from 'react-router-dom'
-import logo from '../../imgs/logo.png'
+import logo from '../../assets/imgs/logo.png'
 import { AiOutlineHome } from 'react-icons/ai'
 import { MdOutlineWorkOutline } from 'react-icons/md'
 import { CgMoreO } from 'react-icons/cg'
