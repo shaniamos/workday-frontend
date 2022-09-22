@@ -1,5 +1,6 @@
 .preview-full-task {
     .task-preview {
+        font-family: roboto, Rubik, sans-serif;
 
         .cell {
             @include cell;
@@ -27,7 +28,6 @@
                     @include checkbox;
                 }
             }
-
 
             .btn-subitem {
                 display: none;
@@ -85,6 +85,10 @@
 
             .editable-heading {
                 @include editable-heading;
+
+                & input {
+                    font-family: roboto, rubik, sans-serif;
+                }
             }
         }
 
@@ -158,7 +162,7 @@
     .dropdown-content a {
         font-style: normal;
         color: #5b5c63;
-        padding:rem(12px) rem(16px);
+        padding: rem(12px) rem(16px);
         text-decoration: none;
         // display: block;
     }
@@ -197,6 +201,7 @@
 
         .preview-checkbox {
             display: none;
+
             @include for-narrow-layout {
                 @include checkbox;
             }
