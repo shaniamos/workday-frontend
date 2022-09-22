@@ -26,7 +26,7 @@ export class PostUpdate extends Component {
         <div>
           {this.state.toggleEditor ? (
             <Editor
-              apiKey="8oty9fy177hya366jthfhnnfan4vpydo8mqzzb04z3c5sapy"
+              apiKey="loqhc1n2dhurh3n81a0m5k8fte3ecv2jmgl152b25c1joc6a"
               init={{
                 max_height: 160,
                 resize: false,

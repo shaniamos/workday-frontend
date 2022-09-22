@@ -66,7 +66,7 @@ export const TaskPreview = ({ task, groupId, groupColor, provided }) => {
                 </div>
             </div>
             <div className="questModal\questions">
-                {isDeleteBtnClicked && <AreYouSureModal toggleNewBoardModal={toggleNewBoardModal} onRemoveTask={onRemoveTask} />}
+                {isDeleteBtnClicked && <AreYouSureModal toggleNewBoardModal={toggleNewBoardModal} onRemoveEntity={onRemoveTask} />}
             </div>
             <section className="task-preview flex">
                 <div className="cell task-name-area sticky-feature flex">
