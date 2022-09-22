@@ -1,28 +1,28 @@
 .user-msg {
     position: fixed;
-    padding: 8px;
-    padding-right: 15px;
-    height: 48px;
-    top: 20px;
+    padding: rem(8px);
+    padding-right: rem(15px);
+    height: rem(48px);
+    top: rem(20px);
     left: 50%;
-    gap: 10px;
+    gap: rem(10px);
     color: white;
     background-color: #258750;
-    border-radius: 6px;
+    border-radius: rem(6px);
     font-size: rem(16px);
     flex-direction: row-reverse;
     transform: translateX(-50%);
     z-index: 100;
 
     button {
-        width: 36px;
-        height: 32px;
-        border-radius: 6px;
+        width: rem(36px);
+        height: rem(32px);
+        border-radius: rem(6px);
         cursor: pointer;
         border: 0;
         color: white;
-        margin: 5px;
-        padding: 4px 8px;
+        margin: rem(5px);
+        padding: rem(4px) rem(8px);
         background-color: #258750;
     }
     .msg-btn {

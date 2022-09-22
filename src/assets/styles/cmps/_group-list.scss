@@ -4,7 +4,7 @@
         @include btn;
         display: flex;
         align-items: center;
-        line-height: 22px;
+        line-height: rem(22px);
         border: rem(1px) solid var(--ui-border-color);
         -webkit-font-smoothing: var(--font-smoothing-webkit);
         font: var(--font-general-label);

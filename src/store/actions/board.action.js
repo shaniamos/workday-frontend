@@ -157,6 +157,21 @@ export function updateTask(boardId, groupId, task) {
     }
 }
 
+//COMMENTS 
+
+export function removeComment(boardId, groupId, taskId, commentIdx) {
+    return async (dispatch) => {
+        try {
+            const board = await boardService.removeComment(boardId, groupId, taskId, commentIdx)
+            dispatch({ type: 'UPDATE_BOARD', board })
+            showSuccessMsg(`Comment successfully deleted`)
+        } catch (err) {
+            console.error('err:', err)
+            showErrorMsg('Cannot delete item')
+        }
+    }
+}
+
 // export function onSetFilterTasks(boardId) {
 //     return async (dispatch, getState) => {
 //         try {

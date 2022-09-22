@@ -29,16 +29,18 @@
                 }
             }
         }
-
         .dropdown-dot .dropdown {
             position: absolute;
             display: none;
             padding-bottom: 6px;
             font-size: 13px;
             transition: color .2s;
-            transform: translateY(-15px);
+            transform: translateX(60px);
             z-index: 10;
             font-size: 27px;
+            & .points{
+                transform: translateY(-15px);
+            }
         }
 
         .option {
@@ -209,7 +211,7 @@
         position: relative;
 
         & .workspace-board {
-            border: 1px solid #676879;
+            border: 1px solid  #b6b6bc;
         }
 
         & .workspace-options {
@@ -257,7 +259,7 @@
         }
 
         .open-btn {
-            left: rem(20px);
+            left: rem(18px);
             position: absolute;
             height: 23px;
             width: 23px;
@@ -289,6 +291,19 @@
 
         .open-btn {
             left: rem(14px);
+        }
+    }
+}
+
+@include for-wide-layout {
+    .sub-sidebar-container {
+
+        &.is-open .open-btn {
+            left: rem(270px);
+        }
+        
+        .open-btn {
+            left: rem(15px);
         }
     }
 }

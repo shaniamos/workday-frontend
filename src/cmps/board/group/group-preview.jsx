@@ -11,6 +11,7 @@ import { HiOutlineDocumentDuplicate } from 'react-icons/hi'//Duplicate
 import { IoChevronDown } from 'react-icons/io5'
 import { BiDotsHorizontalRounded } from "./group-header.jsx"
 import { useState } from "react"
+import { AreYouSureModal } from "../task/are-you-sure-modal.jsx"
 
 export const GroupPreview = ({ group, onChangeFilter }) => {
     const params = useParams()
@@ -21,6 +22,7 @@ export const GroupPreview = ({ group, onChangeFilter }) => {
     })
 
     const onRemoveGroup = () => {
+        toggleNewBoardModal()
         const boardId = params.id
         dispatch(removeGroup(boardId, group.id))
     }
@@ -31,6 +33,11 @@ export const GroupPreview = ({ group, onChangeFilter }) => {
         const boardId = params.id
         dispatch(updateGroup(boardId, group))
     }
+
+    const toggleNewBoardModal = () => {
+        setBtnClicked(!isDeleteBtnClicked)
+    }
+
     return (
         <section className="group-preview ">
             {/* Group Title  */}
@@ -38,14 +45,13 @@ export const GroupPreview = ({ group, onChangeFilter }) => {
                 <div className="dropdown">
                     <div ><HiOutlineDotsHorizontal className="dots" /></div>
                     <div className="dropdown-content">
-                        <a onClick={onRemoveGroup}>< MdDeleteOutline /> Delete Gruop</a>
+                        <a onClick={toggleNewBoardModal}>< MdDeleteOutline /> Delete Gruop</a>
                         <a><HiOutlineDocumentDuplicate /> Duplicate</a>
                     </div>
                 </div>
-                {/* <div className="questModal">
-                    {isDeleteBtnClicked && <AreYouSureModal toggleNewBoardModal={toggleNewBoardModal} onRemoveGroup={onRemoveGroup} />}
-
-                </div> */}
+                <div className="questModal">
+                    {isDeleteBtnClicked && <AreYouSureModal toggleNewBoardModal={toggleNewBoardModal} onRemoveEntity={onRemoveGroup} />}
+                </div>
                 <div className=" flex sticky-feature">
 
                     <span className="collapse-group-button" style={{ color: `var(${group.colorId})` }}><IoChevronDown /></span>

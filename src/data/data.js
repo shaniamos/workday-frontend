@@ -203,10 +203,10 @@ export const board = {
                         {
                             "byMember": {
                                 "_id": "u101",
-                                "fullname": "Tal Tarablus",
-                                "imgUrl": "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg"
+                                "fullname": "Shani Amos",
+                                "imgUrl": "https://files.monday.com/use1/photos/34310999/thumb_small/34310999-user_photo_2022_09_14_12_35_32.png?1663158932"
                             },
-                            "createdAt": 1589983468418,
+                            "createdAt": 1663091776159,
                             "content": {
                                 "txt": "What's going on",
                                 "likes": [],
@@ -214,10 +214,14 @@ export const board = {
                             }
                         },
                         {
-                            "memberId": "m102",
+                            "byMember": {
+                                "_id": "u102",
+                                "fullname": "Bar mendel",
+                                "imgUrl": "https://files.monday.com/use1/photos/34311145/thumb_small/34311145-user_photo_2022_09_14_12_43_14.png?1663159394"
+                            },
                             "createdAt": 1589983468418,
                             "content": {
-                                "txt": "What's going on",
+                                "txt": "hey you",
                                 "likes": [],
                                 "replys": [] //arr of comments
                             }

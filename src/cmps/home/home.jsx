@@ -4,7 +4,7 @@ import { HomeHeader } from './home-header'
 
 export function Home() {
     return (
-        <section className='home-page'>
+        <section className='home-page full'>
             <HomeHeader />
             <div className='main-content'>
                 <h2 className='main-text'>

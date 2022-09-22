@@ -1,6 +1,6 @@
 .add-modal {
     @include modal($height: rem(280px), $width: rem(310px));
-    border-radius: 8px;
+    border-radius: rem(8px);
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -25,11 +25,11 @@
         font-family: roboto-bold;
         font-size: rem(32px);
         font-weight: 500;
-        margin-bottom: 16px;
+        margin-bottom: rem(16px);
     }
 
     .input-container {
-        padding: 8px 0px;
+        padding: rem(8px) 0px;
         outline: none;
         width: 100%;
         border-radius: 4px;
@@ -37,9 +37,9 @@
         input {
             font-size: rem(20px);
             box-shadow: 0px 1px 5px 0 rgba(60, 64, 67, 0.6), 0 1px 3px 1px rgba(60, 64, 67, 0.249);
-            margin-right: 10px;
-            border-radius: 10px;
-            padding: 7px;
+            margin-right: rem(10px);
+            border-radius: rem(10px);
+            padding: rem(7px);
             transition: .3s;
             background-color: rgb(220 230 236 / 64%);
             width: 95%;
