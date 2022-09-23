@@ -1,14 +1,15 @@
 import { connect } from "formik"
 import { PersonCircle } from "../../person-circle";
 import { BiTime } from 'react-icons/bi'
-import { GoX } from 'react-icons/go';//delete
+import { GoX } from 'react-icons/go';//delete or exit
 import { LastUpdated } from "./last-updated";
+import { DesignedTxt } from "./designed-txt.jsx";
 import { PostUpdate } from "./post-comment";
 
 
-export function CommentList({ task,comments, onRemoveComment }) {
+export function CommentList({ comments, onRemoveComment, onAddComment }) {
     return <section className="item-updates-container">
-        <PostUpdate />
+        <PostUpdate onAddComment={onAddComment}/>
         {comments.map(((content, idx) => {
             return (
                 <div className="user-update-card" key={content.byMember._id}>
@@ -30,15 +31,13 @@ export function CommentList({ task,comments, onRemoveComment }) {
                         </div>
                     </div>
 
-                    <div className="user-text-area">
-                        <p>{content.content.txt}</p>
-
+                    <div className="user-text-area" //render html in html
+                         dangerouslySetInnerHTML={{ __html: content.content.txt }}>
                     </div>
                     <div className="action-btns flex ">
                         <div className="like-post-wrapper ">
                             <div className="like-post btn">Like</div>
                         </div>
-                        <div className="divider-height"></div>
                         <div className="reply-post-wrapper ">
                             <div className="reply-post btn">Reply</div>
                         </div>

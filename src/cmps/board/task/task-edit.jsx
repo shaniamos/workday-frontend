@@ -1,13 +1,14 @@
+import { TaskComment } from "./task-comment.jsx";
+import { TaskActivity } from "./task-activity.jsx";
+import { useFormRegister } from "../../../hooks/useFormRegister.js";
+import { useEffectUpdate } from "../../../hooks/useEffectUpdate.js";
 import { useState } from "react";
+import { addComment, removeComment, updateTask } from "../../../store/actions/board.action.js";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate, useParams } from "react-router-dom";
-import { useEffectUpdate } from "../../../hooks/useEffectUpdate.js";
-import { useFormRegister } from "../../../hooks/useFormRegister.js";
-import { boardService } from "../../../services/board.service.local.js";
-import { removeComment, updateTask } from "../../../store/actions/board.action.js";
-import { TaskActivity } from "./task-activity.jsx";
-import { TaskComment } from "./task-comment.jsx";
+import { GoX } from 'react-icons/go';//delete or exit
+
 
 export function TaskEdit() {
     const [toggle, setNewBoardModalOpen] = useState(false)
@@ -61,10 +62,19 @@ export function TaskEdit() {
         dispatch(removeComment(boardId, groupId, task.id, commentIdx))
     }
 
+    const onAddComment = async (newComment) => {
+        // console.log('newComment', newComment);
+        // console.log('boardId', boardId);
+        // console.log('groupId', groupId);
+        // console.log('task.id', task.id);
+        dispatch(addComment(boardId, groupId, task.id, newComment))
+    }
+
     return (
         <section className="task-edit-container open">
             <div className="main-screen" onClick={onCloseModal}></div>
             <section className="task-edit">
+                 <Link to={`/board/${params.id}`}><GoX /></Link>
                 <form className="editable-heading" onSubmit={onUpdateTask}>
                     <input className="clean-input" {...register('title', 'text')} />
                 </form>
@@ -91,7 +101,7 @@ export function TaskEdit() {
                 </div>
 
 
-                {toggle ? <TaskActivity task={task} /> : <TaskComment task={task} onRemoveComment={onRemoveComment} />}
+                {toggle ? <TaskActivity task={task} /> : <TaskComment task={task} onRemoveComment={onRemoveComment} onAddComment={onAddComment} />}
 
 
             </section>

@@ -35,7 +35,6 @@ export const GroupList = ({groups, onAddGroup, onChangeFilter }) => {
             return { ...group, tasks: group.tasks.filter((task) => regex.test(task.title)) }
         })
         const filtered = filteredTasksGroups.filter(group => group.tasks.length || regex.test(group.title))
-        // console.log('wwwoww')
         setFilteredGroups(filtered)
     }, [filterBy])
 

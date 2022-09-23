@@ -18,6 +18,7 @@ export const boardService = {
     getTaskById,
     // filterGroupAndTasks,
     removeComment,
+    addComment,
 }
 
 const STORAGE_KEY = 'board'
@@ -168,9 +169,9 @@ async function getTaskById(boardId, groupId, taskId) {
     }
 }
 
+//remove comment
 async function removeComment(boardId, groupId, taskId, commentIdx) {
     try {
-
         const board = await getBoardById(boardId)
         const groupIdx = board.groups.findIndex(group => group.id === groupId)
         const taskIdx = board.groups[groupIdx].tasks.findIndex(task => task.id === taskId)
@@ -181,7 +182,6 @@ async function removeComment(boardId, groupId, taskId, commentIdx) {
         console.error(err, 'Cannot delete comment')
         throw err
     }
-
 }
 
 // remove task
@@ -190,12 +190,45 @@ async function removeTask(boardId, groupId, taskId) {
         const board = await getBoardById(boardId)
         const groupIdx = board.groups.findIndex(group => group.id === groupId)
         const newTasks = board.groups[groupIdx].tasks.filter(task => task.id !== taskId)
-
         board.groups[groupIdx].tasks = newTasks
-
         return storageService.put(STORAGE_KEY, board)
     } catch (err) {
         throw err
+    }
+}
+
+async function addComment(boardId, groupId, taskId, newCommentTxt) {
+    try {
+        const newUpdate = createComment(newCommentTxt)
+        console.log('newComment', newUpdate);
+        const board = await getBoardById(boardId)
+        const groupIdx = board.groups.findIndex(group => group.id === groupId)
+        const taskIdx = board.groups[groupIdx].tasks.findIndex(task => task.id === taskId)
+        board.groups[groupIdx].tasks[taskIdx].comments.unshift(newUpdate)
+        return storageService.put(STORAGE_KEY, board)
+    }
+    catch(err) {
+        console.error(err, 'Add comment failed');
+        throw err
+    }
+}
+
+function createComment(txt) {
+    return {
+        byMember: {
+            // _id: user._id,
+            // fullname: user.fullname,
+            // imgUrl: user.img
+            _id: utilService.makeId(4),
+            fullname: 'Tal Elmaliach',
+            imgUrl: "https://files.monday.com/use1/photos/34311144/thumb_small/34311144-user_photo_2022_09_14_12_46_08.png?1663159568",
+        },
+        createdAt: Date.now(),
+        content: {
+            txt: txt,
+            likes: [],
+            replys: []
+        }
     }
 }
 

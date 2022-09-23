@@ -12,8 +12,8 @@ export class PostUpdate extends Component {
       update: e.target.getContent(),
     });
   };
-  onPost = () => {
-    this.props.onPost(this.state.update);
+  onAddComment = () => {
+    this.props.onAddComment(this.state.update);
     this.setState((prevState) => ({ ...prevState, update: '' }));
   };
   toggleEditor = (value) => {
@@ -27,6 +27,7 @@ export class PostUpdate extends Component {
           {this.state.toggleEditor ? (
             <Editor
               apiKey="loqhc1n2dhurh3n81a0m5k8fte3ecv2jmgl152b25c1joc6a"
+              initialValue=""
               init={{
                 max_height: 160,
                 resize: false,
@@ -54,7 +55,7 @@ export class PostUpdate extends Component {
               className="update-btn"
               onClick={(ev) => {
                 ev.preventDefault();
-                this.onPost();
+                this.onAddComment();
                 this.toggleEditor(false);
               }}>
               Update
