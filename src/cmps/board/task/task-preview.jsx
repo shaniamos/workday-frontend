@@ -16,6 +16,7 @@ import { BiMessageRoundedAdd } from 'react-icons/bi' //empty updates, with updat
 import { HiOutlineDotsHorizontal } from 'react-icons/hi' //More
 import { MdDeleteOutline } from 'react-icons/md'//Delete
 import { HiOutlineDocumentDuplicate } from 'react-icons/hi'//Duplicate
+import { ReactComponent as NoneUpdatesIcon} from '../../../assets/SVGs/NoneUpdatesIcon.svg'
 
 
 export const TaskPreview = ({ task, groupId, groupColor, provided }) => {
@@ -84,7 +85,8 @@ export const TaskPreview = ({ task, groupId, groupColor, provided }) => {
                     <Link to={`/board/${params.id}/${groupId}/${task.id}`} className="btn-open-link">
                         <div className="btn-open-task flex"><TbArrowsDiagonal className="open-icon" /> <span className="open-txt"> Open </span></div>
                     </Link>
-                    <div className="btn-updates-count"><BiMessageRoundedAdd /></div>
+                    <div className="btn-updates-count"><NoneUpdatesIcon/></div>
+                    
                 </div>
 
                 {/* Persons / Responsbility */}

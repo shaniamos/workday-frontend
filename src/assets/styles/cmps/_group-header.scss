@@ -43,6 +43,11 @@
             line-height: rem(22px);
             color: var(--secondary-text-color);
             margin-left: var(--spacing-xs);
+            display: flex;
+            align-items: center;
+            height: 100%;
+            padding-inline-start: 0.625rem;
+            padding-top: 0.3125rem;
 
             &:hover {
                 opacity: 1;
@@ -60,6 +65,7 @@
     z-index: 20;
     width: 100%;
     background-color: white;
+
     .dot {
         cursor: pointer;
         opacity: 0;
@@ -84,7 +90,7 @@
         }
 
         .task-name-area {
-            width: rem(245px);
+            width: rem(233px);
             background-color: var(--primary-background-color);
 
             @include for-narrow-layout {

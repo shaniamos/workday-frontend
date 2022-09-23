@@ -1,4 +1,12 @@
 .task-edit {
+    .task-exit-btn {
+        height: rem(24px);
+        width: rem(24px);
+        border-radius: 4px;
+        &:hover {
+            background-color: var(--primary-background-hover-color);
+        }
+    }
     .clean-input {
         font-size: 30px;
         padding-top: rem(8px);
