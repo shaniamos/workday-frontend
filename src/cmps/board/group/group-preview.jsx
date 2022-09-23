@@ -14,7 +14,7 @@ import { useState } from "react"
 import { AreYouSureModal } from "../task/are-you-sure-modal.jsx"
 import { utilService } from "../../../services/util.service.js"
 
-export const GroupPreview = ({ group }) => {
+export const GroupPreview = ({ group, sortGroup }) => {
     const params = useParams()
     const dispatch = useDispatch()
     const [isDeleteBtnClicked, setBtnClicked] = useState(false)
@@ -80,7 +80,7 @@ export const GroupPreview = ({ group }) => {
                 </div>
             </div>
             {/* Group columns identifier (color, checkbox, task name, persons, status, priority....) */}
-            <GroupHeader groupColor={group.colorId} />
+            <GroupHeader groupColor={group.colorId} sortGroup={sortGroup} />
             <TaskList tasks={group.tasks} groupId={group.id} groupColor={group.colorId} />
             {/* TODO <GroupFooter/> (Columns Summary) */}
         </section>
