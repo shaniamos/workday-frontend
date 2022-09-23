@@ -42,13 +42,15 @@ export const GroupPreview = ({ group }) => {
     const onDuplicateGroup = () => {
         const duplicateGroup = { ...group }
         delete duplicateGroup.id
-        duplicateGroup.lastUpdated = Date.now()
-        if (duplicateGroup.tasks) {
-            duplicateGroup.tasks.forEach(task => task.id = utilService.makeId())
-            if (duplicateGroup.tasks.comments) {
-                duplicateGroup.tasks.comments.forEach(comment => comment.id = utilService.makeId())
-            }
-        }
+        // if (duplicateGroup.tasks) {
+        //     duplicateGroup.tasks.forEach(task => {
+        //         task.id = utilService.makeId()
+        //          task.lastUpdated = Date.now()
+        //         if (duplicateGroup.task.comments) {
+        //             duplicateGroup.task.comments.forEach(comment => comment.id = utilService.makeId())
+        //         }
+        //     })
+        // }
         dispatch(addGroup(boardId, duplicateGroup))
     }
 
