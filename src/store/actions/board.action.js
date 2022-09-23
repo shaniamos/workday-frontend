@@ -176,6 +176,7 @@ export function updateTask(boardId, groupId, task) {
 
 //COMMENTS 
 
+//remove comment
 export function removeComment(boardId, groupId, taskId, commentIdx) {
     return async (dispatch) => {
         try {
@@ -185,6 +186,18 @@ export function removeComment(boardId, groupId, taskId, commentIdx) {
         } catch (err) {
             console.error('err:', err)
             showErrorMsg('Cannot delete item')
+        }
+    }
+}
+
+//add comment
+export function addComment(boardId, groupId, taskId, newComment) {
+    return async (dispatch) => {
+        try {
+            const savedBoard = await boardService.addComment(boardId, groupId, taskId, newComment)
+            dispatch({ type: 'UPDATE_BOARD', board: savedBoard })
+        } catch (err) {
+            console.error('err:', err)
         }
     }
 }

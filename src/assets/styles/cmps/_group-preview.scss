@@ -1,6 +1,7 @@
 .group-preview {
     margin-bottom: rem(35px);
     font-family: roboto, rubik, sans-serif;
+    
 
     & .group-header-name {
         & .dots {
@@ -54,11 +55,11 @@
             color: var(--secondary-text-color);
             margin-left: var(--spacing-xs);
         }
+        &:hover .group-task-count{
+            opacity: 1;
+        }
     }
 
-    &:hover .group-task-count{
-        opacity: 1;
-    }
 
     .dropdown:hover .dropdown-content {
         display: flex;

@@ -38,7 +38,7 @@
             padding-bottom: 6px;
             font-size: 13px;
             transition: color .2s;
-            transform: translateX(60px);
+            transform: translateX(45px);
             z-index: 10;
             font-size: 27px;
 
@@ -216,6 +216,8 @@
             padding: 4px 8px;
             height: 32px;
             line-height: 24px;
+            font-size: rem(14px);
+            font-family: roboto, rubik, sans-serif;
         }
     }
 }
@@ -290,13 +292,13 @@
         }
 
         &.is-open {
-            min-width: 280px;
+            min-width: 260px;
         }
 
         &.is-open .open-btn {
             position: absolute;
             top: 25px;
-            left: rem(268px);
+            left: rem(250px);
         }
 
         .open-btn {
@@ -327,7 +329,7 @@
     .sub-sidebar-container {
 
         &.is-open .open-btn {
-            left: rem(303px);
+            left: rem(285px);
             
         }
 
@@ -343,7 +345,7 @@
         // z-index: 40;
 
         &.is-open .open-btn {
-            left: rem(270px);
+            left: rem(250px);
         }
 
         .open-btn {

@@ -78,7 +78,7 @@
                     align-items: center;
                     justify-content: center;
                     border-radius: 4px;
-                    font-size: 14px;
+                    font-size: rem(14px);
                     width: calc(100% - 8px);
                     height: calc(100% - 8px);
 
@@ -103,7 +103,7 @@
                     width: calc(100% - 8px);
                     height: calc(100% - 8px);
                     border-radius: 4px;
-                    font-size: 14px;
+                    font-size: rem(14px);
 
                     &:hover {
                         background-color: var(--primary-background-hover-color);
@@ -114,9 +114,8 @@
     }
 
     .side-panel-actions {
-        margin: 20px 0;
+        margin: rem(20px) 0;
         .left-side-actions {
-        //   color: $primary-color;
           font-size: rem(14px);
     
           > * {
@@ -126,10 +125,10 @@
     
         .update-btn {
           cursor: pointer;
-          padding: 4px 8px;
-          height: 32px;
-          line-height: 24px;
-          border-radius: 4px;
+          padding: rem(4px) rem(8px);
+          height: rem(32px);
+          line-height: rem(24px);
+          border-radius: rem(4px);
           background-color: var(--primary-color);
           color: #fff;
           border: none;
@@ -139,17 +138,17 @@
     .update-input {
         width: 100%;
         margin: 0;
-        border: 1px solid grey;
+        border: 1px solid rgb(206, 204, 204);
         background: transparent;
-        border-radius: 8px;
-        padding: 10px 20px;
-        // color: $clr2;
+        border-radius: rem(8px);
+        padding: rem(10px) rem(20px);
         cursor: lightblue;
         transition: color 0.15s ease-in-out;
         justify-content: start;
         text-align: left;
         outline: none;
-        margin-bottom: 40px;
+        margin-top: rem(20px);
+        margin-bottom: rem(40px);
 
         .update-btn {
             cursor: pointer;
@@ -160,7 +159,6 @@
 }
 
 .divider-height {
-    width: 1px;
+    width: rem(2px);
     height: 100%;
-    // background-color: $ui-grey-color;
 }

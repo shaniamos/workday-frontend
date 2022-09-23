@@ -35,7 +35,6 @@ export const GroupList = ({groups, onAddGroup, onChangeFilter }) => {
             return { ...group, tasks: group.tasks.filter((task) => regex.test(task.title)) }
         })
         const filtered = filteredTasksGroups.filter(group => group.tasks.length || regex.test(group.title))
-        // console.log('wwwoww')
         setFilteredGroups(filtered)
     }, [filterBy])
 
@@ -47,7 +46,7 @@ export const GroupList = ({groups, onAddGroup, onChangeFilter }) => {
     
     return (
         <section className="group-list">
-            {filteredGroups.map(group => <GroupPreview key={group.id} group={group} onChangeFilter={onChangeFilter} />)}
+            {groups.map(group => <GroupPreview key={group.id} group={group} onChangeFilter={onChangeFilter} />)}
             <button className="btn-add-group sticky-feature" onClick={onAddGroup}>
                 <span className="add-icon"><GrAdd /></span> Add New Group
             </button>
