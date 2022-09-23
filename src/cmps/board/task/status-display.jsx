@@ -7,7 +7,7 @@ export const StatusTypeDisplay = ({ label, value, options }) => {
 
     const getColorByValue = (value) => {
         const option = options.find(option => option.title === value)
-        if (!option) return '--color-navy-selected' //default bgColor
+        if (!option) return '--layout-border-color' //default bgColor
         return option.id
     }
     const onOpenLabels = () => {
