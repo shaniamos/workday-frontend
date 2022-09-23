@@ -46,6 +46,9 @@ export const TaskPreview = ({ task, groupId, groupColor, provided }) => {
         const duplicateTask = { ...task }
         duplicateTask.id = utilService.makeId()
         duplicateTask.lastUpdated = Date.now()
+        if (duplicateTask.comments || duplicateTask.comments.length) {
+            duplicateTask.comments.forEach(comment => comment.id = utilService.makeId())
+        }
         dispatch(addTask(boardId, groupId, duplicateTask))
     }
 
@@ -57,7 +60,7 @@ export const TaskPreview = ({ task, groupId, groupColor, provided }) => {
     let date = new Date(1663091776159)
     return (
         // <div className="preview-full-task flex" {...provided.dragHandleProps} {...provided.draggableProps} ref={provided.innerRef}>
-            <div className="preview-full-task flex"> 
+        <div className="preview-full-task flex">
             <div className="dropdown">
                 <div ><HiOutlineDotsHorizontal className="dot" /></div>
                 <div className="dropdown-content">
