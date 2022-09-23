@@ -33,8 +33,6 @@ export function TaskEdit() {
     useEffectUpdate(() =>
         dispatch(updateTask(boardId, groupId, task)), [task])
 
-
-
     const loadTask = async () => {
         const groupIdx = board.groups.findIndex(group => group.id === groupId)
         const task = board.groups[groupIdx].tasks.find(task => task.id === taskId)
@@ -63,10 +61,6 @@ export function TaskEdit() {
     }
 
     const onAddComment = async (newComment) => {
-        // console.log('newComment', newComment);
-        // console.log('boardId', boardId);
-        // console.log('groupId', groupId);
-        // console.log('task.id', task.id);
         dispatch(addComment(boardId, groupId, task.id, newComment))
     }
 
@@ -74,7 +68,7 @@ export function TaskEdit() {
         <section className="task-edit-container open">
             <div className="main-screen" onClick={onCloseModal}></div>
             <section className="task-edit">
-                 <Link to={`/board/${params.id}`}><GoX /></Link>
+                 <Link to={`/board/${params.id}`}><GoX className="task-exit-btn"/></Link>
                 <form className="editable-heading" onSubmit={onUpdateTask}>
                     <input className="clean-input" {...register('title', 'text')} />
                 </form>
@@ -95,22 +89,10 @@ export function TaskEdit() {
                             }}
                         >Activity
                         </a>
-
                     </div>
-                    {/* <Link to={`/board/${params.id}`} className="close-modal">X</Link> */}
                 </div>
-
-
                 {toggle ? <TaskActivity task={task} /> : <TaskComment task={task} onRemoveComment={onRemoveComment} onAddComment={onAddComment} />}
-
-
             </section>
         </section>
     )
 }
-
-// {labels && labels.map(label => {
-//     const labelName = label.name
-//     const labelValue = task[labelName]
-//     return <StatusTypeDisplay key={label.name} label={`${label.name}`} value={labelValue} options={label.options} />
-// })}
