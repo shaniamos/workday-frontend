@@ -59,6 +59,7 @@
 
             .btn-open-link {
                 display: none;
+                margin-left: auto;
 
                 @include for-narrow-layout {
                     display: block;
@@ -75,7 +76,8 @@
                 }
             }
             &:hover .btn-open-task{
-                opacity: 1;
+                opacity: .7;
+
             }
             .btn-updates-count {
                 display: flex;
