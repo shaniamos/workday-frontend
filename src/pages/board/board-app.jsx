@@ -32,9 +32,9 @@ export const BoardApp = () => {
         }
     }
 
-    // if (!boards) return <section className='monday-loader-page'>
-    //     <img className='monday-loader-animation' src="https://cdn.monday.com/images/loader/loader.gif" alt="" />
-    // </section>
+    if (!boards) return <section className='workday-loader-page'>
+        <img className='workday-loader-gif' src='../../assets/imgs/loader.gif' alt="loader" />
+    </section>
 
     return (
         <section className="board-app flex">
