@@ -64,11 +64,16 @@
             justify-content: space-around;
             align-items: center;
 
-
-            .like-post-wrapper {
+            .action-icon {
+                font-size: rem(20px);
+                padding-right: 3px;
+            }
+           
+            .like-post-area {
                 height: 100%;
                 width: 100%;
                 display: flex;
+                border-right: 1px solid rgb(206, 204, 204);
 
                 align-items: center;
                 justify-content: center;
@@ -89,7 +94,7 @@
 
             }
 
-            .reply-post-wrapper {
+            .reply-post-area {
                 height: 100%;
                 width: 100%;
                 display: flex;
@@ -158,7 +163,24 @@
 
 }
 
-.divider-height {
-    width: rem(2px);
-    height: 100%;
+@include for-mobile-layout{
+  .task-edit {
+    // width: 400px;
+      .item-updates-container {
+       
+       .update-input {
+           width: 400px;
+           
+        }
+        .user-update-card {
+            width: 400px;
+        }
+        .user-detalis {
+            
+            width: 400px;
+        }
+    }
+    
 }
+}
+
