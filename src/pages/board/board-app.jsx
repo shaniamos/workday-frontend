@@ -41,7 +41,7 @@ export const BoardApp = () => {
             <MainSidebar />
             <UserMsg boards={boards} />
             <SubSidebar isOpen={true}  />
-            <BoardDetails onChangeFilter={onChangeFilter} />
+            <BoardDetails boards={boards} onChangeFilter={onChangeFilter} />
             <Outlet />
         </section>
     )
