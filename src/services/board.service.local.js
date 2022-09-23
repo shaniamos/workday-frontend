@@ -66,7 +66,7 @@ function saveBoard(board) {
         return storageService.put(STORAGE_KEY, board)
         // add board
     } else {
-        board = _createBoard(board)
+        if (!board.groups) board = _createBoard(board)
         return storageService.post(STORAGE_KEY, board)
     }
 }

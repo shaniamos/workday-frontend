@@ -16,11 +16,12 @@ import { HiOutlineArchive } from 'react-icons/hi'
 import { useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { useNavigate, NavLink, useLocation } from 'react-router-dom'
-import { loadBoards, removeBoard } from '../../store/actions/board.action.js'
+import { addBoard, loadBoards, removeBoard } from '../../store/actions/board.action.js'
 import { NewBoardMoadl } from "../board/new-board-modal.jsx"
 import { Search } from "../search.jsx"
 import { useEffect } from 'react'
 import BoardNavIcon from '../../assets/SVGs/BoardNavIcon.svg'
+import { utilService } from '../../services/util.service.js'
 
 
 export function SubSidebar({ isOpen }) {
@@ -72,6 +73,33 @@ export function SubSidebar({ isOpen }) {
             console.error(err)
         }
     }
+
+    const onDuplicateBoard = async (board) => {
+        const duplicateBoard = { ...board }
+        delete duplicateBoard._id
+        duplicateBoard.lastUpdated = Date.now()
+        // if (duplicateBoard.groups) {
+        //     duplicateBoard.groups.forEach(group => {
+        //         console.log(group)
+        //         group.id = utilService.makeId()
+        //         if (duplicateBoard.group.tasks) {
+        //             duplicateBoard.group.tasks.forEach(task => {
+        //                 task.id = utilService.makeId()
+        //                 if (duplicateBoard.group.task.comments) {
+        //                     duplicateBoard.group.task.comments.forEach(comment => comment.id = utilService.makeId())
+        //                 }
+        //             })
+        //         }
+        //     })
+        // }
+        try {
+            const newBoard = await dispatch(addBoard(duplicateBoard))
+            navigate(`/board/${newBoard._id}`)
+        } catch (err) {
+            console.error(err)
+        }
+    }
+
     // const styleSubSidebar = (currLocation.pathname === '/workspace') ? '{display: flex}' : ''
     const sideBarClassName = isNavOpen ? 'is-open' : ''
     // style={styleSubSidebar}
@@ -116,7 +144,7 @@ export function SubSidebar({ isOpen }) {
                                                 toggleDropdown()
                                             }} ><HiDotsHorizontal className="points" />
                                                 {isDropDownOpen && <div className="dropdown-content ">
-                                                    <i><HiOutlineDocumentDuplicate className="icon-dropdown" /> Duplicate Board</i>
+                                                    <i onClick={() => onDuplicateBoard(board)}><HiOutlineDocumentDuplicate className="icon-dropdown" /> Duplicate Board</i>
                                                     <i><RiPencilLine className="icon-dropdown" /> Rename</i><hr />
                                                     <i><HiOutlineArchive className="icon-dropdown" /> Archive</i>
                                                     <i onClick={(ev) => {
