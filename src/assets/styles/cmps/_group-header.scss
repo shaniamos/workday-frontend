@@ -92,6 +92,7 @@
         .task-name-area {
             width: rem(233px);
             background-color: var(--primary-background-color);
+            border-top-left-radius: 4px;
 
             @include for-narrow-layout {
                 width: rem(400px);
