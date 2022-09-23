@@ -126,8 +126,10 @@ async function saveGroup(boardId, group) {
         // add group
         else {
             group.id = utilService.makeId()
-            group.style = {}
-            group.tasks = []
+            if (!group.tasks) {
+                group.style = {}
+                group.tasks = []
+            }
             board.groups.push(group)
         }
         return storageService.put(STORAGE_KEY, board)
@@ -178,7 +180,7 @@ async function removeComment(boardId, groupId, taskId, commentIdx) {
         board.groups[groupIdx].tasks[taskIdx].comments.splice(commentIdx, 1)
         return storageService.put(STORAGE_KEY, board)
     }
-    catch(err) {
+    catch (err) {
         console.error(err, 'Cannot delete comment')
         throw err
     }
@@ -200,14 +202,13 @@ async function removeTask(boardId, groupId, taskId) {
 async function addComment(boardId, groupId, taskId, newCommentTxt) {
     try {
         const newUpdate = createComment(newCommentTxt)
-        console.log('newComment', newUpdate);
         const board = await getBoardById(boardId)
         const groupIdx = board.groups.findIndex(group => group.id === groupId)
         const taskIdx = board.groups[groupIdx].tasks.findIndex(task => task.id === taskId)
         board.groups[groupIdx].tasks[taskIdx].comments.unshift(newUpdate)
         return storageService.put(STORAGE_KEY, board)
     }
-    catch(err) {
+    catch (err) {
         console.error(err, 'Add comment failed');
         throw err
     }

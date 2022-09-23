@@ -1,7 +1,7 @@
 import { useDispatch } from "react-redux"
 import { useParams } from "react-router-dom"
 import { useFormRegister } from "../../../hooks/useFormRegister.js"
-import { removeGroup, updateGroup } from "../../../store/actions/board.action.js"
+import { addGroup, removeGroup, updateGroup } from "../../../store/actions/board.action.js"
 import { TaskList } from "../task/task-list.jsx"
 import { GroupHeader } from "./group-header.jsx"
 // ICONS
@@ -12,6 +12,7 @@ import { IoChevronDown } from 'react-icons/io5'
 import { BiDotsHorizontalRounded } from "./group-header.jsx"
 import { useState } from "react"
 import { AreYouSureModal } from "../task/are-you-sure-modal.jsx"
+import { utilService } from "../../../services/util.service.js"
 
 export const GroupPreview = ({ group }) => {
     const params = useParams()
@@ -21,21 +22,34 @@ export const GroupPreview = ({ group }) => {
         title: group.title
     })
 
+    const boardId = params.id
+
     const onRemoveGroup = () => {
         toggleNewBoardModal()
-        const boardId = params.id
         dispatch(removeGroup(boardId, group.id))
     }
 
     const onUpdateGroup = (event) => {
         event.preventDefault()
         group.title = newGroup.title
-        const boardId = params.id
         dispatch(updateGroup(boardId, group))
     }
 
     const toggleNewBoardModal = () => {
         setBtnClicked(!isDeleteBtnClicked)
+    }
+
+    const onDuplicateGroup = () => {
+        const duplicateGroup = { ...group }
+        delete duplicateGroup.id
+        duplicateGroup.lastUpdated = Date.now()
+        if (duplicateGroup.tasks) {
+            duplicateGroup.tasks.forEach(task => task.id = utilService.makeId())
+            if (duplicateGroup.tasks.comments) {
+                duplicateGroup.tasks.comments.forEach(comment => comment.id = utilService.makeId())
+            }
+        }
+        dispatch(addGroup(boardId, duplicateGroup))
     }
 
     return (
@@ -46,7 +60,7 @@ export const GroupPreview = ({ group }) => {
                     <div ><HiOutlineDotsHorizontal className="dots" /></div>
                     <div className="dropdown-content">
                         <a onClick={toggleNewBoardModal}>< MdDeleteOutline /> Delete Gruop</a>
-                        <a><HiOutlineDocumentDuplicate /> Duplicate</a>
+                        <a onClick={onDuplicateGroup}><HiOutlineDocumentDuplicate /> Duplicate</a>
                     </div>
                 </div>
                 <div className="questModal">
