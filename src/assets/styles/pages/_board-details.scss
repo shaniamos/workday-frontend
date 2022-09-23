@@ -107,13 +107,14 @@
         }
 
         & .board-details-empty-content {
-            display: grid;
-            margin-top: 24px;
-            align-items: stretch;
+            position: absolute;
+            top: rem(275px);
+            left: rem(110px);
+
 
             & span {
                 font-weight: 400;
-                font-size: 18px;
+                font-size: rem(18px);
                 color: var(--primary-text-color);
             }
         }
