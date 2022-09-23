@@ -46,9 +46,9 @@ export const TaskPreview = ({ task, groupId, groupColor, provided }) => {
         const duplicateTask = { ...task }
         duplicateTask.id = utilService.makeId()
         duplicateTask.lastUpdated = Date.now()
-        if (duplicateTask.comments || duplicateTask.comments.length) {
-            duplicateTask.comments.forEach(comment => comment.id = utilService.makeId())
-        }
+        // if (duplicateTask.comments || duplicateTask.comments.length) {
+        //     duplicateTask.comments.forEach(comment => comment.id = utilService.makeId())
+        // }
         dispatch(addTask(boardId, groupId, duplicateTask))
     }
 
