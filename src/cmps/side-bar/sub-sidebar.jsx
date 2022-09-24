@@ -17,8 +17,7 @@ import { addBoard, loadBoards, removeBoard } from '../../store/actions/board.act
 import { NewBoardMoadl } from "../board/new-board-modal.jsx"
 import { Search } from "../search.jsx"
 import { useEffect } from 'react'
-import BoardNavIcon from '../../assets/SVGs/BoardNavIcon.svg'
-import { utilService } from '../../services/util.service.js'
+import BoardNavIcon from '../../assets/svgs/BoardNavIcon.svg'
 
 
 export function SubSidebar({ isOpen }) {
