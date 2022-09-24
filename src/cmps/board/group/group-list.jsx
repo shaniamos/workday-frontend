@@ -4,7 +4,7 @@ import { useEffect } from "react"
 import { useSelector } from "react-redux"
 import { useState } from "react"
 
-export const GroupList = ({ groups, onAddGroup, onChangeFilter }) => {
+export const GroupList = ({ members, groups, onAddGroup, onChangeFilter }) => {
     const filterBy = useSelector(state => state.boardModule.filterBy)
     const [filteredGroups, setFilteredGroups] = useState(groups)
     const [sort, setSort] = useState('itemTitle')
@@ -33,7 +33,7 @@ export const GroupList = ({ groups, onAddGroup, onChangeFilter }) => {
     }
     return (
         <section className="group-list">
-            {groups.map(group => <GroupPreview key={group.id} group={group} onChangeFilter={onChangeFilter} sortGroup={onSort} />)}
+            {groups.map(group => <GroupPreview key={group.id} members={members} group={group} onChangeFilter={onChangeFilter} sortGroup={onSort} />)}
             <button className="btn-add-group sticky-feature" onClick={onAddGroup}>
                 <span className="add-icon"><GrAdd /></span> Add New Group
             </button>

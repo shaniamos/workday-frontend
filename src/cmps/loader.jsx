@@ -1,4 +1,5 @@
-export const Loader1 = <div class="cssload-loader-inner">
+export const Loader = () => {
+	return <div class="cssload-loader-inner">
 		<div class="cssload-cssload-loader-line-wrap-wrap">
 			<div class="cssload-loader-line-wrap"></div>
 		</div>
@@ -15,9 +16,10 @@ export const Loader1 = <div class="cssload-loader-inner">
 			<div class="cssload-loader-line-wrap"></div>
 		</div>
 	</div>
+}
 
 
-//CSS For Loader1 
+//CSS For Loader
 // .cssload-loader-inner {
 //     bottom: 0;
 //     height: 120px;

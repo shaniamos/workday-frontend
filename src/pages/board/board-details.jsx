@@ -70,7 +70,7 @@ export const BoardDetails = ({ boards, onChangeFilter }) => {
         <section className="board-details">
             {(board && boards.length) && <BoardHeader board={board} onAddGroup={onAddGroup} onChangeFilter={onChangeFilter} />}
             {(board && boards.length) && <div className='board-content'>
-                < GroupList groups={board.groups} onAddGroup={onAddGroup} onChangeFilter={onChangeFilter} />
+                < GroupList members={board.members} groups={board.groups} onAddGroup={onAddGroup} onChangeFilter={onChangeFilter} />
             </div>}
             {!boards.length && <section className='board-details-empty'>
                 <div className='board-details-empty-header'>

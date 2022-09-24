@@ -2,13 +2,15 @@ const INITIAL_STATE = {
     boards: [],
     selectedBoard: null,
     filterBy: { txt: '' },
-    isLoading: true,
-
+    isLoading: false,
+    sortBy: null,
 }
 
 export function boardReducer(state = INITIAL_STATE, action) {
 
     switch (action.type) {
+        case 'SET_LOADING':
+            return { ...state, isLoading: action.isLoading }
         case 'SET_BOARDS':
             return { ...state, isLoading: false, boards: action.boards }
         case 'SET_SELECTED_BOARD':
@@ -22,14 +24,13 @@ export function boardReducer(state = INITIAL_STATE, action) {
         case 'UPDATE_BOARD':
             return {
                 ...state, boards: state.boards.map(board =>
-                    board._id === action.board._id ? action.board : board),
-                selectedBoard: action.board
+                    board._id === action.board._id ? action.board : board), selectedBoard: action.board
             }
         case 'SET_FILTER_BY':
             return { ...state, filterBy: { ...action.filterBy } }
-
-        case 'SET_LOADING':
-            return { ...state, isLoading: action.isLoading }
+        case 'SET_SORT_BY':
+            return action.sortBy ? { ...state, sortBy: { ...state.sortBy, ...action.sortBy } }
+                : { ...state, sortBy: null }
         default:
             return state;
     }

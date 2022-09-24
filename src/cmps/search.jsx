@@ -24,7 +24,7 @@ export const Search = ({onChangeFilter, contentSearch, sortOption}) => {
                     <input
                         className="board-search" autoComplete="off" type="text" name="txt" id="txt"
                         value={txt}  placeholder= " Search" onChange={handleChange}
-                        autoFocus />            
+                         />            
                 </div>
         </form>
     )
