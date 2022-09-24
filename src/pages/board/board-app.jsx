@@ -18,13 +18,8 @@ export const BoardApp = () => {
         dispatch(loadBoards(filterBy))
     }, [params.id])
 
-    //  CR - function that called filter won't do sort
-    // const onChangeFilter = async (filterBy, sortBy) => {
     const onChangeFilter = async (filterBy, sortBy) => {
         try {
-            // if (contentSearch === 'boards') await dispatch(loadBoards(filterBy))
-            // else  await dispatch(setFilterBy(filterBy))
-            // CR - why not two seperated functions?
             await dispatch(setFilterBy(filterBy))
         }
         catch (err) {

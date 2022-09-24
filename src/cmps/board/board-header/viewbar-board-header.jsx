@@ -58,7 +58,7 @@ export function ViewbarBoardHeader({ board, onAddGroup, onChangeFilter }) {
                 </section>
             </div>
                 <div className="search-area">
-                    <Search contentSearch={'items'} onChangeFilter={onChangeFilter}/>
+                    <Search onChangeFilter={onChangeFilter}/>
                 </div>
         </div>
     )
