@@ -9,10 +9,8 @@ import { HiOutlineDotsHorizontal } from 'react-icons/hi' //More
 import { MdDeleteOutline } from 'react-icons/md'//Delete
 import { HiOutlineDocumentDuplicate } from 'react-icons/hi'//Duplicate
 import { IoChevronDown } from 'react-icons/io5'
-import { BiDotsHorizontalRounded } from "./group-header.jsx"
 import { useState } from "react"
 import { AreYouSureModal } from "../task/are-you-sure-modal.jsx"
-import { utilService } from "../../../services/util.service.js"
 import { GroupFooter } from "./group-footer.jsx"
 
 export const GroupPreview = ({ group, sortGroup }) => {

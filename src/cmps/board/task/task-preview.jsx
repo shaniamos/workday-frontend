@@ -12,11 +12,10 @@ import { LastUpdated } from "../task/last-updated.jsx"
 // ICONS
 import { RiArrowRightSLine } from 'react-icons/ri' //subitem
 import { TbArrowsDiagonal } from 'react-icons/tb' //open item
-import { BiMessageRoundedAdd } from 'react-icons/bi' //empty updates, with updates
 import { HiOutlineDotsHorizontal } from 'react-icons/hi' //More
 import { MdDeleteOutline } from 'react-icons/md'//Delete
 import { HiOutlineDocumentDuplicate } from 'react-icons/hi'//Duplicate
-import { ReactComponent as NoneUpdatesIcon } from '../../../assets/SVGs/NoneUpdatesIcon.svg'
+import { ReactComponent as NoneUpdatesIcon } from '../../../assets/svgs/NoneUpdatesIcon.svg'
 
 
 export const TaskPreview = ({ task, groupId, groupColor, provided }) => {

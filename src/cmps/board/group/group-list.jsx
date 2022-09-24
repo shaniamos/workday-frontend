@@ -7,7 +7,7 @@ import { useState } from "react"
 export const GroupList = ({ groups, onAddGroup, onChangeFilter }) => {
     const filterBy = useSelector(state => state.boardModule.filterBy)
     const [filteredGroups, setFilteredGroups] = useState(groups)
-    const [sort, setSort] = useState('itemTitle')
+    const [sort, setSort] = useState('')
 
     useEffect(() => {
         filterGroupsAndTasks()
@@ -20,6 +20,16 @@ export const GroupList = ({ groups, onAddGroup, onChangeFilter }) => {
             return { ...group, tasks: group.tasks.filter((task) => regex.test(task.title)) }
         })
         const filtered = filteredTasksGroups.filter(group => group.tasks.length || regex.test(group.title))
+        filtered.forEach(group => {
+            if (sort === 'itemTitle') {
+                group.tasks.sort((a, b) => a.title.localeCompare(b.title))
+                console.log(group.tasks)
+            } else if (sort === 'lastUpdated') {
+                group.tasks.sort((a, b) => b.lastUpdated - a.lastUpdated)
+            } else if (sort === 'deadline') {
+                group.tasks.sort((a, b) => b.deadline - a.deadline)
+            }
+        })
         setFilteredGroups(filtered)
     }
 
