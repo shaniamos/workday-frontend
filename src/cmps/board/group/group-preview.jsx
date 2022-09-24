@@ -13,6 +13,7 @@ import { BiDotsHorizontalRounded } from "./group-header.jsx"
 import { useState } from "react"
 import { AreYouSureModal } from "../task/are-you-sure-modal.jsx"
 import { utilService } from "../../../services/util.service.js"
+import { GroupFooter } from "./group-footer.jsx"
 
 export const GroupPreview = ({ group, sortGroup }) => {
     const params = useParams()
@@ -82,7 +83,7 @@ export const GroupPreview = ({ group, sortGroup }) => {
             {/* Group columns identifier (color, checkbox, task name, persons, status, priority....) */}
             <GroupHeader groupColor={group.colorId} sortGroup={sortGroup} />
             <TaskList tasks={group.tasks} groupId={group.id} groupColor={group.colorId} />
-            {/* TODO <GroupFooter/> (Columns Summary) */}
+            <GroupFooter tasks={group.tasks} />
         </section>
     )
 }

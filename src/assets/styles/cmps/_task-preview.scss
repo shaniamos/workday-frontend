@@ -2,11 +2,13 @@
     .task-preview {
         cursor: pointer;
         font-family: roboto, Rubik, sans-serif;
+
         &:hover {
             // opacity: .8;
             // background-color: var(--ui-border-color);
             // box-shadow: 4px 3px 6px -3px var(--ui-border-color)
         }
+
         .cell {
             @include cell;
             font-size: rem(14px);
@@ -15,7 +17,7 @@
         }
 
         .task-name-area {
-            
+
             // width: 200px;
             background-color: var(--primary-background-color);
 
@@ -73,16 +75,22 @@
                     opacity: 0;
                     margin-inline: rem(15px);
                     padding-top: 5px;
+
                     .open-icon {
                         font-size: rem(18px);
                         padding-right: 3px;
                     }
                 }
             }
-            &:hover .btn-open-task{
+            .btn-update-link {
+                height: 100%;
+            }
+
+            &:hover .btn-open-task {
                 opacity: .7;
 
             }
+
             .btn-updates-count {
                 display: flex;
                 align-items: center;
@@ -93,10 +101,12 @@
                 border-left: 1px solid var(--layout-border-color);
                 transition: color 200ms ease;
                 margin-left: auto;
+
                 &:hover {
                     color: var(--primary-color);
                 }
             }
+
             .editable-heading {
                 @include editable-heading;
 
@@ -106,6 +116,7 @@
                 }
             }
         }
+
         .persons-header {
             width: rem(150px);
             @include task-cell-with-content;
@@ -230,6 +241,7 @@
         }
 
     }
+
     &:hover {
         & .task-name-area {
             .task-group-color {
@@ -237,7 +249,7 @@
             }
         }
     }
-   
+
 }
 
 
@@ -245,8 +257,7 @@
 /* The container <div> - needed to position the dropdown content */
 .label-dropdown {
     position: relative;
-    display: inline-block;
-
+    
 
     /* Dropdown button on hover & focus */
     .btn-open-label-drop:hover,

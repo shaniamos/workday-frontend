@@ -22,10 +22,10 @@ export const StatusTypeDisplay = ({ label, value, options, setStatusOrPriority }
     }
     return <React.Fragment>
         <div className={`label-dropdown ${isLabelsOpen}`}>
-            <div className="main-screen" onClick={onCloseLabels}></div>
             <div className="cell label-type status-header btn-open-label-drop" onClick={onOpenLabels} style={{ backgroundColor: `var(${getColorByValue(value)})` }}>
                 {`${value}`}
             </div>
+            <div className="main-screen" onClick={onCloseLabels}></div>
             <div className={`dropdown-labels-content ${isLabelsOpen} `}>
                 <div className="picker-content" >
                     <div className="picker-list" style={{ gridTemplateRows: `repeat(${options.length}, auto)` }}>

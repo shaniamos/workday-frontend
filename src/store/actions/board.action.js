@@ -177,12 +177,7 @@ export function updateTask(boardId, groupId, task) {
 export function updateStatusOrPiority(boardId, groupId, taskToUpdate) {
     taskToUpdate = {
       ...taskToUpdate,
-      lastUpdated: {
-        _id: 'm101',
-        fullname: 'Tal Elmaliah',
-        imgUrl: 'https://files.monday.com/use1/photos/34311144/thumb_small/34311144-user_photo_2022_09_14_12_46_08.png?1663159568',
-        updatedAt: Date.now(),
-      },
+      lastUpdated: Date.now()
     }
     return async (dispatch) => {
       try {

@@ -36,6 +36,11 @@
             }
             .mobile-navbar-icon {
                 font-size: rem(25px);
+                &>*{
+                    height: 24px;
+                    width: 24px;
+                    
+                }
             }
             .active {
                 background-color: rgb(199, 194, 194);
