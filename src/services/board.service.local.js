@@ -326,6 +326,58 @@ async function filterGroupAndTasks(boardId, filterBy = { txt: '' }, sortBy) {
 
 function _createBoard(board) {
     board._createdAt = Date.now()
+    board.labels = [
+        {
+            name: "status",
+            options: [
+                {
+                    id: "--color-done-green",
+                    title: "Done",
+                    color: "#00c875"
+                },
+                {
+                    id: "--color-orange",
+                    title: "Working on it",
+                    color: "#fdab3d"
+                },
+                {
+                    id: "--color-lipstick",
+                    title: "On Hold",
+                    color: "#ff5ac4"
+                },
+                {
+                    id: "--color-stuck-red",
+                    title: "Stuck",
+                    color: "#e2445c"
+                },
+            ],
+        },
+        {
+            name: "priority",
+            options: [
+                {
+                    id: "--color-error",
+                    title: "Critical",
+                    color: "#d83a52"
+                },
+                {
+                    id: "--color-orange",
+                    title: "High",
+                    color: "#fdab3d"
+                },
+                {
+                    id: "--color-bright-blue",
+                    title: "Medium",
+                    color: "#579bfc"
+                },
+                {
+                    id: "--color-done-green",
+                    title: "Low",
+                    color: "#00c875"
+                },
+            ]
+        }
+    ]
     board.groups = [
         {
             id: utilService.makeId(),
@@ -343,6 +395,7 @@ function _createBoard(board) {
             colorId: '--shareable-color',
         },
     ]
+
     for (let i = 0; i < 5; i++) {
         if (i < 3)
             board.groups[0].tasks.push(_createTask({ title: `Item ${i + 1}` }))

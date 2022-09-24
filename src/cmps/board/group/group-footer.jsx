@@ -37,32 +37,33 @@ export const GroupFooter = ({  tasks }) => {
 
         if(status === 'Done')
             return "#00c875"
-        else if(status === 'Working on it')
+        if(status === 'Working on it')
             return "#fdab3d"
     
-        else if(status === 'On Hold')
+        if(status === 'On Hold')
             return "#ff5ac4"
     
-        else if(status === 'Stuck')
+        if(status === 'Stuck')
             return "#e2445c"
+          
 }
 
     const getPriorityColor = (priority) => {
         if(priority === 'Critical')
             return "#d83a52"
-        else if(priority === 'High')
+        if(priority === 'High')
             return "#fdab3d"
     
-        else if(priority === 'Medium')
+        if(priority === 'Medium')
             return "#579bfc"
 
-        else if(priority === 'Low')
+        if(priority === 'Low')
             return "#00c875"
+  
 }
     return <section className="group-footer flex">
         <div className="invisible1"></div>
-        {/* <div className="invisible2"></div> */}
-        <div className="group-status flex">
+        <div className="group-status-sum flex">
             {sortTasksStatus().map((status, idx) => (
                 <div 
                 key={idx}
@@ -70,7 +71,7 @@ export const GroupFooter = ({  tasks }) => {
                     style={{
                         background: getColor(status),
                         width: 150 / tasks.length,
-                        height: '24px',
+                        height: '24px'
                     }}
                 ></div>
             ))}
