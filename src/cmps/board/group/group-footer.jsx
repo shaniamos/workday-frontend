@@ -90,5 +90,6 @@ export const GroupFooter = ({  tasks }) => {
         </div>
         <div className="invisible3"></div>
         <div className="invisible4"></div>
+        <div className="invisible5"></div>
     </section>
 }
