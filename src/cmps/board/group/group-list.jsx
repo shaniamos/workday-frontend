@@ -7,7 +7,7 @@ import { useState } from "react"
 export const GroupList = ({ groups, onAddGroup, onChangeFilter }) => {
     const filterBy = useSelector(state => state.boardModule.filterBy)
     const [filteredGroups, setFilteredGroups] = useState(groups)
-    const [sort, setSort] = useState('')
+    const [sort, setSort] = useState({sortBy: '', isDescending: 1})
 
     useEffect(() => {
         filterGroupsAndTasks()
@@ -21,22 +21,27 @@ export const GroupList = ({ groups, onAddGroup, onChangeFilter }) => {
         })
         const filtered = filteredTasksGroups.filter(group => group.tasks.length || regex.test(group.title))
         filtered.forEach(group => {
-            if (sort === 'itemTitle') {
-                group.tasks.sort((a, b) => a.title.localeCompare(b.title))
-                console.log(group.tasks)
-            } else if (sort === 'lastUpdated') {
-                group.tasks.sort((a, b) => b.lastUpdated - a.lastUpdated)
-            } else if (sort === 'deadline') {
-                group.tasks.sort((a, b) => b.deadline - a.deadline)
+            if (sort.sortBy === 'itemTitle') {
+                group.tasks.sort((a, b) => a.title.localeCompare(b.title) * sort.isDescending)
+            } else if (sort.sortBy === 'lastUpdated') {
+                group.tasks.sort((a, b) => (b.lastUpdated - a.lastUpdated) * sort.isDescending)
+            } else if (sort.sortBy === 'deadline') {
+                group.tasks.sort((a, b) => (b.deadline - a.deadline) * sort.isDescending)
             }
         })
         setFilteredGroups(filtered)
     }
 
     const onSort = (sortBy) => {
-        setSort(sortBy)
+        console.log(sortBy)
+        const isDescending = sort.isDescending
+        if (sortBy === sort.sortBy) {
+            setSort({...sort, sortBy, isDescending: -isDescending})
+        }
+        else setSort({...sort, sortBy, isDescending: 1})
     }
 
+    console.log(sort)
     return (
         <section className="group-list">
             {filteredGroups.map(group => <GroupPreview key={group.id} group={group} onChangeFilter={onChangeFilter} sortGroup={onSort} />)}
