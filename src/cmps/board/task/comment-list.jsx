@@ -1,15 +1,15 @@
-import { connect } from "formik"
-import { PersonCircle } from "../../person-circle";
+
 import { BiTime } from 'react-icons/bi'
-import { GoX } from 'react-icons/go';//delete or exit
 import { LastUpdated } from "./last-updated";
-import { DesignedTxt } from "./designed-txt.jsx";
 import { PostUpdate } from "./post-comment";
+import { GoX } from 'react-icons/go';//delete or exit
+import { AiOutlineLike } from 'react-icons/ai';//like
+import { BsReply } from 'react-icons/bs';//reply
 
 
 export function CommentList({ comments, onRemoveComment, onAddComment }) {
     return <section className="item-updates-container">
-        <PostUpdate onAddComment={onAddComment}/>
+        <PostUpdate onAddComment={onAddComment} />
         {comments.map(((content, idx) => {
             return (
                 <div className="user-update-card" key={content.byMember._id}>
@@ -20,26 +20,27 @@ export function CommentList({ comments, onRemoveComment, onAddComment }) {
                                 <h1>{content.byMember.fullname}</h1>
                             </div>
 
-                                <div className="time flex align-center">
-                                    <BiTime />
-                                    <LastUpdated lastUpdated={content.createdAt} />
-                                    <a className="delete-update-btn" onClick={(ev) => {
-                                        ev.stopPropagation();
-                                        onRemoveComment(idx);
-                                    }}><GoX /></a>
-                                </div>
+                            <div className="time flex align-center">
+                                <BiTime />
+                                <LastUpdated lastUpdated={content.createdAt} />
+                                <a className="delete-update-btn" onClick={(ev) => {
+                                    ev.stopPropagation();
+                                    onRemoveComment(idx);
+                                }}><GoX /></a>
+                            </div>
                         </div>
                     </div>
 
                     <div className="user-text-area" //render html in html
-                         dangerouslySetInnerHTML={{ __html: content.content.txt }}>
+                        dangerouslySetInnerHTML={{ __html: content.content.txt }}>
                     </div>
                     <div className="action-btns flex ">
-                        <div className="like-post-wrapper ">
-                            <div className="like-post btn">Like</div>
+                        <div className="like-post-area ">
+                            <div className="like-post btn"> <AiOutlineLike className='action-icon' />Like</div>
+
                         </div>
-                        <div className="reply-post-wrapper ">
-                            <div className="reply-post btn">Reply</div>
+                        <div className="reply-post-area ">
+                            <div className="reply-post btn"><BsReply className='action-icon'/> Reply</div>
                         </div>
                     </div>
 

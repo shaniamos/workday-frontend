@@ -4,12 +4,12 @@ import { HiOutlineDotsHorizontal } from 'react-icons/hi' //More
 import { TiArrowUnsorted } from 'react-icons/ti' //More
 
 
-export const GroupHeader = ({ groupColor, onChangeFilter }) => {
+export const GroupHeader = ({ groupColor, sortGroup}) => {
     const { filterBy } = useSelector(state => state.boardModule)
 
 
     const onSort = (sortOption) => {
-        onChangeFilter(filterBy, '', sortOption)
+        sortGroup( sortOption)
     }
 
     return (

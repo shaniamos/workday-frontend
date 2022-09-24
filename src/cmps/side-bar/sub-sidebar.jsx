@@ -94,7 +94,6 @@ export function SubSidebar({ isOpen }) {
         // }
         try {
             const newBoard = await dispatch(addBoard(duplicateBoard))
-            console.log(newBoard)
             navigate(`/board/${newBoard._id}`)
         } catch (err) {
             console.error(err)

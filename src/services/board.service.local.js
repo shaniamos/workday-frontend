@@ -268,61 +268,61 @@ async function updateTask(boardId, groupId, task) {
 }
 
 // filter groups and tasks title
-// async function filterGroupAndTasks(boardId, filterBy = { txt: '' }, sortBy) {
-//     try {
-//         const board = await getBoardById(boardId)
-//         let groups = [...board.groups]
-//         let filteredGroups = groups
+async function filterGroupAndTasks(boardId, filterBy = { txt: '' }, sortBy) {
+    try {
+        const board = await getBoardById(boardId)
+        let groups = [...board.groups]
+        let filteredGroups = groups
 
-//         if (filterBy.txt) {
-//             const regex = new RegExp(filterBy.txt, 'i')
-//             filteredGroups = groups.filter((group) => {
-//                 if (regex.test(group.title)) {
-//                     return group
-//                 }
-//                 else {
-//                     const filteredTasks = group.tasks.filter((task) => {
-//                         if (regex.test(task.title))
-//                             return task
-//                     })
-//                     group.tasks = filteredTasks
-//                     if (group.tasks.length) return group
-//                 }
-//             })
-//         }
-//         if (sortBy) {
-//             switch (sortBy) {
-//                 case 'itemTitle':
-//                     filteredGroups.forEach(group => {
-//                         group.tasks.sort((a, b) => a.title.localeCompare(b.title))
-//                     })
-//                     break
-//                 // case 'personName':
-//                 //     filteredGroups.forEach(group => {
-//                 //         group.tasks.forEach(task => {
-//                 //             task.persons.sort((a ,b) => a.fullname.localeCompare(b.fullname))
-//                 //         })
-//                 //     })
-//                 // break
-//                 case 'lastUpdate':
-//                     filteredGroups.forEach(group => {
-//                         group.tasks.sort((a, b) => b.lastUpdated - a.lastUpdated)
-//                     })
-//                     break
-//                 case 'deadline':
-//                     filteredGroups.forEach(group => {
-//                         group.tasks.sort((a, b) => b.deadline - a.deadline)
-//                     })
-//                     break
-//             }
-//         }
-//         return filteredGroups
-//     }
-//     catch (err) {
-//         console.error(err);
-//         throw err
-//     }
-// }
+        if (filterBy.txt) {
+            const regex = new RegExp(filterBy.txt, 'i')
+            filteredGroups = groups.filter((group) => {
+                if (regex.test(group.title)) {
+                    return group
+                }
+                else {
+                    const filteredTasks = group.tasks.filter((task) => {
+                        if (regex.test(task.title))
+                            return task
+                    })
+                    group.tasks = filteredTasks
+                    if (group.tasks.length) return group
+                }
+            })
+        }
+        // if (sortBy) {
+        //     switch (sortBy) {
+        //         case 'itemTitle':
+        //             filteredGroups.forEach(group => {
+        //                 group.tasks.sort((a, b) => a.title.localeCompare(b.title))
+        //             })
+        //             break
+        //         // case 'personName':
+        //         //     filteredGroups.forEach(group => {
+        //         //         group.tasks.forEach(task => {
+        //         //             task.persons.sort((a ,b) => a.fullname.localeCompare(b.fullname))
+        //         //         })
+        //         //     })
+        //         // break
+        //         case 'lastUpdate':
+        //             filteredGroups.forEach(group => {
+        //                 group.tasks.sort((a, b) => b.lastUpdated - a.lastUpdated)
+        //             })
+        //             break
+        //         case 'deadline':
+        //             filteredGroups.forEach(group => {
+        //                 group.tasks.sort((a, b) => b.deadline - a.deadline)
+        //             })
+        //             break
+        //     }
+        // }
+        return filteredGroups
+    }
+    catch (err) {
+        console.error(err);
+        throw err
+    }
+}
 
 function _createBoard(board) {
     board._createdAt = Date.now()
