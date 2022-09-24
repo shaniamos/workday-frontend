@@ -4,7 +4,7 @@ import { Link, useParams } from "react-router-dom"
 
 import { AreYouSureModal } from "./are-you-sure-modal.jsx"
 import { utilService } from "../../../services/util.service.js"
-import { addTask, removeTask, updateTask } from "../../../store/actions/board.action.js"
+import { addTask, removeTask, updateStatusOrPiority, updateTask } from "../../../store/actions/board.action.js"
 import { useFormRegister } from "../../../hooks/useFormRegister.js"
 import { StatusTypeDisplay } from "../task/status-display.jsx"
 import { PersonCircle } from "../../person-circle.jsx"
@@ -16,11 +16,12 @@ import { BiMessageRoundedAdd } from 'react-icons/bi' //empty updates, with updat
 import { HiOutlineDotsHorizontal } from 'react-icons/hi' //More
 import { MdDeleteOutline } from 'react-icons/md'//Delete
 import { HiOutlineDocumentDuplicate } from 'react-icons/hi'//Duplicate
-import { ReactComponent as NoneUpdatesIcon} from '../../../assets/SVGs/NoneUpdatesIcon.svg'
+import { ReactComponent as NoneUpdatesIcon } from '../../../assets/SVGs/NoneUpdatesIcon.svg'
 
 
 export const TaskPreview = ({ task, groupId, groupColor, provided }) => {
     const labels = useSelector(state => state.boardModule.selectedBoard.labels)
+    const board = useSelector(state => state.boardModule.selectedBoard)
     const [isDeleteBtnClicked, setBtnClicked] = useState(false)
     const dispatch = useDispatch()
     const params = useParams()
@@ -51,6 +52,17 @@ export const TaskPreview = ({ task, groupId, groupColor, provided }) => {
         //     duplicateTask.comments.forEach(comment => comment.id = utilService.makeId())
         // }
         dispatch(addTask(boardId, groupId, duplicateTask))
+    }
+
+    const setStatusOrPriority = (currStatusOrPriority, label) => {
+        if (label === 'priority') {
+            const taskToUpdate = { ...task, priority: currStatusOrPriority }
+            dispatch(updateStatusOrPiority(boardId, groupId, taskToUpdate))
+        }
+        else if (label === 'status') {
+            const taskToUpdate = { ...task, status: currStatusOrPriority }
+            dispatch(updateStatusOrPiority(boardId, groupId, taskToUpdate))
+        }
     }
 
     const toggleNewBoardModal = () => {
@@ -85,8 +97,8 @@ export const TaskPreview = ({ task, groupId, groupColor, provided }) => {
                     <Link to={`/board/${params.id}/${groupId}/${task.id}`} className="btn-open-link">
                         <div className="btn-open-task flex"><TbArrowsDiagonal className="open-icon" /> <span className="open-txt"> Open </span></div>
                     </Link>
-                    <div className="btn-updates-count"><NoneUpdatesIcon/></div>
-                    
+                    <div className="btn-updates-count"><NoneUpdatesIcon /></div>
+
                 </div>
 
                 {/* Persons / Responsbility */}
@@ -96,7 +108,7 @@ export const TaskPreview = ({ task, groupId, groupColor, provided }) => {
                 {labels && labels.map(label => {
                     const labelName = label.name
                     const labelValue = task[labelName]
-                    return <StatusTypeDisplay key={label.name} label={`${label.name}`} value={labelValue} options={label.options} />
+                    return <StatusTypeDisplay setStatusOrPriority={setStatusOrPriority} key={label.name} label={`${label.name}`} value={labelValue} options={label.options} />
                 })}
 
                 {/* DeadLine */}

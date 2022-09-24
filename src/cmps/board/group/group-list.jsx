@@ -10,15 +10,15 @@ export const GroupList = ({ groups, onAddGroup, onChangeFilter }) => {
     const [sort, setSort] = useState('itemTitle')
 
     useEffect(() => {
-        console.log('sort', sort);
-        filteredGroups.forEach(group => {
-            if (sort === 'itemTitle') {
-                group.tasks.sort((a, b) => a.title.localeCompare(b.title))
-            } else if (sort === 'lastUpdated') {
-                group.tasks.sort((a, b) => b.lastUpdated - a.lastUpdated)
-            }
+        // console.log('sort', sort);
+        // filteredGroups.forEach(group => {
+        //     if (sort === 'itemTitle') {
+        //         group.tasks.sort((a, b) => a.title.localeCompare(b.title))
+        //     } else if (sort === 'lastUpdated') {
+        //         group.tasks.sort((a, b) => b.lastUpdated - a.lastUpdated)
+        //     }
             
-        })
+        // })
         const { txt } = filterBy
         const regex = new RegExp(txt, 'i')
         const filteredTasksGroups = groups.map(group => {

@@ -3,9 +3,9 @@
         cursor: pointer;
         font-family: roboto, Rubik, sans-serif;
         &:hover {
-            opacity: .8;
+            // opacity: .8;
             // background-color: var(--ui-border-color);
-            box-shadow: 4px 3px 6px -3px var(--ui-border-color)
+            // box-shadow: 4px 3px 6px -3px var(--ui-border-color)
         }
         .cell {
             @include cell;
@@ -266,7 +266,7 @@
         box-shadow: 0px rem(8px) rem(16px) 0px rgba(0, 0, 0, 0.2);
         color: var(--primary-text-color);
         transition: width .1s;
-        z-index: 2;
+        z-index: 60;
         right: -25%;
 
 

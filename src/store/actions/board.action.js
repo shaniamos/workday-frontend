@@ -174,6 +174,32 @@ export function updateTask(boardId, groupId, task) {
     }
 }
 
+export function updateStatusOrPiority(boardId, groupId, taskToUpdate) {
+    taskToUpdate = {
+      ...taskToUpdate,
+      lastUpdated: {
+        _id: 'm101',
+        fullname: 'Tal Elmaliah',
+        imgUrl: 'https://files.monday.com/use1/photos/34311144/thumb_small/34311144-user_photo_2022_09_14_12_46_08.png?1663159568',
+        updatedAt: Date.now(),
+      },
+    }
+    return async (dispatch) => {
+      try {
+        const savedBoard = await boardService.updateTask(
+          boardId,
+          groupId,
+          taskToUpdate
+        )
+        dispatch({ type: 'UPDATE_BOARD', board: savedBoard })
+        await dispatch(loadBoards())
+      } catch (err) {
+        console.error('err:', err)
+        throw err
+      }
+    }
+  }
+
 //COMMENTS 
 
 //remove comment
