@@ -4,7 +4,7 @@ import { Link, useParams } from "react-router-dom"
 
 import { AreYouSureModal } from "./are-you-sure-modal.jsx"
 import { utilService } from "../../../services/util.service.js"
-import { addTask, removeTask, updateTask } from "../../../store/actions/board.action.js"
+import { addTask, removeTask, updateStatusOrPiority, updateTask } from "../../../store/actions/board.action.js"
 import { useFormRegister } from "../../../hooks/useFormRegister.js"
 import { StatusTypeDisplay } from "../task/status-display.jsx"
 import { AvatarsChain } from "../../avatarsChain.jsx"
@@ -12,16 +12,15 @@ import { LastUpdated } from "../task/last-updated.jsx"
 // ICONS
 import { RiArrowRightSLine } from 'react-icons/ri' //subitem
 import { TbArrowsDiagonal } from 'react-icons/tb' //open item
-import { BiMessageRoundedAdd } from 'react-icons/bi' //empty updates, with updates
 import { HiOutlineDotsHorizontal } from 'react-icons/hi' //More
 import { MdDeleteOutline } from 'react-icons/md'//Delete
 import { HiOutlineDocumentDuplicate } from 'react-icons/hi'//Duplicate
-import { ReactComponent as NoneUpdatesIcon } from '../../../assets/SVGs/NoneUpdatesIcon.svg'
+import { ReactComponent as NoneUpdatesIcon } from '../../../assets/svgs/NoneUpdatesIcon.svg'
 
 
 export const TaskPreview = ({ task, groupId, groupColor, provided }) => {
     const labels = useSelector(state => state.boardModule.selectedBoard.labels)
-
+    const board = useSelector(state => state.boardModule.selectedBoard)
     const [isDeleteBtnClicked, setBtnClicked] = useState(false)
     const dispatch = useDispatch()
     const params = useParams()
@@ -48,10 +47,22 @@ export const TaskPreview = ({ task, groupId, groupColor, provided }) => {
         const duplicateTask = { ...task }
         duplicateTask.id = utilService.makeId()
         duplicateTask.lastUpdated = Date.now()
+        duplicateTask.comments = [...task.comments]
         // if (duplicateTask.comments || duplicateTask.comments.length) {
         //     duplicateTask.comments.forEach(comment => comment.id = utilService.makeId())
         // }
         dispatch(addTask(boardId, groupId, duplicateTask))
+    }
+
+    const setStatusOrPriority = (currStatusOrPriority, label) => {
+        if (label === 'priority') {
+            const taskToUpdate = { ...task, priority: currStatusOrPriority }
+            dispatch(updateStatusOrPiority(boardId, groupId, taskToUpdate))
+        }
+        else if (label === 'status') {
+            const taskToUpdate = { ...task, status: currStatusOrPriority }
+            dispatch(updateStatusOrPiority(boardId, groupId, taskToUpdate ))
+        }
     }
 
     const toggleNewBoardModal = () => {
@@ -99,7 +110,7 @@ export const TaskPreview = ({ task, groupId, groupColor, provided }) => {
                 {labels && labels.map(label => {
                     const labelName = label.name
                     const labelValue = task[labelName]
-                    return <StatusTypeDisplay key={label.name} label={`${label.name}`} value={labelValue} options={label.options} />
+                    return <StatusTypeDisplay setStatusOrPriority={setStatusOrPriority} key={label.name} label={`${label.name}`} value={labelValue} options={label.options} />
                 })}
 
                 {/* DeadLine */}

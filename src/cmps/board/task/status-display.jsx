@@ -2,7 +2,7 @@ import React from "react";
 import { useState } from "react"
 
 
-export const StatusTypeDisplay = ({ label, value, options }) => {
+export const StatusTypeDisplay = ({ label, value, options, setStatusOrPriority }) => {
     const [isLabelsOpen, setIsLabelsOpen] = useState('')
 
     const getColorByValue = (value) => {
@@ -10,6 +10,9 @@ export const StatusTypeDisplay = ({ label, value, options }) => {
         if (!option) return '--layout-border-color' //default bgColor
         return option.id
     }
+
+   
+
     const onOpenLabels = () => {
         setIsLabelsOpen('show')
     }
@@ -24,12 +27,16 @@ export const StatusTypeDisplay = ({ label, value, options }) => {
             </div>
             <div className="main-screen" onClick={onCloseLabels}></div>
             <div className={`dropdown-labels-content ${isLabelsOpen} `}>
-                <div className="picker-content">
-                    <ul className="picker-list" style={{ gridTemplateRows: `repeat(${options.length}, auto)` }}>
+                <div className="picker-content" >
+                    <div className="picker-list" style={{ gridTemplateRows: `repeat(${options.length}, auto)` }}>
                         {options.map(option => {
-                            return <li key={option.id} className="option" style={{ backgroundColor: `var(${option.id})` }} onClick={() => { console.log('Option') }}>{option.title}</li>
+                            return <a  key={option.id} onClick={(ev) => {
+                                ev.stopPropagation()
+                                onCloseLabels()
+                                setStatusOrPriority(option.title, label)
+                            }}  className="option" style={{ backgroundColor: `var(${option.id})`}}  >{option.title}</a>
                         })}
-                    </ul>
+                    </div>
                 </div>
                 {/* TODO picker-footer for edit labels */}
             </div>

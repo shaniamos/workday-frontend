@@ -1,9 +1,7 @@
 import { IoIosArrowDown } from 'react-icons/io' //New item
-import { FaRegUserCircle } from 'react-icons/fa' //Person
-import { CgArrowsScrollV } from 'react-icons/cg' //Sort
 import { BiFilterAlt } from 'react-icons/bi'//Filter
-import { AiOutlineEyeInvisible } from 'react-icons/ai'//Hide
-import { HiOutlineDotsHorizontal } from 'react-icons/hi' //More
+// import { AiOutlineEyeInvisible } from 'react-icons/ai'//Hide
+// import { HiOutlineDotsHorizontal } from 'react-icons/hi' //More
 import { AiOutlinePlusCircle } from 'react-icons/ai' //Plus
 import { HiOutlineInbox } from 'react-icons/hi' //box
 import { useDispatch } from "react-redux"
@@ -11,6 +9,7 @@ import { addTask } from "../../../store/actions/board.action.js"
 import { useState } from "react"
 import { Search } from "../../search.jsx"
 import { utilService } from '../../../services/util.service.js';
+import { FilterBoard } from './filter-board.jsx'
 
 //IoHomeOutline - Main Table
 //RiErrorWarningLine - description
@@ -22,9 +21,7 @@ import { utilService } from '../../../services/util.service.js';
 //BiMessageRounded - with updates 
 //IoIosCheckmarkCircleOutline -checklist 
 
-
 export function ViewbarBoardHeader({ board, onAddGroup, onChangeFilter }) {
-    // const [isSearch, setSearch] = useState(false)
     const [isFilter, setFilter] = useState(false)
 
     const dispatch = useDispatch()
@@ -58,8 +55,13 @@ export function ViewbarBoardHeader({ board, onAddGroup, onChangeFilter }) {
                 </section>
             </div>
                 <div className="search-area">
-                    <Search contentSearch={'items'} onChangeFilter={onChangeFilter}/>
+                    <Search onChangeFilter={onChangeFilter}/>
                 </div>
+                {/* <a onClick={() => setFilter(!isFilter)} className="filter-btn"><BiFilterAlt /> Filter</a>
+                {isFilter && 
+                <FilterBoard  
+                    board={board}
+                /> } */}
         </div>
     )
 }

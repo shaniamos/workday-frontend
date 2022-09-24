@@ -5,11 +5,9 @@ import { TiArrowUnsorted } from 'react-icons/ti' //More
 
 
 export const GroupHeader = ({ groupColor, sortGroup}) => {
-    const { filterBy } = useSelector(state => state.boardModule)
-
 
     const onSort = (sortOption) => {
-        sortGroup( sortOption)
+        sortGroup(sortOption)
     }
 
     return (
@@ -21,7 +19,7 @@ export const GroupHeader = ({ groupColor, sortGroup}) => {
                     <div className="task-group-color task-group-color-header" style={{ backgroundColor: `var(${groupColor})` }}></div>
                     <div className="preview-checkbox"><input className="input-checkbox" type="checkbox" name="" id="" /></div>
 
-                    <button className='sort-btn name' onClick={() => onSort('itemTitle')}  ><TiArrowUnsorted /></button>
+                    <button className='sort-btn name' onClick={() => onSort('itemTitle')}><TiArrowUnsorted /></button>
                     <div className='header-identifier-title'>Item</div>
                 </div>
 

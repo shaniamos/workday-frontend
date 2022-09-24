@@ -4,25 +4,16 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
 import { BoardHeader } from '../../cmps/board/board-header/board-header.jsx'
 import { GroupList } from '../../cmps/board/group/group-list.jsx'
+import { KanbanView } from '../../cmps/kanban/kanban-view.jsx'
 import { addGroup, loadSelectedBoard } from '../../store/actions/board.action.js'
 
 export const BoardDetails = ({ boards, onChangeFilter }) => {
     const board = useSelector(state => state.boardModule.selectedBoard)
     const isLoading = useSelector(state => state.boardModule.isLoading)
-
-    // const filterBy = useSelector(state => state.boardModule.filterBy)
-    // console.log('filterBy', filterBy)
-    // const [newGroups, setNewGroups] = useState([])
+    const [isBoardView, setBoardView] = useState(true)
 
     const dispatch = useDispatch()
     const params = useParams()
-
-    // useEffect(() => {
-    // let groups = filteredGroupsAndTasks()
-    // setNewGroups(groups)
-
-    // }, [filterBy])
-
 
     useEffect(() => {
         dispatch(loadSelectedBoard(params.id))
@@ -34,29 +25,10 @@ export const BoardDetails = ({ boards, onChangeFilter }) => {
         dispatch(addGroup(boardId, group))
     }
 
-    // const filteredGroupsAndTasks = () => {
-    //     let filteredGroups = board.groups
-    //     if (filterBy.txt) {
-    //         console.log('filterBy.txt', filterBy.txt);
-    //         const regex = new RegExp(filterBy.txt, 'i')
-    //         filteredGroups = board.groups.filter((group) => {
-    //             if (regex.test(group.title)) {
-    //                 console.log('group.title', group.title);
-    //                 return group
-    //             }
-    //             else {
-    //                 const filteredTasks = group.tasks.filter((task) => {
-    //                     if (regex.test(task.title))
-    //                         return task
-    //                 })
-    //                 group.tasks = filteredTasks
-    //                 if (group.tasks.length) return group
-    //             }
-    //         })
-    //         return filteredGroups
-    //     }
-    // }
-
+    const toggleView = (currView) => {
+        console.log('currView', currView);
+        setBoardView(currView)
+    }
 
     // if (isLoading) {
     //     return (
@@ -68,10 +40,29 @@ export const BoardDetails = ({ boards, onChangeFilter }) => {
 
     return (
         <section className="board-details">
-            {(board && boards.length) && <BoardHeader board={board} onAddGroup={onAddGroup} onChangeFilter={onChangeFilter} />}
-            {(board && boards.length) && <div className='board-content'>
-                < GroupList members={board.members} groups={board.groups} onAddGroup={onAddGroup} onChangeFilter={onChangeFilter} />
-            </div>}
+            {(board && boards.length) && 
+                    <BoardHeader 
+                        board={board} 
+                        onAddGroup={onAddGroup} 
+                        onChangeFilter={onChangeFilter} 
+                        toggleView={toggleView} 
+                        />}
+            {(board && boards.length) &&
+                <div className='board-content'>
+                    {isBoardView &&
+                     < GroupList
+                        groups={board.groups}
+                        onAddGroup={onAddGroup}
+                        onChangeFilter={onChangeFilter} 
+                        />}
+                    {!isBoardView &&
+                     <KanbanView 
+                        board={board}
+                        groups={board.groups}
+                        onAddGroup={onAddGroup}
+                        />} 
+                </div>}
+               
             {!boards.length && <section className='board-details-empty'>
                 <div className='board-details-empty-header'>
                     <div className='board-details-empty-header-cover'>

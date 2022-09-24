@@ -174,6 +174,27 @@ export function updateTask(boardId, groupId, task) {
     }
 }
 
+export function updateStatusOrPiority(boardId, groupId, taskToUpdate) {
+    taskToUpdate = {
+      ...taskToUpdate,
+      lastUpdated: Date.now()
+    }
+    return async (dispatch) => {
+      try {
+        const savedBoard = await boardService.updateTask(
+          boardId,
+          groupId,
+          taskToUpdate
+        )
+        dispatch({ type: 'UPDATE_BOARD', board: savedBoard })
+        await dispatch(loadBoards())
+      } catch (err) {
+        console.error('err:', err)
+        throw err
+      }
+    }
+  }
+
 //COMMENTS 
 
 //remove comment
