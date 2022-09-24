@@ -39,7 +39,7 @@ export const GroupHeader = ({ groupColor, sortGroup}) => {
                 </div>
 
                 <div className="cell last-updated">
-                    <button className='sort-btn last-update' onClick={() => onSort('lastUpdate')}><TiArrowUnsorted /></button>
+                    <button className='sort-btn last-update' onClick={() => onSort('lastUpdated')}><TiArrowUnsorted /></button>
                     <span>Last Updated</span>
                 </div>
 

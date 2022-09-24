@@ -7,7 +7,7 @@ import { useState } from "react"
 export const GroupList = ({ groups, onAddGroup, onChangeFilter }) => {
     const filterBy = useSelector(state => state.boardModule.filterBy)
     const [filteredGroups, setFilteredGroups] = useState(groups)
-    const [sort, setSort] = useState({sortBy: '', isDescending: 1})
+    const [sort, setSort] = useState({ sortBy: '', isDescending: 1 })
 
     useEffect(() => {
         filterGroupsAndTasks()
@@ -22,26 +22,30 @@ export const GroupList = ({ groups, onAddGroup, onChangeFilter }) => {
         const filtered = filteredTasksGroups.filter(group => group.tasks.length || regex.test(group.title))
         filtered.forEach(group => {
             if (sort.sortBy === 'itemTitle') {
-                group.tasks.sort((a, b) => a.title.localeCompare(b.title) * sort.isDescending)
+                group.tasks.sort((task1, task2) => task1.title.localeCompare(task2.title) * sort.isDescending)
+            } else if (sort.sortBy === 'personName') {
+                group.tasks.sort((task1, task2) => {
+                    if (task1.persons.length && task2.persons.length)
+                        return task1.persons[0].fullname.localeCompare(task2.persons[0].fullname) * sort.isDescending
+                })
             } else if (sort.sortBy === 'lastUpdated') {
-                group.tasks.sort((a, b) => (b.lastUpdated - a.lastUpdated) * sort.isDescending)
+                group.tasks.sort((task1, task2) => (task1.lastUpdated - task2.lastUpdated) * sort.isDescending)
             } else if (sort.sortBy === 'deadline') {
-                group.tasks.sort((a, b) => (b.deadline - a.deadline) * sort.isDescending)
+                group.tasks.sort((task1, task2) => (task1.deadline - task2.deadline) * sort.isDescending)
             }
         })
         setFilteredGroups(filtered)
     }
 
     const onSort = (sortBy) => {
-        console.log(sortBy)
         const isDescending = sort.isDescending
         if (sortBy === sort.sortBy) {
-            setSort({...sort, sortBy, isDescending: -isDescending})
+            setSort({ ...sort, isDescending: -isDescending })
         }
-        else setSort({...sort, sortBy, isDescending: 1})
+        else setSort({ ...sort, sortBy, isDescending: 1 })
+        console.log(sort)
     }
 
-    console.log(sort)
     return (
         <section className="group-list">
             {filteredGroups.map(group => <GroupPreview key={group.id} group={group} onChangeFilter={onChangeFilter} sortGroup={onSort} />)}
