@@ -7,7 +7,7 @@ import { utilService } from "../../../services/util.service.js"
 import { addTask, removeTask, updateStatusOrPiority, updateTask } from "../../../store/actions/board.action.js"
 import { useFormRegister } from "../../../hooks/useFormRegister.js"
 import { StatusTypeDisplay } from "../task/status-display.jsx"
-import { PersonCircle } from "../../person-circle.jsx"
+import { AvatarsChain } from "../../avatarsChain.jsx"
 import { LastUpdated } from "../task/last-updated.jsx"
 // ICONS
 import { RiArrowRightSLine } from 'react-icons/ri' //subitem
@@ -105,7 +105,7 @@ export const TaskPreview = ({ task, groupId, groupColor, provided }) => {
                 </div>
 
                 {/* Persons / Responsbility */}
-                <div className="cell persons-header"> {typeof persons === 'object' && <PersonCircle persons={persons} />}</div>
+                <div className="cell persons-header"> {typeof persons === 'object' && <AvatarsChain task={task} groupId={groupId} assigneeMembers={persons} />}</div>
 
                 {/* ALL Label Type Columns (Status + Priority) */}
                 {labels && labels.map(label => {

@@ -4,7 +4,7 @@ import { useEffect } from "react"
 import { useSelector } from "react-redux"
 import { useState } from "react"
 
-export const GroupList = ({ groups, onAddGroup, onChangeFilter }) => {
+export const GroupList = ({ members, groups, onAddGroup, onChangeFilter }) => {
     const filterBy = useSelector(state => state.boardModule.filterBy)
     const [filteredGroups, setFilteredGroups] = useState(groups)
     const [sort, setSort] = useState({sortBy: '', isDescending: 1})

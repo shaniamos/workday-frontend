@@ -217,8 +217,10 @@ export function addComment(boardId, groupId, taskId, newComment) {
         try {
             const savedBoard = await boardService.addComment(boardId, groupId, taskId, newComment)
             dispatch({ type: 'UPDATE_BOARD', board: savedBoard })
+            showSuccessMsg(`Comment successfully added`)
         } catch (err) {
             console.error('err:', err)
+            showErrorMsg('Cannot add item')
         }
     }
 }
