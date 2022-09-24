@@ -27,21 +27,24 @@ export const GroupList = ({ groups, onAddGroup, onChangeFilter }) => {
                 group.tasks.sort((a, b) => (b.lastUpdated - a.lastUpdated) * sort.isDescending)
             } else if (sort.sortBy === 'deadline') {
                 group.tasks.sort((a, b) => (b.deadline - a.deadline) * sort.isDescending)
+            } else if (sort.sortBy === 'status') {
+                group.tasks.sort((a, b) => b.status.localeCompare(a.status) * sort.isDescending)
+            } else if (sort.sortBy === 'priority') {
+                group.tasks.sort((a, b) => b.priority.localeCompare(a.priority) * sort.isDescending)
             }
         })
         setFilteredGroups(filtered)
     }
 
     const onSort = (sortBy) => {
-        console.log(sortBy)
         const isDescending = sort.isDescending
         if (sortBy === sort.sortBy) {
-            setSort({...sort, sortBy, isDescending: -isDescending})
+            setSort({...sort, sortBy, isDescending: - isDescending})
         }
         else setSort({...sort, sortBy, isDescending: 1})
     }
 
-    console.log(sort)
+    // console.log(sort)
     return (
         <section className="group-list">
             {filteredGroups.map(group => <GroupPreview key={group.id} group={group} onChangeFilter={onChangeFilter} sortGroup={onSort} />)}

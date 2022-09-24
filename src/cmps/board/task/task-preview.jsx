@@ -16,6 +16,7 @@ import { HiOutlineDotsHorizontal } from 'react-icons/hi' //More
 import { MdDeleteOutline } from 'react-icons/md'//Delete
 import { HiOutlineDocumentDuplicate } from 'react-icons/hi'//Duplicate
 import { ReactComponent as NoneUpdatesIcon } from '../../../assets/svgs/NoneUpdatesIcon.svg'
+import { TimeLine } from "../../time-line.jsx"
 
 
 export const TaskPreview = ({ task, groupId, groupColor, provided }) => {
@@ -61,7 +62,7 @@ export const TaskPreview = ({ task, groupId, groupColor, provided }) => {
         }
         else if (label === 'status') {
             const taskToUpdate = { ...task, status: currStatusOrPriority }
-            dispatch(updateStatusOrPiority(boardId, groupId, taskToUpdate ))
+            dispatch(updateStatusOrPiority(boardId, groupId, taskToUpdate))
         }
     }
 
@@ -70,7 +71,7 @@ export const TaskPreview = ({ task, groupId, groupColor, provided }) => {
     }
 
     const { persons, lastUpdated, deadline } = task
-    let date = new Date(deadline? deadline:1663091776159)
+    let date = new Date(deadline ? deadline : 1663091776159)
     return (
         // <div className="preview-full-task flex" {...provided.dragHandleProps} {...provided.draggableProps} ref={provided.innerRef}>
         <div className="preview-full-task flex">
@@ -113,8 +114,14 @@ export const TaskPreview = ({ task, groupId, groupColor, provided }) => {
                     return <StatusTypeDisplay setStatusOrPriority={setStatusOrPriority} key={label.name} label={`${label.name}`} value={labelValue} options={label.options} />
                 })}
 
+
                 {/* DeadLine */}
                 <LastUpdated lastUpdated={lastUpdated} />
+
+                {/* TimeLine */}
+                <div className="cell timeline-header">
+                    <TimeLine task={task} board={board}/>
+                </div>
 
                 {/* Due Date */}
                 <div className="cell date-header">
