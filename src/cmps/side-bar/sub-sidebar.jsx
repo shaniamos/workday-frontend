@@ -4,10 +4,7 @@ import { IoIosArrowBack } from 'react-icons/io'
 import { IoIosArrowDown } from 'react-icons/io'
 import { HiDotsHorizontal } from 'react-icons/hi'
 import { GrAdd } from 'react-icons/gr'
-// import { FiSearch } from 'react-icons/fi'
-// import { GrFilter } from 'react-icons/gr'
 import { BsFillLightningFill } from 'react-icons/bs'
-import { HiOutlineClipboard } from 'react-icons/hi'
 import { MdDeleteOutline } from 'react-icons/md'
 import { HiOutlineDocumentDuplicate } from 'react-icons/hi'
 import { RiPencilLine } from 'react-icons/ri'
@@ -26,7 +23,7 @@ import { utilService } from '../../services/util.service.js'
 
 export function SubSidebar({ isOpen }) {
     const boards = useSelector(state => state.boardModule.boards)
-    const [filteredBoards, setFilteredBoards] = useState([boards])
+    const [filteredBoards, setFilteredBoards] = useState(boards)
     const [isNavOpen, setNavOpen] = useState(isOpen)
     const [isNewBoardModalOpen, setNewBoardModalOpen] = useState(false)
     const [isDropDownOpen, setDropDownOpen] = useState(false)
@@ -37,7 +34,7 @@ export function SubSidebar({ isOpen }) {
 
     useEffect(() => {
         dispatch(loadBoards())
-        // if (!boards) loadBoardsFromServer()
+        setFilteredBoards(boards)
     }, [])
 
     const onChangeBoardsFilter = (filterBy) => {
@@ -46,11 +43,6 @@ export function SubSidebar({ isOpen }) {
         const newBoards = boards.filter(board => regex.test(board.title))
         setFilteredBoards(newBoards)
     }
-
-    // const loadBoardsFromServer = async () => {
-    //     boards = await dispatch(loadBoards())
-    //     setNavOpen(true)
-    // }
 
     const toggleSubSidebar = () => {
         setNavOpen(!isNavOpen)
@@ -77,7 +69,9 @@ export function SubSidebar({ isOpen }) {
     const onDuplicateBoard = async (board) => {
         const duplicateBoard = { ...board }
         delete duplicateBoard._id
+        duplicateBoard.title = 'copy-' + board.title
         duplicateBoard.lastUpdated = Date.now()
+        duplicateBoard.groups = [...board.groups]
         // if (duplicateBoard.groups) {
         //     duplicateBoard.groups.forEach(group => {
         //         console.log(group)
@@ -103,7 +97,7 @@ export function SubSidebar({ isOpen }) {
     // const styleSubSidebar = (currLocation.pathname === '/workspace') ? '{display: flex}' : ''
     const sideBarClassName = isNavOpen ? 'is-open' : ''
     // style={styleSubSidebar}
-    if (!boards) return <div>Loading.....</div>
+
     return (
         <section className={`sub-sidebar-container ${sideBarClassName}`} >
             {isNewBoardModalOpen && <NewBoardMoadl toggleNewBoardModal={toggleNewBoardModal} />}
@@ -127,12 +121,12 @@ export function SubSidebar({ isOpen }) {
                         <div className="action-btn ">
                             <a onClick={toggleNewBoardModal} className="flex option"> <GrAdd /><span className="menu-btn-inner-text">Add</span></a>
                             <div>
-                                {<a className="flex  option last-one"><Search contentSearch={'boards'} onChangeFilter={onChangeBoardsFilter} /> </a>}
+                                {<a className="flex  option last-one"><Search onChangeFilter={onChangeBoardsFilter} /> </a>}
                             </div>
                         </div>
                         <div className="spacer"></div>
                         <div className="boards-options">
-                            {boards.map(board => {
+                            {filteredBoards.map(board => {
                                 return <div className="boards-list flex space-between" key={board._id}>
                                     <NavLink className="flex inline-flex option" to={`/board/${board._id}`}>
                                         {/* <HiOutlineClipboard className="table-chart flex column align-center" /> */}

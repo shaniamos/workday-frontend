@@ -10,15 +10,10 @@ export const GroupList = ({ groups, onAddGroup, onChangeFilter }) => {
     const [sort, setSort] = useState('itemTitle')
 
     useEffect(() => {
-        // console.log('sort', sort);
-        // filteredGroups.forEach(group => {
-        //     if (sort === 'itemTitle') {
-        //         group.tasks.sort((a, b) => a.title.localeCompare(b.title))
-        //     } else if (sort === 'lastUpdated') {
-        //         group.tasks.sort((a, b) => b.lastUpdated - a.lastUpdated)
-        //     }
-            
-        // })
+        filterGroupsAndTasks()
+    }, [groups, filterBy, sort])
+
+    const filterGroupsAndTasks = () => {
         const { txt } = filterBy
         const regex = new RegExp(txt, 'i')
         const filteredTasksGroups = groups.map(group => {
@@ -26,14 +21,15 @@ export const GroupList = ({ groups, onAddGroup, onChangeFilter }) => {
         })
         const filtered = filteredTasksGroups.filter(group => group.tasks.length || regex.test(group.title))
         setFilteredGroups(filtered)
-    }, [filterBy, sort])
+    }
 
     const onSort = (sortBy) => {
         setSort(sortBy)
     }
+
     return (
         <section className="group-list">
-            {groups.map(group => <GroupPreview key={group.id} group={group} onChangeFilter={onChangeFilter} sortGroup={onSort} />)}
+            {filteredGroups.map(group => <GroupPreview key={group.id} group={group} onChangeFilter={onChangeFilter} sortGroup={onSort} />)}
             <button className="btn-add-group sticky-feature" onClick={onAddGroup}>
                 <span className="add-icon"><GrAdd /></span> Add New Group
             </button>

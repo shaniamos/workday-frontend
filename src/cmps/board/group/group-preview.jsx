@@ -43,6 +43,7 @@ export const GroupPreview = ({ group, sortGroup }) => {
     const onDuplicateGroup = () => {
         const duplicateGroup = { ...group }
         delete duplicateGroup.id
+        duplicateGroup.tasks = [...group.tasks]
         // if (duplicateGroup.tasks) {
         //     duplicateGroup.tasks.forEach(task => {
         //         task.id = utilService.makeId()
