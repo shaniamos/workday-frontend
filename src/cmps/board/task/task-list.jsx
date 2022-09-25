@@ -5,7 +5,6 @@ import { TaskPreview } from "./task-preview.jsx"
 import { useFormRegister } from '../../../hooks/useFormRegister.js'
 import { addTask } from '../../../store/actions/board.action.js'
 import { utilService } from "../../../services/util.service.js"
-import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd'
 
 export const TaskList = ({ tasks, groupId, groupColor }) => {
     const dispatch = useDispatch()
@@ -13,6 +12,8 @@ export const TaskList = ({ tasks, groupId, groupColor }) => {
     let [register, setTask, task] = useFormRegister({
         title: ''
     })
+
+    console.log(tasks)
 
     const onAddTask = (event) => {
         event.preventDefault()
@@ -42,6 +43,7 @@ export const TaskList = ({ tasks, groupId, groupColor }) => {
                             // <Draggable draggableId={task.id} index={idx}>
                                 // {(provided) => {
                                     // return <TaskPreview provided={provided} key={task.id} task={task} groupId={groupId} groupColor={groupColor} />
+                                    console.log(task)
                                     return <TaskPreview key={task.id} task={task} groupId={groupId} groupColor={groupColor} />
                                 // }}
                             // </Draggable>

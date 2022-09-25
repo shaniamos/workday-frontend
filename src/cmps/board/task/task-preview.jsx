@@ -17,6 +17,7 @@ import { MdDeleteOutline } from 'react-icons/md'//Delete
 import { HiOutlineDocumentDuplicate } from 'react-icons/hi'//Duplicate
 import { ReactComponent as NoneUpdatesIcon } from '../../../assets/svgs/NoneUpdatesIcon.svg'
 import { TimeLine } from "../../time-line.jsx"
+import { useEffect } from "react"
 
 
 export const TaskPreview = ({ task, groupId, groupColor, provided }) => {
@@ -27,10 +28,15 @@ export const TaskPreview = ({ task, groupId, groupColor, provided }) => {
     const params = useParams()
     const boardId = params.id
 
-
     const [register, setNewTask, newTask] = useFormRegister({
         title: task.title
     })
+
+    useEffect(() => {
+        setNewTask({title: task.title})
+    },[task])
+
+    {console.log(newTask)}
 
     const onRemoveTask = () => {
         toggleNewBoardModal()

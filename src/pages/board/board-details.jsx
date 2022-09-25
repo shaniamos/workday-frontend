@@ -9,6 +9,7 @@ import { addGroup, loadSelectedBoard } from '../../store/actions/board.action.js
 
 export const BoardDetails = ({ boards, onChangeFilter }) => {
     const board = useSelector(state => state.boardModule.selectedBoard)
+    console.log(board)
     const isLoading = useSelector(state => state.boardModule.isLoading)
     const [isBoardView, setBoardView] = useState(true)
 

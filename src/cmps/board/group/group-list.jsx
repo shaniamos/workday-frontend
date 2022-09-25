@@ -8,18 +8,23 @@ export const GroupList = ({ members, groups, onAddGroup, onChangeFilter }) => {
     const filterBy = useSelector(state => state.boardModule.filterBy)
     const [filteredGroups, setFilteredGroups] = useState(groups)
     const [sort, setSort] = useState({ sortBy: '', isDescending: 1 })
+    console.log(groups)
+    console.log("filteredGroups", filteredGroups)
 
     useEffect(() => {
         filterGroupsAndTasks()
     }, [groups, filterBy, sort])
 
     const filterGroupsAndTasks = () => {
+        //filter
         const { txt } = filterBy
         const regex = new RegExp(txt, 'i')
         const filteredTasksGroups = groups.map(group => {
             return { ...group, tasks: group.tasks.filter((task) => regex.test(task.title)) }
         })
         const filtered = filteredTasksGroups.filter(group => group.tasks.length || regex.test(group.title))
+
+        //sort
         filtered.forEach(group => {
             if (sort.sortBy === 'itemTitle') {
                 group.tasks.sort((task1, task2) => task1.title.localeCompare(task2.title) * sort.isDescending)
@@ -38,6 +43,7 @@ export const GroupList = ({ members, groups, onAddGroup, onChangeFilter }) => {
                 group.tasks.sort((a, b) => b.priority.localeCompare(a.priority) * sort.isDescending)
             }
         })
+        console.log(filtered)
         setFilteredGroups(filtered)
     }
 

@@ -3,8 +3,6 @@ import { CommentList } from "./comment-list";
 
 export function TaskComment({ task, onRemoveComment, onAddComment }) {
 
-    console.log(task)
-
     return (
         <section className="task-edit-bottom-container">
             {task.comments && (
