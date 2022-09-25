@@ -4,7 +4,7 @@ import { useEffect } from "react"
 import { useSelector } from "react-redux"
 import { useState } from "react"
 
-export const GroupList = ({ groups, onAddGroup, onChangeFilter }) => {
+export const GroupList = ({ members, groups, onAddGroup, onChangeFilter }) => {
     const filterBy = useSelector(state => state.boardModule.filterBy)
     const [filteredGroups, setFilteredGroups] = useState(groups)
     const [sort, setSort] = useState({ sortBy: '', isDescending: 1 })
@@ -31,7 +31,11 @@ export const GroupList = ({ groups, onAddGroup, onChangeFilter }) => {
             } else if (sort.sortBy === 'lastUpdated') {
                 group.tasks.sort((task1, task2) => (task1.lastUpdated - task2.lastUpdated) * sort.isDescending)
             } else if (sort.sortBy === 'deadline') {
-                group.tasks.sort((task1, task2) => (task1.deadline - task2.deadline) * sort.isDescending)
+                group.tasks.sort((a, b) => (b.deadline - a.deadline) * sort.isDescending)
+            } else if (sort.sortBy === 'status') {
+                group.tasks.sort((a, b) => b.status.localeCompare(a.status) * sort.isDescending)
+            } else if (sort.sortBy === 'priority') {
+                group.tasks.sort((a, b) => b.priority.localeCompare(a.priority) * sort.isDescending)
             }
         })
         setFilteredGroups(filtered)
@@ -43,13 +47,12 @@ export const GroupList = ({ groups, onAddGroup, onChangeFilter }) => {
             setSort({ ...sort, isDescending: -isDescending })
         }
         else setSort({ ...sort, sortBy, isDescending: 1 })
-        console.log(sort)
     }
 
     return (
         <section className="group-list">
             {filteredGroups.map(group => <GroupPreview key={group.id} group={group} onChangeFilter={onChangeFilter} sortGroup={onSort} />)}
-            <button className="btn-add-group sticky-feature" onClick={onAddGroup}>
+            <button className="btn-add-group sticky-feature" onClick={() => onAddGroup('last')}>
                 <span className="add-icon"><GrAdd /></span> Add New Group
             </button>
         </section >

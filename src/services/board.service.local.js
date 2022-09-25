@@ -8,7 +8,8 @@ export const boardService = {
     removeBoard,
     getBoardById,
     queryGroups,
-    saveGroup,
+    addGroup,
+    updateGroup,
     removeGroup,
     getGroupById,
     queryTasks,
@@ -16,7 +17,6 @@ export const boardService = {
     updateTask,
     removeTask,
     getTaskById,
-    // filterGroupAndTasks,
     removeComment,
     addComment,
 }
@@ -114,24 +114,29 @@ async function removeGroup(boardId, groupId) {
     }
 }
 
-// add + update group
-async function saveGroup(boardId, group) {
+// add group
+async function addGroup(boardId, group, place = '') {
     try {
         const board = await getBoardById(boardId)
-        // update group
-        if (group.id) {
-            const updatedGroups = board.groups.map(currGroup => (currGroup.id === group.id) ? group : currGroup)
-            board.groups = updatedGroups
+        group.id = utilService.makeId()
+        if (!group.tasks) {
+            group.style = {}
+            group.tasks = []
         }
-        // add group
-        else {
-            group.id = utilService.makeId()
-            if (!group.tasks) {
-                group.style = {}
-                group.tasks = []
-            }
-            board.groups.push(group)
-        }
+        if (place === 'first') board.groups.unshift(group)
+        if (place === 'last') board.groups.push(group)
+        return storageService.put(STORAGE_KEY, board)
+    } catch (err) {
+        throw err
+    }
+}
+
+// update group
+async function updateGroup(boardId, group) {
+    try {
+        const board = await getBoardById(boardId)
+        const updatedGroups = board.groups.map(currGroup => (currGroup.id === group.id) ? group : currGroup)
+        board.groups = updatedGroups
         return storageService.put(STORAGE_KEY, board)
     } catch (err) {
         throw err

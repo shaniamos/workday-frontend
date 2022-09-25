@@ -111,10 +111,10 @@ export function removeGroup(boardId, groupId) {
 }
 
 //add group
-export function addGroup(boardId, group) {
+export function addGroup(boardId, group ,place) {
     return async (dispatch) => {
         try {
-            const savedBoard = await boardService.saveGroup(boardId, group)
+            const savedBoard = await boardService.addGroup(boardId, group ,place)
             dispatch({ type: 'UPDATE_BOARD', board: savedBoard })
         } catch (err) {
             console.error('err:', err)
@@ -126,7 +126,7 @@ export function addGroup(boardId, group) {
 export function updateGroup(boardId, group) {
     return async (dispatch) => {
         try {
-            const savedBoard = await boardService.saveGroup(boardId, group)
+            const savedBoard = await boardService.updateGroup(boardId, group)
             dispatch({ type: 'UPDATE_BOARD', board: savedBoard })
         } catch (err) {
             console.error('err:', err)
@@ -217,8 +217,10 @@ export function addComment(boardId, groupId, taskId, newComment) {
         try {
             const savedBoard = await boardService.addComment(boardId, groupId, taskId, newComment)
             dispatch({ type: 'UPDATE_BOARD', board: savedBoard })
+            showSuccessMsg(`Comment successfully added`)
         } catch (err) {
             console.error('err:', err)
+            showErrorMsg('Cannot add item')
         }
     }
 }

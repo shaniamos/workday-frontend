@@ -276,5 +276,18 @@
             margin-left: rem(5px);
 
         }
+
+        .filter-btn {
+            cursor: pointer;
+            color: var(--primary-text-color);
+            height: rem(32px);
+            border-radius: rem(4px);
+            padding: rem(7px);
+            transition: background-color .2s;
+
+            &:hover {
+                background-color: var(--primary-background-hover-color);
+            }
+        }
     }
 }

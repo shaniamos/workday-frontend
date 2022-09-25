@@ -134,6 +134,11 @@
             @include task-cell-with-content;
         }
 
+        .timeline-header {
+            width: rem(200px);
+            @include task-cell-with-content;
+        }
+
         .date-header {
             width: rem(200px);
             @include task-cell-with-content;

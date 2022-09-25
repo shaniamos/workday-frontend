@@ -8,10 +8,20 @@
 // import { BiQuestionMark } from 'react-icons/bi'
 // import { CgMenuGridO } from 'react-icons/cg'
 import { FaUserCircle } from 'react-icons/fa'
+import { useSelector } from 'react-redux'
 import { NavLink } from 'react-router-dom'
 import logo from '../../assets/imgs/sidebar-icon.png'
 
 export function MainSidebar() {
+    const board = useSelector(state => state.boardModule.selectedBoard)
+    const loggedInUser = useSelector(state => state.userModule.loggedInUser)
+    console.log(loggedInUser)
+
+    let user
+    if (loggedInUser) {
+        user = board.members.find(member => member.fullname === loggedInUser.fullname)
+        console.log(user)
+    }
 
     return (
         <section className='sidebar-container flex column  '>
@@ -47,7 +57,8 @@ export function MainSidebar() {
 
                         <div className='down-icons flex column align-center'>
                             {/* <CgMenuGridO className='sidebar-icon down menu' /> */}
-                            <FaUserCircle className='sidebar-icon user-icon' />
+                            {!user && <FaUserCircle className='sidebar-icon user-icon' />}
+                            {user && <img className="user-img" src={user.imgUrl} alt='user image' />}
                         </div>
                     </div>
                 </div>

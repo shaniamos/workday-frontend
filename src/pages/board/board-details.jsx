@@ -19,10 +19,10 @@ export const BoardDetails = ({ boards, onChangeFilter }) => {
         dispatch(loadSelectedBoard(params.id))
     }, [params.id])
 
-    const onAddGroup = () => {
+    const onAddGroup = (place) => {
         const boardId = board._id
         const group = { title: 'New Group' }
-        dispatch(addGroup(boardId, group))
+        dispatch(addGroup(boardId, group, place))
     }
 
     const toggleView = (currView) => {

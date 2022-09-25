@@ -20,13 +20,12 @@ export const Search = ({onChangeFilter}) => {
         <form className="search-board-form">
             <label htmlFor="txt" ></label>
             <div className="input-container flex align-center">
-                
                     <BsSearch />
                     <input
                         className="board-search" autoComplete="off" type="text" name="txt" id="txt"
-                        value={txt} placeholder="Search" onChange={handleChange}/>
-                
-            </div>
+                        value={txt}  placeholder= " Search" onChange={handleChange}
+                         />            
+                </div>
         </form>
     )
 }

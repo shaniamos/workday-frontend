@@ -12,8 +12,8 @@
         width: rem(89px);
 
         .sidebar-icon {
-            width:rem(23px);
-            height:  rem(23px);
+            width: rem(23px);
+            height: rem(23px);
             font-size: rem(20px);
             margin: rem(11px);
             color: white;
@@ -96,9 +96,17 @@
             height: rem(38px);
         }
 
+        & .down-icons {
+            position: absolute;
+            bottom: 5px;
+            justify-content: center;
+            align-items: center;
+            left: 5.5px;
+        }
+
         .menu {
             color: rgb(143, 143, 255);
         }
     }
-   
+
 }

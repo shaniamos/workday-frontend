@@ -227,6 +227,10 @@ export const board = {
                     "priority": "Medium",
                     "deadline": Date.now(),
                     "lastUpdated": 1663091776159,
+                    "timeline" : [ 
+                        "2021-06-01T22:00:00.000Z", 
+                        "2021-06-08T22:00:00.000Z"
+                    ],
                     "comments": [
                         {
                             "byMember": {
@@ -271,6 +275,10 @@ export const board = {
                     "priority": "Medium",
                     "deadline": 1589983468418,
                     "lastUpdated": 1663091776159,
+                    "timeline" : [ 
+                        "2021-05-01T22:00:00.000Z", 
+                        "2021-05-08T22:00:00.000Z"
+                    ],
                     "comments": [],
                 },
                 {
@@ -289,6 +297,10 @@ export const board = {
                     "priority": "Critical",
                     "deadline": 1589983468418,
                     "lastUpdated": 1663091776159,
+                    "timeline" : [ 
+                        "2021-04-01T22:00:00.000Z", 
+                        "2021-04-08T22:00:00.000Z"
+                    ],
                     "comments": [],
                 },
                 {
@@ -307,6 +319,10 @@ export const board = {
                     "priority": "Low",
                     "deadline": 1589983468418,
                     "lastUpdated": 1663199753073,
+                    "timeline" : [ 
+                        "2021-03-01T22:00:00.000Z", 
+                        "2021-06-08T22:00:00.000Z"
+                    ],
                     "comments": [
                         {
                             "byMember": {
@@ -354,6 +370,10 @@ export const board = {
                     "priority": "High",
                     "deadline": 1589983468418,
                     "lastUpdated": 1663091776159,
+                    "timeline" : [ 
+                        "2022-01-01T22:00:00.000Z", 
+                        "2022-02-08T22:00:00.000Z"
+                    ],
                     "comments": [],
                 },
                 {
@@ -378,6 +398,10 @@ export const board = {
                     "priority": "High",
                     "deadline": 1589983468418,
                     "lastUpdated": 1663091776159,
+                    "timeline" : [ 
+                        "2022-05-01T22:00:00.000Z", 
+                        "2022-06-08T22:00:00.000Z"
+                    ],
                     "comments": [],
                 },
             ],
@@ -404,6 +428,10 @@ export const board = {
                     "priority": "Critical",
                     "deadline": 1589983468418,
                     "lastUpdated": 1663365269898,
+                    "timeline" : [ 
+                        "2022-06-01T22:00:00.000Z", 
+                        "2022-06-08T22:00:00.000Z"
+                    ],
                 },
                 {
                     "id": "c104",
@@ -440,6 +468,10 @@ export const board = {
                     "priority": "High",
                     "deadline": 1589983468418,
                     "lastUpdated": 1663371422099,
+                    "timeline" : [ 
+                        "2022-10-01T22:00:00.000Z", 
+                        "2022-10-08T22:00:00.000Z"
+                    ],
                     "comments": [
                         {
                             "byMember": {
@@ -494,6 +526,10 @@ export const board = {
                     "priority": "Low",
                     "deadline": 1589983468418,
                     "lastUpdated": 1663199753073,
+                    "timeline" : [ 
+                        "2021-06-01T22:00:00.000Z", 
+                        "2021-06-08T22:00:00.000Z"
+                    ],
                 },
             ],
             "colorId": '--color-peach',
@@ -519,6 +555,10 @@ export const board = {
                     "priority": "Low",
                     "deadline": 1589983468418,
                     "lastUpdated": 1663365269898,
+                    "timeline" : [ 
+                        "2021-011-01T22:00:00.000Z", 
+                        "2021-011-06T22:00:00.000Z"
+                    ],
                 },
                 {
                     "id": "c104",
@@ -555,6 +595,10 @@ export const board = {
                     "priority": "Medium",
                     "deadline": 1589983468418,
                     "lastUpdated": 1663371422099,
+                    "timeline" : [ 
+                        "2021-06-01T22:00:00.000Z", 
+                        "2021-06-08T22:00:00.000Z"
+                    ],
                     "comments": [],
                     "createdAt": 1590999730348,
                     "byMember": {
@@ -574,6 +618,10 @@ export const board = {
                     "priority": "Low",
                     "deadline": 1589983468418,
                     "lastUpdated": 1663199753073,
+                    "timeline" : [ 
+                        "2021-06-01T22:00:00.000Z", 
+                        "2021-06-08T22:00:00.000Z"
+                    ],
                 },
                 {
                     "id": "c106",
@@ -584,6 +632,10 @@ export const board = {
                     "priority": "Low",
                     "deadline": 1589983468418,
                     "lastUpdated": 1663199753073,
+                    "timeline" : [ 
+                        "2021-06-01T22:00:00.000Z", 
+                        "2021-06-08T22:00:00.000Z"
+                    ],
                 },
             ],
             "colorId": '--color-purple',
@@ -609,6 +661,10 @@ export const board = {
                     "priority": "Low",
                     "deadline": 1589983468418,
                     "lastUpdated": 1663365269898,
+                    "timeline" : [ 
+                        "2021-06-01T22:00:00.000Z", 
+                        "2021-06-08T22:00:00.000Z"
+                    ],
                 },
                 {
                     "id": "c104",
@@ -645,6 +701,10 @@ export const board = {
                     "priority": "Medium",
                     "deadline": 1589983468418,
                     "lastUpdated": 1663371422099,
+                    "timeline" : [ 
+                        "2022-06-01T22:00:00.000Z", 
+                        "2022-06-08T22:00:00.000Z"
+                    ],
                     "comments": [],
                     "createdAt": 1590999730348,
                     "byMember": {
@@ -664,6 +724,10 @@ export const board = {
                     "priority": "Low",
                     "deadline": 1589983468418,
                     "lastUpdated": 1663199753073,
+                    "timeline" : [ 
+                        "2022-04-04T22:00:00.000Z", 
+                        "2022-04-06T22:00:00.000Z"
+                    ],
                 },
                 {
                     "id": "c106",
@@ -674,6 +738,10 @@ export const board = {
                     "priority": "Low",
                     "deadline": 1589983468418,
                     "lastUpdated": 1663199753073,
+                    "timeline" : [ 
+                        "2022-06-01T22:00:00.000Z", 
+                        "2022-06-08T22:00:00.000Z"
+                    ],
                 },
             ],
             "colorId": '--color-chili-blue',
@@ -682,6 +750,7 @@ export const board = {
     ],
     "activities": [],
 }
+
 const user = {
     "_id": "u101",
     "fullname": "Abi Abambi",

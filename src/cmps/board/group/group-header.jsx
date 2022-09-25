@@ -29,23 +29,27 @@ export const GroupHeader = ({ groupColor, sortGroup}) => {
                 </div>
 
                 <div className="cell label-type-status">
-                    <button className='sort-btn' ><TiArrowUnsorted /></button>
+                    <button className='sort-btn' onClick={() => onSort('status')}><TiArrowUnsorted /></button>
                     <span>Status</span>
                 </div>
 
                 <div className="cell label-type-priority">
-                    <button className='sort-btn' ><TiArrowUnsorted /></button>
+                    <button className='sort-btn' onClick={() => onSort('priority')} ><TiArrowUnsorted /></button>
                     <span>Priority</span>
                 </div>
 
                 <div className="cell last-updated">
                     <button className='sort-btn last-update' onClick={() => onSort('lastUpdated')}><TiArrowUnsorted /></button>
-                    <span>Last Updated</span>
+                    <span>Last updated</span>
+                </div>
+                <div className="cell last-updated">
+                    {/* <button className='sort-btn last-update' ><TiArrowUnsorted /></button> */}
+                    <span>Time line</span>
                 </div>
 
                 <div className="cell date-header">
                     <button className='sort-btn created-at' onClick={() => onSort('deadline')}><TiArrowUnsorted /></button>
-                    <span>Due Date</span>
+                    <span>Due date</span>
                 </div>
 
                 <div className="cell add-column">

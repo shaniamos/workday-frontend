@@ -1,4 +1,4 @@
-import { PersonCircle } from "../../person-circle"
+import { AvatarsChain } from "../../avatarsChain"
 import { RiErrorWarningLine, RiUserAddLine } from 'react-icons/ri'
 import { AiOutlineStar } from 'react-icons/ai'
 import { FaStumbleuponCircle } from 'react-icons/fa'
@@ -44,7 +44,7 @@ export function MainBoardHeader({ board }) {
                 </button>
                 <div className="btn-last-seen flex">
                     <span>Last seen</span>
-                    <PersonCircle persons={board.members} />
+                    <AvatarsChain persons={board.members} />
                 </div>
                 <div className="btn-invite-subscribers">
                     <RiUserAddLine /> Invite/ <span>9</span>
