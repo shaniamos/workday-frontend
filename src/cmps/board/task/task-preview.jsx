@@ -48,10 +48,8 @@ export const TaskPreview = ({ task, groupId, groupColor, provided }) => {
         const duplicateTask = { ...task }
         duplicateTask.id = utilService.makeId()
         duplicateTask.lastUpdated = Date.now()
-        duplicateTask.comments = [...task.comments]
-        // if (duplicateTask.comments || duplicateTask.comments.length) {
-        //     duplicateTask.comments.forEach(comment => comment.id = utilService.makeId())
-        // }
+        if (task.comments)
+            duplicateTask.comments = [...task.comments]
         dispatch(addTask(boardId, groupId, duplicateTask))
     }
 
@@ -119,7 +117,7 @@ export const TaskPreview = ({ task, groupId, groupColor, provided }) => {
 
                 {/* TimeLine */}
                 <div className="cell timeline-header">
-                    <TimeLine task={task} board={board}/>
+                    <TimeLine task={task} board={board} />
                 </div>
 
                 {/* Due Date */}

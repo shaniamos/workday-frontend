@@ -18,6 +18,7 @@ import { NewBoardMoadl } from "../board/new-board-modal.jsx"
 import { Search } from "../search.jsx"
 import { useEffect } from 'react'
 import BoardNavIcon from '../../assets/svgs/BoardNavIcon.svg'
+import { utilService } from '../../services/util.service.js'
 
 
 export function SubSidebar({ isOpen }) {
@@ -33,8 +34,11 @@ export function SubSidebar({ isOpen }) {
 
     useEffect(() => {
         dispatch(loadBoards())
-        setFilteredBoards(boards)
     }, [])
+
+    useEffect(() => {
+        setFilteredBoards(boards)
+    }, [boards])
 
     const onChangeBoardsFilter = (filterBy) => {
         const { txt } = filterBy
@@ -70,21 +74,19 @@ export function SubSidebar({ isOpen }) {
         delete duplicateBoard._id
         duplicateBoard.title = 'copy-' + board.title
         duplicateBoard.lastUpdated = Date.now()
-        duplicateBoard.groups = [...board.groups]
-        // if (duplicateBoard.groups) {
-        //     duplicateBoard.groups.forEach(group => {
-        //         console.log(group)
-        //         group.id = utilService.makeId()
-        //         if (duplicateBoard.group.tasks) {
-        //             duplicateBoard.group.tasks.forEach(task => {
-        //                 task.id = utilService.makeId()
-        //                 if (duplicateBoard.group.task.comments) {
-        //                     duplicateBoard.group.task.comments.forEach(comment => comment.id = utilService.makeId())
-        //                 }
-        //             })
-        //         }
-        //     })
-        // }
+        const newGroups = board.groups.map(group => {
+            group.id = utilService.makeId()
+            const newTasks = group.tasks.map(task => {
+                task.id = utilService.makeId()
+                if (task.comments) {
+                    task.comments.forEach(comment => comment.id = utilService.makeId())
+                }
+                return task
+            })
+            group.tasks = [...newTasks]
+            return group
+        })
+        duplicateBoard.groups = [...newGroups]
         try {
             const newBoard = await dispatch(addBoard(duplicateBoard))
             navigate(`/board/${newBoard._id}`)
