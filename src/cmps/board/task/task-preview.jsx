@@ -36,8 +36,6 @@ export const TaskPreview = ({ task, groupId, groupColor, provided }) => {
         setNewTask({title: task.title})
     },[task])
 
-    {console.log(newTask)}
-
     const onRemoveTask = () => {
         toggleNewBoardModal()
         dispatch(removeTask(boardId, groupId, task.id))

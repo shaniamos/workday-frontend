@@ -8,8 +8,6 @@ export const GroupList = ({ members, groups, onAddGroup, onChangeFilter }) => {
     const filterBy = useSelector(state => state.boardModule.filterBy)
     const [filteredGroups, setFilteredGroups] = useState(groups)
     const [sort, setSort] = useState({ sortBy: '', isDescending: 1 })
-    console.log(groups)
-    console.log("filteredGroups", filteredGroups)
 
     useEffect(() => {
         filterGroupsAndTasks()
@@ -43,7 +41,6 @@ export const GroupList = ({ members, groups, onAddGroup, onChangeFilter }) => {
                 group.tasks.sort((a, b) => b.priority.localeCompare(a.priority) * sort.isDescending)
             }
         })
-        console.log(filtered)
         setFilteredGroups(filtered)
     }
 

@@ -13,8 +13,6 @@ export const TaskList = ({ tasks, groupId, groupColor }) => {
         title: ''
     })
 
-    console.log(tasks)
-
     const onAddTask = (event) => {
         event.preventDefault()
         const boardId = params.id
@@ -43,7 +41,6 @@ export const TaskList = ({ tasks, groupId, groupColor }) => {
                             // <Draggable draggableId={task.id} index={idx}>
                                 // {(provided) => {
                                     // return <TaskPreview provided={provided} key={task.id} task={task} groupId={groupId} groupColor={groupColor} />
-                                    console.log(task)
                                     return <TaskPreview key={task.id} task={task} groupId={groupId} groupColor={groupColor} />
                                 // }}
                             // </Draggable>

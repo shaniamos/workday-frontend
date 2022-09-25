@@ -22,8 +22,6 @@ export const GroupPreview = ({ group, sortGroup }) => {
         title: group.title
     })
 
-    console.log(group)
-
     const boardId = params.id
 
     const onRemoveGroup = () => {

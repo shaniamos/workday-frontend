@@ -66,15 +66,14 @@
                 .input-title {
                     @include input-title;
                     @include heading;
-                    font-weight: 600;
+                    font-weight: 500;
                     width: 300px;
                     border: none;
-                    // width: 100%;
                     text-align: center;
                     font-family: roboto, rubik, sans-serif;
 
                     @include for-narrow-layout {
-                        font-size: 32px;
+                        font-size: rem(24px);
                         text-align: left;
 
                     }
@@ -93,6 +92,8 @@
 
             .board-header-right {
                 display: flex;
+                justify-content: center;
+                align-items: center;
                 gap: rem(40px);
 
                 .btn-board-activity {
@@ -102,7 +103,6 @@
                     @include for-narrow-layout {
                         display: block;
                     }
-
                 }
 
                 .btn-last-seen {
@@ -117,6 +117,7 @@
                     }
 
                     & span {
+                        font-size: rem(14px);
                         margin-inline-end: rem(4px);
                     }
                 }
@@ -126,6 +127,7 @@
                     @include btn;
                     @include heading;
                     display: none;
+                    font-size: rem(14px);
 
                     @include for-narrow-layout {
                         display: block;
@@ -268,8 +270,6 @@
                 transform: translateY(3px);
             }
         }
-
-
 
         span {
             font-size: rem(15px);
