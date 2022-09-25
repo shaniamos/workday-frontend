@@ -51,7 +51,13 @@ export const GroupList = ({ members, groups, onAddGroup, onChangeFilter }) => {
 
     return (
         <section className="group-list">
-            {filteredGroups.map(group => <GroupPreview key={group.id} group={group} onChangeFilter={onChangeFilter} sortGroup={onSort} />)}
+            {filteredGroups.map(group => 
+                <GroupPreview 
+                    key={group.id}
+                    group={group} 
+                    onChangeFilter={onChangeFilter} 
+                    sortGroup={onSort} 
+                    />)}
             <button className="btn-add-group sticky-feature" onClick={() => onAddGroup('last')}>
                 <span className="add-icon"><GrAdd /></span> Add New Group
             </button>

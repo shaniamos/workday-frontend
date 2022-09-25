@@ -1,0 +1,70 @@
+.timeline {
+    flex-basis: rem(180px);
+    min-width: rem(180px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .date-pick-wrapper {
+        display: flex;
+    }
+
+    .date-picker-cmp,
+    .date-picker,
+    .no-date,
+    .set-dates,
+    .num-of-days {
+        width: rem(152px);
+        font-size: rem(13px);
+        // amend width side so it won't use pixels.
+        display: inline-block;
+        padding: rem(1px) rem(5px);
+        border: none;
+        color: rgb(71, 68, 68);
+        line-height: rem(22px);
+        border-radius: rem(11px);
+        margin: 0 auto;
+        cursor: pointer;
+    }
+
+    .date-picker-container {
+        width: rem(152px);
+        height: rem(25px);
+        border-radius: rem(11px);
+        position: relative;
+
+        .date-picker-cmp {
+            width: rem(152px);
+            color: white;
+            border: .5px solid rgb(190, 187, 187);
+            background-color: yellowgreen ;
+            // background-color: transparent;
+            position: absolute;
+            top: rem(-40px);
+            
+           
+        }
+
+        .progress-bar {
+            position: absolute;
+            height: rem(25px);
+            border-radius: rem(11px);
+        }
+
+        .position{
+            width: rem(152px);
+            height: rem(25px);
+            border-radius: rem(11px);
+        }
+    }
+
+    // .date-picker-cmp {
+    //     // position: absolute;
+    //     // top: 36px;
+    //     // z-index: 3;
+    // }
+
+    .date-picker-pos {
+        transform: translate(-45px, 20px) !important;
+    }
+}
