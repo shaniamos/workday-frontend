@@ -1,4 +1,7 @@
 .login-signup {
+    
+    // background-image: url("../../imgs/signup-background.jpg");
+
     .bottom-space {
         padding-bottom: rem(100px);
     }
@@ -7,7 +10,6 @@
     width: 840px;
     margin: auto;
     
-
     & header {
         width: 100%;
         display: block;
@@ -31,6 +33,11 @@
         flex-basis: 100%;
         border-radius: 15px;
       
+        .background-img-signup {
+            width: 100vw;
+            height: 100vh;
+           
+        }
         
         .signup-img {
             

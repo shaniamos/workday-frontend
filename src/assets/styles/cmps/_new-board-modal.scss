@@ -92,3 +92,11 @@
 .new-board-modal-container .main-screen {
     @include main-screen($bgColor: rgb(0 0 0 / 60%));
 }
+
+@include for-mobile-layout {
+    .add-modal {
+        @include modal($height: rem(280px), $width: rem(300px));
+        z-index: 50;
+    }
+
+}
