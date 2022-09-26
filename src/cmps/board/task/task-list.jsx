@@ -27,7 +27,8 @@ export const TaskList = ({ tasks, groupId, groupColor }) => {
         task.priority = ''
         task.persons = ''
         task.deadLine = ''
-        task.lastUpdate = Date.now()
+        task.lastUpdate = ''
+        task.timeline = [Date.now(), Date.now()]
         return task
     }
 

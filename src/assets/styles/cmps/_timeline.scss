@@ -1,0 +1,61 @@
+.timeline-container {
+    flex-basis: rem(190px);
+    min-width: rem(190px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .date-picker-cmp,
+    .date-picker,
+    .set-dates {
+        width: rem(157px);
+        font-size: rem(13px);
+        display: inline-block;
+        // padding: rem(1px) rem(3px);
+        border: none;
+        line-height: rem(22px);
+        border-radius: rem(10px);
+        margin: 0 auto;
+        cursor: pointer;
+    }
+
+    .date-pick-area {
+        display: flex;
+        justify-content: center;
+        gap: 5px;
+        .sum-days {
+           opacity: 0;
+        }
+
+        &:hover .sum-days {
+            opacity: 1;
+        }
+        .date-picker {
+            width: rem(152px);
+            height: rem(25px);
+            border-radius: rem(11px);
+            position: relative;
+            .date-picker-cmp {
+                width: rem(152px);
+                color: white;
+                border: .5px solid rgb(190, 187, 187);
+                background-color: yellowgreen;
+                position: absolute;
+                top: -16px;
+
+            }
+
+            .progress-bar {
+                position: absolute;
+                height: rem(25px);
+                border-radius: rem(11px);
+            }
+
+            .position {
+                width: rem(152px);
+                height: rem(25px);
+                border-radius: rem(11px);
+            }
+        }
+    }
+}

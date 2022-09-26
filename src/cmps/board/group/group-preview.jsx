@@ -65,7 +65,11 @@ export const GroupPreview = ({ group, sortGroup }) => {
                     </div>
                 </div>
                 <div className="questModal">
-                    {isDeleteBtnClicked && <AreYouSureModal toggleNewBoardModal={toggleNewBoardModal} onRemoveEntity={onRemoveGroup} />}
+                    {isDeleteBtnClicked &&
+                         <AreYouSureModal 
+                            toggleNewBoardModal={toggleNewBoardModal}
+                            onRemoveEntity={onRemoveGroup} 
+                            />}
                 </div>
                 <div className="group-name flex sticky-feature">
 
@@ -79,9 +83,17 @@ export const GroupPreview = ({ group, sortGroup }) => {
                 </div>
             </div>
             {/* Group columns identifier (color, checkbox, task name, persons, status, priority....) */}
-            <GroupHeader groupColor={group.colorId} sortGroup={sortGroup} />
-            <TaskList tasks={group.tasks} groupId={group.id} groupColor={group.colorId} />
-            <GroupFooter tasks={group.tasks} />
+            <GroupHeader 
+                groupColor={group.colorId}
+                sortGroup={sortGroup} 
+                />
+            <TaskList
+                 tasks={group.tasks} 
+                 groupId={group.id} 
+                 groupColor={group.colorId} 
+                 />
+            <GroupFooter 
+                tasks={group.tasks} />
         </section>
     )
 }
