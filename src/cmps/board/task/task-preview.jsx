@@ -17,6 +17,7 @@ import { MdDeleteOutline } from 'react-icons/md'//Delete
 import { HiOutlineDocumentDuplicate } from 'react-icons/hi'//Duplicate
 import { ReactComponent as NoneUpdatesIcon } from '../../../assets/svgs/NoneUpdatesIcon.svg'
 import { TimeLine } from "../../time-line.jsx"
+import { useEffect } from "react"
 
 
 export const TaskPreview = ({ task, groupId, groupColor, provided }) => {
@@ -27,10 +28,13 @@ export const TaskPreview = ({ task, groupId, groupColor, provided }) => {
     const params = useParams()
     const boardId = params.id
 
-
     const [register, setNewTask, newTask] = useFormRegister({
         title: task.title
     })
+
+    useEffect(() => {
+        setNewTask({title: task.title})
+    },[task])
 
     const onRemoveTask = () => {
         toggleNewBoardModal()
@@ -48,10 +52,8 @@ export const TaskPreview = ({ task, groupId, groupColor, provided }) => {
         const duplicateTask = { ...task }
         duplicateTask.id = utilService.makeId()
         duplicateTask.lastUpdated = Date.now()
-        duplicateTask.comments = [...task.comments]
-        // if (duplicateTask.comments || duplicateTask.comments.length) {
-        //     duplicateTask.comments.forEach(comment => comment.id = utilService.makeId())
-        // }
+        if (task.comments)
+            duplicateTask.comments = [...task.comments]
         dispatch(addTask(boardId, groupId, duplicateTask))
     }
 
@@ -119,7 +121,7 @@ export const TaskPreview = ({ task, groupId, groupColor, provided }) => {
 
                 {/* TimeLine */}
                 <div className="cell timeline-header">
-                    <TimeLine task={task} board={board}/>
+                    <TimeLine task={task} board={board} />
                 </div>
 
                 {/* Due Date */}

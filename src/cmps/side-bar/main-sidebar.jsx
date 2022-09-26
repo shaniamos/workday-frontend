@@ -15,12 +15,10 @@ import logo from '../../assets/imgs/sidebar-icon.png'
 export function MainSidebar() {
     const board = useSelector(state => state.boardModule.selectedBoard)
     const loggedInUser = useSelector(state => state.userModule.loggedInUser)
-    console.log(loggedInUser)
 
     let user
     if (loggedInUser) {
         user = board.members.find(member => member.fullname === loggedInUser.fullname)
-        console.log(user)
     }
 
     return (

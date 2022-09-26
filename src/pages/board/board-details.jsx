@@ -5,12 +5,13 @@ import { useParams } from 'react-router-dom'
 import { BoardHeader } from '../../cmps/board/board-header/board-header.jsx'
 import { GroupList } from '../../cmps/board/group/group-list.jsx'
 import { KanbanView } from '../../cmps/kanban/kanban-view.jsx'
+import {Dashboard} from '../../cmps/board/dashboard.jsx'
 import { addGroup, loadSelectedBoard } from '../../store/actions/board.action.js'
 
 export const BoardDetails = ({ boards, onChangeFilter }) => {
     const board = useSelector(state => state.boardModule.selectedBoard)
     const isLoading = useSelector(state => state.boardModule.isLoading)
-    const [isBoardView, setBoardView] = useState(true)
+    const [isBoardView, setBoardView] = useState('board-details')
 
     const dispatch = useDispatch()
     const params = useParams()
@@ -40,29 +41,32 @@ export const BoardDetails = ({ boards, onChangeFilter }) => {
 
     return (
         <section className="board-details">
-            {(board && boards.length) && 
-                    <BoardHeader 
-                        board={board} 
-                        onAddGroup={onAddGroup} 
-                        onChangeFilter={onChangeFilter} 
-                        toggleView={toggleView} 
-                        />}
+            {(board && boards.length) &&
+                <BoardHeader
+                    board={board}
+                    onAddGroup={onAddGroup}
+                    onChangeFilter={onChangeFilter}
+                    selectedBoardId={board._id}
+                    toggleView={toggleView}
+                />}
             {(board && boards.length) &&
                 <div className='board-content'>
-                    {isBoardView &&
-                     < GroupList
-                        groups={board.groups}
-                        onAddGroup={onAddGroup}
-                        onChangeFilter={onChangeFilter} 
+                    {isBoardView === 'board-details' &&
+                        < GroupList
+                            groups={board.groups}
+                            onAddGroup={onAddGroup}
+                            onChangeFilter={onChangeFilter}
                         />}
-                    {!isBoardView &&
-                     <KanbanView 
-                        board={board}
-                        groups={board.groups}
-                        onAddGroup={onAddGroup}
-                        />} 
+                    {isBoardView === 'kanban' &&
+                        <KanbanView
+                            board={board}
+                            groups={board.groups}
+                            onAddGroup={onAddGroup}
+                        />}
+                    {isBoardView === 'dashboard' &&
+                        <Dashboard />}
                 </div>}
-               
+
             {!boards.length && <section className='board-details-empty'>
                 <div className='board-details-empty-header'>
                     <div className='board-details-empty-header-cover'>

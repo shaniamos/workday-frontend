@@ -3,10 +3,12 @@
         height: rem(18px);
         width: rem(18px);
         border-radius: 4px;
+
         &:hover {
             background-color: var(--primary-background-hover-color);
         }
     }
+
     .clean-input {
         font-size: 30px;
         padding-top: rem(8px);
@@ -30,33 +32,40 @@
 
     .navigate-btns {
         gap: 20px;
-        
+
         & .task-edit-tool-bar {
             cursor: pointer;
             gap: 20px;
             text-align: center;
-            
+
             .updates-btn {
                 padding-top: rem(5px);
                 border-radius: 2px;
                 height: rem(32px);
                 width: rem(100px);
+
                 &.is-selected {
                     border-bottom: 2px solid #0073ea;
                 }
+
                 &:hover {
                     background-color: var(--primary-background-hover-color);
                 }
             }
-            
+
             .activity-btn {
+                display: flex;
+                justify-content: center;
+                align-items: center;
                 padding-top: rem(3px);
                 border-radius: 2px;
                 height: rem(32px);
-            width: rem(100px);
+                width: rem(100px);
+
                 &.is-selected {
                     border-bottom: 2px solid #0073ea;
                 }
+
                 &:hover {
                     background-color: var(--primary-background-hover-color);
                 }
@@ -65,7 +74,6 @@
     }
 
 }
-
 
 .task-edit-container .main-screen {
     @include main-screen($bgColor: rgb(0 0 0 / 60%));
