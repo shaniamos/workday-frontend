@@ -4,19 +4,22 @@ import { board } from '../data/data.js'
 
 export const boardService = {
     queryBoards,
-    saveBoard,
-    removeBoard,
     getBoardById,
+    removeBoard,
+    saveBoard,
+
     queryGroups,
+    getGroupById,
+    removeGroup,
     addGroup,
     updateGroup,
-    removeGroup,
-    getGroupById,
+
     queryTasks,
+    getTaskById,
+    removeTask,
     addTask,
     updateTask,
-    removeTask,
-    getTaskById,
+
     removeComment,
     addComment,
 }
@@ -25,10 +28,8 @@ const STORAGE_KEY = 'board'
 const defultBoards = [board]
 
 // CRUDL Board
-
 // get boards
 async function queryBoards(filterBy) {
-
     try {
         let boards = await storageService.query(STORAGE_KEY)
         if (!boards || !boards.length) {
@@ -72,7 +73,6 @@ function saveBoard(board) {
 }
 
 // CRUDL Groups
-
 // get groups
 async function queryGroups(boardId, filterBy = {}) {
     try {

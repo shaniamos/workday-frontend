@@ -3,6 +3,7 @@ import { GrAdd } from 'react-icons/gr'
 import { useEffect } from "react"
 import { useSelector } from "react-redux"
 import { useState } from "react"
+import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd'
 
 export const GroupList = ({ members, groups, onAddGroup, onChangeFilter }) => {
     const filterBy = useSelector(state => state.boardModule.filterBy)
@@ -50,11 +51,23 @@ export const GroupList = ({ members, groups, onAddGroup, onChangeFilter }) => {
     }
 
     return (
-        <section className="group-list">
-            {filteredGroups.map(group => <GroupPreview key={group.id} group={group} onChangeFilter={onChangeFilter} sortGroup={onSort} />)}
-            <button className="btn-add-group sticky-feature" onClick={() => onAddGroup('last')}>
-                <span className="add-icon"><GrAdd /></span> Add New Group
-            </button>
-        </section >
+        <DragDropContext>
+            <Droppable droppableId='group'>
+                {(droppableProvided) => {
+                    return <section ref={droppableProvided.innerRef} {...droppableProvided.droppableProps} className="group-list">
+                        {filteredGroups.map(group =>
+                            <GroupPreview
+                                key={group.id}
+                                group={group}
+                                onChangeFilter={onChangeFilter}
+                                sortGroup={onSort} />
+                        )}
+                        <button className="btn-add-group sticky-feature" onClick={() => onAddGroup('last')}>
+                            <span className="add-icon"><GrAdd /></span> Add New Group
+                        </button>
+                    </section >
+                }}
+            </Droppable>
+        </DragDropContext >
     )
 }

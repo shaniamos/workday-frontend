@@ -1,4 +1,4 @@
-import { DragDropContext, Draggable, Droppable } from 'react-beautiful-dnd';
+// import { DragDropContext, Draggable, Droppable } from 'react-beautiful-dnd';
 import { KanbanGroup } from './kanban-group';
 
 export const KanbanView = ({ board, groups }) => {
