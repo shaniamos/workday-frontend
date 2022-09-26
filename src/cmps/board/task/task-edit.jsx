@@ -11,20 +11,22 @@ import { GoX } from 'react-icons/go';//delete or exit
 
 
 export function TaskEdit() {
-    const [toggle, setNewBoardModalOpen] = useState(false)
     const board = useSelector(state => state.boardModule.selectedBoard)
-    const boards = useSelector(state => state.boardModule.boards)
     const params = useParams()
+
     const dispatch = useDispatch()
+    const navigate = useNavigate()
+
+    const [toggle, setNewBoardModalOpen] = useState(false)
     const [task, setTask] = useState({ title: '' })
     const [register, setNewTask, newTask] = useFormRegister({
         title: task.title
     })
+
     const boardId = params.id
     const groupId = params.groupId
     const taskId = params.taskId
 
-    const navigate = useNavigate()
 
     useEffect(() => {
         loadTask()
@@ -68,7 +70,7 @@ export function TaskEdit() {
         <section className="task-edit-container open">
             <div className="main-screen" onClick={onCloseModal}></div>
             <section className="task-edit">
-                 <Link to={`/board/${params.id}`}><GoX className="task-exit-btn"/></Link>
+                <Link to={`/board/${params.id}`}><GoX className="task-exit-btn" /></Link>
                 <form className="editable-heading" onSubmit={onUpdateTask}>
                     <input className="clean-input" {...register('title', 'text')} />
                 </form>

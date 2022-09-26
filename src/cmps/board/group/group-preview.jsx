@@ -12,6 +12,7 @@ import { IoChevronDown } from 'react-icons/io5'
 import { useState } from "react"
 import { AreYouSureModal } from "../task/are-you-sure-modal.jsx"
 import { GroupFooter } from "./group-footer.jsx"
+import { utilService } from "../../../services/util.service.js"
 
 export const GroupPreview = ({ group, sortGroup }) => {
     const params = useParams()
@@ -41,17 +42,15 @@ export const GroupPreview = ({ group, sortGroup }) => {
     const onDuplicateGroup = () => {
         const duplicateGroup = { ...group }
         delete duplicateGroup.id
-        duplicateGroup.tasks = [...group.tasks]
-        // if (duplicateGroup.tasks) {
-        //     duplicateGroup.tasks.forEach(task => {
-        //         task.id = utilService.makeId()
-        //          task.lastUpdated = Date.now()
-        //         if (duplicateGroup.task.comments) {
-        //             duplicateGroup.task.comments.forEach(comment => comment.id = utilService.makeId())
-        //         }
-        //     })
-        // }
-        dispatch(addGroup(boardId, duplicateGroup))
+        const newTasks = group.tasks.map(task => {
+            task.id = utilService.makeId()
+            task.lastUpdated = Date.now()
+            if (task.comments)
+                task.comments.forEach(comment => comment.id = utilService.makeId())
+            return task
+        })
+        duplicateGroup.tasks = [...newTasks]
+        dispatch(addGroup(boardId, duplicateGroup, 'last'))
     }
 
     return (

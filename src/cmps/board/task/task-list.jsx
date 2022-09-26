@@ -5,7 +5,6 @@ import { TaskPreview } from "./task-preview.jsx"
 import { useFormRegister } from '../../../hooks/useFormRegister.js'
 import { addTask } from '../../../store/actions/board.action.js'
 import { utilService } from "../../../services/util.service.js"
-import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd'
 
 export const TaskList = ({ tasks, groupId, groupColor }) => {
     const dispatch = useDispatch()
@@ -28,7 +27,8 @@ export const TaskList = ({ tasks, groupId, groupColor }) => {
         task.priority = ''
         task.persons = ''
         task.deadLine = ''
-        task.lastUpdate = Date.now()
+        task.lastUpdate = ''
+        task.timeline = [Date.now(), Date.now()]
         return task
     }
 
