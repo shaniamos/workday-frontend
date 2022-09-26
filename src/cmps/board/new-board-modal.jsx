@@ -23,7 +23,7 @@ export const NewBoardMoadl = ({ toggleNewBoardModal }) => {
             const title = newBoardTitle.title
             let newBoard = { title }
             newBoard = await dispatch(addBoard(newBoard))
-            navigate(`/board/${newBoard._id}`)
+            // navigate(`/board/${newBoard._id}`)
         } catch (err) {
             console.error(err)
         }

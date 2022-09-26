@@ -1,4 +1,4 @@
-import { boardService } from "../../services/board.service.local.js"
+import { boardService } from "../../services/board.service.js"
 import { showErrorMsg, showSuccessMsg } from "../../services/event-bus.service.js"
 
 // CRUDL BOARD
@@ -18,6 +18,7 @@ export function loadBoards(filterBy = {}) {
 
 //get board by id
 export function loadSelectedBoard(boardId, filterBy = {}) {
+    console.log(boardId)
     return async (dispatch) => {
         try {
             const board = await boardService.getBoardById(boardId, filterBy)
@@ -49,6 +50,7 @@ export function addBoard(board) {
     return async (dispatch) => {
         try {
             const savedBoard = await boardService.saveBoard(board)
+            console.log('addBoard action',savedBoard)
             dispatch({ type: 'ADD_BOARD', board: savedBoard })
             return savedBoard
         } catch (err) {
@@ -115,6 +117,8 @@ export function addGroup(boardId, group ,place) {
     return async (dispatch) => {
         try {
             const savedBoard = await boardService.addGroup(boardId, group ,place)
+            console.log('savedBoard', savedBoard)
+
             dispatch({ type: 'UPDATE_BOARD', board: savedBoard })
         } catch (err) {
             console.error('err:', err)
