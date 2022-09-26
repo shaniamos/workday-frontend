@@ -19,7 +19,7 @@ export function HomeHeader() {
                         <NavLink className='btn-login' to='/auth/login' >Log in</NavLink>
                         <NavLink className='btn-contant-us' >Contact us</NavLink>
                     </div>
-                    <Link to='/board/b101'>
+                    <Link to='/board/6331957ec46e6b54a700bb94'>
                         <button className='get-started-btn btn fa-arrow-right'>
                             <p>Get Started<span className='get-started-arrow'>&#8594;</span></p>
                         </button>

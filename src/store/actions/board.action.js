@@ -2,16 +2,17 @@ import { boardService } from "../../services/board.service.js"
 import { showErrorMsg, showSuccessMsg } from "../../services/event-bus.service.js"
 
 // CRUDL BOARD
-
-//get list of boards
 export function loadBoards(filterBy = {}) {
     return async (dispatch) => {
         try {
+            dispatch({ type: 'SET_LOADING', isLoading: true })
             const boards = await boardService.queryBoards(filterBy)
             dispatch({ type: 'SET_BOARDS', boards })
             return boards
         } catch (err) {
             console.error('Cannot load boards:', err)
+        } finally {
+            dispatch({ type: 'SET_LOADING', isLoading: false })
         }
     }
 }
@@ -21,19 +22,22 @@ export function loadSelectedBoard(boardId, filterBy = {}) {
     console.log(boardId)
     return async (dispatch) => {
         try {
+            dispatch({ type: 'SET_LOADING', isLoading: true })
             const board = await boardService.getBoardById(boardId, filterBy)
             dispatch({ type: 'SET_SELECTED_BOARD', board })
             return board
         } catch (err) {
             console.log('Cannot load board:', err)
+        } finally {
+            dispatch({ type: 'SET_LOADING', isLoading: false })
         }
     }
 }
 
-//remove board 
 export function removeBoard(boardId) {
     return async (dispatch) => {
         try {
+            dispatch({ type: 'SET_LOADING', isLoading: true })
             await boardService.removeBoard(boardId)
             dispatch({ type: 'REMOVE_BOARD', boardId })
             dispatch({ type: 'RESET_SELECTED_BOARD' })
@@ -41,25 +45,28 @@ export function removeBoard(boardId) {
         } catch (err) {
             showErrorMsg('Cannot delete board')
             console.log('Cannot delete board', err)
+        } finally {
+            dispatch({ type: 'SET_LOADING', isLoading: false })
         }
     }
 }
 
-//add board 
 export function addBoard(board) {
     return async (dispatch) => {
         try {
+            dispatch({ type: 'SET_LOADING', isLoading: true })
             const savedBoard = await boardService.saveBoard(board)
             console.log('addBoard action',savedBoard)
             dispatch({ type: 'ADD_BOARD', board: savedBoard })
             return savedBoard
         } catch (err) {
             console.error('err:', err)
+        } finally {
+            dispatch({ type: 'SET_LOADING', isLoading: false })
         }
     }
 }
 
-// update board
 export function updateBoard(board) {
     return async (dispatch) => {
         try {
@@ -67,6 +74,8 @@ export function updateBoard(board) {
             dispatch({ type: 'UPDATE_BOARD', board: savedBoard })
         } catch (err) {
             console.error('err:', err)
+        } finally {
+            dispatch({ type: 'SET_LOADING', isLoading: false })
         }
     }
 }
@@ -97,8 +106,6 @@ export function setSortBy(sortBy) {
 
 
 // CRUDL GROUP
-
-// remove group
 export function removeGroup(boardId, groupId) {
     return async (dispatch) => {
         try {
@@ -112,7 +119,6 @@ export function removeGroup(boardId, groupId) {
     }
 }
 
-//add group
 export function addGroup(boardId, group ,place) {
     return async (dispatch) => {
         try {
@@ -126,7 +132,6 @@ export function addGroup(boardId, group ,place) {
     }
 }
 
-//update group
 export function updateGroup(boardId, group) {
     return async (dispatch) => {
         try {
@@ -139,8 +144,6 @@ export function updateGroup(boardId, group) {
 }
 
 // CRUDL TASK
-
-//remove task
 export function removeTask(boardId, groupId, taskId) {
     return async (dispatch) => {
         try {
@@ -154,7 +157,6 @@ export function removeTask(boardId, groupId, taskId) {
     }
 }
 
-//add task
 export function addTask(boardId, groupId, task) {
     return async (dispatch) => {
         try {
@@ -166,7 +168,6 @@ export function addTask(boardId, groupId, task) {
     }
 }
 
-//update task
 export function updateTask(boardId, groupId, task) {
     return async (dispatch) => {
         try {
@@ -200,8 +201,6 @@ export function updateStatusOrPiority(boardId, groupId, taskToUpdate) {
   }
 
 //COMMENTS 
-
-//remove comment
 export function removeComment(boardId, groupId, taskId, commentIdx) {
     return async (dispatch) => {
         try {
@@ -215,7 +214,6 @@ export function removeComment(boardId, groupId, taskId, commentIdx) {
     }
 }
 
-//add comment
 export function addComment(boardId, groupId, taskId, newComment) {
     return async (dispatch) => {
         try {

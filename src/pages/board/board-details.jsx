@@ -5,7 +5,8 @@ import { useParams } from 'react-router-dom'
 import { BoardHeader } from '../../cmps/board/board-header/board-header.jsx'
 import { GroupList } from '../../cmps/board/group/group-list.jsx'
 import { KanbanView } from '../../cmps/kanban/kanban-view.jsx'
-import {Dashboard} from '../../cmps/board/dashboard.jsx'
+import { Dashboard } from '../../cmps/board/dashboard.jsx'
+import { Loader } from '../../cmps/loader.jsx'
 import { addGroup, loadSelectedBoard } from '../../store/actions/board.action.js'
 
 export const BoardDetails = ({ boards, onChangeFilter }) => {
@@ -31,14 +32,13 @@ export const BoardDetails = ({ boards, onChangeFilter }) => {
         setBoardView(currView)
     }
 
-    // if (isLoading) {
-    //     return (
-    //         <section className='monday-loader-page'>
-    //             <img className='monday-loader-animation' src="https://cdn.monday.com/images/loader/loader.gif" alt="" />
-    //         </section>
-    //     )
-    // }
-
+    if (isLoading) {
+        return ( <Loader/>
+            // <section className='monday-loader-page'>
+            //     <img className='monday-loader-animation' src="https://cdn.monday.com/images/loader/loader.gif" alt="" />
+            // </section>
+        )
+    }
     return (
         <section className="board-details">
             {(board && boards.length) &&

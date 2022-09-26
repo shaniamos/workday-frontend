@@ -2,7 +2,7 @@ const INITIAL_STATE = {
     boards: [],
     selectedBoard: null,
     filterBy: { txt: '' },
-    isLoading: false,
+    isLoading: true,
     sortBy: null,
 }
 
