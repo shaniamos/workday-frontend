@@ -16,9 +16,9 @@ export const TimeLine = ({task, boardId, groupId}) => {
     const [isHover, setIsHover] = useState(false)
     const dispatch = useDispatch()
 
-    // useEffect(() => {
-    //     onSetTimeline()
-    // }, [endDate])
+    // // useEffect(() => {
+    // //     onSetTimeline()
+    // // }, [endDate])
     
     const setDateRange = (newRange) => {
         if (!newRange[1]) {
@@ -31,6 +31,7 @@ export const TimeLine = ({task, boardId, groupId}) => {
     }
 
     const onSetTimeline = async () => {
+        console.log('im here!!');
         task.timeline[0] = startDate
         task.timeline[1] = endDate
         // task.lastUpdated = Date.now()

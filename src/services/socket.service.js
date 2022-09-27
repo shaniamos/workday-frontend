@@ -26,7 +26,6 @@ export const socketService = createSocketService()
 // window.socketService = socketService
 socketService.setup()
 
-
 function createSocketService() {
   var socket = null;
   const socketService = {

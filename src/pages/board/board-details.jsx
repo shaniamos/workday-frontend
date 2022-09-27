@@ -18,16 +18,17 @@ export const BoardDetails = ({ boards, onChangeFilter }) => {
     const dispatch = useDispatch()
     const params = useParams()
 
-    useEffect(() => {
-        socketService.on(SOCKET_EVENT_BOARD_CHANGED, changeBoard)
-        return () => {
-            socketService.off(SOCKET_EVENT_BOARD_CHANGED, changeBoard)
-        }
-    }, [])
+    // useEffect(() => {
+    //     // socketService.on(SOCKET_EVENT_BOARD_CHANGED, changeBoard)
+    //     // return () => {
+    //     //     socketService.off(SOCKET_EVENT_BOARD_CHANGED, changeBoard)
+    //     // }
+    // }, [])
 
     useEffect(() => {
         const boardId = params.id
         socketService.emit(SOCKET_EMIT_SET_BOARD_ID, boardId)
+        console.log(params.id)
         dispatch(loadSelectedBoard(boardId))
     }, [params.id])
 

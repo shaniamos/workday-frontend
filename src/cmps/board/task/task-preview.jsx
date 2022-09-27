@@ -56,7 +56,7 @@ export const TaskPreview = ({ task, groupId, groupColor, provided }) => {
 
     const setStatusOrPriority = (currStatusOrPriority, label) => {
         if (label === 'priority') {
-            const taskToUpdate = { ...task, priority: currStatusOrPriority}
+            const taskToUpdate = { ...task, priority: currStatusOrPriority }
             dispatch(updateTask(boardId, groupId, taskToUpdate))
         }
         else if (label === 'status') {
@@ -72,8 +72,10 @@ export const TaskPreview = ({ task, groupId, groupColor, provided }) => {
     const { persons, lastUpdated, deadline } = task
     let date = (+deadline) ? new Date(+deadline) : ''
     return (
-        // <div className="preview-full-task flex" {...provided.dragHandleProps} {...provided.draggableProps} ref={provided.innerRef}>
-        <div className="preview-full-task flex">
+        <div className="preview-full-task flex"
+            {...provided.dragHandleProps}
+            {...provided.draggableProps}
+            ref={provided.innerRef}>
             <div className="dropdown">
                 <div ><HiOutlineDotsHorizontal className="dot" /></div>
                 <div className="dropdown-content">
@@ -118,7 +120,7 @@ export const TaskPreview = ({ task, groupId, groupColor, provided }) => {
 
                 {/* TimeLine */}
                 <div className="cell timeline-header">
-                    <TimeLine task={task} boardId={boardId} groupId={groupId}/>
+                    <TimeLine task={task} boardId={boardId} groupId={groupId} />
                 </div>
 
                 {/* Due Date */}

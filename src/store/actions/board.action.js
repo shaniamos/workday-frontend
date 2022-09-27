@@ -186,10 +186,10 @@ export function addTask(boardId, groupId, task) {
 export function updateTask(boardId, groupId, task) {
     return async (dispatch) => {
         try {
-            task = {
-                ...task,
-                lastUpdated: Date.now()
-            }
+            // task = {
+            // ...task,
+            // lastUpdated: Date.now()
+            // }
             const savedBoard = await boardService.updateTask(boardId, groupId, task)
             dispatch({ type: 'UPDATE_BOARD', board: savedBoard })
         } catch (err) {

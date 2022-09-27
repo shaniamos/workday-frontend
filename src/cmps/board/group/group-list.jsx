@@ -57,13 +57,18 @@ export const GroupList = ({ members, groups, onAddGroup, onChangeFilter }) => {
         <DragDropContext>
             <Droppable droppableId='group'>
                 {(droppableProvided) => {
-                    return <section ref={droppableProvided.innerRef} {...droppableProvided.droppableProps} className="group-list">
-                        {filteredGroups.map(group =>
-                            <GroupPreview
-                                key={group.id}
-                                group={group}
-                                onChangeFilter={onChangeFilter}
-                                sortGroup={onSort} />
+                     return <section ref={droppableProvided.innerRef} {...droppableProvided.droppableProps} className="group-list">
+                        {filteredGroups.map((group, idx) =>
+                            <Draggable draggableId={group.id} index={idx}>
+                                {(provided) => {
+                                    return <GroupPreview
+                                        provided={provided}
+                                        key={group.id}
+                                        group={group}
+                                        onChangeFilter={onChangeFilter}
+                                        sortGroup={onSort} />
+                                }}
+                            </Draggable>
                         )}
                         <button className="btn-add-group sticky-feature" onClick={() => onAddGroup('last')}>
                             <span className="add-icon"><GrAdd /></span> Add New Group

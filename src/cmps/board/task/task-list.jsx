@@ -5,6 +5,7 @@ import { TaskPreview } from "./task-preview.jsx"
 import { useFormRegister } from '../../../hooks/useFormRegister.js'
 import { addTask } from '../../../store/actions/board.action.js'
 import { utilService } from "../../../services/util.service.js"
+import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd'
 
 export const TaskList = ({ tasks, groupId, groupColor }) => {
     const dispatch = useDispatch()
@@ -33,34 +34,39 @@ export const TaskList = ({ tasks, groupId, groupColor }) => {
     }
 
     return (
-        // <DragDropContext>
-        // {/* <Droppable droppableId={groupId}> */}
-        // {/* {(provided) => { */}
-        // <section className="task-list" {...provided.droppableProps} ref={provided.innerRef}> 
-        <section className="task-list">
-            {tasks.map((task, idx) => {
-                // <Draggable draggableId={task.id} index={idx}>
-                // {(provided) => {
-                // return <TaskPreview provided={provided} key={task.id} task={task} groupId={groupId} groupColor={groupColor} />
-                return <TaskPreview key={task.id} task={task} groupId={groupId} groupColor={groupColor} />
-                // }}
-                // </Draggable>
-            })}
-            {/* NEW TASK */}
-            <div className="preview-new-task">
-                <div className="cell task-name-area flex">
-                    <div className="task-group-color" style={{ backgroundColor: `var(${groupColor})`, borderBlock: `0.5px solid var(${groupColor})` }}></div>
-                    <div className="preview-checkbox"><input className="input-checkbox" type="checkbox" /></div>
-                    <div className="editable-heading task-name-heading">
-                        <form className="clean-input" onSubmit={onAddTask}>
-                            <input {...register('title', 'text')} className="clean-input" placeholder="+ Add Item" />
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </section>
-        //  }} 
-        // </Droppable>
-        // </DragDropContext >
+        <DragDropContext>
+            <Droppable droppableId={groupId}>
+                {(provided) => {
+                    return <section className="task-list"
+                        {...provided.droppableProps}
+                        ref={provided.innerRef}>
+                        {tasks.map((task, idx) =>
+                            <Draggable draggableId={task.id} index={idx}>
+                                {(provided) => {
+                                    return <TaskPreview
+                                        provided={provided}
+                                        key={task.id}
+                                        task={task}
+                                        groupId={groupId}
+                                        groupColor={groupColor} />
+                                }}
+                            </Draggable>
+                        )}
+                        {/* NEW TASK */}
+                        <div className="preview-new-task">
+                            <div className="cell task-name-area flex">
+                                <div className="task-group-color" style={{ backgroundColor: `var(${groupColor})`, borderBlock: `0.5px solid var(${groupColor})` }}></div>
+                                <div className="preview-checkbox"><input className="input-checkbox" type="checkbox" /></div>
+                                <div className="editable-heading task-name-heading">
+                                    <form className="clean-input" onSubmit={onAddTask}>
+                                        <input {...register('title', 'text')} className="clean-input" placeholder="+ Add Item" />
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                }}
+            </Droppable>
+        </DragDropContext >
     )
 }

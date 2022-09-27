@@ -58,6 +58,7 @@ async function removeBoard(boardId) {
 
 async function saveBoard(board) {
     if (board._id) {
+        console.log('Hello from save board')
         const res = await httpService.put(BASE_URL + board._id, board)
         socketService.emit(SOCKET_EMIT_BOARD_CHANGED, res)
         return res

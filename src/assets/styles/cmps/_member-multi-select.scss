@@ -1,24 +1,31 @@
 .member-multi-select-container {
+    padding: rem(8px) rem(8px) rem(8px) rem(8px);
     position: absolute;
-    border: 1px solid black;
-    z-index: 10;
-
+    z-index: 100;
+    color:  #676879;
+    background-color: var(--secondary-background-color);
+    box-shadow: 1px 1px 6px 0 rgb(0 0 0 / 30%);
+    width: rem(360px);
+    border-radius: 8px;
+    .exit-btn {
+        font-size: rem(19px);
+    }
     .are-assignee {
         display: flex;
         align-items: center;
         justify-content: center;
         flex-wrap: wrap;
-        padding: 2px;
-        
+        padding: rem(2px);
+
 
         div {
+            color: rgb(68, 64, 64);
+            border-radius: rem(18px);
             display: flex;
             justify-content: center;
-            width: 120px;
-            margin: 4px;
-            background: #e5f4ff;
-            color: #333;
-            border-radius: 8px;
+            background-color: #e5f4ff;
+            width: rem(120px);
+            margin: rem(4px);
 
             >*:last-child {
                 cursor: pointer;
@@ -26,18 +33,53 @@
         }
 
         img {
-            width: 22px;
-            padding-right: 4px;
+            width: rem(22px);
+            height: rem(22px);
+            padding-right: rem(4px);
         }
 
         span {
-            margin-top: 3px;
-            margin-left: 4px;
+            margin-top: rem(3px);
+            margin-left: rem(4px);
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
         }
     }
+    .not-assignee {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .members-title {
+            font-size: rem(15px);
+            margin-inline-end: auto;
+            padding-left: rem(5px);
+        }
+        
+        .not-assignee-single-user {
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            width: rem(300px);
+            padding: rem(7px) rem(7px);
+            border-radius: rem(4px);
+            margin-bottom: rem(4px);
+            transition: background-color .2s;
+          &:hover {
+            background-color: var(--primary-background-hover-color);
+          }
+          img {
+            width: rem(22px);
+            height: rem(22px);
+            margin-bottom: rem(1px);
+          }
+          span {
+            font-size: rem(15px);
+            padding-left: rem(12px);
+          }
+        }
+      }
 
 
 
