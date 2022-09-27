@@ -1,5 +1,6 @@
 import { httpService } from "./http.service.js"
 import { utilService } from './util.service.js'
+import { socketService, SOCKET_EMIT_BOARD_CHANGED } from './socket.service.js'
 
 export const boardService = {
     queryBoards,
@@ -56,6 +57,7 @@ async function removeBoard(boardId) {
 
 async function saveBoard(board) {
     if (board._id) {
+        // socketService.emit(SOCKET_EMIT_BOARD_CHANGED, board)
         const res = await httpService.put(BASE_URL + board._id, board)
         return res
     } else {

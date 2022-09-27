@@ -3,7 +3,7 @@ import { Link, useParams } from "react-router-dom"
 import { useFormRegister } from "../../hooks/useFormRegister.js"
 import logo from '../../assets/imgs/logo.png'
 import signUpPic from '../../assets/imgs/signup-pic.jpg'
-import backgroundImg from '../../assets/imgs/signup-background.jpg'
+// import backgroundImg from '../../assets/imgs/signup-background.jpg'
 import { useDispatch } from "react-redux"
 import { login, signup } from "../../store/actions/user.action.js"
 import { useNavigate } from "react-router-dom/dist/index.js"

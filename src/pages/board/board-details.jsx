@@ -32,6 +32,7 @@ export const BoardDetails = ({ boards, onChangeFilter }) => {
     }, [params.id])
 
     const changeBoard = (newBoard) => {
+        // console.log('newBoard', newBoard)
         dispatch(updateBoard(newBoard))
     }
 

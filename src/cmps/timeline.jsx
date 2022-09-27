@@ -51,17 +51,7 @@ export const TimeLine = ({task, boardId, groupId}) => {
         const totalDays = (timestampEnd - timestampStart) / 1000 / 60 / 60 / 24
         return totalDays.toFixed(0)
     }
-    const getPercent = () => {
-        const now = Date.now()
-        const timestampStart = startDate.getTime()
-        const totalDays = getNumOfDays()
-        let milliPassed = now - timestampStart
-        const daysPassed = Math.floor(milliPassed / 1000 / 60 / 60 / 24)
-        let percent = daysPassed / totalDays * 100
-        if (percent < 0) percent = 0
-        if (percent > 100) percent = 100
-        return percent
-    }
+ 
     return (
         <div className="timeline-container" >
 
