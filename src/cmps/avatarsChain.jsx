@@ -4,7 +4,7 @@ import React, { useState } from "react"
 import { MemberMultiSelect } from "./member-multi-select"
 
 export function AvatarsChain({ task, assigneeMembers, groupId }) {
-    const [isMemberModalOpen, setIsMemberModalOpen] = useState(false)
+    const [isMemberModalOpen, setIsMemberModalOpen] = useState()
 
     if (assigneeMembers === undefined || assigneeMembers.length === 0) {
         return (
@@ -13,6 +13,7 @@ export function AvatarsChain({ task, assigneeMembers, groupId }) {
             </div>
         )
     }
+    
     return (
         <Fragment>
             < div className="overlap-images-wrapper flex" onClick={() => setIsMemberModalOpen(!isMemberModalOpen)}>

@@ -1,19 +1,44 @@
-.member-multi-select-container{
+.member-multi-select-container {
     position: absolute;
     border: 1px solid black;
     z-index: 10;
+
     .are-assignee {
         display: flex;
         align-items: center;
         justify-content: center;
         flex-wrap: wrap;
         padding: 2px;
-        width: 200px;
-        height: 200px;
         
 
+        div {
+            display: flex;
+            justify-content: center;
+            width: 120px;
+            margin: 4px;
+            background: #e5f4ff;
+            color: #333;
+            border-radius: 8px;
+
+            >*:last-child {
+                cursor: pointer;
+            }
+        }
+
+        img {
+            width: 22px;
+            padding-right: 4px;
+        }
+
+        span {
+            margin-top: 3px;
+            margin-left: 4px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
     }
-    
+
 
 
 }
