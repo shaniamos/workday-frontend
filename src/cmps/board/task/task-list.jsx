@@ -34,22 +34,33 @@ export const TaskList = ({ tasks, groupId, groupColor }) => {
 
     return (
         // <DragDropContext>
-
-        //     <Droppable droppableId='group'>
-        //         {(provided) => {
-        //             <div  {...provided.droppableProps} ref={provided.innerRef} className="task-list">
-        <div className="task-list">
+        // {/* <Droppable droppableId={groupId}> */}
+        // {/* {(provided) => { */}
+        // <section className="task-list" {...provided.droppableProps} ref={provided.innerRef}> 
+        <section className="task-list">
             {tasks.map((task, idx) => {
                 // <Draggable draggableId={task.id} index={idx}>
-                //     {(provided) => {
+                // {(provided) => {
                 // return <TaskPreview provided={provided} key={task.id} task={task} groupId={groupId} groupColor={groupColor} />
                 return <TaskPreview key={task.id} task={task} groupId={groupId} groupColor={groupColor} />
-                //     }}
+                // }}
                 // </Draggable>
             })}
-        </div>
-        //         }}
-        //     </Droppable>
+            {/* NEW TASK */}
+            <div className="preview-new-task">
+                <div className="cell task-name-area flex">
+                    <div className="task-group-color" style={{ backgroundColor: `var(${groupColor})`, borderBlock: `0.5px solid var(${groupColor})` }}></div>
+                    <div className="preview-checkbox"><input className="input-checkbox" type="checkbox" /></div>
+                    <div className="editable-heading task-name-heading">
+                        <form className="clean-input" onSubmit={onAddTask}>
+                            <input {...register('title', 'text')} className="clean-input" placeholder="+ Add Item" />
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+        //  }} 
+        // </Droppable>
         // </DragDropContext >
     )
 }

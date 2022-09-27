@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom"
 import { useFormRegister } from "../../hooks/useFormRegister.js"
 import { addBoard } from "../../store/actions/board.action.js"
 
-export const NewBoardMoadl = ({ toggleNewBoardModal }) => {
+export const NewBoardMoadl = ({ toggleNewBoardModal, onSaveBoard }) => {
 
     const inputRef = useRef()
     const dispatch = useDispatch()
@@ -17,23 +17,13 @@ export const NewBoardMoadl = ({ toggleNewBoardModal }) => {
         inputRef.current.focus()
     }, [])
 
-    const onSaveBoard = async () => {
-        toggleNewBoardModal()
-        try {
-            const title = newBoardTitle.title
-            let newBoard = { title }
-            newBoard = await dispatch(addBoard(newBoard))
-            // navigate(`/board/${newBoard._id}`)
-        } catch (err) {
-            console.error(err)
-        }
-    }
+   
 
     return (
         <section className="new-board-modal-container open">
-            <div className="main-screen" onClick={toggleNewBoardModal}></div>
+            <div className="main-screen" onClick={() => toggleNewBoardModal()}></div>
             <section className="add-modal flex column justify-center">
-                <div className="close-modal-btn flex align-center" onClick={toggleNewBoardModal}>
+                <div className="close-modal-btn flex align-center" onClick={() => toggleNewBoardModal()}>
                     <span>X</span>
                 </div>
                 <h1 className="create-board">Create board</h1>
@@ -41,8 +31,8 @@ export const NewBoardMoadl = ({ toggleNewBoardModal }) => {
                     <div className='input-container'>
                         <input className="create-board-input clean-input" ref={inputRef} {...register('title', 'text')} />
                         <div className="modal-btns" >
-                            <button className="cancel-modal-btn" onClick={toggleNewBoardModal}>Cancel</button>
-                            <button className="create-modal-btn" onClick={onSaveBoard}>Create Board</button>
+                            <button className="cancel-modal-btn" onClick={() => toggleNewBoardModal()}>Cancel</button>
+                            <button className="create-modal-btn" onClick={() => onSaveBoard(newBoardTitle)}>Create Board</button>
                         </div>
                     </div>
                 </label>

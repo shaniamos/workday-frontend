@@ -9,7 +9,6 @@ import { updateTask } from '../store/actions/board.action';
 // registerLocale('uk', uk)
 
 export const TimeLine = ({task, boardId, groupId}) => {
-
     const [startDate, setStartDate] = useState((new Date(task.timeline[0])))
     const [endDate, setEndDate] = useState((new Date(task.timeline[1])))
     const [isDateSet, setIsDateSet] = useState(true)
@@ -17,10 +16,7 @@ export const TimeLine = ({task, boardId, groupId}) => {
     const [isHover, setIsHover] = useState(false)
     const dispatch = useDispatch()
 
-  
-   
     useEffect(() => {
-        
         onSetTimeline()
     }, [endDate])
     
@@ -37,6 +33,7 @@ export const TimeLine = ({task, boardId, groupId}) => {
     const onSetTimeline = async () => {
         task.timeline[0] = startDate
         task.timeline[1] = endDate
+        task.lastUpdated = Date.now()
         dispatch(updateTask(boardId, groupId, task))  
         setIsDateSet(true)
         setIsSettingDate(false)

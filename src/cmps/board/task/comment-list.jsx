@@ -10,6 +10,7 @@ import { BsReply } from 'react-icons/bs';//reply
 export function CommentList({ comments, onRemoveComment, onAddComment }) {
     return <section className="item-updates-container">
         <PostUpdate onAddComment={onAddComment} />
+        {comments && <section>
         {comments.map(((content, idx) => {
             return (
                 <div className="user-update-card" key={content.byMember._id}>
@@ -48,7 +49,8 @@ export function CommentList({ comments, onRemoveComment, onAddComment }) {
             )
 
         }
-        ))}
+        
+        ))}</section>}
 
 
 

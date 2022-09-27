@@ -2,13 +2,9 @@
 import { IoIosArrowForward } from 'react-icons/io'
 import { IoIosArrowBack } from 'react-icons/io'
 import { IoIosArrowDown } from 'react-icons/io'
-import { HiDotsHorizontal } from 'react-icons/hi'
 import { GrAdd } from 'react-icons/gr'
 import { BsFillLightningFill } from 'react-icons/bs'
-import { MdDeleteOutline } from 'react-icons/md'
-import { HiOutlineDocumentDuplicate } from 'react-icons/hi'
-import { RiPencilLine } from 'react-icons/ri'
-import { HiOutlineArchive } from 'react-icons/hi'
+
 //LIBS
 import { useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
@@ -17,8 +13,9 @@ import { addBoard, loadBoards, removeBoard } from '../../store/actions/board.act
 import { NewBoardMoadl } from "../board/new-board-modal.jsx"
 import { Search } from "../search.jsx"
 import { useEffect } from 'react'
-import BoardNavIcon from '../../assets/svgs/BoardNavIcon.svg'
+// import BoardNavIcon from '../../assets/svgs/BoardNavIcon.svg'
 import { utilService } from '../../services/util.service.js'
+import { BoardList } from '../board/board-list.jsx'
 
 
 export function SubSidebar({ isOpen }) {
@@ -30,7 +27,7 @@ export function SubSidebar({ isOpen }) {
     const dispatch = useDispatch()
     const navigate = useNavigate()
 
-    // const currLocation = useLocation()
+    const currLocation = useLocation()
 
     useEffect(() => {
         dispatch(loadBoards())
@@ -68,6 +65,17 @@ export function SubSidebar({ isOpen }) {
             console.error(err)
         }
     }
+    const onSaveBoard = async (newBoardTitle) => {
+        toggleNewBoardModal()
+        try {
+            const title = newBoardTitle.title
+            let newBoard = { title }
+            newBoard = await dispatch(addBoard(newBoard))
+            // navigate(`/board/${newBoard._id}`)
+        } catch (err) {
+            console.error(err)
+        }
+    }
 
     const onDuplicateBoard = async (board) => {
         const duplicateBoard = { ...board }
@@ -95,20 +103,21 @@ export function SubSidebar({ isOpen }) {
         }
     }
 
-    // const styleSubSidebar = (currLocation.pathname === '/workspace') ? '{display: flex}' : ''
+    const styleSubSidebar = (currLocation.pathname === '/workspace') ? '{display: flex}' : ''
+    const isWorkspace = (currLocation.pathname === '/workspace')
     const sideBarClassName = isNavOpen ? 'is-open' : ''
     // style={styleSubSidebar}
 
     return (
-        <section className={`sub-sidebar-container ${sideBarClassName}`} >
-            {isNewBoardModalOpen && <NewBoardMoadl toggleNewBoardModal={toggleNewBoardModal} />}
+        <section className={`sub-sidebar-container ${sideBarClassName}`}  >
+            {isNewBoardModalOpen && <NewBoardMoadl onSaveBoard={onSaveBoard} toggleNewBoardModal={toggleNewBoardModal} />}
             {isNavOpen && <IoIosArrowBack className='btn-left open-btn' onClick={toggleSubSidebar} />}
             {!isNavOpen && <IoIosArrowForward className='btn-right open-btn' onClick={toggleSubSidebar} />}
             {isNavOpen && (
                 <div className="side-bar-content">
-                    <div className="workspace-sidebar flex space-between">
-                        <span>Workspace</span>
-                    </div>
+                    {!isWorkspace && <div className="workspace-sidebar flex space-between"> <span>Workspace</span></div> }
+                    {isWorkspace && <a  className="flex  option last-one"><Search onChangeFilter={onChangeBoardsFilter} /></a> }
+                    
                     <div className="workspace-board flex space-between align-center">
                         <div className="workspace-board-name flex align-center">
                             <div className="workspace-icon flex align-center" >
@@ -125,39 +134,22 @@ export function SubSidebar({ isOpen }) {
                                 {<a className="flex  option last-one"><Search onChangeFilter={onChangeBoardsFilter} /> </a>}
                             </div>
                         </div>
+                        
                         <div className="spacer"></div>
                         <div className="boards-options">
-                            {filteredBoards.map(board => {
-                                return <div className="boards-list flex space-between" key={board._id}>
-                                    <NavLink className="flex inline-flex option" to={`/board/${board._id}`}>
-                                        {/* <HiOutlineClipboard className="table-chart flex column align-center" /> */}
-                                        <img className="table-chart flex column align-center" src={BoardNavIcon} alt="" />
-                                        <span className="menu-btn-inner-text">{board.title}</span>
-                                        <i className="dropdown-dot">
-                                            <div className="dropdown" onClick={(ev) => {
-                                                ev.preventDefault()
-                                                toggleDropdown()
-                                            }} ><HiDotsHorizontal className="points" />
-                                                {isDropDownOpen && <div className="dropdown-content ">
-                                                    <i onClick={() => onDuplicateBoard(board)}><HiOutlineDocumentDuplicate className="icon-dropdown" /> Duplicate Board</i>
-                                                    <i><RiPencilLine className="icon-dropdown" /> Rename</i><hr />
-                                                    <i><HiOutlineArchive className="icon-dropdown" /> Archive</i>
-                                                    <i onClick={(ev) => {
-                                                        ev.preventDefault()
-                                                        ev.stopPropagation()
-                                                        onRemoveBoard(board._id)
-                                                    }}><MdDeleteOutline className="icon-dropdown" /> Delete</i>
-                                                </div>}
-                                            </div>
-                                        </i>
-                                    </NavLink>
-                                </div>
-                            }
-                            )}
+                            <BoardList 
+                                filteredBoards={filteredBoards}
+                                onRemoveBoard={onRemoveBoard}
+                                isDropDownOpen={isDropDownOpen}
+                                toggleDropdown={toggleDropdown}
+                                onDuplicateBoard={onDuplicateBoard}
+                                 />
                         </div>
                     </div>
+                    {isWorkspace && <button  className="add-mobile-btn"> <a onClick={toggleNewBoardModal} className="flex option"> <GrAdd className='plus-icon'/></a> </button> }
                 </div>
             )}
+            
             {(!boards.length && isNavOpen) && <div className='workspace-empty'>
                 <h2 className='workspace-empty-title'>Your workspace is empty</h2>
                 <h2 className='workspace-empty-subtitle'>Get started by adding new boards</h2>

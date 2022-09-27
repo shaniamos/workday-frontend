@@ -83,3 +83,58 @@
     @include main-screen-open;
 
 }
+
+
+@include for-mobile-layout {
+    .task-edit {
+        position: relative;
+        padding: 1rem;
+
+        .clean-input {
+            font-size: 21px;
+        }
+
+        .task-edit-tool-bar {
+            font-size: 14px;
+
+        }
+
+
+
+        .item-updates-container {
+            .tox-tinymce.tox-platform-touch {
+                margin-top: 15px;
+                width: 320px;
+            }
+            .side-panel-actions {
+                flex-direction: row-reverse;
+            }
+
+            .update-input {
+                width: rem(240px);
+                width: rem(240px);
+                margin-top: 1rem;
+                margin-bottom: 1.5rem;
+                
+                
+                .update-btn {
+                    float: left;
+                }
+
+                
+            }
+            .user-update-card {
+                width: 360px;
+            }
+            
+            
+            
+        }
+
+    }
+
+    .task-edit-container .main-screen {
+        display: none;
+    }
+
+}

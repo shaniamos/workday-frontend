@@ -3,7 +3,7 @@
     background-color: var(--primary-background-color);
     top: 0;
     left: 0;
-    z-index: 40;
+    z-index: 42;
     font-family: roboto, rubik, sans-serif;
 
     button {
@@ -240,7 +240,7 @@
             font-weight: 400;
             font-size: rem(16px);
             background-color: white;
-            min-width: rem(120px);
+            min-width: rem(210px);
             box-shadow: 0px 8px 16px 0px rgba(31, 30, 30, 0.4);
             z-index: 100;
             border-radius: rem(10px);
