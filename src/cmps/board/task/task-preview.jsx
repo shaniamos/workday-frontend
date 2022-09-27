@@ -70,7 +70,7 @@ export const TaskPreview = ({ task, groupId, groupColor, provided }) => {
     }
 
     const { persons, lastUpdated, deadline } = task
-    let date = (deadline) ? new Date(deadline) : ''
+    let date = (+deadline) ? new Date(+deadline) : ''
     return (
         // <div className="preview-full-task flex" {...provided.dragHandleProps} {...provided.draggableProps} ref={provided.innerRef}>
         <div className="preview-full-task flex">

@@ -21,7 +21,7 @@ export const BoardDetails = ({ boards, onChangeFilter }) => {
     useEffect(() => {
         socketService.on(SOCKET_EVENT_BOARD_CHANGED, changeBoard)
         return () => {
-            socketService.off(SOCKET_EVENT_BOARD_CHANGED , changeBoard)
+            socketService.off(SOCKET_EVENT_BOARD_CHANGED, changeBoard)
         }
     }, [])
 

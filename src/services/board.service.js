@@ -1,5 +1,6 @@
 import { httpService } from "./http.service.js"
 import { utilService } from './util.service.js'
+import { socketService, SOCKET_EMIT_BOARDS_CHANGE, SOCKET_EMIT_BOARD_CHANGED, SOCKET_EMIT_SET_BOARD_ID } from "./socket.service";
 
 export const boardService = {
     queryBoards,
@@ -24,7 +25,7 @@ export const boardService = {
 }
 
 const BASE_URL = `board/`
-
+const boardChannel = new BroadcastChannel('boardChannel');
 
 //BoardService
 async function queryBoards(filterBy) {
@@ -45,22 +46,25 @@ async function queryBoards(filterBy) {
 
 async function getBoardById(boardId) {
     console.log(boardId)
+    socketService.emit(SOCKET_EMIT_SET_BOARD_ID, boardId)
     const board = await httpService.get(BASE_URL + boardId)
     return board
 }
 
 async function removeBoard(boardId) {
-    const board = await httpService.delete(BASE_URL + boardId)
-    return board
+    const removedBoardId = await httpService.delete(BASE_URL + boardId)
+    return removedBoardId
 }
 
 async function saveBoard(board) {
     if (board._id) {
         const res = await httpService.put(BASE_URL + board._id, board)
+        socketService.emit(SOCKET_EMIT_BOARD_CHANGED, res)
         return res
     } else {
         if (!board.groups) board = _createBoard(board)
         const res = await httpService.post(BASE_URL, board)
+        socketService.emit(SOCKET_EMIT_BOARDS_CHANGE, res)
         return res
     }
 }
@@ -151,7 +155,6 @@ async function queryTasks(boardId, groupId, filterBy) {
 
 async function getTaskById(boardId, groupId, taskId) {
     try {
-
         const group = await getGroupById(boardId, groupId)
         const task = group.tasks.find(task => task.id === taskId)
         return task

@@ -1,9 +1,20 @@
 import { httpService } from './http.service'
 import { store } from '../store/store'
-import { getActionSetWatchedUser } from '../store/actions/board.action.js'
-import { socketService, SOCKET_EVENT_USER_UPDATED, SOCKET_EMIT_USER_WATCH } from './socket.service'
+// import { getActionSetWatchedUser } from '../store/actions/board.action.js'
+import { socketService, SOCKET_EVENT_TASK_ABOUT_YOU } from './socket.service'
 
 const STORAGE_KEY_LOGGEDIN_USER = 'loggedinUser'
+
+// const notificationChannel = new BroadcastChannel('notificationChannel');
+// (() => {
+//     // socketService.on(SOCKET_EVENT_REVIEW_ADDED, (review) => {
+//     //     console.log('GOT from socket', review)
+//     //     store.dispatch(getActionAddReview(review))
+//     // })
+//     socketService.on(SOCKET_EVENT_TASK_ABOUT_YOU, (task) => {
+//         console.log(`New task about me ${task.title}`)
+//     })
+// })()
 
 export const userService = {
     login,
@@ -25,16 +36,14 @@ function getUsers() {
 }
 
 function onUserUpdate(user) {
-    store.dispatch(getActionSetWatchedUser(user))
+    // store.dispatch(getActionSetWatchedUser(user))
 }
 
 async function getById(userId) {
     const user = await httpService.get(`user/${userId}`)
-
     // socketService.emit(SOCKET_EMIT_USER_WATCH, userId)
     // socketService.off(SOCKET_EVENT_USER_UPDATED, onUserUpdate)
     // socketService.on(SOCKET_EVENT_USER_UPDATED, onUserUpdate)
-
     return user
 }
 

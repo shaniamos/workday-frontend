@@ -1,17 +1,25 @@
 import { boardService } from "../../services/board.service.js"
 import { showErrorMsg, showSuccessMsg } from "../../services/event-bus.service.js"
 
+// Action Creators:
+export function getActionRemoveBoard(boardId) {
+    return {
+        type: 'REMOVE_BOARD',
+        boardId
+    }
+}
+export function getActionAddBoard(board) {
+    return {
+        type: 'ADD_BOARD',
+        board
+    }
+}
 export function getActionUpdateBoard(board) {
-    return { type: 'UPDATE_BOARD', board }
+    return {
+        type: 'UPDATE_BOARD',
+        board
+    }
 }
-
-export function getActionUpdateTask(task) {
-    return { type: 'UPDATE_TASK', task }
-}
-export function getActionSetWatchedUser(task) {
-    return { type: 'UPDATE_TASK', task }
-}
-
 
 // CRUDL BOARD
 export function loadBoards(filterBy = {}) {
@@ -91,7 +99,6 @@ export function updateBoard(board) {
 }
 
 export function setFilterBy(filterBy) {
-    // CR - changed to try & catch
     try {
         return (dispatch) => {
             dispatch({ type: 'SET_FILTER_BY', filterBy });
@@ -103,7 +110,6 @@ export function setFilterBy(filterBy) {
 }
 
 export function setSortBy(sortBy) {
-    // CR - changed to try & catch
     try {
         return (dispatch) => {
             dispatch({ type: 'SET_SORT_BY', sortBy });
@@ -113,7 +119,6 @@ export function setSortBy(sortBy) {
         throw err
     }
 }
-
 
 // CRUDL GROUP
 export function removeGroup(boardId, groupId) {
@@ -182,8 +187,8 @@ export function updateTask(boardId, groupId, task) {
     return async (dispatch) => {
         try {
             task = {
-            ...task,
-            lastUpdated: Date.now()
+                ...task,
+                lastUpdated: Date.now()
             }
             const savedBoard = await boardService.updateTask(boardId, groupId, task)
             dispatch({ type: 'UPDATE_BOARD', board: savedBoard })
@@ -210,10 +215,6 @@ export function removeComment(boardId, groupId, taskId, commentIdx) {
 export function addComment(boardId, groupId, taskId, newComment) {
     return async (dispatch) => {
         try {
-            console.log('boardId', boardId);
-            console.log('groupId', groupId);
-            console.log('taskId', taskId);
-            console.log('newComment', newComment);
             const savedBoard = await boardService.addComment(boardId, groupId, taskId, newComment)
             dispatch({ type: 'UPDATE_BOARD', board: savedBoard })
             showSuccessMsg(`Comment successfully added`)
