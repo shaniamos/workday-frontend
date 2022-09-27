@@ -1,12 +1,9 @@
 import { useDispatch, useSelector } from "react-redux"
-import { useParams } from "react-router-dom"
+import { Link, useParams } from "react-router-dom"
 import { updateTask } from '../store/actions/board.action'
+import { GoX } from 'react-icons/go';//delete or exit
 
 export const MemberMultiSelect = ({ groupId, task, setIsMemberModalOpen, assigneeMembers }) => {
-    console.log('groupId ===>', groupId);
-    console.log('task==>', task)
-    console.log('setIsMemberModalOpen', setIsMemberModalOpen)
-    console.log('assigneeMembers', assigneeMembers)
     const { members } = useSelector(state => state.boardModule.selectedBoard)
     const dispatch = useDispatch()
 
@@ -14,16 +11,29 @@ export const MemberMultiSelect = ({ groupId, task, setIsMemberModalOpen, assigne
     const boardId = params.id
 
 
-    const onRemoveMember = (id) => {
-        console.log('id', id);
-        const currMembers = members.filter(member => member.id !== id)
+    const onRemoveMember = (memberId) => {
+        const currMembers = task.persons.filter(person => person._id !== memberId)
         const taskToUpdate = { ...task, persons: currMembers }
-        // dispatch(updateTask(boardId, groupId, taskToUpdate))
+        dispatch(updateTask(boardId, groupId, taskToUpdate))
     }
 
-    console.log('members', members)
+    const onAddMember = (member) => {
+        const currMembers = [...task.persons]
+        currMembers.push(member)
+        const taskToUpdate = { ...task, persons: currMembers }
+        dispatch(updateTask(boardId, groupId, taskToUpdate))
+    }
+
+    const checkMembers = (memberId) => {
+        return assigneeMembers.find(asiigneedMember => asiigneedMember._id === memberId)
+
+
+    }
+
+    
     return (
         <section className="member-multi-select-container">
+            <a onClick={() => setIsMemberModalOpen(false)}><GoX className="exit-btn" /></a>
             <div className="are-assignee">
                 {assigneeMembers && assigneeMembers?.length &&
                     assigneeMembers.map(member => (
@@ -33,10 +43,30 @@ export const MemberMultiSelect = ({ groupId, task, setIsMemberModalOpen, assigne
                             <span onClick={() => {
                                 onRemoveMember(member._id)
                                 setIsMemberModalOpen(false)
-                            }}>X</span></div>
+                            }}><GoX /></span></div>
                     ))}
             </div>
-            
+            <div className="not-assignee">
+                <span className="members-title">Suggested people</span>
+                <div className="not-assignee-users">
+                    {members.map((member) => {
+                        if (checkMembers(member._id)) return
+                        else {
+                            return <div
+                                className="not-assignee-single-user"
+                                key={member.id}
+                                onClick={() => {
+                                    onAddMember(member)
+                                    setIsMemberModalOpen(false)
+                                }}>
+                                <img key={member.id} src={member.imgUrl} alt="" />
+                                <span>{member.fullname}</span>
+                            </div>
+
+                        }
+                    })}
+                </div>
+            </div>
 
         </section>
     )
