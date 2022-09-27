@@ -33,7 +33,7 @@ export const TimeLine = ({task, boardId, groupId}) => {
     const onSetTimeline = async () => {
         task.timeline[0] = startDate
         task.timeline[1] = endDate
-        task.lastUpdated = Date.now()
+        // task.lastUpdated = Date.now()
         dispatch(updateTask(boardId, groupId, task))  
         setIsDateSet(true)
         setIsSettingDate(false)

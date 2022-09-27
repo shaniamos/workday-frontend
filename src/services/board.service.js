@@ -209,7 +209,6 @@ async function updateTask(boardId, groupId, task) {
         const board = await getBoardById(boardId)
         const groupIdx = await board.groups.findIndex(group => group.id === groupId)
         const updatedTasks = await board.groups[groupIdx].tasks.map(currTask => (currTask.id === task.id) ? task : currTask)
-
         board.groups[groupIdx].tasks = updatedTasks
         return saveBoard(board)
     } catch (err) {
@@ -221,7 +220,7 @@ async function addComment(boardId, groupId, taskId, newCommentTxt) {
     try {
         const newUpdate = createComment(newCommentTxt)
         const board = await getBoardById(boardId)
-        const groupIdx =  board.groups.findIndex(group => group.id === groupId)
+        const groupIdx = board.groups.findIndex(group => group.id === groupId)
         const taskIdx = board.groups[groupIdx].tasks.findIndex(task => task.id === taskId)
         board.groups[groupIdx].tasks[taskIdx].comments.unshift(newUpdate)
         return saveBoard(board)

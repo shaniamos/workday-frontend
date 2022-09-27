@@ -92,11 +92,11 @@ export function updateBoard(board) {
 
 export function setFilterBy(filterBy) {
     // CR - changed to try & catch
-    try { 
+    try {
         return (dispatch) => {
             dispatch({ type: 'SET_FILTER_BY', filterBy });
         };
-    } catch (err) { 
+    } catch (err) {
         console.log('err:', err);
         throw err
     }
@@ -104,11 +104,11 @@ export function setFilterBy(filterBy) {
 
 export function setSortBy(sortBy) {
     // CR - changed to try & catch
-    try { 
+    try {
         return (dispatch) => {
             dispatch({ type: 'SET_SORT_BY', sortBy });
         };
-    } catch (err) { 
+    } catch (err) {
         console.log('err:', err);
         throw err
     }
@@ -129,10 +129,10 @@ export function removeGroup(boardId, groupId) {
     }
 }
 
-export function addGroup(boardId, group ,place) {
+export function addGroup(boardId, group, place) {
     return async (dispatch) => {
         try {
-            const savedBoard = await boardService.addGroup(boardId, group ,place)
+            const savedBoard = await boardService.addGroup(boardId, group, place)
             console.log('savedBoard', savedBoard)
 
             dispatch({ type: 'UPDATE_BOARD', board: savedBoard })
@@ -181,6 +181,10 @@ export function addTask(boardId, groupId, task) {
 export function updateTask(boardId, groupId, task) {
     return async (dispatch) => {
         try {
+            task = {
+            ...task,
+            lastUpdated: Date.now()
+            }
             const savedBoard = await boardService.updateTask(boardId, groupId, task)
             dispatch({ type: 'UPDATE_BOARD', board: savedBoard })
         } catch (err) {
@@ -188,27 +192,6 @@ export function updateTask(boardId, groupId, task) {
         }
     }
 }
-
-export function updateStatusOrPiority(boardId, groupId, taskToUpdate) {
-    taskToUpdate = {
-      ...taskToUpdate,
-      lastUpdated: Date.now()
-    }
-    return async (dispatch) => {
-      try {
-        const savedBoard = await boardService.updateTask(
-          boardId,
-          groupId,
-          taskToUpdate
-        )
-        dispatch({ type: 'UPDATE_BOARD', board: savedBoard })
-        await dispatch(loadBoards())
-      } catch (err) {
-        console.error('err:', err)
-        throw err
-      }
-    }
-  }
 
 //COMMENTS 
 export function removeComment(boardId, groupId, taskId, commentIdx) {

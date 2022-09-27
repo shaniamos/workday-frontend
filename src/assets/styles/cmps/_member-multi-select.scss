@@ -2,4 +2,18 @@
     position: absolute;
     border: 1px solid black;
     z-index: 10;
+    .are-assignee {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
+        padding: 2px;
+        width: 200px;
+        height: 200px;
+        
+
+    }
+    
+
+
 }

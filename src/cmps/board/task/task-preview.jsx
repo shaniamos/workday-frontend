@@ -40,7 +40,6 @@ export const TaskPreview = ({ task, groupId, groupColor, provided }) => {
     const onUpdateTask = (event) => {
         event.preventDefault()
         task.title = newTask.title
-        task.lastUpdated = Date.now()
         dispatch(updateTask(boardId, groupId, task))
     }
 
@@ -57,12 +56,12 @@ export const TaskPreview = ({ task, groupId, groupColor, provided }) => {
 
     const setStatusOrPriority = (currStatusOrPriority, label) => {
         if (label === 'priority') {
-            const taskToUpdate = { ...task, priority: currStatusOrPriority }
-            dispatch(updateStatusOrPiority(boardId, groupId, taskToUpdate))
+            const taskToUpdate = { ...task, priority: currStatusOrPriority}
+            dispatch(updateTask(boardId, groupId, taskToUpdate))
         }
         else if (label === 'status') {
             const taskToUpdate = { ...task, status: currStatusOrPriority }
-            dispatch(updateStatusOrPiority(boardId, groupId, taskToUpdate))
+            dispatch(updateTask(boardId, groupId, taskToUpdate))
         }
     }
 
