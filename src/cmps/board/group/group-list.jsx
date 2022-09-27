@@ -54,10 +54,11 @@ export const GroupList = ({ members, groups, onAddGroup, onChangeFilter }) => {
     }
 
     return (
-        <DragDropContext>
-            <Droppable droppableId='group'>
-                {(droppableProvided) => {
-                    return <section ref={droppableProvided.innerRef} {...droppableProvided.droppableProps} className="group-list">
+        // <DragDropContext>
+        //     <Droppable droppableId='group'>
+                // {(droppableProvided) => {
+                    <section  className="group-list">
+                        {/* return <section ref={droppableProvided.innerRef} {...droppableProvided.droppableProps} className="group-list"> */}
                         {filteredGroups.map(group =>
                             <GroupPreview
                                 key={group.id}
@@ -69,8 +70,8 @@ export const GroupList = ({ members, groups, onAddGroup, onChangeFilter }) => {
                             <span className="add-icon"><GrAdd /></span> Add New Group
                         </button>
                     </section >
-                }}
-            </Droppable>
-        </DragDropContext >
+                // }}
+        //     </Droppable>
+        // </DragDropContext >
     )
 }

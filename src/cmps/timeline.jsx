@@ -15,7 +15,7 @@ export const TimeLine = ({task, boardId, groupId}) => {
     const [isSettingDate, setIsSettingDate] = useState(false)
     const [isHover, setIsHover] = useState(false)
     const dispatch = useDispatch()
-
+    console.log();
     // useEffect(() => {
     //     onSetTimeline()
     // }, [endDate])

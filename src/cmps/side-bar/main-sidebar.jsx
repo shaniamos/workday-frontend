@@ -20,7 +20,7 @@ export function MainSidebar() {
     if (loggedInUser) {
         user = board.members.find(member => member.fullname === loggedInUser.fullname)
     }
-
+    console.log('user', user);
     return (
         <section className='sidebar-container flex column  '>
             <div className='nav-top-down flex column  '>
@@ -56,6 +56,7 @@ export function MainSidebar() {
                         <div className='down-icons flex column align-center'>
                             {/* <CgMenuGridO className='sidebar-icon down menu' /> */}
                             {!user && <FaUserCircle className='sidebar-icon user-icon' />}
+                           
                             {user && <img className="user-img" src={user.imgUrl} alt='user image' />}
                         </div>
                     </div>
