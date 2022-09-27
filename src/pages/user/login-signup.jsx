@@ -24,6 +24,7 @@ export const LoginSignup = () => {
 
     const onSaveUser = (event) => {
         event.preventDefault()
+        console.log(user)
         if (status === 'login') dispath(login(user))
         if (status === 'signup') dispath(signup(user))
         navigate('/')
@@ -34,7 +35,7 @@ export const LoginSignup = () => {
         <section className={`login-signup flex ${status}`}>
             {status === 'signup' && <div className="bottom-space"></div>}
             {status === 'login' && <header>
-                <Link to='/' ><img className="logo" src={logo} /></Link>
+                <Link to='/' ><img className="logo" src={logo} alt='' /></Link>
             </header>}
 
             <div className="signup-img-container flex">
@@ -81,7 +82,7 @@ export const LoginSignup = () => {
                 </div>
                 {status === 'signup' &&
                     <div className="signup-img">
-                        <img src={signUpPic} />
+                        <img src={signUpPic} alt=''/>
                     </div>}
             </div>
         </section>

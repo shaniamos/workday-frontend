@@ -7,7 +7,8 @@ import { GroupList } from '../../cmps/board/group/group-list.jsx'
 import { KanbanView } from '../../cmps/kanban/kanban-view.jsx'
 import { Dashboard } from '../../cmps/board/dashboard.jsx'
 import { Loader } from '../../cmps/loader.jsx'
-import { addGroup, loadSelectedBoard } from '../../store/actions/board.action.js'
+import { addGroup, loadSelectedBoard, updateBoard } from '../../store/actions/board.action.js'
+import { socketService, SOCKET_EMIT_SET_BOARD_ID, SOCKET_EVENT_BOARD_CHANGED } from '../../services/socket.service.js'
 
 export const BoardDetails = ({ boards, onChangeFilter }) => {
     const board = useSelector(state => state.boardModule.selectedBoard)
@@ -18,8 +19,21 @@ export const BoardDetails = ({ boards, onChangeFilter }) => {
     const params = useParams()
 
     useEffect(() => {
-        dispatch(loadSelectedBoard(params.id))
+        socketService.on(SOCKET_EVENT_BOARD_CHANGED, changeBoard)
+        return () => {
+            socketService.off(SOCKET_EVENT_BOARD_CHANGED , changeBoard)
+        }
+    }, [])
+
+    useEffect(() => {
+        const boardId = params.id
+        socketService.emit(SOCKET_EMIT_SET_BOARD_ID, boardId)
+        dispatch(loadSelectedBoard(boardId))
     }, [params.id])
+
+    const changeBoard = (newBoard) => {
+        dispatch(updateBoard(newBoard))
+    }
 
     const onAddGroup = (place) => {
         const boardId = board._id
@@ -32,13 +46,7 @@ export const BoardDetails = ({ boards, onChangeFilter }) => {
         setBoardView(currView)
     }
 
-    if (isLoading) {
-        return ( <Loader/>
-            // <section className='monday-loader-page'>
-            //     <img className='monday-loader-animation' src="https://cdn.monday.com/images/loader/loader.gif" alt="" />
-            // </section>
-        )
-    }
+    if (isLoading) return <Loader />
     return (
         <section className="board-details">
             {(board && boards.length) &&

@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { loadBoards, setFilterBy } from '../../store/actions/board.action.js'
 import { Outlet, useParams } from 'react-router-dom'

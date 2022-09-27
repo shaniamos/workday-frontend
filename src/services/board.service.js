@@ -1,6 +1,5 @@
 import { httpService } from "./http.service.js"
 import { utilService } from './util.service.js'
-import { board } from '../data/data.js'
 
 export const boardService = {
     queryBoards,
@@ -25,8 +24,7 @@ export const boardService = {
 }
 
 const BASE_URL = `board/`
-// const STORAGE_KEY = 'board'
-// const defultBoards = [board]
+
 
 //BoardService
 async function queryBoards(filterBy) {
@@ -46,6 +44,7 @@ async function queryBoards(filterBy) {
 }
 
 async function getBoardById(boardId) {
+    console.log(boardId)
     const board = await httpService.get(BASE_URL + boardId)
     return board
 }
@@ -249,28 +248,28 @@ function createComment(txt) {
     }
 }
 
-async function filterGroupAndTasks(boardId, filterBy = { txt: '' }, sortBy) {
-    try {
-        const board = await getBoardById(boardId)
-        let groups = [...board.groups]
-        let filteredGroups = groups
+// async function filterGroupAndTasks(boardId, filterBy = { txt: '' }, sortBy) {
+//     try {
+//         const board = await getBoardById(boardId)
+//         let groups = [...board.groups]
+//         let filteredGroups = groups
 
-        if (filterBy.txt) {
-            const regex = new RegExp(filterBy.txt, 'i')
-            filteredGroups = groups.filter((group) => {
-                if (regex.test(group.title)) {
-                    return group
-                }
-                else {
-                    const filteredTasks = group.tasks.filter((task) => {
-                        if (regex.test(task.title))
-                            return task
-                    })
-                    group.tasks = filteredTasks
-                    if (group.tasks.length) return group
-                }
-            })
-        }
+//         if (filterBy.txt) {
+//             const regex = new RegExp(filterBy.txt, 'i')
+//             filteredGroups = groups.filter((group) => {
+//                 if (regex.test(group.title)) {
+//                     return group
+//                 }
+//                 else {
+//                     const filteredTasks = group.tasks.filter((task) => {
+//                         if (regex.test(task.title))
+//                             return task
+//                     })
+//                     group.tasks = filteredTasks
+//                     if (group.tasks.length) return group
+//                 }
+//             })
+//         }
         // if (sortBy) {
         //     switch (sortBy) {
         //         case 'itemTitle':
@@ -297,13 +296,13 @@ async function filterGroupAndTasks(boardId, filterBy = { txt: '' }, sortBy) {
         //             break
         //     }
         // }
-        return filteredGroups
-    }
-    catch (err) {
-        console.error(err);
-        throw err
-    }
-}
+//         return filteredGroups
+//     }
+//     catch (err) {
+//         console.error(err);
+//         throw err
+//     }
+// }
 
 function _createBoard(board) {
     board._createdAt = Date.now()

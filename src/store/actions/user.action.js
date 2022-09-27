@@ -1,9 +1,10 @@
-import { userService } from '../../services/user.service.local.js'
+import { userService } from '../../services/user.service.js'
 
 // login
 export function login(loggedInUser) {
     return async (dispatch) => {
         try {
+            console.log(loggedInUser)
             const user = await userService.login(loggedInUser)
             if (user) dispatch({ type: 'SET_USER', user })
         } catch (err) {

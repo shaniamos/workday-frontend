@@ -1,6 +1,18 @@
 import { boardService } from "../../services/board.service.js"
 import { showErrorMsg, showSuccessMsg } from "../../services/event-bus.service.js"
 
+export function getActionUpdateBoard(board) {
+    return { type: 'UPDATE_BOARD', board }
+}
+
+export function getActionUpdateTask(task) {
+    return { type: 'UPDATE_TASK', task }
+}
+export function getActionSetWatchedUser(task) {
+    return { type: 'UPDATE_TASK', task }
+}
+
+
 // CRUDL BOARD
 export function loadBoards(filterBy = {}) {
     return async (dispatch) => {
@@ -56,7 +68,6 @@ export function addBoard(board) {
         try {
             dispatch({ type: 'SET_LOADING', isLoading: true })
             const savedBoard = await boardService.saveBoard(board)
-            console.log('addBoard action',savedBoard)
             dispatch({ type: 'ADD_BOARD', board: savedBoard })
             return savedBoard
         } catch (err) {

@@ -1,19 +1,19 @@
 export const Loader = () => {
-	return <div class="cssload-loader-inner">
-		<div class="cssload-cssload-loader-line-wrap-wrap">
-			<div class="cssload-loader-line-wrap"></div>
+	return <div className="cssload-loader-inner">
+		<div className="cssload-cssload-loader-line-wrap-wrap">
+			<div className="cssload-loader-line-wrap"></div>
 		</div>
-		<div class="cssload-cssload-loader-line-wrap-wrap">
-			<div class="cssload-loader-line-wrap"></div>
+		<div className="cssload-cssload-loader-line-wrap-wrap">
+			<div className="cssload-loader-line-wrap"></div>
 		</div>
-		<div class="cssload-cssload-loader-line-wrap-wrap">
-			<div class="cssload-loader-line-wrap"></div>
+		<div className="cssload-cssload-loader-line-wrap-wrap">
+			<div className="cssload-loader-line-wrap"></div>
 		</div>
-		<div class="cssload-cssload-loader-line-wrap-wrap">
-			<div class="cssload-loader-line-wrap"></div>
+		<div className="cssload-cssload-loader-line-wrap-wrap">
+			<div className="cssload-loader-line-wrap"></div>
 		</div>
-		<div class="cssload-cssload-loader-line-wrap-wrap">
-			<div class="cssload-loader-line-wrap"></div>
+		<div className="cssload-cssload-loader-line-wrap-wrap">
+			<div className="cssload-loader-line-wrap"></div>
 		</div>
 	</div>
 }

@@ -119,7 +119,7 @@ export const TaskPreview = ({ task, groupId, groupColor, provided }) => {
 
                 {/* TimeLine */}
                 <div className="cell timeline-header">
-                    <TimeLine task={task} board={board} groupId={groupId}/>
+                    {/* <TimeLine task={task} board={board} groupId={groupId}/> */}
                 </div>
 
                 {/* Due Date */}
