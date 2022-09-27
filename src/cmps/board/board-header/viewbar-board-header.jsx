@@ -38,6 +38,7 @@ export function ViewbarBoardHeader({ board, onAddGroup, onChangeFilter }) {
         task.priority = ''
         task.persons = ''
         task.deadLine = ''
+        task.comments = []
         task.lastUpdate = Date.now()
         task.timeline = [Date.now(), Date.now()]
         return task

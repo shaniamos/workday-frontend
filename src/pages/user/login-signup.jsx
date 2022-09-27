@@ -30,7 +30,7 @@ export const LoginSignup = () => {
         navigate('/')
     }
 
- 
+
 
     const statusTitle = (status === 'login') ? 'Log In' : 'Sign up'
     return (
@@ -46,18 +46,20 @@ export const LoginSignup = () => {
                     {status === 'signup' && <h3 className="login-signup-title">Welcome to Workday.com</h3>}
                     {status === 'login' && <h1 className="login-signup-title">Log in to your account</h1>}
                     <form className="login-signup-form" onSubmit={onSaveUser}>
-                        <label> Email
-                            <input {...register('email', 'email')} />
-                        </label>
-                        {status === 'signup' && <label> Fullname
-                            <input {...register('fullname', 'text')} />
-                        </label>}
-                        {status === 'signup' && <label> Username
-                            <input {...register('username', 'text')} />
-                        </label>}
-                        <label> Password
-                            <input {...register('password', 'password')} />
-                        </label>
+                      
+                            <label className="flex column"> <span className="subject-input">Email:</span>
+                                <input placeholder="name@company.com" {...register('email', 'email')} />
+                            </label >
+                            {status === 'signup' && <label className="flex column"> <span className="subject-input"> Fullname:</span>
+                                <input {...register('fullname', 'text')} />
+                            </label  >}
+                            {status === 'signup' && <label className="flex column"> <span className="subject-input"> Username:</span>
+                                <input {...register('username', 'text')} />
+                            </label>}
+                            <label className="flex column"> <span className="subject-input"> Password:</span>
+                                <input {...register('password', 'password')} />
+                            </label>
+                        
                         <button className="btn-login-signup">{statusTitle}</button>
                     </form>
                     <Link to={`/auth/${status}`}

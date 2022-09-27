@@ -19,7 +19,6 @@ export function loadBoards(filterBy = {}) {
 
 //get board by id
 export function loadSelectedBoard(boardId, filterBy = {}) {
-    console.log(boardId)
     return async (dispatch) => {
         try {
             dispatch({ type: 'SET_LOADING', isLoading: true })
@@ -217,6 +216,10 @@ export function removeComment(boardId, groupId, taskId, commentIdx) {
 export function addComment(boardId, groupId, taskId, newComment) {
     return async (dispatch) => {
         try {
+            console.log('boardId', boardId);
+            console.log('groupId', groupId);
+            console.log('taskId', taskId);
+            console.log('newComment', newComment);
             const savedBoard = await boardService.addComment(boardId, groupId, taskId, newComment)
             dispatch({ type: 'UPDATE_BOARD', board: savedBoard })
             showSuccessMsg(`Comment successfully added`)
@@ -226,16 +229,4 @@ export function addComment(boardId, groupId, taskId, newComment) {
         }
     }
 }
-
-// export function onSetFilterTasks(boardId) {
-//     return async (dispatch, getState) => {
-//         try {
-//             const { filterBy } = getState().boardModule
-           
-//         } catch (err) {
-//             console.log(err);
-//         }
-//     }
-// }
-
 

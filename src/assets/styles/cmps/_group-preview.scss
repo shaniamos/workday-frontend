@@ -30,9 +30,10 @@
             background-color: white;
             min-width: rem(190px);
             box-shadow: 0px 8px 16px 0px rgba(31, 30, 30, 0.4);
-            z-index: 100;
+            z-index: 300;
             border-radius: rem(10px);
             padding: rem(10px);
+            transform: translateY(-110px);
 
             & a {
                 font-style: normal;
