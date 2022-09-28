@@ -7,7 +7,7 @@ import { GroupList } from '../../cmps/board/group/group-list.jsx'
 import { KanbanView } from '../../cmps/kanban/kanban-view.jsx'
 import { Dashboard } from '../../cmps/board/dashboard.jsx'
 import { Loader } from '../../cmps/loader.jsx'
-import { addGroup, loadSelectedBoard, updateBoard } from '../../store/actions/board.action.js'
+import { addGroup, loadSelectedBoard, updateBoard, getActionUpdateBoard } from '../../store/actions/board.action.js'
 import { socketService, SOCKET_EMIT_SET_BOARD_ID, SOCKET_EVENT_BOARD_CHANGED } from '../../services/socket.service.js'
 
 export const BoardDetails = ({ boards, onChangeFilter }) => {
@@ -19,12 +19,12 @@ export const BoardDetails = ({ boards, onChangeFilter }) => {
     const params = useParams()
     const boardId = params.id
 
-    // useEffect(() => {
-    //     // socketService.on(SOCKET_EVENT_BOARD_CHANGED, changeBoard)
-    //     // return () => {
-    //     //     socketService.off(SOCKET_EVENT_BOARD_CHANGED, changeBoard)
-    //     // }
-    // }, [])
+    useEffect(() => {
+        socketService.on(SOCKET_EVENT_BOARD_CHANGED, changeBoard)
+        return () => {
+            socketService.off(SOCKET_EVENT_BOARD_CHANGED, changeBoard)
+        }
+    }, [])
 
     useEffect(() => {
         const boardId = params.id
@@ -33,7 +33,9 @@ export const BoardDetails = ({ boards, onChangeFilter }) => {
     }, [params.id])
 
     const changeBoard = (newBoard) => {
-        dispatch(updateBoard(newBoard))
+        // console.log('newBoard', newBoard)
+        // dispatch(updateBoard(newBoard))
+        dispatch(getActionUpdateBoard(newBoard))
     }
 
     const onAddGroup = (place) => {
@@ -46,8 +48,8 @@ export const BoardDetails = ({ boards, onChangeFilter }) => {
         console.log('currView', currView);
         setBoardView(currView)
     }
-    console.log('boardId', boardId);
-    if (isLoading) return <Loader />
+
+    if (isLoading || !boards) return <Loader />
     return (
         <section className="board-details">
             {(board && boards.length) &&

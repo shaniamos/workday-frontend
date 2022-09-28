@@ -28,16 +28,15 @@ export function TaskEdit() {
     const groupId = params.groupId
     const taskId = params.taskId
 
-
     useEffect(() => {
         loadTask()
-    }, [params.taskId,board])
+    }, [params.taskId, board])
 
     useEffectUpdate(() => dispatch(updateTask(boardId, groupId, task)), [task])
 
     const loadTask = async () => {
-        const groupIdx = await board.groups.findIndex(group => group.id === groupId)
-        const task = await board.groups[groupIdx].tasks.find(task => task.id === taskId)
+        const groupIdx = board.groups.findIndex(group => group.id === groupId)
+        const task = board.groups[groupIdx].tasks.find(task => task.id === taskId)
         setTask(task)
         setNewTask({ title: task.title })
     }

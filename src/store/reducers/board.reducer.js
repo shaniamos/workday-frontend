@@ -1,5 +1,5 @@
 const INITIAL_STATE = {
-    boards: [],
+    boards: null,
     selectedBoard: null,
     filterBy: { txt: '' },
     isLoading: true,
