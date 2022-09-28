@@ -56,54 +56,40 @@ export const GroupList = ({ board, groups, onAddGroup, onChangeFilter }) => {
         else setSort({ ...sort, sortBy, isDescending: 1 })
     }
 
-    // const onHandleGroupDragEnd = (result) => {
-    //     console.log(result)
-    //     if (!result.destination) return
-    //     const { source, destination } = result
-    //     if (source.index === destination.index &&
-    //         source.droppableId === destination.droppableId
-    //     ) return
-    //     if (source.droppableId !== destination.droppableId) {
-    //         const [removedGroup] = groups.splice(source.index, 1)
-    //         groups.splice(destination.index - 1, 0, removedGroup)
-    //         setFilteredGroups(groups)
-    //     }
-    // }
-
     const onHandleDragEnd = (result) => {
         console.log(result)
-        if (!result.destination) return
-        const { source, destination, draggableId } = result
+        const { source, destination } = result
+
+        if (!destination) return
+
         if (source.index === destination.index &&
-            source.droppableId === destination.droppableId
-        ) return
+            source.droppableId === destination.droppableId) return
+
         if (source.droppableId !== destination.droppableId) {
-            const sourceColumn = groups[+source.droppableId]
-            const destColumn = groups[+destination.droppableId]
-            const sourceItems = [...sourceColumn.tasks]
-            const destTasks = [...destColumn.tasks]
-            const [removedTask] = sourceItems.splice(source.index, 1)
+            const sourceGroup = groups[+source.droppableId]
+            const destGroup = groups[+destination.droppableId]
+            const sourceTasks = [...sourceGroup.tasks]
+            const destTasks = [...destGroup.tasks]
+            const [removedTask] = sourceTasks.splice(source.index, 1)
             destTasks.splice(destination.index, 0, removedTask)
             groups[+source.droppableId] = {
                 ...groups[+source.droppableId],
-                tasks: sourceItems,
+                tasks: sourceTasks,
             }
             groups[+destination.droppableId] = {
                 ...groups[+destination.droppableId],
                 tasks: destTasks,
             }
-            setFilteredGroups(groups)
             onUpdateGroups(groups)
         } else {
-            const column = groups[+source.droppableId]
-            const copiedItems = [...column.tasks]
+            const group = groups[+source.droppableId]
+            const copiedItems = [...group.tasks]
             const [removedTask] = copiedItems.splice(source.index, 1)
             copiedItems.splice(destination.index, 0, removedTask)
             groups[+source.droppableId] = {
                 ...groups[+source.droppableId],
                 tasks: copiedItems,
             }
-            setFilteredGroups(groups)
             onUpdateGroups(groups)
         }
     }
@@ -122,6 +108,7 @@ export const GroupList = ({ board, groups, onAddGroup, onChangeFilter }) => {
                     return (
                         <Droppable droppableId={`${idx}`} key={group.id} >
                             {(provided) => {
+                                console.log(provided.innerRef)
                                 return (
                                     <section ref={provided.innerRef} {...provided.droppableProps} key={group.id}>
                                         <GroupPreview

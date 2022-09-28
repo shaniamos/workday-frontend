@@ -20,7 +20,7 @@ export function MainSidebar() {
     if (loggedInUser) {
         user = board.members.find(member => member.fullname === loggedInUser.fullname)
     }
-    console.log('user', user);
+
     return (
         <section className='sidebar-container flex column  '>
             <div className='nav-top-down flex column  '>
