@@ -14,10 +14,15 @@ export function getActionAddBoard(board) {
         board
     }
 }
+// export function getActionUpdateBoard(board) {
+//     return {
+//         type: 'UPDATE_BOARD',
+//         board
+//     }
+// }
 export function getActionUpdateBoard(board) {
-    return {
-        type: 'UPDATE_BOARD',
-        board
+    return (dispatch) => {
+        dispatch({ type: 'UPDATE_BOARD', board })
     }
 }
 
