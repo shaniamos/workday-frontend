@@ -120,23 +120,20 @@ export const GroupList = ({ board, groups, onAddGroup, onChangeFilter }) => {
             <section className="group-list">
                 {filteredGroups.map((group, idx) => {
                     return (
-                        <section>
-                            <Droppable droppableId={`${idx}`} key={group.id} >
-                                {(provided) => {
-                                    return (
-                                        <section ref={provided.innerRef} {...provided.droppableProps} key={group.id}>
-                                            <GroupPreview
-                                                provided={provided}
-                                                key={group.id}
-                                                group={group}
-                                                onChangeFilter={onChangeFilter}
-                                                onHandleTaskDragEnd={onHandleDragEnd}
-                                                sortGroup={onSort} />
-                                        </section>
-                                    )
-                                }}
-                            </Droppable>
-                        </section>
+                        <Droppable droppableId={`${idx}`} key={group.id} >
+                            {(provided) => {
+                                return (
+                                    <section ref={provided.innerRef} {...provided.droppableProps} key={group.id}>
+                                        <GroupPreview
+                                            provided={provided}
+                                            key={group.id}
+                                            group={group}
+                                            onChangeFilter={onChangeFilter}
+                                            sortGroup={onSort} />
+                                    </section>
+                                )
+                            }}
+                        </Droppable>
                     )
                 }
                 )}

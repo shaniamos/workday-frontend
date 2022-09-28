@@ -36,11 +36,11 @@ export function ViewbarBoardHeader({ board, onAddGroup, onChangeFilter }) {
         task.id = utilService.makeId()
         task.status = ''
         task.priority = ''
-        task.persons = ''
+        task.persons = []
         task.deadLine = ''
-        task.comments = []
         task.lastUpdate = Date.now()
         task.timeline = [Date.now(), Date.now()]
+        task.comments = []
         return task
     }
 
@@ -56,10 +56,10 @@ export function ViewbarBoardHeader({ board, onAddGroup, onChangeFilter }) {
                     </div>
                 </section>
             </div>
-                <div className="search-area">
-                    <Search onChangeFilter={onChangeFilter}/>
-                </div>
-                {/* <a onClick={() => setFilter(!isFilter)} className="filter-btn"><BiFilterAlt /> Filter</a>
+            <div className="search-area">
+                <Search onChangeFilter={onChangeFilter} />
+            </div>
+            {/* <a onClick={() => setFilter(!isFilter)} className="filter-btn"><BiFilterAlt /> Filter</a>
                 {isFilter && 
                 <FilterBoard  
                     board={board}

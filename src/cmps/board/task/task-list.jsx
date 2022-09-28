@@ -31,6 +31,7 @@ export const TaskList = ({ tasks, group, groupColor, provided }) => {
         task.lastUpdate = ''
         task.comments = []
         task.timeline = [Date.now(), Date.now()]
+        task.comments = []
         return task
     }
 
@@ -38,8 +39,8 @@ export const TaskList = ({ tasks, group, groupColor, provided }) => {
         <section className="task-list">
             {tasks.map((task, idx) => {
                 return (
-                    <section {...provided.droppableProps} ref={provided.innerRef}>
-                        <Draggable draggableId={task.id} index={idx} key={task.id}>
+                    <section {...provided.droppableProps} ref={provided.innerRef} key={task.id}>
+                        <Draggable draggableId={task.id} index={idx}>
                             {(provided) => {
                                 return (
                                     <TaskPreview

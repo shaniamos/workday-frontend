@@ -334,8 +334,9 @@ function _createTask(task) {
     task.id = utilService.makeId()
     task.status = ''
     task.priority = ''
-    task.persons = ''
+    task.persons = []
     task.deadLine = ''
+    task.comments = []
     task.lastUpdate = Date.now()
     task.timeline = [Date.now(), Date.now()]
     return task
