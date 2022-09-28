@@ -45,7 +45,6 @@ async function queryBoards(filterBy) {
 }
 
 async function getBoardById(boardId) {
-    console.log(boardId)
     socketService.emit(SOCKET_EMIT_SET_BOARD_ID, boardId)
     const board = await httpService.get(BASE_URL + boardId)
     return board
@@ -58,7 +57,6 @@ async function removeBoard(boardId) {
 
 async function saveBoard(board) {
     if (board._id) {
-        console.log('Hello from save board')
         const res = await httpService.put(BASE_URL + board._id, board)
         socketService.emit(SOCKET_EMIT_BOARD_CHANGED, res)
         return res

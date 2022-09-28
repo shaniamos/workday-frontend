@@ -14,7 +14,7 @@ import { AreYouSureModal } from "../task/are-you-sure-modal.jsx"
 import { GroupFooter } from "./group-footer.jsx"
 import { utilService } from "../../../services/util.service.js"
 
-export const GroupPreview = ({ group, sortGroup , provided}) => {
+export const GroupPreview = ({ group, sortGroup, provided }) => {
     const params = useParams()
     const dispatch = useDispatch()
     const [isDeleteBtnClicked, setBtnClicked] = useState(false)
@@ -54,7 +54,7 @@ export const GroupPreview = ({ group, sortGroup , provided}) => {
     }
 
     return (
-        <section className="group-preview "{...provided.dragHandleProps} {...provided.draggableProps} ref={provided.innerRef}>
+        <section className="group-preview ">
             {/* Group Title  */}
             <div className="group-header-name heading-component flex  sticky-feature">
                 <div className="dropdown">
@@ -66,10 +66,10 @@ export const GroupPreview = ({ group, sortGroup , provided}) => {
                 </div>
                 <div className="questModal">
                     {isDeleteBtnClicked &&
-                         <AreYouSureModal 
+                        <AreYouSureModal
                             toggleNewBoardModal={toggleNewBoardModal}
-                            onRemoveEntity={onRemoveGroup} 
-                            />}
+                            onRemoveEntity={onRemoveGroup}
+                        />}
                 </div>
                 <div className="group-name flex sticky-feature">
 
@@ -83,16 +83,17 @@ export const GroupPreview = ({ group, sortGroup , provided}) => {
                 </div>
             </div>
             {/* Group columns identifier (color, checkbox, task name, persons, status, priority....) */}
-            <GroupHeader 
+            <GroupHeader
                 groupColor={group.colorId}
-                sortGroup={sortGroup} 
-                />
+                sortGroup={sortGroup}
+            />
             <TaskList
-                 tasks={group.tasks} 
-                 groupId={group.id} 
-                 groupColor={group.colorId} 
-                 />
-            <GroupFooter 
+                tasks={group.tasks}
+                group={group}
+                groupColor={group.colorId}
+                provided={provided}
+            />
+            <GroupFooter
                 tasks={group.tasks} />
         </section>
     )
