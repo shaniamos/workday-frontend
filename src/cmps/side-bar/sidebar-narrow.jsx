@@ -19,7 +19,9 @@ export const SidebarNarrow = () => {
     const [isHomeActive, setIsHomeActive] = useState(false);
     const [isWorkspaceActive, setIsWorkspaceActive] = useState(false);
     const [isMoreActive, setIsMoreActive] = useState(false);
-
+    console.log('isHomeActive', isHomeActive);
+    console.log('isWorkspaceActive', isWorkspaceActive);
+    console.log('isMoreActive', isMoreActive);
     return (
         <section className="navbar-mobile-container">
             <div className='icons-navigation'>

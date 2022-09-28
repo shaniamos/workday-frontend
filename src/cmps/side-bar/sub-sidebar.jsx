@@ -8,7 +8,7 @@ import { BsFillLightningFill } from 'react-icons/bs'
 //LIBS
 import { useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { useNavigate, useLocation } from 'react-router-dom'
+import { useNavigate, NavLink, useLocation } from 'react-router-dom'
 import { addBoard, loadBoards, removeBoard } from '../../store/actions/board.action.js'
 import { NewBoardMoadl } from "../board/new-board-modal.jsx"
 import { Search } from "../search.jsx"
