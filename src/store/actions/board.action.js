@@ -14,10 +14,15 @@ export function getActionAddBoard(board) {
         board
     }
 }
+// export function getActionUpdateBoard(board) {
+//     return {
+//         type: 'UPDATE_BOARD',
+//         board
+//     }
+// }
 export function getActionUpdateBoard(board) {
-    return {
-        type: 'UPDATE_BOARD',
-        board
+    return (dispatch) => {
+        dispatch({ type: 'UPDATE_BOARD', board })
     }
 }
 
@@ -187,8 +192,8 @@ export function updateTask(boardId, groupId, task) {
     return async (dispatch) => {
         try {
             task = {
-            ...task,
-            lastUpdated: Date.now()
+                ...task,
+                lastUpdated: Date.now()
             }
             const savedBoard = await boardService.updateTask(boardId, groupId, task)
             dispatch({ type: 'UPDATE_BOARD', board: savedBoard })
