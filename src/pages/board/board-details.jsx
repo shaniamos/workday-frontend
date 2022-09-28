@@ -28,12 +28,10 @@ export const BoardDetails = ({ boards, onChangeFilter }) => {
     useEffect(() => {
         const boardId = params.id
         socketService.emit(SOCKET_EMIT_SET_BOARD_ID, boardId)
-        console.log(params.id)
         dispatch(loadSelectedBoard(boardId))
     }, [params.id])
 
     const changeBoard = (newBoard) => {
-        // console.log('newBoard', newBoard)
         dispatch(updateBoard(newBoard))
     }
 
@@ -63,6 +61,7 @@ export const BoardDetails = ({ boards, onChangeFilter }) => {
                 <div className='board-content'>
                     {isBoardView === 'board-details' &&
                         < GroupList
+                            board={board}
                             groups={board.groups}
                             onAddGroup={onAddGroup}
                             onChangeFilter={onChangeFilter}
