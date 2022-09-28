@@ -15,7 +15,7 @@ export const TimeLine = ({task, boardId, groupId}) => {
     const [isSettingDate, setIsSettingDate] = useState(false)
     const [isHover, setIsHover] = useState(false)
     const dispatch = useDispatch()
-    console.log();
+    
     // useEffect(() => {
     //     onSetTimeline()
     // }, [endDate])
@@ -74,7 +74,7 @@ export const TimeLine = ({task, boardId, groupId}) => {
                             startDate={startDate}
                             endDate={endDate}
                             onChange={(update) => {
-                                setDateRange(update);
+                                setDateRange(update)
                                 // onSetTimeline()
                             }}
                         />

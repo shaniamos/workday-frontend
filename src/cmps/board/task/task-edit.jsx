@@ -12,6 +12,7 @@ import { GoX } from 'react-icons/go';//delete or exit
 
 export function TaskEdit() {
     const board = useSelector(state => state.boardModule.selectedBoard)
+    console.log(board)
     const params = useParams()
 
     const dispatch = useDispatch()
@@ -30,10 +31,9 @@ export function TaskEdit() {
 
     useEffect(() => {
         loadTask()
-    }, [params.taskId, board])
+    }, [params.taskId,board])
 
-    useEffectUpdate(() =>
-        dispatch(updateTask(boardId, groupId, task)), [task])
+    useEffectUpdate(() => dispatch(updateTask(boardId, groupId, task)), [task])
 
     const loadTask = async () => {
         const groupIdx = await board.groups.findIndex(group => group.id === groupId)
@@ -65,7 +65,7 @@ export function TaskEdit() {
     const onAddComment = async (newComment) => {
         dispatch(addComment(boardId, groupId, task.id, newComment))
     }
-
+    console.log(task)
     return (
         <section className="task-edit-container open">
             <div className="main-screen" onClick={onCloseModal}></div>

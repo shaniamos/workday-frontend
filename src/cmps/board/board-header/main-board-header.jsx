@@ -42,10 +42,10 @@ export function MainBoardHeader({ board }) {
                 <button className="btn-board-activity">
                     <FaStumbleuponCircle />
                 </button>
-                <div className="btn-last-seen flex">
+                {/* <div className="btn-last-seen flex">
                     <span>Last seen</span>
                     <AvatarsChain persons={board.members} />
-                </div>
+                </div> */}
                 <div className="btn-invite-subscribers">
                     <RiUserAddLine /> Invite/ <span>9</span>
                 </div>

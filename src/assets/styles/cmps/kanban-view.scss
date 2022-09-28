@@ -1,0 +1,10 @@
+.kanban-content {
+    padding-left: 30px;
+    padding-top: 16px;
+    display: grid;
+    grid-gap: 16px;
+    grid-template-columns: repeat(auto-fit, max(260px));
+    .kanban-group-container{
+        border: 1px solid black;
+    }
+   }

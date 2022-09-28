@@ -12,11 +12,11 @@ export function ToolbarBoardHeader({ selectedBoardId, toggleView }) {
                 </button>
             </NavLink>
             <span className="separator">|</span>
-            <NavLink to={`/board/${selectedBoardId}/kanban`}>
+            {/* <NavLink to={`/board/${selectedBoardId}/kanban`}> */}
                 <button className="view-nav-btn" onClick={() => toggleView('kanban')}>
                     <span>Kanban</span>
                 </button>
-            </NavLink>
+            {/* </NavLink> */}
             <span className="separator">|</span>
             <NavLink to={`/board/${selectedBoardId}/dashboard`}>
                 <button className="view-nav-btn" onClick={() => toggleView('dashboard')}>

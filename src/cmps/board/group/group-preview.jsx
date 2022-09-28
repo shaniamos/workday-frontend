@@ -14,7 +14,7 @@ import { AreYouSureModal } from "../task/are-you-sure-modal.jsx"
 import { GroupFooter } from "./group-footer.jsx"
 import { utilService } from "../../../services/util.service.js"
 
-export const GroupPreview = ({ group, sortGroup }) => {
+export const GroupPreview = ({ group, sortGroup , provided}) => {
     const params = useParams()
     const dispatch = useDispatch()
     const [isDeleteBtnClicked, setBtnClicked] = useState(false)
@@ -54,7 +54,7 @@ export const GroupPreview = ({ group, sortGroup }) => {
     }
 
     return (
-        <section className="group-preview ">
+        <section className="group-preview "{...provided.dragHandleProps} {...provided.draggableProps} ref={provided.innerRef}>
             {/* Group Title  */}
             <div className="group-header-name heading-component flex  sticky-feature">
                 <div className="dropdown">

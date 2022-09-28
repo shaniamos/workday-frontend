@@ -36,6 +36,11 @@
                 white-space: nowrap;
                 cursor: text;
                 overflow: hidden;
+                @include for-mobile-layout {
+                    input {
+                        font-size: 20px;
+                    }
+                }
 
                 .btn-board-description {
                     @include icon-cmp;
@@ -142,6 +147,12 @@
         height: rem(50px);
         flex-direction: column;
 
+        @include for-mobile-layout {
+            flex-direction: row;
+            align-items: center;
+            font-weight: 700;
+        }
+        
         // align-content: center;
         @include for-narrow-layout {
             flex-direction: row;
@@ -208,6 +219,7 @@
                     height: 50px;
                     width: 50px;
                     box-shadow: 0px 1px 14px -4px rgba(0, 0, 0, 0.84);
+
 
                 }
 
