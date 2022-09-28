@@ -33,22 +33,22 @@ export function MainBoardHeader({ board }) {
                         {...register('title', 'text')}
                     />
                 </form>
-                <button className="btn-board-description"><RiErrorWarningLine /></button>
-                <button className="btn-board-starred">
+                {/* <button className="btn-board-description"><RiErrorWarningLine /></button> */}
+                {/* <button className="btn-board-starred">
                     <AiOutlineStar />
-                </button>
+                </button> */}
             </div>
             <div className="board-header-right flex">
-                <button className="btn-board-activity">
+                {/* <button className="btn-board-activity">
                     <FaStumbleuponCircle />
-                </button>
+                </button> */}
                 {/* <div className="btn-last-seen flex">
                     <span>Last seen</span>
                     <AvatarsChain persons={board.members} />
                 </div> */}
-                <div className="btn-invite-subscribers">
+                {/* <div className="btn-invite-subscribers">
                     <RiUserAddLine /> Invite/ <span>9</span>
-                </div>
+                </div> */}
             </div>
         </div>
     )
