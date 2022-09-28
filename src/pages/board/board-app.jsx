@@ -27,10 +27,6 @@ export const BoardApp = () => {
         }
     }
 
-    if (!boards) return <section className='workday-loader-page'>
-        <img className='workday-loader-gif' src='../../assets/imgs/loader.gif' alt="loader" />
-    </section>
-
     return (
         <section className="board-app flex">
             <MainSidebar />

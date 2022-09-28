@@ -64,7 +64,7 @@ export function TaskEdit() {
     const onAddComment = async (newComment) => {
         dispatch(addComment(boardId, groupId, task.id, newComment))
     }
-    console.log(task)
+    
     return (
         <section className="task-edit-container open">
             <div className="main-screen" onClick={onCloseModal}></div>

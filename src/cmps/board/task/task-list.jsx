@@ -7,7 +7,7 @@ import { addTask } from '../../../store/actions/board.action.js'
 import { utilService } from "../../../services/util.service.js"
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd'
 
-export const TaskList = ({ tasks, groupId, groupColor }) => {
+export const TaskList = ({ tasks, group, groupColor, provided }) => {
     const dispatch = useDispatch()
     const params = useParams()
     let [register, setTask, task] = useFormRegister({
@@ -18,7 +18,7 @@ export const TaskList = ({ tasks, groupId, groupColor }) => {
         event.preventDefault()
         const boardId = params.id
         task = createTask(task)
-        dispatch(addTask(boardId, groupId, task))
+        dispatch(addTask(boardId, group.id, task))
         setTask({ title: '' })
     }
 
@@ -34,39 +34,39 @@ export const TaskList = ({ tasks, groupId, groupColor }) => {
     }
 
     return (
-        <DragDropContext>
-            <Droppable droppableId={groupId}>
-                {(provided) => {
-                    return <section className="task-list"
-                        {...provided.droppableProps}
-                        ref={provided.innerRef}>
-                        {tasks.map((task, idx) =>
-                            <Draggable draggableId={task.id} index={idx}>
-                                {(provided) => {
-                                    return <TaskPreview
+        <section className="task-list">
+            {tasks.map((task, idx) => {
+                return (
+                    <section {...provided.droppableProps} ref={provided.innerRef}>
+                        <Draggable draggableId={task.id} index={idx} key={task.id}>
+                            {(provided) => {
+                                return (
+                                    <TaskPreview
                                         provided={provided}
                                         key={task.id}
                                         task={task}
-                                        groupId={groupId}
+                                        groupId={group.id}
                                         groupColor={groupColor} />
-                                }}
-                            </Draggable>
-                        )}
-                        {/* NEW TASK */}
-                        <div className="preview-new-task">
-                            <div className="cell task-name-area flex">
-                                <div className="task-group-color" style={{ backgroundColor: `var(${groupColor})`, borderBlock: `0.5px solid var(${groupColor})` }}></div>
-                                <div className="preview-checkbox"><input className="input-checkbox" type="checkbox" /></div>
-                                <div className="editable-heading task-name-heading">
-                                    <form className="clean-input" onSubmit={onAddTask}>
-                                        <input {...register('title', 'text')} className="clean-input" placeholder="+ Add Item" />
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
+                                )
+                            }}
+                        </Draggable>
+                        {provided.placeholder}
                     </section>
-                }}
-            </Droppable>
-        </DragDropContext >
+                )
+            }
+            )}
+            {/* NEW TASK */}
+            <div className="preview-new-task">
+                <div className="cell task-name-area flex">
+                    <div className="task-group-color" style={{ backgroundColor: `var(${groupColor})`, borderBlock: `0.5px solid var(${groupColor})` }}></div>
+                    <div className="preview-checkbox"><input className="input-checkbox" type="checkbox" /></div>
+                    <div className="editable-heading task-name-heading">
+                        <form className="clean-input" onSubmit={onAddTask}>
+                            <input {...register('title', 'text')} className="clean-input" placeholder="+ Add Item" />
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
     )
 }
