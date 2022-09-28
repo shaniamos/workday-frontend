@@ -17,6 +17,7 @@ export const BoardDetails = ({ boards, onChangeFilter }) => {
 
     const dispatch = useDispatch()
     const params = useParams()
+    const boardId = params.id
 
     useEffect(() => {
         socketService.on(SOCKET_EVENT_BOARD_CHANGED, changeBoard)
@@ -70,9 +71,9 @@ export const BoardDetails = ({ boards, onChangeFilter }) => {
                         />}
                     {isBoardView === 'kanban' &&
                         <KanbanView
-                            board={board}
-                            groups={board.groups}
-                            onAddGroup={onAddGroup}
+                        groups={board.groups}
+                        boardId={boardId}
+                           
                         />}
                     {isBoardView === 'dashboard' &&
                         <Dashboard />}

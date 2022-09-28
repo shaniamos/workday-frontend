@@ -29,6 +29,7 @@ export const TaskList = ({ tasks, group, groupColor, provided }) => {
         task.persons = []
         task.deadLine = ''
         task.lastUpdate = ''
+        task.comments = []
         task.timeline = [Date.now(), Date.now()]
         task.comments = []
         return task

@@ -10,6 +10,11 @@
         padding-inline-start: 26px;
 
     }
+
+    @include for-mobile-layout{
+        margin-left: rem(25px);
+
+    }
     .group-list {
         z-index: 50;
     }

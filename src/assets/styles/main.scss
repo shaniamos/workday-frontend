@@ -19,6 +19,10 @@
 @import 'cmps/comment-list';
 @import 'cmps/task-comment';
 @import 'cmps/timeline';
+@import 'cmps/kanban-header.scss';
+@import 'cmps/kanban-preview.scss';
+@import 'cmps/kanban-view.scss';
+@import 'cmps/ksnban-new-task.scss';
 
 //SIDEBAR
 @import './cmps/main-sidebar';
