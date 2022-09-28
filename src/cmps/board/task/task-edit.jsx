@@ -31,7 +31,7 @@ export function TaskEdit() {
 
     useEffect(() => {
         loadTask()
-    }, [params.taskId,board])
+    }, [params.taskId, board])
 
     useEffectUpdate(() => dispatch(updateTask(boardId, groupId, task)), [task])
 
