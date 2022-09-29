@@ -258,7 +258,6 @@
             & .boards-options {
                 & .boards-list span {
                     padding: 10px;
-
                 }
 
                 .option {
@@ -300,9 +299,7 @@
         & .workspace-options {
             & .boards-options {
                 & .boards-list span {
-                    overflow: hidden;
                     white-space: nowrap;
-                    text-overflow: ellipsis;
                     width: 14ch;
                 }
             }

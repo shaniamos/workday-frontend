@@ -2,13 +2,10 @@ import { useEffect, useRef } from "react"
 import { useDispatch } from "react-redux"
 import { useNavigate } from "react-router-dom"
 import { useFormRegister } from "../../hooks/useFormRegister.js"
-import { addBoard } from "../../store/actions/board.action.js"
 
 export const NewBoardMoadl = ({ toggleNewBoardModal, onSaveBoard }) => {
 
     const inputRef = useRef()
-    const dispatch = useDispatch()
-    const navigate = useNavigate()
     const [register, setNewBoardTitle, newBoardTitle] = useFormRegister({
         title: ''
     })

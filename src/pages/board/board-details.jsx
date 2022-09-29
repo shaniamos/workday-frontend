@@ -7,12 +7,12 @@ import { GroupList } from '../../cmps/board/group/group-list.jsx'
 import { KanbanView } from '../../cmps/kanban/kanban-view.jsx'
 import { Dashboard } from '../../cmps/board/dashboard.jsx'
 import { Loader } from '../../cmps/loader.jsx'
-import { addGroup, loadSelectedBoard, updateBoard, getActionUpdateBoard, addTask } from '../../store/actions/board.action.js'
+import { addGroup, loadSelectedBoard, getActionUpdateBoard } from '../../store/actions/board.action.js'
 import { socketService, SOCKET_EMIT_SET_BOARD_ID, SOCKET_EVENT_BOARD_CHANGED } from '../../services/socket.service.js'
-import { utilService } from '../../services/util.service.js'
 
 export const BoardDetails = ({ boards, onChangeFilter }) => {
     const board = useSelector(state => state.boardModule.selectedBoard)
+    console.log(board)
     const isLoading = useSelector(state => state.boardModule.isLoading)
     const [isBoardView, setBoardView] = useState('board-details')
 
