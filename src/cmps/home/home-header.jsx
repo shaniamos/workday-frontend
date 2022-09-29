@@ -8,7 +8,6 @@ import { useSelector } from 'react-redux'
 
 
 export function HomeHeader() {
-    // const loggedinuser = useSelector(state => state.userModule.loggedinuser)
 
     return (
         <React.Fragment>
