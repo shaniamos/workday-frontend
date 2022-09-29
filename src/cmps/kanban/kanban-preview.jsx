@@ -43,7 +43,7 @@ export const KanbanPreview = ({ task, taskId, groupId, boardId }) => {
         else if (priority === "High") return "#fdab3d"
         else if (priority === "Medium") return "#579bfc"
         else if (priority === "Low") return "#00c875"
-        else if(priority) return "grey"
+        if(priority) return "grey"
     }
 
     const { persons } = task
