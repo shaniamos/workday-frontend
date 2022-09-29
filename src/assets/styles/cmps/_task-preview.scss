@@ -17,8 +17,6 @@
         }
 
         .task-name-area {
-
-            // width: 200px;
             background-color: var(--primary-background-color);
 
             @include for-narrow-layout {
@@ -60,6 +58,14 @@
                         background-color: var(--layout-border-color);
 
                     }
+                }
+            }
+
+            & .task-name-heading {
+                padding-inline-start: rem(10px);
+
+                @include for-narrow-layout {
+                    padding: 0;
                 }
             }
 
@@ -258,8 +264,6 @@
 
 }
 
-
-
 /* The container <div> - needed to position the dropdown content */
 .label-dropdown {
     position: relative;
@@ -278,19 +282,23 @@
             right: 0;
             transition: all .3s;
         }
+
         &:before {
             border-top: 0px solid transparent;
             border-left: 0px solid rgba(0, 0, 0, 0.3);
         }
+
         &:after {
             border-bottom: 0px solid transparent;
             border-right: 0px solid #fff;
         }
+
         &:hover {
             &:before {
                 border-top: 10px solid transparent;
                 border-left: 10px solid rgba(0, 0, 0, 0.3);
             }
+
             &:after {
                 border-bottom: 10px solid transparent;
                 border-right: 10px solid #fff;
@@ -325,6 +333,23 @@
                 padding: rem(16px) rem(24px) rem(8px);
                 grid-column-gap: rem(8px);
                 list-style-type: none;
+
+                @include for-mobile-layout {
+                    position: fixed;
+                    width: 100vw;
+                    left: 0;
+                    right: 0;
+                    bottom: rem(80px);
+                    border-top: 1px solid #d1c9c9;
+                    box-shadow: 0px 0px 5px 0px #8d8686b8;
+                    background-color: #fff;
+                    .option {
+                        margin: auto;
+                    }
+                }
+
+
+
 
                 .option {
                     cursor: pointer;
