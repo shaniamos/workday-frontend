@@ -98,10 +98,10 @@
 
         & .down-icons {
             position: absolute;
-            bottom: 5px;
+            bottom: rem(5px);
             justify-content: center;
             align-items: center;
-            left: 5.5px;
+            left: rem(8.5px);
         }
 
         .menu {
