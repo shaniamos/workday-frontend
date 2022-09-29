@@ -247,14 +247,16 @@
             background-color: #3c89db;
             
             .plus-icon {
-                // padding-left: 2px;
                 margin: auto;
-                
             }
         }
 
         & .open-btn {
-            // display: none;
+            display: none;
+
+            @include for-narrow-layout {
+                display: unset;
+            }
         }
 
         & .workspace-options {
