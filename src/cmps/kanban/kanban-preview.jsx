@@ -25,13 +25,13 @@ export const KanbanPreview = ({ task, taskId, groupId, boardId }) => {
     const [isPersonsModal, setIsPersonsModal] = useState(false)
 
     const setStatus = (status) => {
-        console.log('status', status);
-        // const taskToUpdate = { ...task, status: status }
-        // dispatch(updateTask(boardId, groupId, taskToUpdate))
+        // console.log('status', status);
+        const taskToUpdate = { ...task, status: status }
+        dispatch(updateTask(boardId, groupId, taskToUpdate))
     }
 
     const setPriority = (priority) => {
-        console.log('priority', priority);
+        // console.log('priority', priority);
         const taskToUpdate = { ...task, priority: priority }
         dispatch(updateTask(boardId, groupId, taskToUpdate))
     }
@@ -88,7 +88,7 @@ export const KanbanPreview = ({ task, taskId, groupId, boardId }) => {
                                         <div
 
                                             key={status.id}
-                                            onClick={(ev) => setStatus(status)}
+                                            onClick={(ev) => setStatus(status.title)}
                                             style={{ background: status.color }}>
                                             {status.title}
                                         </div>
@@ -118,7 +118,7 @@ export const KanbanPreview = ({ task, taskId, groupId, boardId }) => {
                                     {priority.map((priority) => (
                                         <div
                                             key={priority.id}
-                                            onClick={() => setPriority(priority)}
+                                            onClick={() => setPriority(priority.title)}
                                             style={{ background: priority.color }}>
 
                                             {priority.title}
