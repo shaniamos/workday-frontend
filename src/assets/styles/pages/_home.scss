@@ -2,9 +2,30 @@
     min-height: 100vh;
     font-family: sofia;
     font-size: 16px;
-    overflow: hidden;
+    // overflow: hidden;
     width: 100vw;
-    background-image: url('../../../assets/imgs/home-bg.jpg');
+    @media (max-width: 450px) {
+    }
+    
+    
+    height: 120vh;
+    font-family: sofia;
+    font-size: 16px;
+    width: 100vw;
+    background-position: center;
+    object-fit:contain;
+   
+    
+    background-image: url('../../../assets/imgs/home-bg-img.jpg');
+    
+    @include for-mobile-layout {
+           background-image: linear-gradient(to top, #14145e, #13135a, #121256, #111152, #10104e);
+
+       }
+    
+
+
+   
 
     .home-header {
         align-items: center;
@@ -95,11 +116,14 @@
     }
 
     .main-content {
-        margin-top: rem(120px);
+        // position: fixed;
+        z-index: 10;
+        margin-top: rem(106px);
         display: flex;
         flex-direction: column;
         text-align: center;
         align-items: center;
+        color: #B4B4FF;
 
         .main-text {
             font-weight: 400;
@@ -145,7 +169,7 @@
             height: rem(60px);
             min-width: rem(200px);
             border-radius: rem(40px);
-            margin-top: rem(40px);
+            margin-top: rem(36px);
             margin-left: rem(26px);
             margin-bottom: rem(8px);
             color: #fff;
@@ -177,6 +201,7 @@
             color: #fff;
             font-family: sofia-thin;
             font-size: rem(14px);
+            margin-top: rem(4px);
         }
     }
 }
