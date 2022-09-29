@@ -66,12 +66,12 @@ export function SubSidebar() {
         }
     }
     const onSaveBoard = async (newBoardTitle) => {
+        console.log(newBoardTitle)
         toggleNewBoardModal()
         try {
             const title = newBoardTitle.title
             let newBoard = { title }
             newBoard = await dispatch(addBoard(newBoard))
-            // navigate(`/board/${newBoard._id}`)
         } catch (err) {
             console.error(err)
         }

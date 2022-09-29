@@ -8,10 +8,14 @@
 
     button {
         @include btn;
+
+        &:first-child {
+            padding: rem(4px) 0;
+        }
     }
 
     .board-header-content {
-        padding: 16px 30px 0px 38px;
+        padding: rem(16px) rem(30px) 0 rem(38px);
 
         .board-header-title {
             display: flex;
@@ -19,13 +23,11 @@
             flex: 1 0;
             gap: rem(10px);
             width: 100%;
-            margin-right: rem(8px);
-            margin-left: rem(-5px);
+            padding-inline-start: rem(10px);
 
             .board-header-left {
                 display: inline-flex;
                 align-items: center;
-                // flex: 1 0;
                 min-width: rem(100px);
                 max-width: 100%;
                 margin-right: rem(8px);
@@ -36,6 +38,7 @@
                 white-space: nowrap;
                 cursor: text;
                 overflow: hidden;
+
                 @include for-mobile-layout {
                     input {
                         font-size: 20px;
@@ -71,8 +74,10 @@
                 .input-title {
                     @include input-title;
                     @include heading;
+                    padding: 0;
+                    margin: 0;
                     font-weight: 500;
-                    width: 300px;
+                    width: rem(300px);
                     border: none;
                     text-align: center;
                     font-family: roboto, rubik, sans-serif;
@@ -80,7 +85,6 @@
                     @include for-narrow-layout {
                         font-size: rem(24px);
                         text-align: left;
-
                     }
 
                     :hover {
@@ -146,13 +150,14 @@
         @include tool-bar;
         height: rem(50px);
         flex-direction: column;
+        padding-inline-start: rem(5px);
 
         @include for-mobile-layout {
             flex-direction: row;
             align-items: center;
             font-weight: 700;
         }
-        
+
         // align-content: center;
         @include for-narrow-layout {
             flex-direction: row;
@@ -177,8 +182,7 @@
         padding-bottom: rem(16px);
         margin-top: rem(24px);
         height: rem(40px);
-
-        @include for-mobile-layout {}
+        padding-inline-start: rem(5px);
 
         .new-item-btn {
             @include for-mobile-layout {
