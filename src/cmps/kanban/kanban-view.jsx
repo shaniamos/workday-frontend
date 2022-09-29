@@ -3,8 +3,6 @@
 import { KanbanGroup } from './kanban-group';
 
 export const KanbanView = ({ boardId, groups, onAddTask }) => {
-    console.log('groups from kanbannnn  ', groups);
-    // if(!groups) return <div>No Groups</div>
     return <section className="kanban-content">
         {groups.map(group => {
             return ( 

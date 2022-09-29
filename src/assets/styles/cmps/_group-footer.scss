@@ -41,9 +41,11 @@
     
     .group-priority {
         border-radius: 0 0 6px 0;
-        border-right: 0.5px solid var(--ui-border-color);
-        border-bottom: 0.5px solid var(--ui-border-color);
-        border-left: 0.5px solid var(--ui-border-color);
+        // border-right: 0.5px solid var(--ui-border-color);
+        // border-bottom: 0.5px solid var(--ui-border-color);
+        // border-left: 0.5px solid var(--ui-border-color);
+        // border-top: 0.5px solid var(--ui-border-color);
+        border: 0.5px solid var(--ui-border-color);
         padding: 10px;
         min-width: rem(150px);
         height: rem(35px);

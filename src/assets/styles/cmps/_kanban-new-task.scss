@@ -1,17 +1,20 @@
 .kanban-new-task {
-    font-size: 14px;
+    font-size: rem(14px);
     color: #676879;
-    width: 242px;
-    height: 37px;
+    width: rem(242px);
+    height: rem(37px);
     background-color: #fff;
     border: 1px solid transparent;
-    margin-top: 6px;
-    margin-bottom: 8px;
-    border-radius: 8px;
+    margin-top: rem(6px);
+    margin-bottom: rem(8px);
+    border-radius: rem(8px);
     display: flex;
     align-items: center;
+    margin: auto;
+    margin-top: rem(10px);
+    margin-bottom: rem(10px);
     cursor: pointer;
     div {
-     padding-left: 8px;
+     padding-left: rem(8px);
     }
    }

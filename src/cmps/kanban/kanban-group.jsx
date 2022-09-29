@@ -3,7 +3,7 @@ import { KanbanHeader } from "./kanban-header"
 import { KanbanPreview } from "./kanban-preview"
 
 
-export const KanbanGroup = ({ group, boardId, onAddTask}) => {
+export const KanbanGroup = ({ group, boardId}) => {
     const { id, colorId, title, tasks } = group
 
 
@@ -15,7 +15,7 @@ export const KanbanGroup = ({ group, boardId, onAddTask}) => {
             )
 
         })}
-        <KanbanAddTask onAddTask={onAddTask} /> 
+        <KanbanAddTask groupId={id} boardId={boardId} /> 
     </section>
 
 }

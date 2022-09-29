@@ -49,24 +49,7 @@ export const BoardDetails = ({ boards, onChangeFilter }) => {
         setBoardView(currView)
     }
 
-    const onAddTask = () => {
-        console.log('hey');
-        let task = { title: 'New Item' }
-        task = createTask(task)
-        dispatch(addTask(board._id, board.groups[0].id, task))
-    }
-
-    const createTask = (task) => {
-        task.id = utilService.makeId()
-        task.status = ''
-        task.priority = ''
-        task.persons = []
-        task.deadLine = ''
-        task.lastUpdate = Date.now()
-        task.timeline = [Date.now(), Date.now()]
-        task.comments = []
-        return task
-    }
+  
 
     if (isLoading || !boards) return <Loader />
     return (
@@ -78,7 +61,7 @@ export const BoardDetails = ({ boards, onChangeFilter }) => {
                     onChangeFilter={onChangeFilter}
                     selectedBoardId={board._id}
                     toggleView={toggleView}
-                    onAddTask={onAddTask}
+                    
                 />}
             {(board && boards.length) &&
                 <div className='board-content'>
@@ -93,7 +76,7 @@ export const BoardDetails = ({ boards, onChangeFilter }) => {
                         <KanbanView
                         groups={board.groups}
                         boardId={boardId}
-                        onAddTask={onAddTask}
+                        
                            
                         />}
                     {isBoardView === 'dashboard' &&

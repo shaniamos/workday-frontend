@@ -35,12 +35,15 @@ export const KanbanPreview = ({ task, taskId, groupId, boardId }) => {
         else if (status === 'Done') return "#00c875"
         else if (status === 'Working on it') return "#fdab3d"
         else if (status === 'Stuck') return "#e2445c"
+        if(priority) return "grey"
+
     }
     const getPriorityColor = (priority) => {
         if (priority === 'Critical') return "#d83a52"
         else if (priority === "High") return "#fdab3d"
         else if (priority === "Medium") return "#579bfc"
         else if (priority === "Low") return "#00c875"
+        else if(priority) return "grey"
     }
 
     const { persons } = task
