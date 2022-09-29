@@ -53,6 +53,7 @@ export const GroupPreview = ({ group, sortGroup, provided }) => {
         dispatch(addGroup(boardId, duplicateGroup, 'last'))
     }
 
+    console.log(group)
     return (
         <section className="group-preview ">
             {/* Group Title  */}
