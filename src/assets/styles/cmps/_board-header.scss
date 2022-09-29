@@ -183,9 +183,12 @@
         .new-item-btn {
             @include for-mobile-layout {
                 position: fixed;
-
                 bottom: rem(90px);
                 right: rem(20px);
+            }
+
+            @include for-narrow-layout {
+                margin-inline-end: rem(22px);
             }
 
             .dropdown:hover .dropdown-content {
