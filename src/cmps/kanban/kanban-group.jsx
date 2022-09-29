@@ -1,8 +1,9 @@
+import { KanbanAddTask } from "./kanban-add-task"
 import { KanbanHeader } from "./kanban-header"
 import { KanbanPreview } from "./kanban-preview"
 
 
-export const KanbanGroup = ({ group, boardId}) => {
+export const KanbanGroup = ({ group, boardId, onAddTask}) => {
     const { id, colorId, title, tasks } = group
 
 
@@ -14,6 +15,7 @@ export const KanbanGroup = ({ group, boardId}) => {
             )
 
         })}
+        <KanbanAddTask onAddTask={onAddTask} /> 
     </section>
 
 }

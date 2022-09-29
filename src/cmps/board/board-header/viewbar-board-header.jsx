@@ -21,28 +21,10 @@ import { FilterBoard } from './filter-board.jsx'
 //BiMessageRounded - with updates 
 //IoIosCheckmarkCircleOutline -checklist 
 
-export function ViewbarBoardHeader({ board, onAddGroup, onChangeFilter }) {
+export function ViewbarBoardHeader({ board, onAddGroup, onChangeFilter, onAddTask }) {
     const [isFilter, setFilter] = useState(false)
 
     const dispatch = useDispatch()
-
-    const onAddTask = () => {
-        let task = { title: 'New Item' }
-        task = createTask(task)
-        dispatch(addTask(board.id, board.groups[0].id, task))
-    }
-
-    const createTask = (task) => {
-        task.id = utilService.makeId()
-        task.status = ''
-        task.priority = ''
-        task.persons = []
-        task.deadLine = ''
-        task.lastUpdate = Date.now()
-        task.timeline = [Date.now(), Date.now()]
-        task.comments = []
-        return task
-    }
 
     return (
         <div className="board-header-view-bar flex ">

@@ -7,8 +7,9 @@ import { GroupList } from '../../cmps/board/group/group-list.jsx'
 import { KanbanView } from '../../cmps/kanban/kanban-view.jsx'
 import { Dashboard } from '../../cmps/board/dashboard.jsx'
 import { Loader } from '../../cmps/loader.jsx'
-import { addGroup, loadSelectedBoard, updateBoard, getActionUpdateBoard } from '../../store/actions/board.action.js'
+import { addGroup, loadSelectedBoard, updateBoard, getActionUpdateBoard, addTask } from '../../store/actions/board.action.js'
 import { socketService, SOCKET_EMIT_SET_BOARD_ID, SOCKET_EVENT_BOARD_CHANGED } from '../../services/socket.service.js'
+import { utilService } from '../../services/util.service.js'
 
 export const BoardDetails = ({ boards, onChangeFilter }) => {
     const board = useSelector(state => state.boardModule.selectedBoard)
@@ -45,8 +46,26 @@ export const BoardDetails = ({ boards, onChangeFilter }) => {
     }
 
     const toggleView = (currView) => {
-        console.log('currView', currView);
         setBoardView(currView)
+    }
+
+    const onAddTask = () => {
+        console.log('hey');
+        let task = { title: 'New Item' }
+        task = createTask(task)
+        dispatch(addTask(board._id, board.groups[0].id, task))
+    }
+
+    const createTask = (task) => {
+        task.id = utilService.makeId()
+        task.status = ''
+        task.priority = ''
+        task.persons = []
+        task.deadLine = ''
+        task.lastUpdate = Date.now()
+        task.timeline = [Date.now(), Date.now()]
+        task.comments = []
+        return task
     }
 
     if (isLoading || !boards) return <Loader />
@@ -59,6 +78,7 @@ export const BoardDetails = ({ boards, onChangeFilter }) => {
                     onChangeFilter={onChangeFilter}
                     selectedBoardId={board._id}
                     toggleView={toggleView}
+                    onAddTask={onAddTask}
                 />}
             {(board && boards.length) &&
                 <div className='board-content'>
@@ -73,6 +93,7 @@ export const BoardDetails = ({ boards, onChangeFilter }) => {
                         <KanbanView
                         groups={board.groups}
                         boardId={boardId}
+                        onAddTask={onAddTask}
                            
                         />}
                     {isBoardView === 'dashboard' &&

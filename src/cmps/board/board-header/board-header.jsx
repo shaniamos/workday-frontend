@@ -13,7 +13,7 @@ import { ViewbarBoardHeader } from './viewbar-board-header.jsx'
 //HiFolder - new item
 //IoIosCheckmarkCircleOutline -checklist 
 
-export function BoardHeader({ board, onAddGroup, onChangeFilter, selectedBoardId, toggleView }) {
+export function BoardHeader({ board, onAddGroup, onChangeFilter, selectedBoardId, toggleView, onAddTask }) {
 
     return (
         <header className="board-header-container">
@@ -21,7 +21,7 @@ export function BoardHeader({ board, onAddGroup, onChangeFilter, selectedBoardId
 
                 <MainBoardHeader board={board} />
                 <ToolbarBoardHeader selectedBoardId={selectedBoardId} toggleView={toggleView} />
-                <ViewbarBoardHeader board={board} onAddGroup={onAddGroup} onChangeFilter={onChangeFilter} />
+                <ViewbarBoardHeader board={board} onAddGroup={onAddGroup} onChangeFilter={onChangeFilter} onAddTask={onAddTask} />
             </div>
         </header>
     )

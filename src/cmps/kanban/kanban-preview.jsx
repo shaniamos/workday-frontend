@@ -10,36 +10,25 @@ import { AvatarsChain } from "../avatarsChain";
 
 export const KanbanPreview = ({ task, taskId, groupId, boardId }) => {
     const currBoard = useSelector(state => state.boardModule.selectedBoard)
-    const prio = currBoard.labels.map(label => label)
-    const statuses = prio[0].options.map(option => option)
-    // const statuses = prio[0].options.map(option => console.log('asdsd',option))
-    const priority = prio[1].options.map(option => option)
-    // console.log('statuses', statuses);
+
+    const boardOptions = currBoard.labels.map(label => label)
+    const statuses = boardOptions[0].options.map(option => option)
+    const priority = boardOptions[1].options.map(option => option)
 
     const dispatch = useDispatch()
-
     const [isStatusModal, setIsStatusModal] = useState(false)
-    const [isStatusHover, setIsStatusHover] = useState(false)
-    const [isPriorityHover, setIsPriorityHover] = useState(false)
     const [isPrioritysModal, setIsPrioritysModal] = useState(false)
     const [isPersonsModal, setIsPersonsModal] = useState(false)
 
     const setStatus = (status) => {
-        // console.log('status', status);
         const taskToUpdate = { ...task, status: status }
         dispatch(updateTask(boardId, groupId, taskToUpdate))
     }
 
     const setPriority = (priority) => {
-        // console.log('priority', priority);
         const taskToUpdate = { ...task, priority: priority }
         dispatch(updateTask(boardId, groupId, taskToUpdate))
     }
-
-    // const bgHoverStatus = () => {
-    //     const setStatusColor = isStatusHover ? task.status.hover : task.status.color
-    //     return setStatusColor
-    //   }
 
     const getStatusColor = (status) => {
         if (status === 'On Hold') return "#ff5ac4"
@@ -54,14 +43,12 @@ export const KanbanPreview = ({ task, taskId, groupId, boardId }) => {
         else if (priority === "Low") return "#00c875"
     }
 
-    const { persons, lastUpdated, deadline } = task
-    // console.log('color prio', priority.color);
+    const { persons } = task
     return (
         <section className="kanban-task-preview">
             <div className="kanban-task-title">
                 <span>{task.title}</span>
             </div>
-
             <div className="kanban-task-data">
                 <div className="kanban-task-status">
                     <div className="kanban-task-status-title">
@@ -131,22 +118,13 @@ export const KanbanPreview = ({ task, taskId, groupId, boardId }) => {
                 </div>
 
                 <div className="kanban-task-persons flex ">
-                    <div className="">
+                    <div className="person-container">
                         <FaRegUserCircle className="kanban-icons person" />
                         <span className="person-title">Persons</span>
                     </div>
                     <div
-                        onClick={() => setIsPersonsModal(!isPersonsModal)}
-                        className="kanban-priority-label"
-
-                    >
-
-                        {(
-                            <div className="">
-                                <AvatarsChain task={task} groupId={groupId} assigneeMembers={persons} />
-
-                            </div>
-                        )}
+                        onClick={() => setIsPersonsModal(!isPersonsModal)} className="kanban-priority-label">{(
+                            <AvatarsChain task={task} groupId={groupId} assigneeMembers={persons} />)}
                     </div>
                 </div>
             </div>
