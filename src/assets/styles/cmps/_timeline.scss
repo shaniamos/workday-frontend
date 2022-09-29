@@ -23,32 +23,41 @@
         display: flex;
         justify-content: center;
         gap: 5px;
+
         .sum-days {
-           opacity: 0;
+            position: relative;
+            display: none;
+           
         }
 
         &:hover .sum-days {
-            opacity: 1;
+            display: block;
         }
+
         .date-picker {
             width: rem(152px);
             height: rem(25px);
             border-radius: rem(11px);
             position: relative;
-            .date-picker-cmp {
-                width: rem(152px);
-                color: white;
-                border: .5px solid rgb(190, 187, 187);
-                background-color: yellowgreen;
-                position: absolute;
-                top: -16px;
 
+            .date-picker-container {
+
+                .date-picker-cmp {
+                    width: rem(152px);
+                    border-radius: rem(11px);
+                    color: white;
+                    border: .5px solid rgb(190, 187, 187);
+                    background-color: transparent;
+                    position: absolute;
+                    top: -16px;
+                    
+                }
             }
-
+            
             .progress-bar {
                 position: absolute;
-                height: rem(25px);
                 border-radius: rem(11px);
+                height: rem(25px);
             }
 
             .position {
@@ -59,3 +68,68 @@
         }
     }
 }
+
+// .timeline {
+//     display: flex;
+//     align-items: center;
+//     justify-content: center;
+//     flex-basis: 180px;
+//     min-width: 180px;
+//     .date-pick-wrapper {
+//         display: flex;
+//     }
+//     .date-picker-cmp,
+//     .date-picker,
+//     .no-date,
+//     .set-dates,
+//     .num-of-days {
+//         width: 152px;
+//         font-size: 13px;
+//         // amend width side so it won't use pixels.
+//         display: inline-block;
+//         padding: 1.25px 5.25px;
+//         border: none;
+//         background-color: $grey;
+//         color: white;
+//         line-height: 22px;
+//         border-radius: 11px;
+//         margin: 0 auto;
+//         cursor: pointer;
+//     }
+//     .date-picker-container {
+//         width: 152px;
+//         height: 25px;
+//         border-radius: 11px;
+//         position: relative;
+//         .date-picker-cmp {
+//             width: 152px;
+
+//             background-color: transparent;
+//             position: absolute;
+//             top: -45px;
+//             right: -78px;
+//         }
+//         .progress-bar {
+//             position: absolute;
+//             height: 25px;
+//             border-radius: 11px;
+//         }
+
+//         .grey-bck {
+//             width: 152px;
+//             height: 25px;
+//             background-color: $grey;
+//             border-radius: 11px;
+//         }
+//     }
+
+//     // .date-picker-cmp {
+//     //     // position: absolute;
+//     //     // top: 36px;
+//     //     // z-index: 3;
+//     // }
+
+//     .date-picker-pos {
+//         transform: translate(-45px, 20px) !important;
+//     }
+// }

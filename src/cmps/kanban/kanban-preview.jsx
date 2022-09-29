@@ -8,7 +8,7 @@ import { FaRegUserCircle } from 'react-icons/fa'
 import { AvatarsChain } from "../avatarsChain";
 
 
-export const KanbanPreview = ({ task, taskId, groupId, boardId }) => {
+export const KanbanPreview = ({ provided, task, taskId, groupId, boardId }) => {
     const currBoard = useSelector(state => state.boardModule.selectedBoard)
 
     const boardOptions = currBoard.labels.map(label => label)
@@ -35,7 +35,7 @@ export const KanbanPreview = ({ task, taskId, groupId, boardId }) => {
         else if (status === 'Done') return "#00c875"
         else if (status === 'Working on it') return "#fdab3d"
         else if (status === 'Stuck') return "#e2445c"
-        if(priority) return "grey"
+        if (priority) return "grey"
 
     }
     const getPriorityColor = (priority) => {
@@ -43,12 +43,15 @@ export const KanbanPreview = ({ task, taskId, groupId, boardId }) => {
         else if (priority === "High") return "#fdab3d"
         else if (priority === "Medium") return "#579bfc"
         else if (priority === "Low") return "#00c875"
-        if(priority) return "grey"
+        if (priority) return "grey"
     }
 
     const { persons } = task
     return (
-        <section className="kanban-task-preview">
+        <section className="kanban-task-preview"
+            ref={provided.innerRef}
+            {...provided.draggableProps}
+            {...provided.dragHandleProps}>
             <div className="kanban-task-title">
                 <span>{task.title}</span>
             </div>

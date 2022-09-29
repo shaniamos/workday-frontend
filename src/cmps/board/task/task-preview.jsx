@@ -16,6 +16,7 @@ import { HiOutlineDotsHorizontal } from 'react-icons/hi' //More
 import { MdDeleteOutline } from 'react-icons/md'//Delete
 import { HiOutlineDocumentDuplicate } from 'react-icons/hi'//Duplicate
 import { ReactComponent as NoneUpdatesIcon } from '../../../assets/svgs/NoneUpdatesIcon.svg'
+
 import { TimeLine } from "../../timeline.jsx"
 
 
@@ -120,7 +121,7 @@ export const TaskPreview = ({ task, groupId, groupColor, provided }) => {
 
                 {/* TimeLine */}
                 <div className="cell timeline-header">
-                    <TimeLine task={task} boardId={boardId} groupId={groupId} />
+                    <TimeLine task={task} boardId={boardId} groupId={groupId} groupColor={groupColor} />
                 </div>
 
                 {/* Due Date */}

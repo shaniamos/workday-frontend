@@ -8,7 +8,7 @@ import { updateTask } from '../store/actions/board.action';
 
 // registerLocale('uk', uk)
 
-export const TimeLine = ({task, boardId, groupId}) => {
+export const TimeLine = ({task, boardId, groupId, groupColor}) => {
     const [startDate, setStartDate] = useState((new Date(task.timeline[0])))
     const [endDate, setEndDate] = useState((new Date(task.timeline[1])))
     const [isDateSet, setIsDateSet] = useState(true)
@@ -51,11 +51,23 @@ export const TimeLine = ({task, boardId, groupId}) => {
         const totalDays = (timestampEnd - timestampStart) / 1000 / 60 / 60 / 24
         return totalDays.toFixed(0)
     }
+
+    const getPercent = () => {
+        const now = Date.now()
+        const timestampStart = startDate.getTime()
+        const totalDays = getNumOfDays()
+        let milliPassed = now - timestampStart
+        const daysPassed = Math.floor(milliPassed / 1000 / 60 / 60 / 24)
+        let percent = daysPassed / totalDays * 100
+        if (percent < 0) percent = 0
+        if (percent > 100) percent = 100
+        return percent
+    }
  
     return (
         <div className="timeline-container" >
 
-            {!task.timeline && !isSettingDate && 
+            {!task.timeline && 
                 <span className="set-dates" onClick={onSetDates}>Set Dates</span>}
 
          
@@ -63,13 +75,15 @@ export const TimeLine = ({task, boardId, groupId}) => {
                 <div className="date-pick-area">
                     {<span className="sum-days" onClick={() => setIsHover(false) }>{getNumOfDays()} d</span>}
                     <div className="date-picker">
-                        <div className="progress-bar">
+                    <div className="progress-bar"
+                            style={{ backgroundColor: `var(${groupColor})`, width: `${getPercent()}%` }}>
                         </div>
                         <div className="grey-bck"></div>
-                        <DatePicker
+                        <div className='date-picker-container' >
+                        <DatePicker style={{backgroundColor:  `var(${groupColor})`}}
                             className="date-picker-cmp"
                             popperPlacement="bottom"
-                            popperClassName="date-picker-pos"
+                            popperClassName="date-picker-pos "
                             selectsRange={true}
                             startDate={startDate}
                             endDate={endDate}
@@ -78,6 +92,7 @@ export const TimeLine = ({task, boardId, groupId}) => {
                                 // onSetTimeline()
                             }}
                         />
+                        </div>
                     </div>
                 </div>}
         </div>

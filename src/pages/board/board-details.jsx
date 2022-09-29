@@ -76,6 +76,7 @@ export const BoardDetails = ({ boards, onChangeFilter }) => {
                         <KanbanView
                         groups={board.groups}
                         boardId={boardId}
+                        board={board}
                         
                            
                         />}
