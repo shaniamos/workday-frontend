@@ -100,7 +100,6 @@ export const GroupList = ({ board, groups, onAddGroup, onChangeFilter}) => {
         dispatch(updateBoard(newBoard))
     }
 
-    console.log(filteredGroups)
     return (
         <DragDropContext onDragEnd={onHandleDragEnd}>
             <section className="group-list">
@@ -108,7 +107,6 @@ export const GroupList = ({ board, groups, onAddGroup, onChangeFilter}) => {
                     return (
                         <Droppable droppableId={`${idx}`} key={group.id} >
                             {(provided) => {
-                                console.log(provided.innerRef)
                                 return (
                                     <section ref={provided.innerRef} {...provided.droppableProps} key={group.id}>
                                         <GroupPreview

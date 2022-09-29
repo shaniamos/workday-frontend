@@ -14,12 +14,7 @@ export function getActionAddBoard(board) {
         board
     }
 }
-// export function getActionUpdateBoard(board) {
-//     return {
-//         type: 'UPDATE_BOARD',
-//         board
-//     }
-// }
+
 export function getActionUpdateBoard(board) {
     return (dispatch) => {
         dispatch({ type: 'UPDATE_BOARD', board })
@@ -143,8 +138,6 @@ export function addGroup(boardId, group, place) {
     return async (dispatch) => {
         try {
             const savedBoard = await boardService.addGroup(boardId, group, place)
-            console.log('savedBoard', savedBoard)
-
             dispatch({ type: 'UPDATE_BOARD', board: savedBoard })
         } catch (err) {
             console.error('err:', err)
