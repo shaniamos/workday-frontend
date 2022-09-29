@@ -70,7 +70,7 @@ export const GroupList = ({ board, groups, onAddGroup, onChangeFilter }) => {
     //     }
     // }
 
-    const onHandleDragEnd = (result) => {
+    function onHandleDragEnd (result) {
         console.log(result)
         if (!result.destination) return
         const { source, destination, draggableId } = result

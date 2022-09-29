@@ -45,7 +45,7 @@ async function queryBoards(filterBy) {
 }
 
 async function getBoardById(boardId) {
-    socketService.emit(SOCKET_EMIT_SET_BOARD_ID, boardId)
+    // socketService.emit(SOCKET_EMIT_SET_BOARD_ID, boardId)
     const board = await httpService.get(BASE_URL + boardId)
     return board
 }
