@@ -56,7 +56,7 @@ export const GroupList = ({ board, groups, onAddGroup, onChangeFilter }) => {
         else setSort({ ...sort, sortBy, isDescending: 1 })
     }
 
-    const onHandleDragEnd = (result) => {
+    function onHandleDragEnd(result) {
         console.log(result)
         const { source, destination } = result
 
