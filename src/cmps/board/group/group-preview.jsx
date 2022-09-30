@@ -79,7 +79,10 @@ export const GroupPreview = ({ group, sortGroup, provided, snapchat, index }) =>
                 </div>
                 <div className="group-name flex sticky-feature">
 
-                    <span className="collapse-group-button" style={{ color: `var(${group.colorId})` }}><IoChevronDown /></span>
+                    <span className="collapse-group-button"
+                        style={{ color: `var(${group.colorId})` }}>
+                        <IoChevronDown />
+                    </span>
                     <div className="group-title" >
                         <form onSubmit={onUpdateGroup}>
                             <input {...register('title', 'text')} className="group-name-input clean-input" style={{ color: `var(${group.colorId})` }} />
