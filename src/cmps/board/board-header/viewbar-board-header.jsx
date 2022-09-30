@@ -27,9 +27,10 @@ export function ViewbarBoardHeader({ board, onAddGroup, onChangeFilter }) {
     const dispatch = useDispatch()
 
     const onAddTask = () => {
+        console.log('hey');
         let task = { title: 'New Item' }
         task = createTask(task)
-        dispatch(addTask(board.id, board.groups[0].id, task))
+        dispatch(addTask(board._id, board.groups[0].id, task))
     }
 
     const createTask = (task) => {

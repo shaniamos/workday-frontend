@@ -31,7 +31,7 @@ export const BoardApp = () => {
         <section className="board-app flex">
             <MainSidebar />
             <UserMsg boards={boards} />
-            <SubSidebar isOpen={true} />
+            <SubSidebar />
             <BoardDetails boards={boards} onChangeFilter={onChangeFilter} />
             <Outlet />
         </section>

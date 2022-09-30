@@ -112,6 +112,7 @@ async function addGroup(boardId, group, place = '') {
         const board = await getBoardById(boardId)
         group.id = utilService.makeId()
         if (!group.tasks) {
+            group.colorId = "--color-working_orange"
             group.style = {}
             group.tasks = []
         }

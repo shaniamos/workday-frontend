@@ -56,38 +56,37 @@ export const GroupList = ({ board, groups, onAddGroup, onChangeFilter }) => {
         else setSort({ ...sort, sortBy, isDescending: 1 })
     }
 
-    function onHandleDragEnd(result) {
-        console.log(result)
+    const onDragEnd = (result, groups) => {
+        if (!result.destination) return
         const { source, destination } = result
-
-        if (!destination) return
-
-        if (source.index === destination.index &&
-            source.droppableId === destination.droppableId) return
-
+        if (
+            source.index === destination.index &&
+            source.droppableId === destination.droppableId
+        )
+            return
         if (source.droppableId !== destination.droppableId) {
-            const sourceGroup = groups[+source.droppableId]
-            const destGroup = groups[+destination.droppableId]
-            const sourceTasks = [...sourceGroup.tasks]
-            const destTasks = [...destGroup.tasks]
-            const [removedTask] = sourceTasks.splice(source.index, 1)
-            destTasks.splice(destination.index, 0, removedTask)
-            groups[+source.droppableId] = {
-                ...groups[+source.droppableId],
-                tasks: sourceTasks,
+            const sourceColumn = groups[source.droppableId]
+            const destColumn = groups[destination.droppableId]
+            const sourceItems = [...sourceColumn.tasks]
+            const destTasks = [...destColumn.tasks]
+            const [removed] = sourceItems.splice(source.index, 1)
+            destTasks.splice(destination.index, 0, removed)
+            groups[source.droppableId] = {
+                ...groups[source.droppableId],
+                tasks: sourceItems,
             }
-            groups[+destination.droppableId] = {
-                ...groups[+destination.droppableId],
+            groups[destination.droppableId] = {
+                ...groups[destination.droppableId],
                 tasks: destTasks,
             }
             onUpdateGroups(groups)
         } else {
-            const group = groups[+source.droppableId]
-            const copiedItems = [...group.tasks]
-            const [removedTask] = copiedItems.splice(source.index, 1)
-            copiedItems.splice(destination.index, 0, removedTask)
-            groups[+source.droppableId] = {
-                ...groups[+source.droppableId],
+            const column = groups[source.droppableId]
+            const copiedItems = [...column.tasks]
+            const [removed] = copiedItems.splice(source.index, 1)
+            copiedItems.splice(destination.index, 0, removed)
+            groups[source.droppableId] = {
+                ...groups[source.droppableId],
                 tasks: copiedItems,
             }
             onUpdateGroups(groups)
@@ -100,19 +99,19 @@ export const GroupList = ({ board, groups, onAddGroup, onChangeFilter }) => {
         dispatch(updateBoard(newBoard))
     }
 
-    console.log(filteredGroups)
     return (
-        <DragDropContext onDragEnd={onHandleDragEnd}>
-            <section className="group-list">
+        <section className="group-list">
+            <DragDropContext onDragEnd={(result) => onDragEnd(result, groups)}>
                 {filteredGroups.map((group, idx) => {
                     return (
                         <Droppable droppableId={`${idx}`} key={group.id} >
-                            {(provided) => {
-                                console.log(provided.innerRef)
+                            {(provided, snapchat) => {
                                 return (
                                     <section ref={provided.innerRef} {...provided.droppableProps} key={group.id}>
                                         <GroupPreview
+                                            index={idx}
                                             provided={provided}
+                                            snapchat={snapchat}
                                             key={group.id}
                                             group={group}
                                             onChangeFilter={onChangeFilter}
@@ -127,7 +126,7 @@ export const GroupList = ({ board, groups, onAddGroup, onChangeFilter }) => {
                 <button className="btn-add-group sticky-feature" onClick={() => onAddGroup('last')}>
                     <span className="add-icon"><GrAdd /></span> Add New Group
                 </button>
-            </section >
-        </DragDropContext >
+            </DragDropContext >
+        </section >
     )
 }

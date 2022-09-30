@@ -8,7 +8,7 @@ import { BsFillLightningFill } from 'react-icons/bs'
 //LIBS
 import { useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { useNavigate, NavLink, useLocation } from 'react-router-dom'
+import { useNavigate, useLocation } from 'react-router-dom'
 import { addBoard, loadBoards, removeBoard } from '../../store/actions/board.action.js'
 import { NewBoardMoadl } from "../board/new-board-modal.jsx"
 import { Search } from "../search.jsx"
@@ -18,10 +18,10 @@ import { utilService } from '../../services/util.service.js'
 import { BoardList } from '../board/board-list.jsx'
 
 
-export function SubSidebar({ isOpen }) {
+export function SubSidebar() {
     const boards = useSelector(state => state.boardModule.boards)
     const [filteredBoards, setFilteredBoards] = useState(boards)
-    const [isNavOpen, setNavOpen] = useState(isOpen)
+    const [isNavOpen, setNavOpen] = useState(true)
     const [isNewBoardModalOpen, setNewBoardModalOpen] = useState(false)
     const [isDropDownOpen, setDropDownOpen] = useState(false)
     const dispatch = useDispatch()
@@ -66,12 +66,12 @@ export function SubSidebar({ isOpen }) {
         }
     }
     const onSaveBoard = async (newBoardTitle) => {
+        console.log(newBoardTitle)
         toggleNewBoardModal()
         try {
             const title = newBoardTitle.title
             let newBoard = { title }
             newBoard = await dispatch(addBoard(newBoard))
-            // navigate(`/board/${newBoard._id}`)
         } catch (err) {
             console.error(err)
         }
@@ -109,14 +109,13 @@ export function SubSidebar({ isOpen }) {
     // style={styleSubSidebar}
 
     return (
-        <section className={`sub-sidebar-container ${sideBarClassName}`}  >
+        <section className={`sub-sidebar-container ${sideBarClassName} full`}  >
             {isNewBoardModalOpen && <NewBoardMoadl onSaveBoard={onSaveBoard} toggleNewBoardModal={toggleNewBoardModal} />}
             {isNavOpen && <IoIosArrowBack className='btn-left open-btn' onClick={toggleSubSidebar} />}
             {!isNavOpen && <IoIosArrowForward className='btn-right open-btn' onClick={toggleSubSidebar} />}
             {isNavOpen && (
                 <div className="side-bar-content">
                     {!isWorkspace && <div className="workspace-sidebar flex space-between"> <span>Workspace</span></div> }
-                    {isWorkspace && <a  className="flex  option last-one"><Search onChangeFilter={onChangeBoardsFilter} /></a> }
                     
                     <div className="workspace-board flex space-between align-center">
                         <div className="workspace-board-name flex align-center">

@@ -16,6 +16,7 @@ import { HiOutlineDotsHorizontal } from 'react-icons/hi' //More
 import { MdDeleteOutline } from 'react-icons/md'//Delete
 import { HiOutlineDocumentDuplicate } from 'react-icons/hi'//Duplicate
 import { ReactComponent as NoneUpdatesIcon } from '../../../assets/svgs/NoneUpdatesIcon.svg'
+
 import { TimeLine } from "../../timeline.jsx"
 
 
@@ -73,9 +74,10 @@ export const TaskPreview = ({ task, groupId, groupColor, provided }) => {
     let date = (+deadline) ? new Date(+deadline) : ''
     return (
         <div className="preview-full-task flex"
-            {...provided.dragHandleProps}
-            {...provided.draggableProps}
-            ref={provided.innerRef}>
+        ref={provided.innerRef}
+        {...provided.draggableProps}
+        {...provided.dragHandleProps}
+        >
             <div className="dropdown">
                 <div ><HiOutlineDotsHorizontal className="dot" /></div>
                 <div className="dropdown-content">
@@ -120,7 +122,7 @@ export const TaskPreview = ({ task, groupId, groupColor, provided }) => {
 
                 {/* TimeLine */}
                 <div className="cell timeline-header">
-                    <TimeLine task={task} boardId={boardId} groupId={groupId} />
+                    <TimeLine task={task} boardId={boardId} groupId={groupId} groupColor={groupColor} />
                 </div>
 
                 {/* Due Date */}

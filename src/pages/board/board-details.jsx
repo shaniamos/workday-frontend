@@ -7,7 +7,7 @@ import { GroupList } from '../../cmps/board/group/group-list.jsx'
 import { KanbanView } from '../../cmps/kanban/kanban-view.jsx'
 import { Dashboard } from '../../cmps/board/dashboard.jsx'
 import { Loader } from '../../cmps/loader.jsx'
-import { addGroup, loadSelectedBoard, updateBoard, getActionUpdateBoard } from '../../store/actions/board.action.js'
+import { addGroup, loadSelectedBoard, getActionUpdateBoard } from '../../store/actions/board.action.js'
 import { socketService, SOCKET_EMIT_SET_BOARD_ID, SOCKET_EVENT_BOARD_CHANGED } from '../../services/socket.service.js'
 
 export const BoardDetails = ({ boards, onChangeFilter }) => {
@@ -45,9 +45,10 @@ export const BoardDetails = ({ boards, onChangeFilter }) => {
     }
 
     const toggleView = (currView) => {
-        console.log('currView', currView);
         setBoardView(currView)
     }
+
+  
 
     if (isLoading || !boards) return <Loader />
     return (
@@ -59,6 +60,7 @@ export const BoardDetails = ({ boards, onChangeFilter }) => {
                     onChangeFilter={onChangeFilter}
                     selectedBoardId={board._id}
                     toggleView={toggleView}
+                    
                 />}
             {(board && boards.length) &&
                 <div className='board-content'>
@@ -73,6 +75,8 @@ export const BoardDetails = ({ boards, onChangeFilter }) => {
                         <KanbanView
                         groups={board.groups}
                         boardId={boardId}
+                        board={board}
+                        
                            
                         />}
                     {isBoardView === 'dashboard' &&

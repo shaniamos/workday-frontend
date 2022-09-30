@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { HomeHeader } from './home-header'
+import bgHomeImage from '../../assets/imgs/home-bg-img.jpg'
 
 export function Home() {
     return (

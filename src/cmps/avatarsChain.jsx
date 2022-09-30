@@ -4,18 +4,7 @@ import React, { useState } from "react"
 import { MemberMultiSelect } from "./member-multi-select"
 
 export function AvatarsChain({ task, assigneeMembers, groupId }) {
-    console.log('task', task);
-    console.log('assigneeMembers', assigneeMembers);
-    console.log('groupId', groupId);
     const [isMemberModalOpen, setIsMemberModalOpen] = useState()
-
-    // if (assigneeMembers === undefined || assigneeMembers.length === 0) {
-    //     return (
-    //         <div className="overlap-image">
-    //             <img src="https://cdn.monday.com/icons/dapulse-person-column.svg" alt="" />
-    //         </div>
-    //     )
-    // }
 
     return (
         <Fragment>

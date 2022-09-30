@@ -13,8 +13,9 @@ import { useState } from "react"
 import { AreYouSureModal } from "../task/are-you-sure-modal.jsx"
 import { GroupFooter } from "./group-footer.jsx"
 import { utilService } from "../../../services/util.service.js"
+import { Draggable, Droppable } from "react-beautiful-dnd"
 
-export const GroupPreview = ({ group, sortGroup, provided }) => {
+export const GroupPreview = ({ group, sortGroup, provided, snapchat, index }) => {
     const params = useParams()
     const dispatch = useDispatch()
     const [isDeleteBtnClicked, setBtnClicked] = useState(false)
@@ -54,7 +55,12 @@ export const GroupPreview = ({ group, sortGroup, provided }) => {
     }
 
     return (
-        <section className="group-preview ">
+        <section className="group-preview "
+            ref={provided.innerRef}
+            {...provided.draggableProps}
+        // {...provided.dragHandleProps}
+        >
+
             {/* Group Title  */}
             <div className="group-header-name heading-component flex  sticky-feature">
                 <div className="dropdown">
@@ -73,7 +79,10 @@ export const GroupPreview = ({ group, sortGroup, provided }) => {
                 </div>
                 <div className="group-name flex sticky-feature">
 
-                    <span className="collapse-group-button" style={{ color: `var(${group.colorId})` }}><IoChevronDown /></span>
+                    <span className="collapse-group-button"
+                        style={{ color: `var(${group.colorId})` }}>
+                        <IoChevronDown />
+                    </span>
                     <div className="group-title" >
                         <form onSubmit={onUpdateGroup}>
                             <input {...register('title', 'text')} className="group-name-input clean-input" style={{ color: `var(${group.colorId})` }} />
@@ -87,12 +96,22 @@ export const GroupPreview = ({ group, sortGroup, provided }) => {
                 groupColor={group.colorId}
                 sortGroup={sortGroup}
             />
-            <TaskList
-                tasks={group.tasks}
-                group={group}
-                groupColor={group.colorId}
-                provided={provided}
-            />
+            <Draggable draggableId={`${index}`} key={group.id}>
+                {(provided, snapchat) => {
+                    return (
+                        <div {...provided.droppableProps} key={group.id}>
+                            <TaskList
+                                snapchat={snapchat}
+                                tasks={group.tasks}
+                                group={group}
+                                groupColor={group.colorId}
+                                provided={provided}
+                            />
+                        </div>
+                    )
+                }}
+            </Draggable>
+
             <GroupFooter
                 tasks={group.tasks} />
         </section>
