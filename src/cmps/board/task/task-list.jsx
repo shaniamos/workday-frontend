@@ -58,7 +58,7 @@ export const TaskList = ({ tasks, group, groupColor, provided, snapchat }) => {
                 )
             }
             )}
-                {provided.placeholder}
+            {provided.placeholder}
             {/* NEW TASK */}
             
                 <div className="preview-new-task">
@@ -72,7 +72,7 @@ export const TaskList = ({ tasks, group, groupColor, provided, snapchat }) => {
                             </form>
                         </div>
                     </div>
-                    <div className="continunity-new-task"></div>
+                   
                 </div>
         </section>
     )

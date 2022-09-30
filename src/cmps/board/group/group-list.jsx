@@ -109,6 +109,7 @@ export const GroupList = ({ board, groups, onAddGroup, onChangeFilter }) => {
                                 return (
                                     <section ref={provided.innerRef} {...provided.droppableProps} key={group.id}>
                                         <GroupPreview
+                                            index={idx}
                                             provided={provided}
                                             snapchat={snapchat}
                                             key={group.id}

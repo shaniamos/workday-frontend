@@ -15,7 +15,7 @@ import { GroupFooter } from "./group-footer.jsx"
 import { utilService } from "../../../services/util.service.js"
 import { Draggable, Droppable } from "react-beautiful-dnd"
 
-export const GroupPreview = ({ group, sortGroup, provided, snapchat }) => {
+export const GroupPreview = ({ group, sortGroup, provided, snapchat, index }) => {
     const params = useParams()
     const dispatch = useDispatch()
     const [isDeleteBtnClicked, setBtnClicked] = useState(false)
@@ -93,20 +93,20 @@ export const GroupPreview = ({ group, sortGroup, provided, snapchat }) => {
                 groupColor={group.colorId}
                 sortGroup={sortGroup}
             />
-            <Draggable  key={group.id}>
-            {(provided, snapchat) => {
-                return (
-                    <div {...provided.droppableProps} key={group.id}>
-                <TaskList
-                snapchat={snapchat}
-                    tasks={group.tasks}
-                    group={group}
-                    groupColor={group.colorId}
-                    provided={provided}
-                />
-                </div>
-                )
-            }}
+            <Draggable draggableId={`${index}`} key={group.id}>
+                {(provided, snapchat) => {
+                    return (
+                        <div {...provided.droppableProps} key={group.id}>
+                            <TaskList
+                                snapchat={snapchat}
+                                tasks={group.tasks}
+                                group={group}
+                                groupColor={group.colorId}
+                                provided={provided}
+                            />
+                        </div>
+                    )
+                }}
             </Draggable>
 
             <GroupFooter
