@@ -59,10 +59,8 @@ export const KanbanPreview = ({ provided, task, taskId, groupId, boardId }) => {
                 return "#00c875"
             default:
                 return "lightgrey"
-
         }
     }
-
     const { persons } = task
     return (
         <section className="kanban-task-preview"
@@ -82,7 +80,6 @@ export const KanbanPreview = ({ provided, task, taskId, groupId, boardId }) => {
                     <div
                         onClick={() => {
                             setIsStatusModal(!isStatusModal)
-
                         }}
                         className="kanban-status-label" style={{ background: getStatusColor(task.status) }}>
 
@@ -94,9 +91,7 @@ export const KanbanPreview = ({ provided, task, taskId, groupId, boardId }) => {
                                 </div>
                                 <div>
                                     {statuses.map((status) => (
-
                                         <div
-
                                             key={status.id}
                                             onClick={(ev) => setStatus(status.title)}
                                             style={{ background: status.color }}>
@@ -143,7 +138,7 @@ export const KanbanPreview = ({ provided, task, taskId, groupId, boardId }) => {
                 <div className="kanban-task-persons flex ">
                     <div className="person-container">
                         <FaRegUserCircle className="kanban-icons person" />
-                        <span className="person-title">Persons</span>
+                        <span className="person-title">Person</span>
                     </div>
                     <div
                         onClick={() => setIsPersonsModal(!isPersonsModal)} className="kanban-priority-label">{(

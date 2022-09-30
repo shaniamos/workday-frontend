@@ -5,7 +5,7 @@ import { TaskPreview } from "./task-preview.jsx"
 import { useFormRegister } from '../../../hooks/useFormRegister.js'
 import { addTask } from '../../../store/actions/board.action.js'
 import { utilService } from "../../../services/util.service.js"
-import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd'
+import { Draggable } from 'react-beautiful-dnd'
 
 export const TaskList = ({ tasks, group, groupColor, provided, snapchat }) => {
     const dispatch = useDispatch()
