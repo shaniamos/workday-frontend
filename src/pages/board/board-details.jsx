@@ -12,7 +12,6 @@ import { socketService, SOCKET_EMIT_SET_BOARD_ID, SOCKET_EVENT_BOARD_CHANGED } f
 
 export const BoardDetails = ({ boards, onChangeFilter }) => {
     const board = useSelector(state => state.boardModule.selectedBoard)
-    console.log(board)
     const isLoading = useSelector(state => state.boardModule.isLoading)
     const [isBoardView, setBoardView] = useState('board-details')
 
