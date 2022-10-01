@@ -43,6 +43,21 @@
                 right: 0;
                 gap: rem(7px);
                 justify-content: center;
+                
+                .delete-commet-modal {
+                    display: none;
+                    position: absolute;
+                    width: 150px;
+                    height: 50px;
+                    background-color: aquamarine;
+                    transform: translateY(90px);
+                }
+                .dots-comment-list {
+                    &:hover .delete-commet-modal {
+                        display: block;
+                    }
+                }
+
             }
 
             .delete-update-btn {

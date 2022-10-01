@@ -126,9 +126,9 @@ export const TaskPreview = ({ task, groupId, groupColor, provided }) => {
                 </div>
 
                 {/* Due Date */}
-                {date && <div className="cell date-header">
+                {/* {date && <div className="cell date-header">
                     {date.getDate() + "/" + (date.getMonth() + 1) + "/" + date.getFullYear()}
-                </div>}
+                </div>} */}
                 {!date && <div className="cell date-header"></div>}
                 {/* Empty column */}
                 <div className="cell add-column"></div>

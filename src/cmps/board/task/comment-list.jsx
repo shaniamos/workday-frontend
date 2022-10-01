@@ -5,9 +5,18 @@ import { PostUpdate } from "./post-comment";
 import { GoX } from 'react-icons/go';//delete or exit
 import { AiOutlineLike } from 'react-icons/ai';//like
 import { BsReply } from 'react-icons/bs';//reply
+import { HiOutlineDotsHorizontal } from 'react-icons/hi';//dots
+import { useState } from 'react';
 
 
 export function CommentList({ comments, onRemoveComment, onAddComment }) {
+    const [isDotsclicked, setDotsClicked] = useState(false)
+
+    const isMenuOpen = () => {
+        setDotsClicked(!isDotsclicked)
+    }
+
+
     return <section className="item-updates-container">
         <PostUpdate onAddComment={onAddComment} />
         {comments && <section>
@@ -26,8 +35,16 @@ export function CommentList({ comments, onRemoveComment, onAddComment }) {
                                 <LastUpdated lastUpdated={content.createdAt} />
                                 <a className="delete-update-btn" onClick={(ev) => {
                                     ev.stopPropagation();
-                                    onRemoveComment(idx);
-                                }}><GoX /></a>
+                                    isMenuOpen();
+                                }}><HiOutlineDotsHorizontal className='dots-comment-list'/></a>
+                                {<div className='delete-commet-modal'>
+                                        <a onClick={(ev) => {
+                                            ev.stopPropagation();
+                                            onRemoveComment(idx)
+                                        }}> </a>
+
+                                    </div>
+                                    }
                             </div>
                         </div>
                     </div>
