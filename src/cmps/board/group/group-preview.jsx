@@ -27,7 +27,6 @@ export const GroupPreview = ({ group, sortGroup, provided, snapchat, index }) =>
     const boardId = params.id
 
     const isColorMenuOpen = () => {
-        console.log('hey');
         setColorClicked(!isColorMenuClicked)
     }
 
@@ -60,8 +59,9 @@ export const GroupPreview = ({ group, sortGroup, provided, snapchat, index }) =>
         dispatch(addGroup(boardId, duplicateGroup, 'last'))
     }
 
-    const changeGroupColor = (bla) => {
-        console.log('color menu: ', bla);
+    const onChangeColor = (newColor) => {
+        let newGroup = {...group, colorId: newColor}
+        dispatch(updateGroup(boardId, newGroup))
     }
 
     return (
@@ -78,29 +78,32 @@ export const GroupPreview = ({ group, sortGroup, provided, snapchat, index }) =>
                     <div className="dropdown-content">
                         <a onClick={toggleNewBoardModal}>< MdDeleteOutline /> Delete gruop</a>
                         <a onClick={onDuplicateGroup}><HiOutlineDocumentDuplicate /> Duplicate</a>
-                        <div className={`group-color-icon-container`} onClick={isColorMenuOpen}  >
-                        <div className={`group-color-icon`} style={{ backgroundColor: `var(${group.colorId})` }} ></div>
+                        <div className={`group-color-container`} onClick={isColorMenuOpen}  >
+                            <div className={`color-icon`} style={{ backgroundColor: `var(${group.colorId})` }} ></div>
                             <a > Change group color</a>
                         </div>
-                        {isColorMenuClicked && 
-                        <section className='color-menu modal' onClick={(ev) => ev.stopPropagation()}>
-                        <div className='clr1' onClick={() => changeGroupColor('clr1')}></div>
-                        <div className='clr2' onClick={() => changeGroupColor('clr2')}></div>
-                        <div className='clr3' onClick={() => changeGroupColor('clr3')}></div>
-                        <div className='clr4' onClick={() => changeGroupColor('clr4')}></div>
-                        <div className='clr5' onClick={() => changeGroupColor('clr5')}></div>
-                        <div className='clr6' onClick={() => changeGroupColor('clr6')}></div>
-                        <div className='clr7' onClick={() => changeGroupColor('clr7')}></div>
-                        <div className='clr8' onClick={() => changeGroupColor('clr8')}></div>
-                        <div className='clr9' onClick={() => changeGroupColor('clr9')}></div>
-                        <div className='clr10' onClick={() => changeGroupColor('clr10')}></div>
-                        <div className='clr11' onClick={() => changeGroupColor('clr11')}></div>
-                        <div className='clr12' onClick={() => changeGroupColor('clr13')}></div>
-                        <div className='clr13' onClick={() => changeGroupColor('clr14')}></div>
-                        <div className='clr14' onClick={() => changeGroupColor('clr15')}></div>
-                        <div className='clr15' onClick={() => changeGroupColor('clr16')}></div>
-                        <div className='clr17' onClick={() => changeGroupColor('clr17')}></div>
-                      </section>}
+                        {isColorMenuClicked &&
+                            <section className='color-menu' onClick={(ev) => { 
+                                ev.stopPropagation()
+                                isColorMenuOpen()
+                            }}>
+                                <i className='color1' onClick={() => onChangeColor('--color-pdf-red')}></i>
+                                <i className='color2' onClick={() => onChangeColor('--color-like_red')}></i>
+                                <i className='color3' onClick={() => onChangeColor('--color-excel-green')}></i>
+                                <i className='color4' onClick={() => onChangeColor('--color-word-blue')}></i>
+                                <i className='color5' onClick={() => onChangeColor('--color-zip-orange')}></i>
+                                <i className='color6' onClick={() => onChangeColor('--color-brand-iris')}></i>
+                                <i className='color7' onClick={() => onChangeColor('--color-brand-gold')}></i>
+                                <i className='color8' onClick={() => onChangeColor('--color-board_views_blue')}></i>
+                                <i className='color9' onClick={() => onChangeColor('--color-jade')}></i>
+                                <i className='color10' onClick={() => onChangeColor('--color-trolley-grey')}></i>
+                                <i className='color11' onClick={() => onChangeColor('--color-pecan-hover')}></i>
+                                <i className='color12' onClick={() => onChangeColor('--color-lavender-hover')}></i>
+                                <i className='color13' onClick={() => onChangeColor('--color-royal-hover')}></i>
+                                <i className='color14' onClick={() => onChangeColor('--color-tan')}></i>
+                                <i className='color15' onClick={() => onChangeColor('--color-orchid')}></i>
+                                
+                            </section>}
                     </div>
                 </div>
                 <div className="questModal">

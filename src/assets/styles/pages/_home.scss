@@ -4,35 +4,37 @@
     font-size: 16px;
     // overflow: hidden;
     width: 100vw;
-    @media (max-width: 450px) {
-    }
-    
-    
+
+    @media (max-width: 450px) {}
+
+
     height: 120vh;
     font-family: sofia;
     font-size: 16px;
-    width: 100vw;
+    width: 98vw;
     background-position: center;
     object-fit:contain;
-   
-    
-    background-image: url('../../../assets/imgs/home-bg-img.jpg');
-    
+    background-image: linear-gradient(to top, #070742, #0f0f47, #141444, #0a0a36, #0c0c44);
+    // background-image: linear-gradient(to top, #14145e, #13135a, #121256, #111152, #10104e);
+
+
+    // background-image: url('../../../assets/imgs/home-bg.jpg');
+
     @include for-mobile-layout {
-           background-image: linear-gradient(to top, #14145e, #13135a, #121256, #111152, #10104e);
+        background-image: linear-gradient(to top, #14145e, #13135a, #121256, #111152, #10104e);
 
-       }
-    
+    }
 
 
-   
+
+
 
     .home-header {
         align-items: center;
         background-color: #ffffff;
         height: rem(50px);
         padding-inline: rem(10px);
-        
+
         @include for-narrow-layout {
             padding-inline: rem(15px);
             height: rem(80px);
@@ -41,7 +43,7 @@
         .logo {
             padding-top: rem(9px);
             width: rem(130px);
-            
+
             @include for-narrow-layout {
                 width: rem(140px);
             }
@@ -203,6 +205,8 @@
             font-size: rem(14px);
             margin-top: rem(4px);
         }
+
+
     }
 }
 
@@ -219,5 +223,53 @@
 
     @include for-wide-layout {
         width: 70%;
+    }
+}
+
+.star-canvas {
+    position: absolute;
+    top: rem(80px);
+    height: 100%;
+    width: 100%;
+
+    .universe-star {
+        // --twinkle-duration: "";
+        // --twinkle-delay: "";
+        // --star-size: "";
+        position: absolute;
+        background-image: url(https://dapulse-res.cloudinary.com/image/upload/Generator_featured%20images/Home%20Page%20-%202022%20Rebrand/parallax/integrations/star.svg);
+        background-repeat: no-repeat;
+        background-size: cover;
+        
+        width: var(--star-size);
+        height: var(--star-size);
+        width: 20px;
+        height: 20px;
+
+        border-radius: 50%;
+        // -webkit-animation: twinkle-jsx-3954818524 infinite alternate;
+        // animation: twinkle-jsx-3954818524 infinite alternate;
+        //         duration | easing-function | delay | iteration-count | direction | fill-mode | play-state | name */
+        animation: 2s               ease          3s        infinite        alternate   none        running    twinkle-jsx;
+        // animation-duration: var(--twinkle-duration);
+        // animation-timing-function: ease;
+        // animation-delay: var(--twinkle-delay);
+        // animation-iteration-count: infinite;
+        // animation-direction: alternate;
+        // animation-fill-mode: none;
+        // animation-play-state: running;
+        // animation-name: twinkle-jsx-3954818524;
+
+        -webkit-animation-duration: var(--twinkle-duration);
+        animation-duration: var(--twinkle-duration);
+        -webkit-animation-duration: 2s;
+        animation-duration: 2s;
+
+        -webkit-animation-delay: var(--twinkle-delay);
+        animation-delay: var(--twinkle-delay);
+        -webkit-animation-delay: 6s;
+        animation-delay: 6s;
+
+        will-change: transform;
     }
 }

@@ -47,11 +47,11 @@ export const GroupHeader = ({ groupColor, sortGroup}) => {
                     <span>Timeline</span>
                 </div>
                 
-                <div className="cell date-header">
+                {/* <div className="cell date-header">
                     <button className='sort-btn created-at' onClick={() => onSort('deadline')}><TiArrowUnsorted /></button>
                     <span>Due date</span>
                 </div>
-               
+                */}
                 <div className="cell add-column">
                     {/* <span>+</span> */}
                 </div>

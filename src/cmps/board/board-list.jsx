@@ -26,14 +26,12 @@ export function BoardList({ filteredBoards, onRemoveBoard, isDropDownOpen, toggl
                             toggleDropdown()
                         }} ><HiDotsHorizontal className="points" />
                             {isDropDownOpen && <div className="dropdown-content ">
-                                <i onClick={() => onDuplicateBoard(board)}><HiOutlineDocumentDuplicate className="icon-dropdown" /> Duplicate Board</i>
-                                <i><RiPencilLine className="icon-dropdown" /> Rename</i><hr />
-                                <i><HiOutlineArchive className="icon-dropdown" /> Archive</i>
+                                <i onClick={() => onDuplicateBoard(board)}><HiOutlineDocumentDuplicate className="icon-dropdown" /> Duplicate board</i>
                                 <i onClick={(ev) => {
                                     ev.preventDefault()
                                     ev.stopPropagation()
                                     onRemoveBoard(board._id)
-                                }}><MdDeleteOutline className="icon-dropdown" /> Delete</i>
+                                }}><MdDeleteOutline className="icon-dropdown" /> Delete board</i>
                             </div>}
                         </div>
                     </i>
