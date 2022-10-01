@@ -129,9 +129,9 @@ export function SubSidebar() {
                     <div className="workspace-options flex column">
                         <div className="action-btn ">
                             <a onClick={toggleNewBoardModal} className="flex option"> <GrAdd /><span className="menu-btn-inner-text">Add</span></a>
-                            <div>
+                            {/* <div> */}
                                 {<a className="flex  option last-one"><Search onChangeFilter={onChangeBoardsFilter} /> </a>}
-                            </div>
+                            {/* </div> */}
                         </div>
                         
                         <div className="spacer"></div>

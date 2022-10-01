@@ -11,6 +11,11 @@
 
     .workspace-options {
         color: #323338;
+        .action-btn{
+            .search-board-form {
+                padding-inline-start: 0;
+            }
+        }
 
         .boards-options {
             padding: 0 16px 16px 14px;
@@ -240,7 +245,7 @@
             box-shadow: 0px 1px 14px -4px rgb(0 0 0 / 84%);
             border: none;
             background-color: #3c89db;
-            
+
             .plus-icon {
                 margin: auto;
             }
