@@ -4,6 +4,8 @@ import { IoIosArrowBack } from 'react-icons/io'
 import { IoIosArrowDown } from 'react-icons/io'
 import { GrAdd } from 'react-icons/gr'
 import { BsFillLightningFill } from 'react-icons/bs'
+import { BsPlusLg } from 'react-icons/bs'
+
 
 //LIBS
 import { useState } from "react"
@@ -144,7 +146,7 @@ export function SubSidebar() {
                             />
                         </div>
                     </div>
-                    {isWorkspace && <button className="add-mobile-btn"> <a onClick={toggleNewBoardModal} className="flex option"> <GrAdd className='plus-icon' /></a> </button>}
+                    {isWorkspace && <button className="add-mobile-btn"> <a onClick={toggleNewBoardModal} className="flex option"> <BsPlusLg className='plus-icon' /></a> </button>}
                 </div>
             )}
 

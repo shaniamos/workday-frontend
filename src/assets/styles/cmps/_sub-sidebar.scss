@@ -233,18 +233,18 @@
         }
 
         .add-mobile-btn {
-            position: fixed;
-            bottom: 5.625rem;
-            right: 1.25rem;
-            border-radius: 50%;
-            right: rem(12px);
             cursor: pointer;
+            bottom: 5.625rem;
+            right: rem(12px);
             position: absolute;
-            height: rem(40px);
-            width: rem(40px);
-            box-shadow: 0px 1px 14px -4px rgb(0 0 0 / 84%);
+            height: rem(50px);
+            width: rem(50px);
+            box-shadow: 0px 1px 14px -4px rgba(0, 0, 0, 0.84);
             border: none;
-            background-color: #3c89db;
+            background-color: #0073ea;
+            border-radius: 50%;
+            color: white;
+                    
 
             .plus-icon {
                 margin: auto;
