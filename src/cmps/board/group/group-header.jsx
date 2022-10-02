@@ -42,7 +42,7 @@ export const GroupHeader = ({ groupColor, sortGroup }) => {
                     <span>Last updated</span>
                 </div>
                 <div className="cell last-updated">
-                    <button className='sort-btn last-update' ><TiArrowUnsorted /></button>
+                    <button className='sort-btn timeline' ><TiArrowUnsorted /></button>
                     <span>Timeline</span>
                 </div>
                 {/* <div className="cell date-header">
