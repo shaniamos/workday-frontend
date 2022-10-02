@@ -141,7 +141,7 @@ export const KanbanPreview = ({ provided, task, groupId, boardId }) => {
                         <span className="person-title">Person</span>
                     </div>
                     <div
-                        onClick={() => setIsPersonsModal(!isPersonsModal)} className="kanban-priority-label">{(
+                        onClick={() => setIsPersonsModal(!isPersonsModal)} className="kanban-person-label">{(
                             <AvatarsChain task={task} groupId={groupId} assigneeMembers={persons} />)}
                     </div>
                 </div>
