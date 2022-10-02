@@ -31,6 +31,11 @@
          .person-title {
             font-size: rem(13px);
          }
+         .person-container {
+            display: flex;
+            align-items: center;
+         }
+
          .person {
             margin-right: 8px;
          }
@@ -53,7 +58,8 @@
 
             svg {
                font-size: rem(22px);
-               padding-right: 8px;
+               padding-right: rem(8px);
+               padding-top: rem(6px);
             }
 
             span {

@@ -16,6 +16,8 @@
                 &::placeholder {
                     width: rem(60px);
                 }
+
+              
             }
         }
     }
@@ -54,5 +56,25 @@
         position: fixed;
         top: rem(71px);
         right: rem(-130px);
+    }
+}
+
+@include for-mobile-layout {
+    .search-board-form{
+        
+        .search-icon {
+            background-color: var(--primary-background-hover-color);
+            border-radius: 4px;
+            height: 30px;
+            width: 30px;
+            padding: 7px;
+            
+        }
+        &:focus-within {
+            .search-icon{
+                background-color: #ffffff;
+
+            }
+        }
     }
 }
