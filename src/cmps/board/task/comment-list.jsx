@@ -2,21 +2,14 @@
 import { BiTime } from 'react-icons/bi'
 import { LastUpdated } from "./last-updated";
 import { PostUpdate } from "./post-comment";
-import { GoX } from 'react-icons/go';//delete or exit
 import { AiOutlineLike } from 'react-icons/ai';//like
 import { BsReply } from 'react-icons/bs';//reply
 import { HiOutlineDotsHorizontal } from 'react-icons/hi';//dots
-import { useState } from 'react';
+
 
 
 export function CommentList({ comments, onRemoveComment, onAddComment }) {
-    const [isDotsclicked, setDotsClicked] = useState(false)
-
-    const isMenuOpen = () => {
-        setDotsClicked(!isDotsclicked)
-    }
-
-
+    
     return <section className="item-updates-container">
         <PostUpdate onAddComment={onAddComment} />
         {comments && <section>
