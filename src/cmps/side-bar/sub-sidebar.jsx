@@ -147,7 +147,7 @@ export function SubSidebar() {
                     {isWorkspace &&
                         <button className="add-mobile-btn">
                             <a onClick={toggleNewBoardModal} className="flex option">
-                                <GrAdd style={{color: 'white'}} className='plus-icon' />
+                                <GrAdd className='plus-icon' />
                             </a>
                         </button>}
                 </div>
