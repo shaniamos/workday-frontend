@@ -8,7 +8,7 @@ import { useDispatch } from "react-redux"
 import { updateBoard } from "../../../store/actions/board.action.js"
 
 
-export const GroupList = ({ board, groups, onAddGroup, onChangeFilter }) => {
+export const GroupList = ({ board, groups, onAddGroup }) => {
     const filterBy = useSelector(state => state.boardModule.filterBy)
     const [filteredGroups, setFilteredGroups] = useState(groups)
     const [sort, setSort] = useState({ sortBy: '', isDescending: 1 })
@@ -110,13 +110,11 @@ export const GroupList = ({ board, groups, onAddGroup, onChangeFilter }) => {
                                 return (
                                     <section { ...provided.droppableProps} key={group.id}>
                                         <GroupPreview
-                                        
                                             index={idx}
                                             provided={provided}
                                             snapchat={snapchat}
                                             key={group.id}
                                             group={group}
-                                            onChangeFilter={onChangeFilter}
                                             sortGroup={onSort} />
                                     </section>
                                 )

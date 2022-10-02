@@ -13,11 +13,14 @@
 
    .kanban-task-title {
       padding: rem(8px) rem(18px);
-      height: rem(32px);
+      height: rem(45px);
       display: flex;
       overflow: hidden;
       width: 226px;
       align-items: center;
+      .task-title {
+         padding-top: rem(10px);
+      }
    }
 
    .kanban-task-data {
@@ -31,6 +34,11 @@
          .person-title {
             font-size: rem(13px);
          }
+         .person-container {
+            display: flex;
+            align-items: center;
+         }
+
          .person {
             margin-right: 8px;
          }
@@ -53,7 +61,8 @@
 
             svg {
                font-size: rem(22px);
-               padding-right: 8px;
+               padding-right: rem(8px);
+               padding-top: rem(6px);
             }
 
             span {

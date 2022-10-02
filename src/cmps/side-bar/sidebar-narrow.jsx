@@ -23,17 +23,19 @@ export const SidebarNarrow = () => {
         <section className="navbar-mobile-container">
             <div className='icons-navigation'>
                 <NavLink className='home-btn' to='/'
-                    isActive={(match, location) => {
-                        if (match) setIsHomeActive(true)
-                        return match;
-                    }} >
+                onClick={() => {
+                    setIsHomeActive(true)
+                    setIsWorkspaceActive(false)
+                    setIsMoreActive(false)
+                }}>
                     <div className="mobile-navbar-icon">{isHomeActive ? <AiFillHome /> : <AiOutlineHome />}</div>
                     <span>Home</span>
                 </NavLink>
                 <NavLink className='workspace-btn' to='/workspace'
-                    isActive={(match, location) => {
-                        if (match) setIsWorkspaceActive(true)
-                        return match;
+                    onClick={() => {
+                        setIsHomeActive(false)
+                        setIsWorkspaceActive(true)
+                        setIsMoreActive(false)
                     }}>
                     <div className="mobile-navbar-icon">{isWorkspaceActive ? <HiClipboardDocumentList /> : <HiOutlineClipboardDocumentList />}</div>
                     <span>Workspace</span>
