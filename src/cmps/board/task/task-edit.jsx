@@ -4,22 +4,23 @@ import { useFormRegister } from "../../../hooks/useFormRegister.js";
 import { useEffectUpdate } from "../../../hooks/useEffectUpdate.js";
 import { useState } from "react";
 import { addComment, removeComment, updateTask } from "../../../store/actions/board.action.js";
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { Link, useNavigate, useOutletContext, useParams } from "react-router-dom";
 import { GoX } from 'react-icons/go';//delete or exit
+import { useEffect } from "react";
+import { useSelector } from "react-redux";
 
 
-export function TaskEdit() {
+export const TaskEdit = () => {
     const board = useSelector(state => state.boardModule.selectedBoard)
-    console.log(board)
-    const params = useParams()
 
+    const params = useParams()
     const dispatch = useDispatch()
     const navigate = useNavigate()
 
     const [toggle, setNewBoardModalOpen] = useState(false)
     const [task, setTask] = useState({ title: '' })
+    console.log(task)
     const [register, setNewTask, newTask] = useFormRegister({
         title: task.title
     })
@@ -30,11 +31,11 @@ export function TaskEdit() {
 
     useEffect(() => {
         loadTask()
-    }, [params.taskId, board])
+    }, [taskId])
 
     useEffectUpdate(() => dispatch(updateTask(boardId, groupId, task)), [task])
 
-    const loadTask = async () => {
+    const loadTask = () => {
         const groupIdx = board.groups.findIndex(group => group.id === groupId)
         const task = board.groups[groupIdx].tasks.find(task => task.id === taskId)
         setTask(task)
@@ -44,7 +45,6 @@ export function TaskEdit() {
     const togglePage = (isTrue) => {
         setNewBoardModalOpen(isTrue)
     }
-
 
     const onUpdateTask = (event) => {
         event.preventDefault()
@@ -64,7 +64,8 @@ export function TaskEdit() {
     const onAddComment = async (newComment) => {
         dispatch(addComment(boardId, groupId, task.id, newComment))
     }
-    
+
+    console.log(task)
     return (
         <section className="task-edit-container open">
             <div className="main-screen" onClick={onCloseModal}></div>
@@ -92,7 +93,7 @@ export function TaskEdit() {
                         </a>
                     </div>
                 </div>
-                {toggle ? <TaskActivity task={task} /> : <TaskComment task={task} onRemoveComment={onRemoveComment} onAddComment={onAddComment} />}
+                {/* {toggle ? <TaskActivity task={task} /> : <TaskComment task={task} onRemoveComment={onRemoveComment} onAddComment={onAddComment} />} */}
             </section>
         </section>
     )

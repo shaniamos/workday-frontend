@@ -7,6 +7,7 @@ import { DragDropContext, Droppable } from 'react-beautiful-dnd'
 import { useDispatch } from "react-redux"
 import { updateBoard } from "../../../store/actions/board.action.js"
 
+
 export const GroupList = ({ board, groups, onAddGroup, onChangeFilter }) => {
     const filterBy = useSelector(state => state.boardModule.filterBy)
     const [filteredGroups, setFilteredGroups] = useState(groups)
@@ -107,8 +108,9 @@ export const GroupList = ({ board, groups, onAddGroup, onChangeFilter }) => {
                         <Droppable droppableId={`${idx}`} key={group.id} >
                             {(provided, snapchat) => {
                                 return (
-                                    <section ref={provided.innerRef} {...provided.droppableProps} key={group.id}>
+                                    <section { ...provided.droppableProps} key={group.id}>
                                         <GroupPreview
+                                        
                                             index={idx}
                                             provided={provided}
                                             snapchat={snapchat}

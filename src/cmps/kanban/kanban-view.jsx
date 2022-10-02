@@ -58,7 +58,7 @@ export const KanbanView = ({ board, boardId, groups, onAddTask }) => {
             <Droppable droppableId={`${idx}`} key={group.id}>
               {(provided, snapchat) => {
                 return (
-                  <div {...provided.droppableProps} key={group.id}>
+                  <div {...provided.droppableProps}  key={group.id}>
                     <KanbanGroup
                       provided={provided}
                       snapchat={snapchat}

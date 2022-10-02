@@ -10,21 +10,19 @@ export function Home() {
             <HomeHeader />
             <div className='main-content'>
                 <div>
-
                     <h2 className='main-text'>
                         A platform built for a new way of working
                     </h2>
                     <p className='sub-text'>What would you like to manage with Workday.com Work OS?</p>
-                    <Link to={'workspace'} >
+                    <Link to={'workspace'}>
                         <button className='get-started-btn-home'>
                             <p >Get Started<span className='get-started-arrow'>&#8594;</span></p>
-                        </button> </Link>
+                        </button></Link>
                     <p className='credit-text'>No credit card needed   ✦   Unlimited time on Free plan</p>
                 </div>
                 <img className='img-footer' src={bgHomefooter} />
-
             </div>
-            <StarCanvas />
+            {/* <StarCanvas /> */}
         </section>
     )
 }

@@ -39,11 +39,42 @@
 
             .time {
                 position: absolute;
-                padding-top: rem(5px);
                 right: 0;
                 gap: rem(7px);
                 justify-content: center;
-                
+
+                .dropdown {
+                    position: relative;
+                    display: inline-block;
+                }
+
+                .dropdown-content {
+                    display: none;
+                    cursor: pointer;
+                    position: absolute;
+                    background-color: #f1f1f1;
+                    min-width: 130px;
+                    transform: translateX(-94px);
+                    font-size: rem(14px);
+                    background-color: white;
+                    box-shadow: 0px 8px 16px 0px rgba(31, 30, 30, 0.4);
+                    border-radius: 10px;
+                    padding: 10px;
+                    &:hover {
+                        background-color: var(--primary-background-hover-color);
+                    }
+                }
+
+                /* Change color of dropdown links on hover */
+                .dropdown-content a:hover {
+                    background-color: #ddd;
+                }
+
+                /* Show the dropdown menu on hover */
+                .dropdown:hover .dropdown-content {
+                    display: block;
+                }
+
                 .delete-commet-modal {
                     display: none;
                     position: absolute;
@@ -52,11 +83,7 @@
                     background-color: aquamarine;
                     transform: translateY(90px);
                 }
-                .dots-comment-list {
-                    &:hover .delete-commet-modal {
-                        display: block;
-                    }
-                }
+
 
             }
 
@@ -65,8 +92,9 @@
                 padding-top: rem(2px);
                 padding-left: rem(4px);
 
-                &:hover {
+                &:hover .delete-commet-modal {
                     color: gray;
+                    display: block;
                 }
             }
         }
@@ -83,7 +111,7 @@
                 font-size: rem(20px);
                 padding-right: 3px;
             }
-           
+
             .like-post-area {
                 height: 100%;
                 width: 100%;
@@ -135,25 +163,26 @@
 
     .side-panel-actions {
         margin: rem(20px) 0;
+
         .left-side-actions {
-          font-size: rem(14px);
-    
-          > * {
-            margin-right: 16px;
-          }
+            font-size: rem(14px);
+
+            >* {
+                margin-right: 16px;
+            }
         }
-    
+
         .update-btn {
-          cursor: pointer;
-          padding: rem(4px) rem(8px);
-          height: rem(32px);
-          line-height: rem(24px);
-          border-radius: rem(4px);
-          background-color: var(--primary-color);
-          color: #fff;
-          border: none;
+            cursor: pointer;
+            padding: rem(4px) rem(8px);
+            height: rem(32px);
+            line-height: rem(24px);
+            border-radius: rem(4px);
+            background-color: var(--primary-color);
+            color: #fff;
+            border: none;
         }
-      }
+    }
 
     .update-input {
         width: 100%;
@@ -178,23 +207,24 @@
 
 }
 
-@include for-mobile-layout{
-  .task-edit {
-      .item-updates-container {
-       
-       .update-input {
-           width: 400px;
-           
-        }
-        .user-update-card {
-            width: 400px;
-        }
-        .user-detalis {
-            
-            width: 400px;
-        }
-    }
-    
-}
-}
+@include for-mobile-layout {
+    .task-edit {
+        .item-updates-container {
 
+            .update-input {
+                width: 400px;
+
+            }
+
+            .user-update-card {
+                width: 400px;
+            }
+
+            .user-detalis {
+
+                width: 400px;
+            }
+        }
+
+    }
+}

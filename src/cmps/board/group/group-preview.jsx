@@ -14,6 +14,8 @@ import { AreYouSureModal } from "../task/are-you-sure-modal.jsx"
 import { GroupFooter } from "./group-footer.jsx"
 import { utilService } from "../../../services/util.service.js"
 import { Draggable, Droppable } from "react-beautiful-dnd"
+import { GroupColors } from "../../group-color.jsx"
+
 
 export const GroupPreview = ({ group, sortGroup, provided, snapchat, index }) => {
     const params = useParams()
@@ -27,6 +29,7 @@ export const GroupPreview = ({ group, sortGroup, provided, snapchat, index }) =>
     const boardId = params.id
 
     const isColorMenuOpen = () => {
+        console.log('hey');
         setColorClicked(!isColorMenuClicked)
     }
 
@@ -53,6 +56,7 @@ export const GroupPreview = ({ group, sortGroup, provided, snapchat, index }) =>
             task.lastUpdated = Date.now()
             if (task.comments)
                 task.comments.forEach(comment => comment.id = utilService.makeId())
+            else task.comments = []
             return task
         })
         duplicateGroup.tasks = [...newTasks]
@@ -60,7 +64,7 @@ export const GroupPreview = ({ group, sortGroup, provided, snapchat, index }) =>
     }
 
     const onChangeColor = (newColor) => {
-        let newGroup = {...group, colorId: newColor}
+        let newGroup = { ...group, colorId: newColor }
         dispatch(updateGroup(boardId, newGroup))
     }
 
@@ -68,7 +72,8 @@ export const GroupPreview = ({ group, sortGroup, provided, snapchat, index }) =>
         <section className="group-preview "
             ref={provided.innerRef}
             {...provided.draggableProps}
-        // {...provided.dragHandleProps}
+            {...provided.droppableProps}
+            {...provided.dragHandleProps}
         >
 
             {/* Group Title  */}
@@ -82,27 +87,8 @@ export const GroupPreview = ({ group, sortGroup, provided, snapchat, index }) =>
                             <div className={`color-icon`} style={{ backgroundColor: `var(${group.colorId})` }} ></div>
                             <a > Change group color</a>
                         </div>
-                        {isColorMenuClicked &&
-                            <section className='color-menu' onClick={(ev) => { 
-                                ev.stopPropagation()
-                                isColorMenuOpen()
-                            }}>
-                                <i className='color1' onClick={() => onChangeColor('--color-pdf-red')}></i>
-                                <i className='color2' onClick={() => onChangeColor('--color-like_red')}></i>
-                                <i className='color3' onClick={() => onChangeColor('--color-excel-green')}></i>
-                                <i className='color4' onClick={() => onChangeColor('--color-word-blue')}></i>
-                                <i className='color5' onClick={() => onChangeColor('--color-zip-orange')}></i>
-                                <i className='color6' onClick={() => onChangeColor('--color-brand-iris')}></i>
-                                <i className='color7' onClick={() => onChangeColor('--color-brand-gold')}></i>
-                                <i className='color8' onClick={() => onChangeColor('--color-board_views_blue')}></i>
-                                <i className='color9' onClick={() => onChangeColor('--color-jade')}></i>
-                                <i className='color10' onClick={() => onChangeColor('--color-trolley-grey')}></i>
-                                <i className='color11' onClick={() => onChangeColor('--color-pecan-hover')}></i>
-                                <i className='color12' onClick={() => onChangeColor('--color-lavender-hover')}></i>
-                                <i className='color13' onClick={() => onChangeColor('--color-royal-hover')}></i>
-                                <i className='color14' onClick={() => onChangeColor('--color-tan')}></i>
-                                <i className='color15' onClick={() => onChangeColor('--color-orchid')}></i>             
-                            </section>}
+                        {isColorMenuClicked && <GroupColors isColorMenuOpen={isColorMenuOpen} onChangeColor={onChangeColor} />}
+
                     </div>
                 </div>
                 <div className="questModal">
@@ -129,21 +115,23 @@ export const GroupPreview = ({ group, sortGroup, provided, snapchat, index }) =>
                 groupColor={group.colorId}
                 sortGroup={sortGroup}
             />
-            <Draggable key={group.id}>
+            {/* <Draggable  key={group.id} >
                 {(provided, snapchat) => {
-                    return (
-                        <div {...provided.droppableProps} key={group.id}>
-                            <TaskList
-                                snapchat={snapchat}
-                                tasks={group.tasks}
-                                group={group}
-                                groupColor={group.colorId}
-                                provided={provided}
-                            />
-                        </div>
-                    )
-                }}
-            </Draggable>
+                    return ( */}
+
+            <TaskList
+                index={index}
+                snapchat={snapchat}
+                tasks={group.tasks}
+                group={group}
+                groupColor={group.colorId}
+                provided={provided}
+            />
+
+            {/* ) */}
+            {/* }} */}
+            {/* </Draggable> */}
+            {provided.placeholder}
 
             <GroupFooter
                 tasks={group.tasks} />

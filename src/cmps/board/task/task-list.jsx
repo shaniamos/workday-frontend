@@ -53,8 +53,7 @@ export const TaskList = ({ tasks, group, groupColor, provided, snapchat }) => {
                                         groupColor={groupColor} />
                                 )
                             }}
-                        </Draggable>
-
+                        </Draggable>           
                     </section>
                 )
             }
