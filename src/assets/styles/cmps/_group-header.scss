@@ -3,6 +3,10 @@
     top: rem(167px);
     z-index: 20;
 
+    @include for-mobile-layout {
+        top: rem(110px);
+    }
+
     &:hover {
         .sort-btns {
             .sort-btn {
@@ -20,10 +24,6 @@
         margin-left: rem(4px);
         z-index: 20;
         background-color: white;
-
-        @include for-mobile-layout {
-            top: rem(109px);
-        }
 
         .group-name {
             height: 40px;
@@ -70,15 +70,9 @@
 
     //COLUMNS NAMES LINE 
     .preview-group-header {
-        // position: sticky;
-        // top: rem(207px);
         z-index: 19;
         width: 100%;
         background-color: white;
-
-        @include for-mobile-layout {
-            top: rem(148px);
-        }
 
         .dot {
             cursor: pointer;
