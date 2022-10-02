@@ -147,10 +147,10 @@ export function SubSidebar() {
                         </div>
                     </div>
                     {isWorkspace &&
-                        <button className="add-mobile-btn">
-                            <a onClick={toggleNewBoardModal} className="flex option">
-                                <GrAdd className='plus-icon' />
-                            </a>
+                        <button className="add-mobile-btn" onClick={toggleNewBoardModal}>
+
+                            <BsPlusLg className='plus-icon' />
+
                         </button>}
                 </div>
             )}
