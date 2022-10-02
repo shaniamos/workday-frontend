@@ -36,7 +36,8 @@ export const TaskList = ({ tasks, group, groupColor, provided, snapchat }) => {
 
     return (
         <section className="task-list"
-        {...provided.droppableProps}
+            key={task.id}
+            {...provided.droppableProps}
             ref={provided.innerRef}>
             {tasks.map((task, idx) => {
                 return (
@@ -59,20 +60,22 @@ export const TaskList = ({ tasks, group, groupColor, provided, snapchat }) => {
             )}
             {provided.placeholder}
             {/* NEW TASK */}
-            
-                <div className="preview-new-task">
-                    <div></div>
-                    <div className="cell task-name-area flex">
-                        <div className="task-group-color" style={{ backgroundColor: `var(${groupColor})`, borderBlock: `0.5px solid var(${groupColor})` }}></div>
-                        <div className="preview-checkbox"><input className="input-checkbox" type="checkbox" /></div>
-                        <div className="editable-heading task-name-heading">
-                            <form className="clean-input" onSubmit={onAddTask}>
-                                <input {...register('title', 'text')} className="clean-input" placeholder="+ Add Item" />
-                            </form>
-                        </div>
+            <div className="preview-new-task flex ">
+                <div className="cell task-name-area sticky-feature flex">
+                    <div className="task-group-color" style={{ backgroundColor: `var(${groupColor})`, borderBlock: `0.5px solid var(${groupColor})` }}></div>
+                    <div className="preview-checkbox"><input className="input-checkbox" type="checkbox" /></div>
+                    <div className="editable-heading task-name-heading">
+                        <form className="clean-input" onSubmit={onAddTask}>
+                            <input {...register('title', 'text')} className="clean-input" placeholder="+ Add Item" />
+                        </form>
                     </div>
-                   
                 </div>
+                <div className="cell"></div>
+                <div className="cell"></div>
+                <div className="cell"></div>
+                <div className="cell"></div>
+
+            </div>
         </section>
     )
 }

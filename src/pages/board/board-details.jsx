@@ -1,7 +1,7 @@
 import React from 'react'
 import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { useNavigate, useParams } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import { BoardHeader } from '../../cmps/board/board-header/board-header.jsx'
 import { GroupList } from '../../cmps/board/group/group-list.jsx'
 import { KanbanView } from '../../cmps/kanban/kanban-view.jsx'
@@ -9,7 +9,6 @@ import { Dashboard } from '../../cmps/board/dashboard.jsx'
 import { Loader } from '../../cmps/loader.jsx'
 import { addGroup, loadSelectedBoard, getActionUpdateBoard } from '../../store/actions/board.action.js'
 import { socketService, SOCKET_EMIT_SET_BOARD_ID, SOCKET_EVENT_BOARD_CHANGED } from '../../services/socket.service.js'
-import { FiArrowLeft } from 'react-icons/fi'
 
 export const BoardDetails = ({ boards, onChangeFilter }) => {
     const board = useSelector(state => state.boardModule.selectedBoard)
@@ -18,8 +17,13 @@ export const BoardDetails = ({ boards, onChangeFilter }) => {
 
     const dispatch = useDispatch()
     const params = useParams()
-    const navigate = useNavigate()
     const boardId = params.id
+
+    useEffect(() => {
+        const boardId = params.id
+        socketService.emit(SOCKET_EMIT_SET_BOARD_ID, boardId)
+        dispatch(loadSelectedBoard(boardId))
+    }, [params.id])
 
     useEffect(() => {
         socketService.on(SOCKET_EVENT_BOARD_CHANGED, changeBoard)
@@ -27,12 +31,6 @@ export const BoardDetails = ({ boards, onChangeFilter }) => {
             socketService.off(SOCKET_EVENT_BOARD_CHANGED, changeBoard)
         }
     }, [])
-
-    useEffect(() => {
-        const boardId = params.id
-        socketService.emit(SOCKET_EMIT_SET_BOARD_ID, boardId)
-        dispatch(loadSelectedBoard(boardId))
-    }, [params.id])
 
     const changeBoard = (newBoard) => {
         dispatch(getActionUpdateBoard(newBoard))
@@ -48,12 +46,11 @@ export const BoardDetails = ({ boards, onChangeFilter }) => {
         setBoardView(currView)
     }
 
-
+  
 
     if (isLoading || !boards) return <Loader />
     return (
         <section className="board-details">
-            <FiArrowLeft className='btn-back' onClick={() => navigate('/workspace')} />
             {(board && boards.length) &&
                 <BoardHeader
                     board={board}
@@ -61,7 +58,7 @@ export const BoardDetails = ({ boards, onChangeFilter }) => {
                     onChangeFilter={onChangeFilter}
                     selectedBoardId={board._id}
                     toggleView={toggleView}
-
+                    
                 />}
             {(board && boards.length) &&
                 <div className='board-content'>
@@ -74,11 +71,11 @@ export const BoardDetails = ({ boards, onChangeFilter }) => {
                         />}
                     {isBoardView === 'kanban' &&
                         <KanbanView
-                            groups={board.groups}
-                            boardId={boardId}
-                            board={board}
-
-
+                        groups={board.groups}
+                        boardId={boardId}
+                        board={board}
+                        
+                           
                         />}
                     {isBoardView === 'dashboard' &&
                         <Dashboard />}

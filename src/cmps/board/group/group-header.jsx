@@ -4,7 +4,7 @@ import { HiOutlineDotsHorizontal } from 'react-icons/hi' //More
 import { TiArrowUnsorted } from 'react-icons/ti' //More
 
 
-export const GroupHeader = ({ groupColor, sortGroup}) => {
+export const GroupHeader = ({ groupColor, sortGroup }) => {
 
     const onSort = (sortOption) => {
         sortGroup(sortOption)
@@ -12,7 +12,7 @@ export const GroupHeader = ({ groupColor, sortGroup}) => {
 
     return (
         <div className='preview-group-header flex'>
-            
+
             {/* <div ><HiOutlineDotsHorizontal className="dot" /></div> */}
             <div className="group-header-identifier flex">
                 <div className="cell task-name-area group-task-name-area cell sticky-feature flex">
@@ -22,7 +22,6 @@ export const GroupHeader = ({ groupColor, sortGroup}) => {
                     <button className='sort-btn name' onClick={() => onSort('itemTitle')}><TiArrowUnsorted /></button>
                     <div className='header-identifier-title'>Item</div>
                 </div>
-
                 <div className="cell persons-header">
                     {<button className='sort-btn person' onClick={() => onSort('personName')}><TiArrowUnsorted /></button>}
                     <span>Person</span>
@@ -46,15 +45,11 @@ export const GroupHeader = ({ groupColor, sortGroup}) => {
                     <button className='sort-btn timeline' ><TiArrowUnsorted /></button>
                     <span>Timeline</span>
                 </div>
-                
                 {/* <div className="cell date-header">
                     <button className='sort-btn created-at' onClick={() => onSort('deadline')}><TiArrowUnsorted /></button>
                     <span>Due date</span>
                 </div>
                 */}
-                <div className="cell add-column">
-                    {/* <span>+</span> */}
-                </div>
 
             </div>
 

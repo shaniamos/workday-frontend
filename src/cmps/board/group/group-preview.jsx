@@ -99,7 +99,6 @@ export const GroupPreview = ({ group, sortGroup, provided, snapchat, index }) =>
                         />}
                 </div>
                 <div className="group-name flex sticky-feature">
-
                     <span className="collapse-group-button"
                         style={{ color: `var(${group.colorId})` }}>
                         <IoChevronDown />
@@ -112,7 +111,6 @@ export const GroupPreview = ({ group, sortGroup, provided, snapchat, index }) =>
                     <span className="group-task-count">{`${group.tasks.length} items`}</span>
                 </div>
             </div>
-            {/* Group columns identifier (color, checkbox, task name, persons, status, priority....) */}
             <GroupHeader
                 groupColor={group.colorId}
                 sortGroup={sortGroup}

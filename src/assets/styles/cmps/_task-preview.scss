@@ -238,8 +238,12 @@
     //     border-bottom: 0.5px solid var(--ui-border-color);
     // }
 
+    
+    &>*.cell:not(.task-name-area){
+        width: 100px;
+        border-block-end: 0.5px solid var(--ui-border-color);
 
-
+    }
     .cell {
         @include cell;
     }
@@ -251,30 +255,30 @@
         margin-inline-start: 18px;
         border-block-end: 0.5px solid var(--ui-border-color);
         border-radius: 4px;
-
+        
         .task-group-color {
             width: rem(6px);
             height: 104%;
             opacity: .5;
             border-bottom-left-radius: rem(10px);
         }
-
+        
         .preview-checkbox {
             display: none;
-
+            
             @include for-narrow-layout {
                 @include checkbox;
             }
         }
-
+        
         .editable-heading {
             margin-block: auto;
             margin-inline-start: rem(36px);
             @include editable-heading;
         }
-
+        
     }
-
+    
     &:hover {
         & .task-name-area {
             .task-group-color {
@@ -282,18 +286,18 @@
             }
         }
     }
-
+    
 }
 
 /* The container <div> - needed to position the dropdown content */
 .label-dropdown {
     position: relative;
-
-
+    
+    
     /* Dropdown button on hover & focus */
     .btn-open-label-drop {
         position: relative;
-
+        
         &:before,
         &:after {
             display: block;
@@ -303,17 +307,17 @@
             right: 0;
             transition: all .3s;
         }
-
+        
         &:before {
             border-top: 0px solid transparent;
             border-left: 0px solid rgba(0, 0, 0, 0.3);
         }
-
+        
         &:after {
             border-bottom: 0px solid transparent;
             border-right: 0px solid #fff;
         }
-
+        
         &:hover {
             &:before {
                 border-top: 10px solid transparent;
