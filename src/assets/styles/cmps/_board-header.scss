@@ -158,7 +158,6 @@
             font-weight: 700;
         }
 
-        // align-content: center;
         @include for-narrow-layout {
             flex-direction: row;
         }
@@ -179,10 +178,14 @@
     }
 
     .board-header-view-bar {
-        padding-bottom: rem(16px);
-        margin-top: rem(24px);
-        height: rem(40px);
-        padding-inline-start: rem(5px);
+
+        @include for-narrow-layout {
+            display: flex;
+            padding-bottom: rem(16px);
+            margin-top: rem(24px);
+            height: rem(40px);
+            padding-inline-start: rem(5px);
+        }
 
         .new-item-btn {
             @include for-mobile-layout {

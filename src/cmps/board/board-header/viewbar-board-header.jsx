@@ -46,8 +46,8 @@ export function ViewbarBoardHeader({ board, onAddGroup, onChangeFilter }) {
     }
 
     return (
-        <div className="board-header-view-bar flex ">
-            <div className="new-item-btn flex ">
+        <div className="board-header-view-bar">
+            <div className="new-item-btn flex">
                 <button onClick={onAddTask} className="view-nav-btn btn">New Item</button>
                 <section className="dropdown">
                     <button className="view-nav-btn-arrow">< IoIosArrowDown className="arrow-down" /></button>

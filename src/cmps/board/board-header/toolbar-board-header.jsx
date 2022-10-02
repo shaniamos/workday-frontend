@@ -5,7 +5,7 @@ export function ToolbarBoardHeader({ selectedBoardId, toggleView }) {
 
     return (
         <div className="board-header-tool-bar flex align-center">
-            <NavLink to={`/board/${selectedBoardId}`}>
+            <NavLink to={`/board/${selectedBoardId}`} className="flex">
                 <button className="view-nav-btn" onClick={() => toggleView('board-details')}>
                     <IoHomeOutline className="tool-bar-icon" />
                     <span>Main Table</span>
@@ -17,12 +17,12 @@ export function ToolbarBoardHeader({ selectedBoardId, toggleView }) {
                     <span>Kanban</span>
                 </button>
             {/* </NavLink> */}
-            <span className="separator">|</span>
+            {/* <span className="separator">|</span>
             <NavLink to={`/board/${selectedBoardId}/dashboard`}>
                 <button className="view-nav-btn" onClick={() => toggleView('dashboard')}>
                     <span>Dashboard</span>
                 </button>
-            </NavLink>
+            </NavLink> */}
         </div>
     )
 }
