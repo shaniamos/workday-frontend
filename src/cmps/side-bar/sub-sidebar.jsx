@@ -106,7 +106,6 @@ export function SubSidebar() {
     const styleSubSidebar = (currLocation.pathname === '/workspace') ? '{display: flex}' : ''
     const isWorkspace = (currLocation.pathname === '/workspace')
     const sideBarClassName = isNavOpen ? 'is-open' : ''
-    // style={styleSubSidebar}
 
     return (
         <section className={`sub-sidebar-container ${sideBarClassName} full`}  >

@@ -39,7 +39,7 @@ export const TaskEdit = () => {
         const groupIdx = board.groups.findIndex(group => group.id === groupId)
         const task = board.groups[groupIdx].tasks.find(task => task.id === taskId)
         setTask(task)
-        setNewTask({title: task.title})
+        setNewTask({ title: task.title })
     }
 
     const togglePage = (isTrue) => {
@@ -65,6 +65,7 @@ export const TaskEdit = () => {
         dispatch(addComment(boardId, groupId, task.id, newComment))
     }
 
+    console.log(task)
     return (
         <section className="task-edit-container open">
             <div className="main-screen" onClick={onCloseModal}></div>

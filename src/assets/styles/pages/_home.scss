@@ -2,8 +2,6 @@
     min-height: 100vh;
     font-family: sofia;
     font-size: 16px;
-    // overflow: hidden;
-    width: 100vw;
     height: 120vh;
     font-family: sofia;
     font-size: 16px;
@@ -119,12 +117,12 @@
         .main-text {
             font-weight: 400;
             color: #fff;
-            max-width: rem(330px);
+            max-width: rem(506px);
             font-size: rem(30px);
 
 
             @include for-narrow-layout {
-                max-width: rem(500px);
+                max-width: rem(676px);
                 font-size: rem(50px);
             }
 
