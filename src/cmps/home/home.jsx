@@ -10,7 +10,6 @@ export function Home() {
             <HomeHeader />
             <div className='main-content'>
                 <div>
-
                     <h2 className='main-text'>
                         A platform built for a new way of working
                     </h2>
@@ -22,9 +21,8 @@ export function Home() {
                     <p className='credit-text'>No credit card needed   ✦   Unlimited time on Free plan</p>
                 </div>
                 <img className='img-footer' src={bgHomefooter} />
-
             </div>
-            <StarCanvas />
+            {/* <StarCanvas /> */}
         </section>
     )
 }
