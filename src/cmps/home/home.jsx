@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { HomeHeader } from './home-header'
 import { StarCanvas } from './star-canvas'
 import bgHomefooter from '../../assets/imgs/home-img-footer.jpg'
+import { SidebarNarrow } from '../side-bar/sidebar-narrow'
 
 export function Home() {
     return (
@@ -23,6 +24,8 @@ export function Home() {
                 <img className='img-footer' src={bgHomefooter} />
             </div>
             {/* <StarCanvas /> */}
+            <SidebarNarrow />
+
         </section>
     )
 }
