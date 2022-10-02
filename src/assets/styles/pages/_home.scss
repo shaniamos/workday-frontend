@@ -6,7 +6,7 @@
     font-family: sofia;
     font-size: 16px;
     background-position: center;
-    object-fit:contain;
+    object-fit: contain;
     background-image: linear-gradient(to top, #070742, #0f0f47, #141444, #0a0a36, #0c0c44);
     // background-image: linear-gradient(to top, #14145e, #13135a, #121256, #111152, #10104e);
     // background-image: url('../../../assets/imgs/home-bg.jpg');
@@ -105,9 +105,8 @@
     }
 
     .main-content {
-        // position: fixed;
         z-index: 10;
-        margin-top: rem(106px);
+        margin-top: rem(90px);
         display: flex;
         flex-direction: column;
         text-align: center;
@@ -142,12 +141,15 @@
             font-size: rem(24px);
             line-height: rem(40px);
             font-weight: 300;
-            padding-inline: rem(50px);
             color: #fff;
 
             @include for-mobile-layout {
                 font-size: rem(20px);
                 font-family: sofia-thin;
+            }
+
+            @include for-narrow-layout {
+                padding-inline: rem(50px);
             }
         }
 
@@ -158,14 +160,16 @@
             height: rem(60px);
             min-width: rem(200px);
             border-radius: rem(40px);
-            margin-top: rem(36px);
-            margin-left: rem(26px);
             margin-bottom: rem(8px);
             color: #fff;
             box-shadow: 0 3px 6px 1px rgb(0 0 0 / 15%);
             background-image: linear-gradient(90deg, #5034FF 25.69%, #B4B4FF 100%);
             transition: background-image .2s;
             border: none;
+
+            @include for-narrow-layout {
+                margin-top: rem(36px);
+            }
 
             & p span {
                 margin-left: rem(5px);
@@ -227,7 +231,7 @@
         background-image: url(https://dapulse-res.cloudinary.com/image/upload/Generator_featured%20images/Home%20Page%20-%202022%20Rebrand/parallax/integrations/star.svg);
         background-repeat: no-repeat;
         background-size: cover;
-        
+
         width: var(--star-size);
         height: var(--star-size);
         width: 20px;
@@ -237,7 +241,7 @@
         // -webkit-animation: twinkle-jsx-3954818524 infinite alternate;
         // animation: twinkle-jsx-3954818524 infinite alternate;
         //         duration | easing-function | delay | iteration-count | direction | fill-mode | play-state | name */
-        animation: 2s               ease          3s        infinite        alternate   none        running    twinkle-jsx;
+        animation: 2s ease 3s infinite alternate none running twinkle-jsx;
         // animation-duration: var(--twinkle-duration);
         // animation-timing-function: ease;
         // animation-delay: var(--twinkle-delay);

@@ -22,7 +22,7 @@ export function Home() {
                 </div>
                 <img className='img-footer' src={bgHomefooter} />
             </div>
-            <StarCanvas />
+            {/* <StarCanvas /> */}
         </section>
     )
 }

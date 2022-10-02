@@ -9,7 +9,7 @@ import { Dashboard } from '../../cmps/board/dashboard.jsx'
 import { Loader } from '../../cmps/loader.jsx'
 import { addGroup, loadSelectedBoard, getActionUpdateBoard } from '../../store/actions/board.action.js'
 import { socketService, SOCKET_EMIT_SET_BOARD_ID, SOCKET_EVENT_BOARD_CHANGED } from '../../services/socket.service.js'
-import { IoIosArrowBack } from 'react-icons/io'
+import { FiArrowLeft } from 'react-icons/fi'
 
 export const BoardDetails = ({ boards, onChangeFilter }) => {
     const board = useSelector(state => state.boardModule.selectedBoard)
@@ -53,7 +53,7 @@ export const BoardDetails = ({ boards, onChangeFilter }) => {
     if (isLoading || !boards) return <Loader />
     return (
         <section className="board-details">
-            <IoIosArrowBack className='btn-back' onClick={() => navigate('/workspace')} />
+            <FiArrowLeft className='btn-back' onClick={() => navigate('/workspace')} />
             {(board && boards.length) &&
                 <BoardHeader
                     board={board}
