@@ -54,14 +54,12 @@
     }
 }
 
-
-
 //COLUMNS NAMES LINE 
 .preview-group-header {
     
     position: sticky;
     top: rem(207px);
-    z-index: 20;
+    z-index: 19;
     width: 100%;
     background-color: white;
 
@@ -107,8 +105,6 @@
                 @include for-narrow-layout {
                     @include checkbox;
                 }
-
-                // @include checkbox;
             }
 
             .header-identifier-title {

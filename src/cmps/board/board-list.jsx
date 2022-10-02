@@ -8,17 +8,14 @@ import { MdDeleteOutline } from 'react-icons/md'
 import { ReactComponent as NoneUpdatesIcon } from '../../assets/svgs/BoardNavIcon.svg'
 
 
-
-
 export function BoardList({ filteredBoards, onRemoveBoard, isDropDownOpen, toggleDropdown, onDuplicateBoard}) {
 
     return <section>
         {filteredBoards.map(board => {
             return <div className="boards-list flex space-between" key={board._id}>
                 <NavLink className="flex inline-flex option" to={`/board/${board._id}`}>
-                    {/* <HiOutlineClipboard className="table-chart flex column align-center" /> */}
-                    
-                    <a  className="table-chart flex column align-center"> <NoneUpdatesIcon className="nav-icon"/></a>
+                    {/* <HiOutlineClipboard className="table-chart flex column align-center" /> */}                  
+                    <i className="table-chart flex column align-center"> <NoneUpdatesIcon className="nav-icon"/></i>
                     <span className="menu-btn-inner-text">{board.title}</span>
                     <i className="dropdown-dot">
                         <div className="dropdown" onClick={(ev) => {

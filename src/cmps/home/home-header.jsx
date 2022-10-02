@@ -16,7 +16,7 @@ export function HomeHeader() {
                 <nav className='header-nav'>
                     <div className='side-header-links'>
                         <NavLink className='btn-login' to='/auth/login' >Log in</NavLink>
-                        <NavLink className='btn-contant-us' >Contact us</NavLink>
+                        {/* <NavLink className='btn-contant-us' >Contact us</NavLink> */}
                     </div>
                     <Link to='/board/6331957ec46e6b54a700bb94'>
                         <button className='get-started-btn btn fa-arrow-right'>

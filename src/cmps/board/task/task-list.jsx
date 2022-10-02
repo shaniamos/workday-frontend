@@ -40,7 +40,7 @@ export const TaskList = ({ tasks, group, groupColor, provided, snapchat }) => {
             ref={provided.innerRef}>
             {tasks.map((task, idx) => {
                 return (
-                    <section {...provided.droppableProps} ref={provided.innerRef} key={task.idx}>
+                    <section {...provided.droppableProps} ref={provided.innerRef} key={task.id}>
                         <Draggable draggableId={task.id} index={idx} key={task.id}>
                             {(provided) => {
                                 return (
@@ -52,8 +52,7 @@ export const TaskList = ({ tasks, group, groupColor, provided, snapchat }) => {
                                         groupColor={groupColor} />
                                 )
                             }}
-                        </Draggable>
-                       
+                        </Draggable>           
                     </section>
                 )
             }

@@ -16,7 +16,7 @@ function App() {
       <Routes>
         <Route path='auth/:status' element={<LoginSignup />} />
         <Route path='board/:id' element={<BoardApp />} >
-          <Route path=':groupId/:taskId' element={<TaskEdit />} />
+        <Route path=':groupId/:taskId' element={<TaskEdit />} />
           <Route path='dashboard' element={<Dashboard />} />
           {/* <Route path='kanban' element={<KanbanView />} /> */}
         </Route>
