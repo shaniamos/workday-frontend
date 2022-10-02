@@ -29,5 +29,6 @@ export const Search = ({ onChangeFilter }) => {
                 onChange={handleChange}
             />
         </form>
+
     )
 }

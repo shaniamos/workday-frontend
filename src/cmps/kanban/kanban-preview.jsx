@@ -8,7 +8,7 @@ import { FaRegUserCircle } from 'react-icons/fa'
 import { AvatarsChain } from "../avatarsChain";
 
 
-export const KanbanPreview = ({ provided, task, taskId, groupId, boardId }) => {
+export const KanbanPreview = ({ provided, task, groupId, boardId }) => {
     const currBoard = useSelector(state => state.boardModule.selectedBoard)
 
     const boardOptions = currBoard.labels.map(label => label)
@@ -68,7 +68,7 @@ export const KanbanPreview = ({ provided, task, taskId, groupId, boardId }) => {
             {...provided.draggableProps}
             {...provided.dragHandleProps}>
             <div className="kanban-task-title">
-                <span>{task.title}</span>
+                <span className="task-title">{task.title}</span>
             </div>
             <div className="kanban-task-data">
                 <div className="kanban-task-status">
@@ -141,7 +141,7 @@ export const KanbanPreview = ({ provided, task, taskId, groupId, boardId }) => {
                         <span className="person-title">Person</span>
                     </div>
                     <div
-                        onClick={() => setIsPersonsModal(!isPersonsModal)} className="kanban-priority-label">{(
+                        onClick={() => setIsPersonsModal(!isPersonsModal)} className="kanban-person-label">{(
                             <AvatarsChain task={task} groupId={groupId} assigneeMembers={persons} />)}
                     </div>
                 </div>

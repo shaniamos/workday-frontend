@@ -18,6 +18,7 @@ import { useEffect } from 'react'
 // import BoardNavIcon from '../../assets/svgs/BoardNavIcon.svg'
 import { utilService } from '../../services/util.service.js'
 import { BoardList } from '../board/board-list.jsx'
+import { SidebarNarrow } from './sidebar-narrow.jsx'
 
 
 export function SubSidebar() {
@@ -160,6 +161,8 @@ export function SubSidebar() {
                 <h2 className='workspace-empty-subtitle'>Get started by adding new boards</h2>
                 <button onClick={toggleNewBoardModal} className='btn-add-board'>Add New Board</button>
             </div>}
+            <SidebarNarrow />
+
         </section >
     )
 }
