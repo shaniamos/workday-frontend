@@ -44,8 +44,6 @@ export const SidebarNarrow = () => {
                     <span>More</span>
                 </div>
             </div>
-
-
         </section>
     )
 }

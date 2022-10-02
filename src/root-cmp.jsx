@@ -5,7 +5,6 @@ import { BoardApp } from './pages/board/board-app.jsx'
 import { TaskEdit } from './cmps/board/task/task-edit.jsx'
 import { LoginSignup } from './pages/user/login-signup.jsx'
 import { SubSidebar } from './cmps/side-bar/sub-sidebar.jsx';
-import { SidebarNarrow } from './cmps/side-bar/sidebar-narrow';
 import { Dashboard } from './cmps/board/dashboard.jsx';
 import { KanbanView } from './cmps/kanban/kanban-view.jsx';
 
@@ -23,7 +22,6 @@ function App() {
         <Route path='workspace' element={<SubSidebar />} />
         <Route path='/' element={<Home />} />
       </Routes>
-      <SidebarNarrow />
     </section>
   );
 }
