@@ -62,7 +62,7 @@ export const TaskList = ({ tasks, group, groupColor, provided, snapchat }) => {
             {/* NEW TASK */}
             
                 <div className="preview-new-task">
-
+                    <div></div>
                     <div className="cell task-name-area flex">
                         <div className="task-group-color" style={{ backgroundColor: `var(${groupColor})`, borderBlock: `0.5px solid var(${groupColor})` }}></div>
                         <div className="preview-checkbox"><input className="input-checkbox" type="checkbox" /></div>
