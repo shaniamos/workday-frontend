@@ -2,7 +2,6 @@
     margin-bottom: rem(20px);
     font-family: roboto, rubik, sans-serif;
 
-
     & .group-header-name {
         & .dots {
             cursor: pointer;
@@ -157,18 +156,60 @@
             .color14 {
                 background-color: #D974B0;
             }
-            
-            
-
         }
     }
-
 
     .dropdown:hover .dropdown-content {
         display: flex;
         flex-direction: column;
     }
 
+    & .sort-btns {
 
+        .sort-btn {
+            position: absolute;
+            top: rem(30px);
+            padding: rem(3px);
+            margin: auto;
+            width: rem(20px);
+            height: rem(20px);
+            background-color: white;
+            border: .5px solid rgb(230, 222, 222);
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background-color .2s, color .2s;
+            transition: transform .2s;
+            opacity: 0;
+            z-index: 20;
 
+            &.name {
+                left: rem(225px);
+            }
+
+            &.person {
+                left: rem(485px);
+            }
+
+            &.status {
+                left: rem(634px);
+            }
+
+            &.priority {
+                left: rem(784px);
+            }
+
+            &.last-update {
+                left: rem(957px)
+            }
+
+            &.timeline {
+                left: rem(1160px)
+            }
+
+            &:hover  {
+                background-color: var(--primary-color);
+                color: white;              
+            }
+        }
+    }
 }

@@ -1,218 +1,166 @@
-// GROUP HEADER NAME " ^ Backend "
-.group-header-name {
-    cursor: grab;
-    display: flex;
-    align-items: center;
+.group-header-container {
     position: sticky;
     top: rem(167px);
-    height: rem(40px);
-    font-size: rem(18px);
-    margin-left: rem(4px);
     z-index: 20;
-    background-color: white;
-    @include for-mobile-layout{
-        top: rem(109px);
-    }
 
-    .group-name {
-        height: 40px;
-        display: flex;
-        align-items: center;
-
-        .collapse-group-button {
-            margin-right: rem(2px);
-            margin-left: rem(9px);
-            position: relative;
-            top: 4px;
-            cursor: pointer;
-        }
-
-        .group-title {
-            padding-inline-start: rem(10px);
-            padding-top: rem(5px);
-
-            .group-name-input {
-                @include editable-heading;
-                font-weight: bold;
-                letter-spacing: rem(1px);
-            }
-        }
-
-        .group-task-count {
-            opacity: 0;
-            font-size: rem(14px);
-            line-height: rem(22px);
-            color: var(--secondary-text-color);
-            margin-left: var(--spacing-xs);
-            display: flex;
-            align-items: center;
-            height: 100%;
-            padding-inline-start: 0.625rem;
-            padding-top: 0.3125rem;
-
-            &:hover {
+    &:hover {
+        .sort-btns {
+            .sort-btn {
                 opacity: 1;
             }
         }
     }
-}
 
-//COLUMNS NAMES LINE 
-.preview-group-header {
-    
-    position: sticky;
-    top: rem(207px);
-    z-index: 19;
-    width: 100%;
-    background-color: white;
-    @include for-mobile-layout{
-        top: rem(148px);
-    }
-    .dot {
-        cursor: pointer;
-        opacity: 0;
-        display: block;
-        height: rem(35px);
+    .group-header-name {
+        cursor: grab;
+        display: flex;
+        align-items: center;
+        height: rem(40px);
         font-size: rem(18px);
-        transition: background-color .2s;
-        border-radius: 6px 0 0 6px;
-        &:hover {
-            background-color: #dcdfec;
-        }
-    }
+        margin-left: rem(4px);
+        z-index: 20;
+        background-color: white;
 
-    .group-header-identifier {
-        position: relative;
-        left: rem(18px);
-
-        .cell {
-            @include cell;
+        @include for-mobile-layout {
+            top: rem(109px);
         }
 
-        .task-name-area {
-            width: rem(243px);
-            background-color: var(--primary-background-color);
-            border-top-left-radius: 4px;
+        .group-name {
+            height: 40px;
+            display: flex;
+            align-items: center;
 
-            @include for-narrow-layout {
-                width: rem(400px);
+            .collapse-group-button {
+                margin-right: rem(2px);
+                margin-left: rem(9px);
+                position: relative;
+                top: 4px;
+                cursor: pointer;
             }
 
-            .task-group-color {
-                width: rem(6px);
-                height: 105%;
-                border-top-left-radius: 10px
-            }
+            .group-title {
+                padding-inline-start: rem(10px);
+                padding-top: rem(5px);
 
-            .preview-checkbox {
-                display: none;
-
-                @include for-narrow-layout {
-                    @include checkbox;
+                .group-name-input {
+                    @include editable-heading;
+                    font-weight: bold;
+                    letter-spacing: rem(1px);
                 }
             }
 
-            .header-identifier-title {
-                margin: auto;
+            .group-task-count {
+                opacity: 0;
+                font-size: rem(14px);
+                line-height: rem(22px);
+                color: var(--secondary-text-color);
+                margin-left: var(--spacing-xs);
+                display: flex;
+                align-items: center;
+                height: 100%;
+                padding-inline-start: 0.625rem;
+                padding-top: 0.3125rem;
+
+                &:hover {
+                    opacity: 1;
+                }
             }
+        }
+    }
 
+    //COLUMNS NAMES LINE 
+    .preview-group-header {
+        // position: sticky;
+        // top: rem(207px);
+        z-index: 19;
+        width: 100%;
+        background-color: white;
+
+        @include for-mobile-layout {
+            top: rem(148px);
         }
 
-        .persons-header {
-            &:hover .sort-btn {
-                opacity: 1;
-            }
-
-            width: rem(150px);
-            @include task-cell-with-content;
-        }
-
-        .label-type-status {
-            &:hover .sort-btn {
-                opacity: 1;
-            }
-
-            width: rem(150px);
-            @include task-cell-with-content;
-        }
-
-        .label-type-priority {
-            &:hover .sort-btn {
-                opacity: 1;
-            }
-
-            width: rem(150px);
-            @include task-cell-with-content;
-        }
-
-        .last-updated {
-            &:hover .sort-btn {
-                opacity: 1;
-            }
-
-            width: rem(200px);
-            @include task-cell-with-content;
-        }
-
-        .date-header {
-            &:hover .sort-btn {
-                opacity: 1;
-            }
-
-            width: rem(200px);
-            @include task-cell-with-content;
-        }
-
-        .add-column {
-            width: rem(400px);
-            padding-inline-start: rem(10px);
-            font-size: rem(20px);
-            border-inline-start: 0.5px solid #d0d4e4;
-        }
-
-        .sort-btn {
-            padding: rem(3px);
-            margin: auto;
-            width: rem(20px);
-            height: rem(20px);
-            position: absolute;
-            background-color: white;
-            border: .5px solid rgb(230, 222, 222);
-            transform: translateX(-40px);
-            border-radius: 10px;
+        .dot {
             cursor: pointer;
-            &.last-update {
-                
-                transform: translateX(-60px);
-            }
-            &.name {
-                
-                transform: translateX(-30px);
-            }
-            &.timeline {
-                
-                transform: translateX(-44px);
-            }
-            
-            transition: background-color .2s, color .2s;
-            transition: transform .2s;
             opacity: 0;
+            display: block;
+            height: rem(35px);
+            font-size: rem(18px);
+            transition: background-color .2s;
+            border-radius: 6px 0 0 6px;
 
-            &.name {
-                left: rem(207px);
-            }
-
-            &:hover  {
-                background-color: var(--primary-color);
-                color: white;
-                // transform: rotate(180deg)
-                
+            &:hover {
+                background-color: #dcdfec;
             }
         }
 
-        .group-task-name-area {
-            &:hover .sort-btn {
-                opacity: 1;
+        .group-header-identifier {
+            position: relative;
+            left: rem(18px);
+
+            .cell {
+                @include cell;
+            }
+
+            .task-name-area {
+                width: rem(243px);
+                background-color: var(--primary-background-color);
+                border-top-left-radius: 4px;
+
+                @include for-narrow-layout {
+                    width: rem(400px);
+                }
+
+                .task-group-color {
+                    width: rem(6px);
+                    height: 105%;
+                    border-top-left-radius: 10px
+                }
+
+                .preview-checkbox {
+                    display: none;
+
+                    @include for-narrow-layout {
+                        @include checkbox;
+                    }
+                }
+
+                .header-identifier-title {
+                    margin: auto;
+                }
+
+            }
+
+            .persons-header {
+                width: rem(150px);
+                @include task-cell-with-content;
+            }
+
+            .label-type-status {
+                width: rem(150px);
+                @include task-cell-with-content;
+            }
+
+            .label-type-priority {
+                width: rem(150px);
+                @include task-cell-with-content;
+            }
+
+            .last-updated {
+                width: rem(200px);
+                @include task-cell-with-content;
+            }
+
+            .date-header {
+                width: rem(200px);
+                @include task-cell-with-content;
+            }
+
+            .add-column {
+                width: rem(400px);
+                padding-inline-start: rem(10px);
+                font-size: rem(20px);
+                border-inline-start: 0.5px solid #d0d4e4;
             }
         }
     }
