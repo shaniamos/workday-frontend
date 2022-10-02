@@ -43,7 +43,7 @@
         }
 
         &:focus {
-            width: rem(284px);
+            width: rem(267px);
             outline: none;
 
             @include for-narrow-layout {
@@ -55,7 +55,7 @@
     @include for-mobile-layout {
         position: fixed;
         top: rem(71px);
-        right: rem(-130px);
+        right: rem(-140px);
     }
 }
 
