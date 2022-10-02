@@ -1,11 +1,31 @@
-import { DragDropContext, Draggable, Droppable } from 'react-beautiful-dnd';
-import { useDispatch } from 'react-redux';
+import { useState, useEffect } from 'react';
+import { DragDropContext, Droppable } from 'react-beautiful-dnd';
+import { useDispatch, useSelector } from 'react-redux';
 import { updateBoard } from '../../store/actions/board.action';
 
 import { KanbanGroup } from './kanban-group';
 
 export const KanbanView = ({ board, boardId, groups, onAddTask }) => {
+  const filterBy = useSelector(state => state.boardModule.filterBy)
+  const [filteredGroups, setFilteredGroups] = useState(groups)
   const dispatch = useDispatch()
+
+  useEffect(() => {
+    filterGroupsAndTasks()
+  }, [groups, filterBy])
+
+  const filterGroupsAndTasks = () => {
+    //filter
+    const { txt } = filterBy
+    const regex = new RegExp(txt, 'i')
+    const filteredTasksGroups = groups.map(group => {
+      return { ...group, tasks: group.tasks.filter((task) => regex.test(task.title)) }
+    })
+    const filtered = filteredTasksGroups.filter(group => group.tasks.length || regex.test(group.title))
+
+    setFilteredGroups(filtered)
+  }
+
 
   const onDragEnd = (result, groups) => {
     if (!result.destination) return
@@ -53,12 +73,12 @@ export const KanbanView = ({ board, boardId, groups, onAddTask }) => {
   return (
     <section className="kanban-content">
       <DragDropContext onDragEnd={(result) => onDragEnd(result, groups)}>
-        {groups.map((group, idx) => {
+        {filteredGroups.map((group, idx) => {
           return (
             <Droppable droppableId={`${idx}`} key={group.id}>
               {(provided, snapchat) => {
                 return (
-                  <div {...provided.droppableProps}  key={group.id}>
+                  <div {...provided.droppableProps} key={group.id}>
                     <KanbanGroup
                       provided={provided}
                       snapchat={snapchat}
