@@ -10,6 +10,9 @@
     margin-left: rem(4px);
     z-index: 20;
     background-color: white;
+    @include for-mobile-layout{
+        top: rem(109px);
+    }
 
     .group-name {
         height: 40px;
@@ -62,7 +65,9 @@
     z-index: 19;
     width: 100%;
     background-color: white;
-
+    @include for-mobile-layout{
+        top: rem(148px);
+    }
     .dot {
         cursor: pointer;
         opacity: 0;
