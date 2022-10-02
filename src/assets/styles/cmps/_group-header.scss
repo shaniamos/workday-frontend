@@ -173,9 +173,22 @@
             position: absolute;
             background-color: white;
             border: .5px solid rgb(230, 222, 222);
+            transform: translateX(-40px);
             border-radius: 10px;
             cursor: pointer;
-            top: -10px;
+            &.last-update {
+                
+                transform: translateX(-60px);
+            }
+            &.name {
+                
+                transform: translateX(-30px);
+            }
+            &.timeline {
+                
+                transform: translateX(-44px);
+            }
+            
             transition: background-color .2s, color .2s;
             transition: transform .2s;
             opacity: 0;
@@ -184,10 +197,11 @@
                 left: rem(207px);
             }
 
-            &:hover {
+            &:hover  {
                 background-color: var(--primary-color);
                 color: white;
-                transform: rotate(360deg)
+                // transform: rotate(180deg)
+                
             }
         }
 
