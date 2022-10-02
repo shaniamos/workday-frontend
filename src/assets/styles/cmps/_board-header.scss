@@ -213,27 +213,35 @@
                 @include for-mobile-layout {
                     display: none;
                 }
-
             }
 
             .view-nav-btn-arrow {
-                width: rem(24px);
-                height: rem(34px);
-                font-size: rem(18px);
-                font-weight: bold;
-                color: white;
-                border-radius: 0 4px 4px 0;
-                background-color: #0073ea;
-
-                @include for-mobile-layout {
-                    border-radius: 50%;
-                    height: 50px;
-                    width: 50px;
-                    box-shadow: 0px 1px 14px -4px rgba(0, 0, 0, 0.84);
-
-
+                display: none;
+                @include for-narrow-layout {
+                    display: inline-block;
+                    width: rem(24px);
+                    height: rem(34px);
+                    font-size: rem(16px);
+                    font-weight: bold;
+                    color: white;
+                    border-radius: 0 4px 4px 0;
+                    background-color: #0073ea;
+                    padding: rem(4px) rem(1px) rem(1px);
                 }
+            }
+            
+            .view-nav-btn-plus {
+                color: white;
+                background-color: #0073ea;
+                border-radius: 50%;
+                height: 50px;
+                width: 50px;
+                font-size: rem(18px);
+                box-shadow: 0px 1px 14px -4px rgba(0, 0, 0, 0.84);
 
+                @include for-narrow-layout {
+                    display: none;
+                }
             }
 
             .arrow-down {

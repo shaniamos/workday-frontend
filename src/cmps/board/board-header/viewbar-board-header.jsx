@@ -1,5 +1,5 @@
-import { IoIosArrowDown } from 'react-icons/io' //New item
-import { BiFilterAlt } from 'react-icons/bi'//Filter
+import { BsPlusLg } from 'react-icons/bs'
+import { IoIosArrowDown } from 'react-icons/io'
 // import { AiOutlineEyeInvisible } from 'react-icons/ai'//Hide
 // import { HiOutlineDotsHorizontal } from 'react-icons/hi' //More
 import { AiOutlinePlusCircle } from 'react-icons/ai' //Plus
@@ -9,7 +9,6 @@ import { addTask } from "../../../store/actions/board.action.js"
 import { useState } from "react"
 import { Search } from "../../search.jsx"
 import { utilService } from '../../../services/util.service.js';
-import { FilterBoard } from './filter-board.jsx'
 
 //IoHomeOutline - Main Table
 //RiErrorWarningLine - description
@@ -50,6 +49,7 @@ export function ViewbarBoardHeader({ board, onAddGroup, onChangeFilter }) {
             <div className="new-item-btn flex">
                 <button onClick={onAddTask} className="view-nav-btn btn">New Item</button>
                 <section className="dropdown">
+                    <button className="view-nav-btn-plus">< BsPlusLg className="arrow-down" /></button>
                     <button className="view-nav-btn-arrow">< IoIosArrowDown className="arrow-down" /></button>
                     <div className="dropdown-content flex column ">
                         <i onClick={onAddTask}> <AiOutlinePlusCircle className="dropdown-icon" /> <span>Add new Item</span></i>
