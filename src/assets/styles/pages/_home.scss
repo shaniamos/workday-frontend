@@ -4,30 +4,19 @@
     font-size: 16px;
     // overflow: hidden;
     width: 100vw;
-
-    @media (max-width: 450px) {}
-
-
     height: 120vh;
     font-family: sofia;
     font-size: 16px;
-    width: 98vw;
     background-position: center;
     object-fit:contain;
     background-image: linear-gradient(to top, #070742, #0f0f47, #141444, #0a0a36, #0c0c44);
     // background-image: linear-gradient(to top, #14145e, #13135a, #121256, #111152, #10104e);
-
-
     // background-image: url('../../../assets/imgs/home-bg.jpg');
 
     @include for-mobile-layout {
         background-image: linear-gradient(to top, #14145e, #13135a, #121256, #111152, #10104e);
 
     }
-
-
-
-
 
     .home-header {
         align-items: center;

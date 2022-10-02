@@ -2,11 +2,12 @@ import { CommentList } from "./comment-list";
 
 
 export function TaskComment({ task, onRemoveComment, onAddComment }) {
+    console.log(task)
 
     return (
         <section className="task-edit-bottom-container">
             {/* {task.comments && ( */}
-                <CommentList task={task} comments={task.comments} onRemoveComment={onRemoveComment} onAddComment={onAddComment} />
+                {(task.comments || task.comments.length) && <CommentList task={task} comments={task.comments} onRemoveComment={onRemoveComment} onAddComment={onAddComment} />}
             {/* )} */}
             {(!task.comments || !task.comments.length) && <div className="task-edit-no-comments">
                 <div className="task-edit-no-comments-content">

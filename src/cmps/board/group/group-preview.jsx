@@ -56,6 +56,7 @@ export const GroupPreview = ({ group, sortGroup, provided, snapchat, index }) =>
             task.lastUpdated = Date.now()
             if (task.comments)
                 task.comments.forEach(comment => comment.id = utilService.makeId())
+            else task.comments = []
             return task
         })
         duplicateGroup.tasks = [...newTasks]
@@ -63,7 +64,7 @@ export const GroupPreview = ({ group, sortGroup, provided, snapchat, index }) =>
     }
 
     const onChangeColor = (newColor) => {
-        let newGroup = {...group, colorId: newColor}
+        let newGroup = { ...group, colorId: newColor }
         dispatch(updateGroup(boardId, newGroup))
     }
 
@@ -72,7 +73,7 @@ export const GroupPreview = ({ group, sortGroup, provided, snapchat, index }) =>
             ref={provided.innerRef}
             {...provided.draggableProps}
             {...provided.droppableProps}
-        {...provided.dragHandleProps}
+            {...provided.dragHandleProps}
         >
 
             {/* Group Title  */}
@@ -87,7 +88,7 @@ export const GroupPreview = ({ group, sortGroup, provided, snapchat, index }) =>
                             <a > Change group color</a>
                         </div>
                         {isColorMenuClicked && <GroupColors isColorMenuOpen={isColorMenuOpen} onChangeColor={onChangeColor} />}
-                            
+
                     </div>
                 </div>
                 <div className="questModal">
@@ -119,18 +120,18 @@ export const GroupPreview = ({ group, sortGroup, provided, snapchat, index }) =>
             {/* <Draggable  key={group.id} >
                 {(provided, snapchat) => {
                     return ( */}
-                      
-                            <TaskList
-                            index={index}
-                                snapchat={snapchat}
-                                tasks={group.tasks}
-                                group={group}
-                                groupColor={group.colorId}
-                                provided={provided}
-                            />
-                        
-                    {/* ) */}
-                {/* }} */}
+
+            <TaskList
+                index={index}
+                snapchat={snapchat}
+                tasks={group.tasks}
+                group={group}
+                groupColor={group.colorId}
+                provided={provided}
+            />
+
+            {/* ) */}
+            {/* }} */}
             {/* </Draggable> */}
             {provided.placeholder}
 

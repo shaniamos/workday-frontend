@@ -1,7 +1,7 @@
 import React from 'react'
 import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import { BoardHeader } from '../../cmps/board/board-header/board-header.jsx'
 import { GroupList } from '../../cmps/board/group/group-list.jsx'
 import { KanbanView } from '../../cmps/kanban/kanban-view.jsx'
@@ -17,6 +17,7 @@ export const BoardDetails = ({ boards, onChangeFilter }) => {
 
     const dispatch = useDispatch()
     const params = useParams()
+    const navigate = useNavigate()
     const boardId = params.id
 
     useEffect(() => {
@@ -48,11 +49,15 @@ export const BoardDetails = ({ boards, onChangeFilter }) => {
         setBoardView(currView)
     }
 
-  
+
 
     if (isLoading || !boards) return <Loader />
     return (
         <section className="board-details">
+            <button className='btn-back'
+                onClick={() => navigate('/workspace')}>
+                Back
+            </button>
             {(board && boards.length) &&
                 <BoardHeader
                     board={board}
@@ -60,7 +65,7 @@ export const BoardDetails = ({ boards, onChangeFilter }) => {
                     onChangeFilter={onChangeFilter}
                     selectedBoardId={board._id}
                     toggleView={toggleView}
-                    
+
                 />}
             {(board && boards.length) &&
                 <div className='board-content'>
@@ -73,11 +78,11 @@ export const BoardDetails = ({ boards, onChangeFilter }) => {
                         />}
                     {isBoardView === 'kanban' &&
                         <KanbanView
-                        groups={board.groups}
-                        boardId={boardId}
-                        board={board}
-                        
-                           
+                            groups={board.groups}
+                            boardId={boardId}
+                            board={board}
+
+
                         />}
                     {isBoardView === 'dashboard' &&
                         <Dashboard />}

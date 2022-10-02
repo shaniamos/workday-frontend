@@ -88,7 +88,7 @@ export function SubSidebar() {
                 task.id = utilService.makeId()
                 if (task.comments) {
                     task.comments.forEach(comment => comment.id = utilService.makeId())
-                }
+                } else task.comments = []
                 return task
             })
             group.tasks = [...newTasks]
@@ -115,8 +115,8 @@ export function SubSidebar() {
             {!isNavOpen && <IoIosArrowForward className='btn-right open-btn' onClick={toggleSubSidebar} />}
             {isNavOpen && (
                 <div className="side-bar-content">
-                    {!isWorkspace && <div className="workspace-sidebar flex space-between"> <span>Workspace</span></div> }
-                    
+                    {!isWorkspace && <div className="workspace-sidebar flex space-between"> <span>Workspace</span></div>}
+
                     <div className="workspace-board flex space-between align-center">
                         <div className="workspace-board-name flex align-center">
                             <div className="workspace-icon flex align-center" >
@@ -130,25 +130,25 @@ export function SubSidebar() {
                         <div className="action-btn ">
                             <a onClick={toggleNewBoardModal} className="flex option"> <GrAdd /><span className="menu-btn-inner-text">Add</span></a>
                             {/* <div> */}
-                                {<a className="flex  option last-one"><Search onChangeFilter={onChangeBoardsFilter} /> </a>}
+                            {<a className="flex  option last-one"><Search onChangeFilter={onChangeBoardsFilter} /> </a>}
                             {/* </div> */}
                         </div>
-                        
+
                         <div className="spacer"></div>
                         <div className="boards-options">
-                            <BoardList 
+                            <BoardList
                                 filteredBoards={filteredBoards}
                                 onRemoveBoard={onRemoveBoard}
                                 isDropDownOpen={isDropDownOpen}
                                 toggleDropdown={toggleDropdown}
                                 onDuplicateBoard={onDuplicateBoard}
-                                 />
+                            />
                         </div>
                     </div>
-                    {isWorkspace && <button  className="add-mobile-btn"> <a onClick={toggleNewBoardModal} className="flex option"> <GrAdd className='plus-icon'/></a> </button> }
+                    {isWorkspace && <button className="add-mobile-btn"> <a onClick={toggleNewBoardModal} className="flex option"> <GrAdd className='plus-icon' /></a> </button>}
                 </div>
             )}
-            
+
             {(!boards.length && isNavOpen) && <div className='workspace-empty'>
                 <h2 className='workspace-empty-title'>Your workspace is empty</h2>
                 <h2 className='workspace-empty-subtitle'>Get started by adding new boards</h2>
