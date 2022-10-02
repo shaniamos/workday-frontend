@@ -101,8 +101,7 @@ export const GroupPreview = ({ group, sortGroup, provided, snapchat, index }) =>
                                 <i className='color12' onClick={() => onChangeColor('--color-lavender-hover')}></i>
                                 <i className='color13' onClick={() => onChangeColor('--color-royal-hover')}></i>
                                 <i className='color14' onClick={() => onChangeColor('--color-tan')}></i>
-                                <i className='color15' onClick={() => onChangeColor('--color-orchid')}></i>
-                                
+                                <i className='color15' onClick={() => onChangeColor('--color-orchid')}></i>             
                             </section>}
                     </div>
                 </div>
@@ -114,7 +113,6 @@ export const GroupPreview = ({ group, sortGroup, provided, snapchat, index }) =>
                         />}
                 </div>
                 <div className="group-name flex sticky-feature">
-
                     <span className="collapse-group-button"
                         style={{ color: `var(${group.colorId})` }}>
                         <IoChevronDown />
@@ -127,7 +125,6 @@ export const GroupPreview = ({ group, sortGroup, provided, snapchat, index }) =>
                     <span className="group-task-count">{`${group.tasks.length} items`}</span>
                 </div>
             </div>
-            {/* Group columns identifier (color, checkbox, task name, persons, status, priority....) */}
             <GroupHeader
                 groupColor={group.colorId}
                 sortGroup={sortGroup}

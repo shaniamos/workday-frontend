@@ -18,6 +18,12 @@ export const BoardDetails = ({ boards, onChangeFilter }) => {
     const dispatch = useDispatch()
     const params = useParams()
     const boardId = params.id
+    
+    useEffect(() => {
+        const boardId = params.id
+        socketService.emit(SOCKET_EMIT_SET_BOARD_ID, boardId)
+        dispatch(loadSelectedBoard(boardId))
+    }, [params.id])
 
     useEffect(() => {
         socketService.on(SOCKET_EVENT_BOARD_CHANGED, changeBoard)
@@ -26,15 +32,7 @@ export const BoardDetails = ({ boards, onChangeFilter }) => {
         }
     }, [])
 
-    useEffect(() => {
-        const boardId = params.id
-        socketService.emit(SOCKET_EMIT_SET_BOARD_ID, boardId)
-        dispatch(loadSelectedBoard(boardId))
-    }, [params.id])
-
     const changeBoard = (newBoard) => {
-        // console.log('newBoard', newBoard)
-        // dispatch(updateBoard(newBoard))
         dispatch(getActionUpdateBoard(newBoard))
     }
 

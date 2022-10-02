@@ -1,6 +1,6 @@
 .kanban-content {
     display: grid;
-    grid-template-columns: repeat(auto-fit, max(260px));
+    grid-template-columns: repeat(7, max(260px));
     grid-gap: rem(16px);
     padding-left: rem(30px);
     padding-top: rem(16px);
