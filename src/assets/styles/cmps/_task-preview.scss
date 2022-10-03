@@ -20,7 +20,7 @@
         .task-name-area {
             transition: box-shadow .2s ;
             &:hover {
-                opacity: .8;
+                // opacity: .8;
                 box-shadow: 0px 0px 6px 0px var(--ui-border-color);
                 //  background-color: var(--ui-border-color);
 

@@ -1,4 +1,7 @@
+
 .member-multi-select-container {
+  @include for-narrow-layout{
+
     padding: rem(8px) rem(8px) rem(8px) rem(8px);
     position: absolute;
     z-index: 100;
@@ -7,6 +10,7 @@
     box-shadow: 1px 1px 6px 0 rgb(0 0 0 / 30%);
     width: rem(360px);
     border-radius: 8px;
+  }
 
     @include for-mobile-layout {
       position: fixed;
