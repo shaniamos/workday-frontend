@@ -22,14 +22,15 @@
             justify-content: start;
 
             .option {
-                padding-left: 6px;
-                height: 32px;
-                margin-top: 8px;
-                border-radius: 4px;
+                padding-left: rem(6px);
+                height: rem(32px);
+                margin-top: rem(8px);
+                border-radius: rem(4px);
                 width: 100%;
 
                 .menu-btn-inner-text {
-                    font-size: 14px;
+                    font-size: rem(14px);
+                    padding-inline-start: rem(6px);
                 }
             }
         }
