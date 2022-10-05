@@ -221,11 +221,11 @@ async function updateTask(boardId, groupId, task) {
 
 async function addComment(boardId, groupId, taskId, newCommentTxt) {
     try {
-        const newUpdate = createComment(newCommentTxt)
+        const newComment = createComment(newCommentTxt)
         const board = await getBoardById(boardId)
         const groupIdx = board.groups.findIndex(group => group.id === groupId)
         const taskIdx = board.groups[groupIdx].tasks.findIndex(task => task.id === taskId)
-        board.groups[groupIdx].tasks[taskIdx].comments.unshift(newUpdate)
+        board.groups[groupIdx].tasks[taskIdx].comments.unshift(newComment)
         return saveBoard(board)
     }
     catch (err) {
@@ -237,7 +237,7 @@ async function addComment(boardId, groupId, taskId, newCommentTxt) {
 function createComment(txt) {
     return {
         byMember: {
-            _id: utilService.makeId(4),
+            id: utilService.makeId(4),
             fullname: 'Tal Elmaliach',
             imgUrl: "https://files.monday.com/use1/photos/34311144/thumb_small/34311144-user_photo_2022_09_14_12_46_08.png?1663159568",
         },
