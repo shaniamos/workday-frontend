@@ -25,7 +25,7 @@ export const MemberMultiSelect = ({ groupId, task, setIsMemberModalOpen, assigne
     }
 
     const checkMembers = (memberId) => {
-        return assigneeMembers.find(asiigneedMember => asiigneedMember._id === memberId)
+        return assigneeMembers.find(asiigneedMember => asiigneedMember.id === memberId)
 
 
     }
@@ -41,7 +41,7 @@ export const MemberMultiSelect = ({ groupId, task, setIsMemberModalOpen, assigne
                             <img src={member.imgUrl} alt="" />
                             <span>{member.fullname}</span>
                             <span onClick={() => {
-                                onRemoveMember(member._id)
+                                onRemoveMember(member.id)
                                 setIsMemberModalOpen(false)
                             }}><GoX /></span></div>
                     ))}
@@ -50,7 +50,7 @@ export const MemberMultiSelect = ({ groupId, task, setIsMemberModalOpen, assigne
                 <span className="members-title">Suggested people</span>
                 <div className="not-assignee-users">
                     {members.map((member) => {
-                        if (checkMembers(member._id)) return
+                        if (checkMembers(member.id)) return
                         else {
                             return <div
                                 className="not-assignee-single-user"

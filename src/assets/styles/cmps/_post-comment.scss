@@ -1,0 +1,48 @@
+.post-comment {
+
+    .comment-input {
+        width: 100%;
+        margin: 0;
+        border: 1px solid rgb(206, 204, 204);
+        background: transparent;
+        border-radius: rem(8px);
+        padding: rem(10px) rem(20px);
+        cursor: lightblue;
+        transition: color 0.15s ease-in-out;
+        justify-content: start;
+        text-align: left;
+        outline: none;
+        margin-top: rem(20px);
+        margin-bottom: rem(40px);
+
+        .comment-btn {
+            cursor: pointer;
+            @include btn($bgColor: var(--primary-background-color));
+        }
+
+        @include for-mobile-layout {
+            .comment-input {
+                width: 400px;
+            }
+        }
+    }
+
+    .side-panel-actions {
+        position: relative;
+        padding: rem(20px) 0;
+        margin: rem(20px) 0;
+
+        .comment-btn {
+            position: absolute;
+            right: 0;
+            cursor: pointer;
+            padding: rem(4px) rem(8px);
+            height: rem(32px);
+            line-height: rem(24px);
+            border-radius: rem(4px);
+            background-color: var(--primary-color);
+            color: #fff;
+            border: none;
+        }
+    }
+}

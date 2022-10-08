@@ -1,21 +1,17 @@
 
 import { BiTime } from 'react-icons/bi'
 import { LastUpdated } from "./last-updated";
-import { PostUpdate } from "./post-comment";
 import { AiOutlineLike } from 'react-icons/ai';//like
 import { BsReply } from 'react-icons/bs';//reply
 import { HiOutlineDotsHorizontal } from 'react-icons/hi';//dots
 
-
-
 export function CommentList({ comments, onRemoveComment, onAddComment }) {
-    
-    return <section className="item-updates-container">
-        <PostUpdate onAddComment={onAddComment} />
-        {comments && <section>
+
+    return (
+        <section className="item-comments-container">
             {comments.map(((content, idx) => {
                 return (
-                    <div className="user-update-card" key={content.byMember._id}>
+                    <div className="user-comment-card" key={content.byMember.id}>
                         <div className="user-details flex align-center">
                             <div className="user-img-name flex">
                                 <img src={content.byMember.imgUrl} alt="user-img" />
@@ -26,11 +22,11 @@ export function CommentList({ comments, onRemoveComment, onAddComment }) {
                                 <div className="time flex align-center">
                                     <BiTime />
                                     <LastUpdated lastUpdated={content.createdAt} />
-                                    <div class="dropdown">
-                                        <a className="delete-update-btn"><HiOutlineDotsHorizontal className='dots-comment-list' /></a>
-                                        <div class="dropdown-content">
+                                    <div className="dropdown">
+                                        <a className="delete-comment-btn"><HiOutlineDotsHorizontal className='dots-comment-list' /></a>
+                                        <div className="dropdown-content">
                                             <a onClick={() => onRemoveComment(idx)}>Delete comment</a>
-                                            
+
                                         </div>
                                     </div>
                                 </div>
@@ -52,7 +48,8 @@ export function CommentList({ comments, onRemoveComment, onAddComment }) {
                     </div>
                 )
             }
-            ))}</section>}
-    </section>
+            ))}
+        </section>
+    )
 }
 

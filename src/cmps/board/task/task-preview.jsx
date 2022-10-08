@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { Link, Outlet, Route, Routes, useParams } from "react-router-dom"
 
@@ -29,6 +29,10 @@ export const TaskPreview = ({ task, groupId, groupColor, provided }) => {
     const [register, setNewTask, newTask] = useFormRegister({
         title: task.title
     })
+
+    useEffect (() => {
+        setNewTask({title: task.title})
+    }, [task])
 
     const onRemoveTask = () => {
         toggleNewBoardModal()
@@ -67,8 +71,8 @@ export const TaskPreview = ({ task, groupId, groupColor, provided }) => {
         setBtnClicked(!isDeleteBtnClicked)
     }
 
-    const { persons, lastUpdated, deadline } = task
-    let date = (+deadline) ? new Date(+deadline) : ''
+    const { persons, lastUpdated } = task
+
     return (
         <React.Fragment>
             <div className="preview-full-task flex"
@@ -116,7 +120,7 @@ export const TaskPreview = ({ task, groupId, groupColor, provided }) => {
                         return <StatusTypeDisplay setStatusOrPriority={setStatusOrPriority} key={label.name} label={`${label.name}`} value={labelValue} options={label.options} />
                     })}
 
-                    {/* DeadLine */}
+                    {/* LastUpdated */}
                     <LastUpdated lastUpdated={lastUpdated} />
 
                     {/* TimeLine */}
@@ -124,11 +128,6 @@ export const TaskPreview = ({ task, groupId, groupColor, provided }) => {
                         <TimeLine task={task} boardId={boardId} groupId={groupId} groupColor={groupColor} />
                     </div>
 
-                    {/* Due Date */}
-                    {/* {date && <div className="cell date-header">
-                    {date.getDate() + "/" + (date.getMonth() + 1) + "/" + date.getFullYear()}
-                </div>} */}
-                    {!date && <div className="cell date-header"></div>}
                     {/* Empty column */}
                     <div className="cell add-column"></div>
                 </section>

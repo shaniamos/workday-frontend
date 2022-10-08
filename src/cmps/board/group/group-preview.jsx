@@ -129,9 +129,6 @@ export const GroupPreview = ({ group, sortGroup, provided, snapchat, index }) =>
                     sortGroup={sortGroup}
                 />
             </div>
-            {/* <Draggable  key={group.id} >
-                {(provided, snapchat) => {
-                    return ( */}
             <TaskList
                 index={index}
                 snapchat={snapchat}
@@ -140,12 +137,8 @@ export const GroupPreview = ({ group, sortGroup, provided, snapchat, index }) =>
                 groupColor={group.colorId}
                 provided={provided}
             />
-
-            {/* ) */}
-            {/* }} */}
-            {/* </Draggable> */}
             {provided.placeholder}
-
+            
             <GroupFooter
                 tasks={group.tasks} />
         </section>

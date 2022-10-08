@@ -48,8 +48,6 @@ export const BoardDetails = ({ boards, onChangeFilter }) => {
         setBoardView(currView)
     }
 
-
-
     if (isLoading || !boards) return <Loader />
     return (
         <section className="board-details">

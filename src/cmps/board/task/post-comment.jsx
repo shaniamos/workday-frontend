@@ -1,28 +1,28 @@
 import { Component } from "react";
 import { Editor } from '@tinymce/tinymce-react';
 
-export class PostUpdate extends Component {
+export class PostComment extends Component {
   state = {
-    update: '',
+    comment: '',
     toggleEditor: false,
   };
 
   handleModelChange = (e) => {
     this.setState({
-      update: e.target.getContent(),
+      comment: e.target.getContent(),
     });
   };
   onAddComment = () => {
-    this.props.onAddComment(this.state.update);
-    this.setState((prevState) => ({ ...prevState, update: '' }));
+    this.props.onAddComment(this.state.comment);
+    this.setState((prevState) => ({ ...prevState, comment: '' }))
   };
   toggleEditor = (value) => {
-    this.setState((prevState) => ({ ...prevState, toggleEditor: value }));
+    this.setState((prevState) => ({ ...prevState, toggleEditor: value }))
   };
-  
+
   render() {
     return (
-      <div>
+      <section className="post-comment">
         <div>
           {this.state.toggleEditor ? (
             <Editor
@@ -33,10 +33,10 @@ export class PostUpdate extends Component {
                 resize: false,
                 menubar: false,
               }}
-              onChange={this.handleModelChange}/>
+              onChange={this.handleModelChange} />
           ) : (
             <div
-              className="update-input btn"
+              className="comment-input btn"
               onClick={() => this.toggleEditor(true)}
             >
               Write an update...
@@ -45,24 +45,18 @@ export class PostUpdate extends Component {
         </div>
         {this.state.toggleEditor && (
           <div className="side-panel-actions flex align-center space-between">
-            <div className="left-side-actions flex">
-              {/* <div className="add-files">Add files</div>
-                <div className="gif">GIF</div>
-                <div className="emoji">Emoji</div>
-                <div className="mention">Mention</div> */}
-            </div>
             <button
-              className="update-btn"
+              className="comment-btn"
               onClick={(ev) => {
                 ev.preventDefault();
                 this.onAddComment();
                 this.toggleEditor(false);
               }}>
-              Update
+              update
             </button>
           </div>
         )}
-      </div>
-    );
+      </section>
+    )
   }
 }
