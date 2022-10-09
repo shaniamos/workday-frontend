@@ -16,10 +16,17 @@ export const KanbanGroup = ({ group, boardId, provided, snapchat }) => {
             style={{ border: `3px solid var(${colorId})` }}
         >
 
-            <KanbanHeader colorId={colorId} title={title} group={group} />
+            <KanbanHeader 
+                colorId={colorId} 
+                title={title} 
+                group={group} 
+                />
             {tasks.map((task, idx) => {
                 return (
-                    <Draggable key={task.id} draggableId={task.id} index={idx}>
+                    <Draggable 
+                        key={task.id} 
+                        draggableId={task.id}
+                         index={idx}>
                         {(provided, snapchat) => {
                             return (
                                 <KanbanPreview
@@ -36,7 +43,10 @@ export const KanbanGroup = ({ group, boardId, provided, snapchat }) => {
                 )
             })}
             {provided.placeholder}
-            <KanbanAddTask groupId={id} boardId={boardId} />
+            <KanbanAddTask 
+                groupId={id} 
+                boardId={boardId}
+                />
         </div>
     )
 }

@@ -57,14 +57,7 @@ export function ViewbarBoardHeader({ board, onAddGroup, onChangeFilter }) {
                     </div>
                 </section>
             </div>
-            {/* <div className="search-area"> */}
                 <Search onChangeFilter={onChangeFilter} />
-            {/* </div> */}
-            {/* <a onClick={() => setFilter(!isFilter)} className="filter-btn"><BiFilterAlt /> Filter</a>
-                {isFilter && 
-                <FilterBoard  
-                    board={board}
-                /> } */}
         </div>
     )
 }

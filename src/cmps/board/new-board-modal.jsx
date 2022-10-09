@@ -1,20 +1,16 @@
 import { useEffect, useRef } from "react"
-import { useDispatch } from "react-redux"
-import { useNavigate } from "react-router-dom"
 import { useFormRegister } from "../../hooks/useFormRegister.js"
 
 export const NewBoardMoadl = ({ toggleNewBoardModal, onSaveBoard }) => {
 
     const inputRef = useRef()
-    const [register, setNewBoardTitle, newBoardTitle] = useFormRegister({
+    const [register, newBoardTitle] = useFormRegister({
         title: ''
     })
 
     useEffect(() => {
         inputRef.current.focus()
     }, [])
-
-   
 
     return (
         <section className="new-board-modal-container open">

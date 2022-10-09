@@ -1,7 +1,7 @@
-import { AvatarsChain } from "../../avatarsChain"
-import { RiErrorWarningLine, RiUserAddLine } from 'react-icons/ri'
-import { AiOutlineStar } from 'react-icons/ai'
-import { FaStumbleuponCircle } from 'react-icons/fa'
+// import { AvatarsChain } from "../../avatarsChain"
+// import { RiErrorWarningLine, RiUserAddLine } from 'react-icons/ri'
+// import { AiOutlineStar } from 'react-icons/ai'
+// import { FaStumbleuponCircle } from 'react-icons/fa'
 import { useDispatch } from "react-redux"
 import { useFormRegister } from "../../../hooks/useFormRegister.js"
 import { updateBoard } from "../../../store/actions/board.action.js"
@@ -9,7 +9,7 @@ import { useEffect } from "react"
 
 export function MainBoardHeader({ board }) {
     const dispatch = useDispatch()
-    const [register, setNewBoard, newBoard] = useFormRegister({
+    const [register, newBoard] = useFormRegister({
         title: board.title
     })
 
