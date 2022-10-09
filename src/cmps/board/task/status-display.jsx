@@ -20,6 +20,7 @@ export const StatusTypeDisplay = ({ label, value, options, setStatusOrPriority }
     const onCloseLabels = () => {
         setIsLabelsOpen('')
     }
+    
     return <React.Fragment>
         <div className={`label-dropdown ${isLabelsOpen}`}>
             <div className="cell label-type status-header btn-open-label-drop" onClick={onOpenLabels} style={{ backgroundColor: `var(${getColorByValue(value)})` }}>

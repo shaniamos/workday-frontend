@@ -10,7 +10,6 @@ export const MemberMultiSelect = ({ groupId, task, setIsMemberModalOpen, assigne
     const params = useParams()
     const boardId = params.id
 
-
     const onRemoveMember = (memberId) => {
         const currMembers = task.persons.filter(person => person.id !== memberId)
         const taskToUpdate = { ...task, persons: currMembers }
@@ -26,48 +25,52 @@ export const MemberMultiSelect = ({ groupId, task, setIsMemberModalOpen, assigne
 
     const checkMembers = (memberId) => {
         return assigneeMembers.find(asiigneedMember => asiigneedMember.id === memberId)
-
-
     }
 
-    
-    return (
-        <section className="member-multi-select-container">
-            <a onClick={() => setIsMemberModalOpen(false)}><GoX className="exit-btn" /></a>
-            <div className="are-assignee">
-                {assigneeMembers && assigneeMembers?.length &&
-                    assigneeMembers.map(member => (
-                        <div key={member.id}>
-                            <img src={member.imgUrl} alt="" />
-                            <span>{member.fullname}</span>
-                            <span onClick={() => {
-                                onRemoveMember(member.id)
-                                setIsMemberModalOpen(false)
-                            }}><GoX /></span></div>
-                    ))}
-            </div>
-            <div className="not-assignee">
-                <span className="members-title">Suggested people</span>
-                <div className="not-assignee-users">
-                    {members.map((member) => {
-                        if (checkMembers(member.id)) return
-                        else {
-                            return <div
-                                className="not-assignee-single-user"
-                                key={member.id}
-                                onClick={() => {
-                                    onAddMember(member)
-                                    setIsMemberModalOpen(false)
-                                }}>
-                                <img key={member.id} src={member.imgUrl} alt="" />
-                                <span>{member.fullname}</span>
-                            </div>
+    const onCloseMembers = () => {
+        setIsMemberModalOpen(false)
+    }
 
-                        }
-                    })}
+    const membersClassName = setIsMemberModalOpen ? 'open' : ''
+
+    return (
+        <section className={`member-multi-select-container ${membersClassName}`}>
+            {/* <div className="main-screen" onClick={onCloseMembers}></div> */}
+            <div className="member-multi-select">
+                <a onClick={() => setIsMemberModalOpen(false)}><GoX className="exit-btn" /></a>
+                <div className="are-assignee">
+                    {assigneeMembers && assigneeMembers?.length &&
+                        assigneeMembers.map(member => (
+                            <div key={member.id}>
+                                <img src={member.imgUrl} alt="" />
+                                <span>{member.fullname}</span>
+                                <span onClick={() => {
+                                    onRemoveMember(member.id)
+                                    setIsMemberModalOpen(false)
+                                }}><GoX /></span></div>
+                        ))}
+                </div>
+                <div className="not-assignee">
+                    <span className="members-title">Suggested people</span>
+                    <div className="not-assignee-users">
+                        {members.map((member) => {
+                            if (checkMembers(member.id)) return
+                            else {
+                                return <div
+                                    className="not-assignee-single-user"
+                                    key={member.id}
+                                    onClick={() => {
+                                        onAddMember(member)
+                                        setIsMemberModalOpen(false)
+                                    }}>
+                                    <img key={member.id} src={member.imgUrl} alt="" />
+                                    <span>{member.fullname}</span>
+                                </div>
+                            }
+                        })}
+                    </div>
                 </div>
             </div>
-
         </section>
     )
 }
