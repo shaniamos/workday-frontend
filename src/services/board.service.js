@@ -251,7 +251,33 @@ function createComment(txt) {
 }
 
 function _createBoard(board) {
-    board._createdAt = Date.now()
+    board.members = [
+        {
+            id: 'm101',
+            fullname: 'Tal Elmaliach',
+            imgUrl: 'https://files.monday.com/use1/photos/34311144/thumb_small/34311144-user_photo_2022_09_14_12_46_08.png?1663159568',
+            title: 'Fullstack Developer',
+        },
+        {
+            id: 'm102',
+            fullname: 'Bar Mendel',
+            imgUrl: 'https://files.monday.com/use1/photos/34311145/thumb_small/34311145-user_photo_2022_09_14_12_43_14.png?1663159394',
+            title: 'Fullstack Developer',
+
+        },
+        {
+            id: 'm103',
+            fullname: 'Shani Amos',
+            imgUrl: 'https://files.monday.com/use1/photos/34310999/thumb_small/34310999-user_photo_2022_09_14_12_35_32.png?1663158932',
+            title: 'Fullstack Developer',
+        },
+        {
+            id: 'm104',
+            fullname: 'Ori Ben Amram',
+            imgUrl: 'https://files.monday.com/use1/photos/34311143/thumb_small/34311143-user_photo_2022_09_14_13_55_42.png?1663163742',
+            title: 'Team Leader',
+        }
+    ]
     board.labels = [
         {
             name: "status",

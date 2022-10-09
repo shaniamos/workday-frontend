@@ -69,7 +69,6 @@ export function SubSidebar() {
         }
     }
     const onSaveBoard = async (newBoardTitle) => {
-        console.log(newBoardTitle)
         toggleNewBoardModal()
         try {
             const title = newBoardTitle.title

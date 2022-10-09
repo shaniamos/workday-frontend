@@ -12,7 +12,7 @@ export const MemberMultiSelect = ({ groupId, task, setIsMemberModalOpen, assigne
 
 
     const onRemoveMember = (memberId) => {
-        const currMembers = task.persons.filter(person => person._id !== memberId)
+        const currMembers = task.persons.filter(person => person.id !== memberId)
         const taskToUpdate = { ...task, persons: currMembers }
         dispatch(updateTask(boardId, groupId, taskToUpdate))
     }

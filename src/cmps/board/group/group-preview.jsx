@@ -86,7 +86,7 @@ export const GroupPreview = ({ group, sortGroup, provided, snapchat, index }) =>
                     <div className="dropdown">
                         <div ><HiOutlineDotsHorizontal className="dots" /></div>
                         <div className="dropdown-content">
-                            <a onClick={toggleNewBoardModal}>< MdDeleteOutline /> Delete gruop</a>
+                            <a onClick={toggleNewBoardModal}>< MdDeleteOutline /> Delete group</a>
                             <a onClick={onDuplicateGroup}><HiOutlineDocumentDuplicate /> Duplicate</a>
                             <div className={`group-color-container`} onClick={isColorMenuOpen}  >
                                 <div className={`color-icon`} style={{ backgroundColor: `var(${group.colorId})` }} ></div>
