@@ -11,7 +11,8 @@
 
     .workspace-options {
         color: #323338;
-        .action-btn{
+
+        .action-btn {
             .search-board-form {
                 padding-inline-start: 0;
             }
@@ -36,14 +37,18 @@
         }
 
         .dropdown-dot .dropdown {
-            position: absolute;
             display: none;
+            position: absolute;
+            right: rem(70px);
             padding-bottom: 6px;
             font-size: 13px;
             transition: color .2s;
-            transform: translateX(45px);
             z-index: 10;
             font-size: 27px;
+
+            @include for-narrow-layout {
+                transform: translateX(45px);
+            }
 
             & .points {
                 transform: translateY(-15px);
@@ -246,7 +251,7 @@
             color: white;
             font-size: rem(18px);
             padding-top: rem(4px);
-                    
+
 
             .plus-icon {
                 margin: auto;

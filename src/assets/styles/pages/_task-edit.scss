@@ -88,9 +88,7 @@
 
 .task-edit-container.open .main-screen {
     @include main-screen-open;
-
 }
-
 
 @include for-mobile-layout {
     .task-edit {
@@ -111,7 +109,7 @@
             }
 
             .user-comment-card {
-                width: rem(342px);
+                width: 100%
             }
         }
     }
