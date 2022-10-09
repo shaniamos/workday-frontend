@@ -42,6 +42,14 @@
                 gap: rem(7px);
                 justify-content: center;
 
+                .clock-icon {
+                    display: none;
+                    
+                    @include for-narrow-layout {
+                        display: flex;
+                    }
+                }
+
                 .dropdown {
                     position: relative;
                     display: inline-block;

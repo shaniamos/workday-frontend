@@ -22,7 +22,12 @@
 
         @include for-mobile-layout {
             .comment-input {
-                width: 400px;
+                margin-top: 1rem;
+                margin-bottom: 1.5rem;
+
+                .comment-btn {
+                    float: left;
+                }
             }
         }
     }
@@ -43,6 +48,12 @@
             background-color: var(--primary-color);
             color: #fff;
             border: none;
+        }
+
+        @include for-mobile-layout {
+            .side-panel-actions {
+                flex-direction: row-reverse;
+            }
         }
     }
 }

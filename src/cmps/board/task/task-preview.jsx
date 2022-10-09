@@ -106,7 +106,7 @@ export const TaskPreview = ({ task, groupId, groupColor, provided }) => {
                             </div>
                         </Link>
                         <Link to={`/board/${params.id}/${groupId}/${task.id}`} className="btn-update-link">
-                            <div className="btn-updates-count"><NoneUpdatesIcon /></div>
+                            <div className="btn-comments-count"><NoneUpdatesIcon /></div>
                         </Link>
                     </div>
 

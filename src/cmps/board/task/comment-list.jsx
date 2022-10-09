@@ -20,7 +20,7 @@ export function CommentList({ comments, onRemoveComment, onAddComment }) {
                                 </div>
 
                                 <div className="time flex align-center">
-                                    <BiTime />
+                                    <BiTime className='clock-icon' />
                                     <LastUpdated lastUpdated={content.createdAt} />
                                     <div className="dropdown">
                                         <a className="delete-comment-btn"><HiOutlineDotsHorizontal className='dots-comment-list' /></a>

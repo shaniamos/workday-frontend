@@ -1,6 +1,5 @@
 export function LastUpdated({ lastUpdated }) {
 
-    let date = new Date(lastUpdated)
     function timeSince(date) {
         var seconds = Math.floor((new Date() - date) / 1000) 
         var interval = seconds / 31536000 
@@ -23,14 +22,7 @@ export function LastUpdated({ lastUpdated }) {
         if (interval > 1) {
             return Math.floor(interval) + " minutes ago" 
         }
-        // return Math.floor(seconds) + " seconds" 
         return " Just now " 
     }
-    // Timestamp fake data generator
-    
-    // var aDay = 24 * 60 * 60 * 1000 
-    // console.log(Date.now() - aDay)
-    // console.log(timeSince(new Date(Date.now() - aDay))) 
-    // console.log(timeSince(new Date(Date.now() - aDay * 2))) 
 
     return <div className="cell last-updated">{timeSince(lastUpdated)} </div>}

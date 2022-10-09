@@ -70,7 +70,7 @@ export const TaskEdit = () => {
                 <div className="navigate-btns ">
                     {/* buttons navigation */}
                     <div className="task-edit-tool-bar flex align-center">
-                        <a className={`updates-btn btn ${!toggle && "is-selected"}`}
+                        <a className={`comments-btn btn ${!toggle && "is-selected"}`}
                             onClick={(ev) => {
                                 ev.preventDefault()
                                 togglePage(false)

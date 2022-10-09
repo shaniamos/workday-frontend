@@ -1,4 +1,20 @@
 .task-edit {
+    @include modal;
+    position: relative;
+    top: 0;
+    right: 0;
+    width: 100vw;
+    padding: rem(16px);
+    transition: transform .6s, box-shadow .6s;
+    transform: translate(0);
+    z-index: 300;
+
+    @include for-narrow-layout {
+        position: fixed;
+        width: rem(700px);
+        padding: rem(32px);
+    }
+
     .task-exit-btn {
         height: rem(18px);
         width: rem(18px);
@@ -15,15 +31,6 @@
         padding-bottom: rem(8px);
     }
 
-    @include modal;
-    top: 0;
-    right: 0;
-    transition: transform .6s,
-    box-shadow .6s;
-    width: rem(700px);
-    transform: translate(0);
-    z-index: 300;
-
     .close-modal {
         @include btn-close-modal;
         left: rem(16px);
@@ -38,7 +45,7 @@
             gap: 20px;
             text-align: center;
 
-            .updates-btn {
+            .comments-btn {
                 padding-top: rem(5px);
                 border-radius: 2px;
                 height: rem(32px);
@@ -87,50 +94,26 @@
 
 @include for-mobile-layout {
     .task-edit {
-        position: relative;
-        padding: 1rem;
 
         .clean-input {
             font-size: 21px;
         }
 
         .task-edit-tool-bar {
-            font-size: 14px;
+            font-size: rem(14px);
 
         }
 
-
-
-        .item-updates-container {
+        .item-comments-container {
             .tox-tinymce.tox-platform-touch {
-                margin-top: 15px;
-                width: 320px;
-            }
-            .side-panel-actions {
-                flex-direction: row-reverse;
+                margin-top: rem(15px);
+                width: rem(320px);
             }
 
-            .update-input {
-                width: rem(240px);
-                width: rem(240px);
-                margin-top: 1rem;
-                margin-bottom: 1.5rem;
-                
-                
-                .update-btn {
-                    float: left;
-                }
-
-                
+            .user-comment-card {
+                width: rem(342px);
             }
-            .user-update-card {
-                width: 360px;
-            }
-            
-            
-            
         }
-
     }
 
     .task-edit-container .main-screen {
