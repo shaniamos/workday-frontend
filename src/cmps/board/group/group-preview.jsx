@@ -5,7 +5,7 @@ import { useFormRegister } from "../../../hooks/useFormRegister.js"
 import { addGroup, removeGroup, updateGroup } from "../../../store/actions/board.action.js"
 import { TaskList } from "../task/task-list.jsx"
 import { GroupHeader } from "./group-header.jsx"
-import { AreYouSureModal } from "../task/are-you-sure-modal.jsx"
+import { ConfirmModal } from "../task/confirm-modal.jsx"
 import { GroupFooter } from "./group-footer.jsx"
 import { utilService } from "../../../services/util.service.js"
 import { Draggable, Droppable } from "react-beautiful-dnd"
@@ -98,7 +98,7 @@ export const GroupPreview = ({ group, sortGroup, provided, snapchat, index }) =>
                     </div>
                     <div className="questModal">
                         {isDeleteBtnClicked &&
-                            <AreYouSureModal
+                            <ConfirmModal
                                 toggleNewBoardModal={toggleNewBoardModal}
                                 onRemoveEntity={onRemoveGroup}
                             />}

@@ -1,15 +1,9 @@
-import { useNavigate, useParams } from "react-router-dom"
 
-export const AreYouSureModal = ({ toggleNewBoardModal, onRemoveEntity }) => {
-    // const params = useParams()
-
+export const ConfirmModal = ({ toggleNewBoardModal, onRemoveEntity }) => {
     const onCloseModal = () => {
         toggleNewBoardModal()
     }
-
     return (
-        
-
             <section className="are-you-sure-modal-container open">
                 <div className="main-screen" onClick={onCloseModal}></div>
                 <section className="delete-modal flex column justify-center space-between">

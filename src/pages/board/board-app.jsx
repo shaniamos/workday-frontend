@@ -18,7 +18,7 @@ export const BoardApp = () => {
         dispatch(loadBoards(filterBy))
     }, [params.id])
 
-    const onChangeFilter = async (filterBy, sortBy) => {
+    const onChangeFilter = async (filterBy) => {
         try {
             await dispatch(setFilterBy(filterBy))
         }

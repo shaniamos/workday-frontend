@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { Link, Outlet, Route, Routes, useParams } from "react-router-dom"
 
-import { AreYouSureModal } from "./are-you-sure-modal.jsx"
+import { ConfirmModal } from "./confirm-modal.jsx"
 import { utilService } from "../../../services/util.service.js"
 import { addTask, removeTask, updateTask } from "../../../store/actions/board.action.js"
 import { useFormRegister } from "../../../hooks/useFormRegister.js"
@@ -88,7 +88,7 @@ export const TaskPreview = ({ task, groupId, groupColor, provided }) => {
                     </div>
                 </div>
                 <div className="questModal\questions">
-                    {isDeleteBtnClicked && <AreYouSureModal toggleNewBoardModal={toggleNewBoardModal} onRemoveEntity={onRemoveTask} />}
+                    {isDeleteBtnClicked && <ConfirmModal toggleNewBoardModal={toggleNewBoardModal} onRemoveEntity={onRemoveTask} />}
                 </div>
                 <section className="task-preview flex">
                     <div className="cell task-name-area sticky-feature flex">

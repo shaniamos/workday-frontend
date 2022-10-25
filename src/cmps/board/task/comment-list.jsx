@@ -5,7 +5,7 @@ import { AiOutlineLike } from 'react-icons/ai';//like
 import { BsReply } from 'react-icons/bs';//reply
 import { HiOutlineDotsHorizontal } from 'react-icons/hi';//dots
 
-export function CommentList({ comments, onRemoveComment, onAddComment }) {
+export function CommentList({ comments, onRemoveComment }) {
 
     return (
         <section className="item-comments-container">

@@ -6,7 +6,11 @@ export function TaskComment({ task, onRemoveComment, onAddComment }) {
     return (
         <section className="task-edit-container">
             <PostComment onAddComment={onAddComment} />
-            <CommentList task={task} comments={task.comments} onRemoveComment={onRemoveComment} onAddComment={onAddComment} />
+            <CommentList 
+                task={task} 
+                comments={task.comments} 
+                onRemoveComment={onRemoveComment} 
+                />
             {!task.comments.length && <div className="task-edit-no-comments">
                 <div className="task-edit-no-comments-content">
                     <div className="img-container">
