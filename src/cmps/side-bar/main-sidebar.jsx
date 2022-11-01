@@ -2,7 +2,7 @@
 // import { IoMdNotificationsOutline } from 'react-icons/io'
 // import { FiInbox } from 'react-icons/fi'
 // import { FaRegCalendarCheck } from 'react-icons/fa'
-// import { BsStars } from 'react-icons/bs'
+import { BsStars } from 'react-icons/bs'
 // import { BsPersonPlus } from 'react-icons/bs'
 // import { FiSearch } from 'react-icons/fi'
 // import { BiQuestionMark } from 'react-icons/bi'
@@ -43,9 +43,10 @@ export function MainSidebar() {
                         {/* <FaRegCalendarCheck className='sidebar-icon' /> */}
                         {/* <AiOutlineStar className='sidebar-icon' /> */}
                     </div>
-                    {/* <div className="plans-modal">
-                        <span> <BsStars className='stars' />See plans </span>
-                    </div> */}
+                    <div className="plans-modal">
+                        {user && <span> <BsStars className='stars' />Hello {user.fullname} </span>}
+                        {!user && <span> <BsStars className='stars' />Hello Guest </span>}
+                    </div>
                     <div>
                         {/* <div className='icons-bottom flex column align-center'>
                             <BsPersonPlus className='sidebar-icon' />

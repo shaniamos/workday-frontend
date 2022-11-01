@@ -1,5 +1,6 @@
 import { httpService } from "./http.service.js"
 import { utilService } from './util.service.js'
+import { userService } from './user.service.js'
 import { socketService, SOCKET_EMIT_BOARDS_CHANGE, SOCKET_EMIT_BOARD_CHANGED, SOCKET_EMIT_SET_BOARD_ID } from "./socket.service";
 
 export const boardService = {
@@ -235,19 +236,36 @@ async function addComment(boardId, groupId, taskId, newCommentTxt) {
 }
 
 function createComment(txt) {
-    return {
-        byMember: {
-            id: utilService.makeId(4),
-            fullname: 'Tal Elmaliach',
-            imgUrl: "https://files.monday.com/use1/photos/34311144/thumb_small/34311144-user_photo_2022_09_14_12_46_08.png?1663159568",
-        },
-        createdAt: Date.now(),
-        content: {
-            txt: txt,
-            likes: [],
-            replys: []
+    const currUser = userService.getLoggedinUser()
+    console.log('currUser', currUser);
+    if (currUser) {
+        return {
+            byMember: {
+                id: utilService.makeId(4),
+                fullname: currUser.fullname,
+                imgUrl: currUser.imgUrl,
+            },
+            createdAt: Date.now(),
+            content: {
+                txt: txt,
+                likes: [],
+                replys: []
+            }
         }
-    }
+    } else
+        return {
+            byMember: {
+                id: utilService.makeId(4),
+                fullname: 'Guest',
+                imgUrl: "https://cdn.monday.com/icons/dapulse-person-column.svg",
+            },
+            createdAt: Date.now(),
+            content: {
+                txt: txt,
+                likes: [],
+                replys: []
+            }
+        }
 }
 
 function _createBoard(board) {

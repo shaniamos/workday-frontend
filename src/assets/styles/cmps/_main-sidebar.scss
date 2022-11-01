@@ -40,38 +40,37 @@
             width: rem(43px);
         }
 
-        // .plans-modal {
-        //     cursor: pointer;
-        //     margin-top: rem(10px);
-        //     margin-bottom: rem(10px);
-        //     height: rem(110px);
-        //     width: rem(34px);
-        //     color: white;
-        //     border-radius: 0 16px 16px 0;
-        //     background-color: #258750;
-        //     display: flex;
-        //     flex-direction: column;
-        //     justify-content: center;
-        //     align-items: center;
-        //     transition: width .1s;
+        .plans-modal {
+            cursor: pointer;
+            margin-top: rem(10px);
+            margin-bottom: rem(10px);
+            height: rem(110px);
+            width: rem(34px);
+            color: white;
+            border-radius: 0 16px 16px 0;
+            background-color: #258750;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            transition: width .1s;
 
-        //     .stars {
-        //         font-size: rem(20px);
-        //     }
-        // }
+            .stars {
+                font-size: rem(20px);
+            }
+        }
 
-        // .plans-modal:hover {
-        //     width: rem(43px);
-        //     background-color: #007038;
-        //     ;
-        // }
+        .plans-modal:hover {
+            width: rem(43px);
+            background-color: #007038;
+        }
 
-        // span {
-        //     transform: rotate(270deg);
-        //     font-size: rem(13px);
-        //     text-align: center;
-        //     white-space: nowrap;
-        // }
+        span {
+            transform: rotate(270deg);
+            font-size: rem(13px);
+            text-align: center;
+            white-space: nowrap;
+        }
 
         .nav-top-down {
             gap: rem(15px);

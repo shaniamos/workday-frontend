@@ -13,7 +13,7 @@ export const KanbanGroup = ({ group, boardId, provided, snapchat }) => {
             className="kanban-group-container"
             {...provided.droppableProps}
             ref={provided.innerRef}
-            style={{ border: `3px solid var(${colorId})` }}
+            style={{ border: `4px solid var(${colorId})` }}
         >
 
             <KanbanHeader 
