@@ -94,6 +94,7 @@
 
             .cell {
                 @include cell;
+                // @include cell;
             }
 
             .task-name-area {

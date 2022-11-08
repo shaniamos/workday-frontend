@@ -13,7 +13,7 @@ export const NewBoardMoadl = ({ toggleNewBoardModal, onSaveBoard }) => {
     }, [])
 
     return (
-        <section className="new-board-modal-container open">
+        <section className="new-board-modal-container open"> 
             <div className="main-screen" onClick={() => toggleNewBoardModal()}></div>
             <section className="add-modal flex column justify-center">
                 <div className="close-modal-btn flex align-center" onClick={() => toggleNewBoardModal()}>
