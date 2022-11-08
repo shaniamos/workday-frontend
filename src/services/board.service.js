@@ -26,34 +26,22 @@ export const boardService = {
 }
 
 const BASE_URL = `board/`
-const boardChannel = new BroadcastChannel('boardChannel');
 
 //BoardService
-async function queryBoards(filterBy) {
+async function queryBoards() {
     try {
-        let boards = await httpService.get(BASE_URL, { params: filterBy })
-        if (filterBy) {
-            const { txt } = filterBy
-            if (txt) {
-                const regex = new RegExp(txt, 'i')
-                boards = boards.filter(board => regex.test(board.title))
-            }
-        }
-        return boards
+        return await httpService.get(BASE_URL)
     } catch (err) {
         throw err
     }
 }
 
 async function getBoardById(boardId) {
-    // socketService.emit(SOCKET_EMIT_SET_BOARD_ID, boardId)
-    const board = await httpService.get(BASE_URL + boardId)
-    return board
+    return await httpService.get(BASE_URL + boardId)
 }
 
 async function removeBoard(boardId) {
-    const removedBoardId = await httpService.delete(BASE_URL + boardId)
-    return removedBoardId
+    return await httpService.delete(BASE_URL + boardId)
 }
 
 async function saveBoard(board) {

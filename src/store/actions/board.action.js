@@ -22,11 +22,11 @@ export function getActionUpdateBoard(board) {
 }
 
 // CRUDL BOARD
-export function loadBoards(filterBy = {}) {
+export function loadBoards() {
     return async (dispatch) => {
         try {
             dispatch({ type: 'SET_LOADING', isLoading: true })
-            const boards = await boardService.queryBoards(filterBy)
+            const boards = await boardService.queryBoards()
             dispatch({ type: 'SET_BOARDS', boards })
             return boards
         } catch (err) {
@@ -38,11 +38,11 @@ export function loadBoards(filterBy = {}) {
 }
 
 //get board by id
-export function loadSelectedBoard(boardId, filterBy = {}) {
+export function loadSelectedBoard(boardId) {
     return async (dispatch) => {
         try {
             dispatch({ type: 'SET_LOADING', isLoading: true })
-            const board = await boardService.getBoardById(boardId, filterBy)
+            const board = await boardService.getBoardById(boardId)
             dispatch({ type: 'SET_SELECTED_BOARD', board })
             return board
         } catch (err) {
