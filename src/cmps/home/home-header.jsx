@@ -6,7 +6,6 @@ import { useSelector } from 'react-redux'
 
 export function HomeHeader() {
     const loggedInUser = useSelector(state => state.userModule.loggedInUser)
-    console.log('loggedInUser', loggedInUser);
     return (
         <React.Fragment>
             <div className="home-header flex space-between ">

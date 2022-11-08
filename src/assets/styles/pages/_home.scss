@@ -167,8 +167,20 @@
             transition: background-image .2s;
             border: none;
 
+            &.btn-desktop {
+                display: none;
+            }
+
             @include for-narrow-layout {
                 margin-top: rem(36px);
+
+                &.btn-desktop {
+                    display: unset;
+                }
+
+                &.btn-mobile {
+                    display: none;
+                }
             }
 
             & p span {
