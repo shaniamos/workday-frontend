@@ -20,7 +20,7 @@ export const BoardDetails = ({ boards, onChangeFilter }) => {
     const navigate = useNavigate()
     const params = useParams()
     const boardId = params.id
-
+    
     useEffect(() => {
         const boardId = params.id
         socketService.emit(SOCKET_EMIT_SET_BOARD_ID, boardId)

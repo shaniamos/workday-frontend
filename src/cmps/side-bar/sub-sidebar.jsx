@@ -111,7 +111,9 @@ export function SubSidebar() {
 
     return (
         <section className={`sub-sidebar-container ${sideBarClassName} full`}  >
-            {isNewBoardModalOpen && <NewBoardMoadl onSaveBoard={onSaveBoard} toggleNewBoardModal={toggleNewBoardModal} />}
+            {isNewBoardModalOpen && <NewBoardMoadl 
+                                        onSaveBoard={onSaveBoard} 
+                                        toggleNewBoardModal={toggleNewBoardModal} />}
             {isNavOpen && <IoIosArrowBack className='btn-left open-btn' onClick={toggleSubSidebar} />}
             {!isNavOpen && <IoIosArrowForward className='btn-right open-btn' onClick={toggleSubSidebar} />}
             {isNavOpen && (

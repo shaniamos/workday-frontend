@@ -5,7 +5,7 @@ export const NewBoardMoadl = ({ toggleNewBoardModal, onSaveBoard }) => {
 
     const inputRef = useRef()
     const [register, newBoardTitle] = useFormRegister({
-        title: ''
+        title: '',
     })
 
     useEffect(() => {

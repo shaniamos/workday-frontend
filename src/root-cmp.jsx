@@ -16,8 +16,8 @@ function App() {
         <Route path='auth/:status' element={<LoginSignup />} />
         <Route path='board/:id' element={<BoardApp />} >
         <Route path=':groupId/:taskId' element={<TaskEdit />} />
-          <Route path='dashboard' element={<Dashboard />} />
-          {/* <Route path='kanban' element={<KanbanView />} /> */}
+          {/* <Route path='dashboard' element={<Dashboard />} />
+          <Route path='kanban' element={<KanbanView />} /> */}
         </Route>
         <Route path='workspace' element={<SubSidebar />} />
         <Route path='/' element={<Home />} />

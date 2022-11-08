@@ -17,12 +17,12 @@ export function ToolbarBoardHeader({ selectedBoardId, toggleView }) {
                     <span>Kanban</span>
                 </button>
             {/* </NavLink> */}
-            {/* <span className="separator">|</span>
-            <NavLink to={`/board/${selectedBoardId}/dashboard`}>
-                <button className="view-nav-btn" onClick={() => toggleView('dashboard')}>
+            <span className="separator">|</span>
+            {/* <NavLink to={`/board/${selectedBoardId}/dashboard`}> */}
+                {/* <button className="view-nav-btn" onClick={() => toggleView('dashboard')}>
                     <span>Dashboard</span>
-                </button>
-            </NavLink> */}
+                </button> */}
+            {/* </NavLink> */}
         </div>
     )
 }
