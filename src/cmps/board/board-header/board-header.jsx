@@ -20,8 +20,15 @@ export function BoardHeader({ board, onAddGroup, onChangeFilter, selectedBoardId
             <div className="board-header-content">
 
                 <MainBoardHeader board={board} />
-                <ToolbarBoardHeader selectedBoardId={selectedBoardId} toggleView={toggleView} />
-                <ViewbarBoardHeader board={board} onAddGroup={onAddGroup} onChangeFilter={onChangeFilter} />
+                <ToolbarBoardHeader 
+                    selectedBoardId={selectedBoardId} 
+                    toggleView={toggleView} 
+                />
+                <ViewbarBoardHeader 
+                    board={board} 
+                    onAddGroup={onAddGroup} 
+                    onChangeFilter={onChangeFilter} 
+                />
             </div>
         </header>
     )

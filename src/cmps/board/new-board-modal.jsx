@@ -4,7 +4,7 @@ import { useFormRegister } from "../../hooks/useFormRegister.js"
 export const NewBoardMoadl = ({ toggleNewBoardModal, onSaveBoard }) => {
 
     const inputRef = useRef()
-    const [register, newBoardTitle] = useFormRegister({
+    const [register, setNewBoardTitle, newBoardTitle] = useFormRegister({
         title: '',
     })
 
