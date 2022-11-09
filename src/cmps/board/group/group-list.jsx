@@ -23,9 +23,11 @@ export const GroupList = ({ board, groups, onAddGroup }) => {
         const { txt } = filterBy
         const regex = new RegExp(txt, 'i')
         const filteredTasksGroups = groups.map(group => {
-            return { ...group, tasks: group.tasks.filter((task) => regex.test(task.title)) }
+            return { ...group, tasks: group.tasks.filter(task => regex.test(task.title)) }
         })
+        console.log('filteredTasksGroups', filteredTasksGroups);
         const filtered = filteredTasksGroups.filter(group => group.tasks.length || regex.test(group.title))
+        console.log('filtered', filtered);
 
         //sort
         filtered.forEach(group => {
