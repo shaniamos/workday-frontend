@@ -86,11 +86,17 @@ We created an e2e authentication flow, including encrypting the users' details a
 
 ![signup image](src/assets/imgs/signup-img.JPG)
 
+### Task details
+Here the user can edit their tasks and to watch it happens live, in this page and behind. 
+Also, the user can add a comment to the task and read others' comments.
+
+![Task details image](src/assets/imgs/task-edit-img.JPG)
+
 ### Some mobile!
 Just a taste of the mobile experience. We used different **mixins**, **conditional rendering**, and the **"mobile first"** approach. 
 The layout we have built from the very first moment enabled us to make the website responsive without a lot of effort.
 
-<img src="src/assets/imgs/home-mobile-img.JPG" width="25%" style="float: left"/><img src="src/assets/imgs/workspace-mobile-img.JPG" width="25%" style="float: left;"/><img src="src/assets/imgs/main-board-mobile-img.JPG" width="25%" style="float: left;"/><img src="src/assets/imgs/kanban-mobile-img.JPG" width="25%" style="float: left;"/>
+<img src="src/assets/imgs/home-mobile-img.JPG" width="20%" style="float: left"/><img src="src/assets/imgs/workspace-mobile-img.JPG" width="20%" style="float: left;"/><img src="src/assets/imgs/main-board-mobile-img.JPG" width="20%" style="float: left;"/><img src="src/assets/imgs/kanban-mobile-img.JPG" width="20%" style="float: left;"/><img src="src/assets/imgs/task-edit-mobile-img.JPG" width="20%" style="float: left;"/>
 
 ### Authors
  - [Tal Elmaliach Hemo](https://github.com/TalElmaliachHemo)
