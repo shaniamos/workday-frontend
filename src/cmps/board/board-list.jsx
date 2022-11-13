@@ -1,9 +1,6 @@
 import { NavLink } from "react-router-dom"
-import BoardNavIcon from '../../assets/svgs/BoardNavIcon.svg'
 import { HiDotsHorizontal } from 'react-icons/hi'
 import { HiOutlineDocumentDuplicate } from 'react-icons/hi'
-import { RiPencilLine } from 'react-icons/ri'
-import { HiOutlineArchive } from 'react-icons/hi'
 import { MdDeleteOutline } from 'react-icons/md'
 import { ReactComponent as NoneUpdatesIcon } from '../../assets/svgs/BoardNavIcon.svg'
 
